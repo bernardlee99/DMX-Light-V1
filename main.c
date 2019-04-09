@@ -41,6 +41,8 @@
     SOFTWARE.
 */
 
+#include <pic16f18446.h>
+
 #include "mcc_generated_files/mcc.h"
 int dmxArray[513];
 
@@ -70,14 +72,15 @@ void main(void)
     
     while (1)
     {
-        
-        PWM1_LoadDutyValue( ( ((int)dmxArray[1])/255.0 ) * 95 );
-        
-        PWM2_LoadDutyValue( ( ((int)dmxArray[2])/255.0 ) * 95 );
-        
-        PWM3_LoadDutyValue( ( ((int)dmxArray[3])/255.0 ) * 95 );
-        
-        PWM4_LoadDutyValue( ( ((int)dmxArray[4])/255.0 ) * 95 );
+
+            PWM1_LoadDutyValue( ( ((int)dmxArray[1])/255.0 ) * 95 );
+
+            PWM2_LoadDutyValue( ( ((int)dmxArray[2])/255.0 ) * 95 );
+
+            PWM3_LoadDutyValue( ( ((int)dmxArray[3])/255.0 ) * 95 );
+
+            PWM4_LoadDutyValue( ( ((int)dmxArray[4])/255.0 ) * 95 );
+            
     }
 }
 /**
