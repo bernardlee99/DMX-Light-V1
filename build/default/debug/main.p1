@@ -1,43 +1,29 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[v F10952 `(v ~T0 @X0 0 tf ]
 [p mainexit ]
-"76 ./mcc_generated_files/mcc.h
-[; ;./mcc_generated_files/mcc.h: 76: void SYSTEM_Initialize(void);
+"70 ./mcc_generated_files/mcc.h
+[; ;./mcc_generated_files/mcc.h: 70: void SYSTEM_Initialize(void);
 [v _SYSTEM_Initialize `(v ~T0 @X0 0 ef ]
 "419 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f18446.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f18446.h: 419:     struct {
-[s S26 :1 `uc 1 :5 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S26 . INTEDG . PEIE GIE ]
+[s S31 :1 `uc 1 :5 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S31 . INTEDG . PEIE GIE ]
 "418
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f18446.h: 418: typedef union {
-[u S25 `S26 1 ]
-[n S25 . . ]
+[u S30 `S31 1 ]
+[n S30 . . ]
 "426
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f18446.h: 426: extern volatile INTCONbits_t INTCONbits __attribute__((address(0x00B)));
-[v _INTCONbits `VS25 ~T0 @X0 0 e@11 ]
-"19082
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f18446.h: 19082:     struct {
-[s S884 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S884 . TMR1IF TMR2IF TMR3IF TMR4IF TMR5IF TMR6IF ]
-"19081
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f18446.h: 19081: typedef union {
-[u S883 `S884 1 ]
-[n S883 . . ]
-"19091
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f18446.h: 19091: extern volatile PIR4bits_t PIR4bits __attribute__((address(0x710)));
-[v _PIR4bits `VS883 ~T0 @X0 0 e@1808 ]
-"124 ./mcc_generated_files/pwm1.h
-[; ;./mcc_generated_files/pwm1.h: 124: void PWM1_LoadDutyValue(uint16_t dutyValue);
-[v _PWM1_LoadDutyValue `(v ~T0 @X0 0 ef1`us ]
-"124 ./mcc_generated_files/pwm2.h
-[; ;./mcc_generated_files/pwm2.h: 124: void PWM2_LoadDutyValue(uint16_t dutyValue);
-[v _PWM2_LoadDutyValue `(v ~T0 @X0 0 ef1`us ]
-"124 ./mcc_generated_files/pwm3.h
-[; ;./mcc_generated_files/pwm3.h: 124: void PWM3_LoadDutyValue(uint16_t dutyValue);
-[v _PWM3_LoadDutyValue `(v ~T0 @X0 0 ef1`us ]
-"124 ./mcc_generated_files/pwm4.h
-[; ;./mcc_generated_files/pwm4.h: 124: void PWM4_LoadDutyValue(uint16_t dutyValue);
-[v _PWM4_LoadDutyValue `(v ~T0 @X0 0 ef1`us ]
+[v _INTCONbits `VS30 ~T0 @X0 0 e@11 ]
+"79 main.c
+[; ;main.c: 79:         I2C1_MESSAGE_STATUS status = I2C1_MESSAGE_PENDING;
+[c E10868 0 1 2 3 4 5 6 .. ]
+[n E10868 . I2C1_MESSAGE_COMPLETE I2C1_MESSAGE_FAIL I2C1_MESSAGE_PENDING I2C1_STUCK_START I2C1_MESSAGE_ADDRESS_NO_ACK I2C1_DATA_NO_ACK I2C1_LOST_STATE  ]
+"262 ./mcc_generated_files/i2c1.h
+[; ;./mcc_generated_files/i2c1.h: 262: void I2C1_MasterWrite(
+[v _I2C1_MasterWrite `(v ~T0 @X0 0 ef4`*uc`uc`us`*E10868 ]
+"13 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\c99\xc8debug.h
+[v ___builtin_software_breakpoint `(v ~T0 @X0 0 ef ]
+[p i ___builtin_software_breakpoint ]
 "110 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f18446.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f18446.h: 110: __asm("INDF0 equ 00h");
 [; <" INDF0 equ 00h ;# ">
@@ -1400,63 +1386,88 @@ Version 4.0 HI-TECH Software Intermediate Code
 "32039
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f18446.h: 32039: __asm("TOSH equ 01FEFh");
 [; <" TOSH equ 01FEFh ;# ">
-"95 ./mcc_generated_files/eusart1.h
-[; ;./mcc_generated_files/eusart1.h: 95: void (*EUSART1_RxDefaultInterruptHandler)(void);
-[v _EUSART1_RxDefaultInterruptHandler `*F10952 ~T0 @X0 1 e ]
-"47 main.c
-[; ;main.c: 47: int dmxArray[513];
-[v _dmxArray `i ~T0 @X0 -> 513 `i e ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"53
-[; ;main.c: 53: void main(void)
+"51 main.c
+[; ;main.c: 51: void main(void)
 [v _main `(v ~T0 @X0 1 ef ]
-"54
-[; ;main.c: 54: {
+"52
+[; ;main.c: 52: {
 {
 [e :U _main ]
 [f ]
-"56
-[; ;main.c: 56:     SYSTEM_Initialize();
+"54
+[; ;main.c: 54:     SYSTEM_Initialize();
 [e ( _SYSTEM_Initialize ..  ]
-"62
-[; ;main.c: 62:     (INTCONbits.GIE = 1);
+"61
+[; ;main.c: 61:     (INTCONbits.GIE = 1);
 [e = . . _INTCONbits 0 3 -> -> 1 `i `uc ]
-"65
-[; ;main.c: 65:     (INTCONbits.PEIE = 1);
+"64
+[; ;main.c: 64:     (INTCONbits.PEIE = 1);
 [e = . . _INTCONbits 0 2 -> -> 1 `i `uc ]
-"73
-[; ;main.c: 73:     while (1)
-[e :U 1517 ]
-"74
-[; ;main.c: 74:     {
-{
-"75
-[; ;main.c: 75:         if(PIR4bits.TMR2IF){
-[e $ ! != -> . . _PIR4bits 0 1 `i -> 0 `i 1519  ]
-{
-"76
-[; ;main.c: 76:             PWM1_LoadDutyValue( ( ((int)dmxArray[1])/255.0 ) * 95 );
-[e ( _PWM1_LoadDutyValue (1 -> * / -> *U + &U _dmxArray * -> -> -> 1 `i `ui `ux -> -> # *U &U _dmxArray `ui `ux `d .255.0 -> -> 95 `i `d `us ]
 "78
-[; ;main.c: 78:             PWM2_LoadDutyValue( ( ((int)dmxArray[2])/255.0 ) * 95 );
-[e ( _PWM2_LoadDutyValue (1 -> * / -> *U + &U _dmxArray * -> -> -> 2 `i `ui `ux -> -> # *U &U _dmxArray `ui `ux `d .255.0 -> -> 95 `i `d `us ]
+[; ;main.c: 78:     for (int i = 0; i < 128; i++) {
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> 128 `i 1517  ]
+[e $U 1518  ]
+[e :U 1517 ]
+{
+"79
+[; ;main.c: 79:         I2C1_MESSAGE_STATUS status = I2C1_MESSAGE_PENDING;
+[v _status `E10868 ~T0 @X0 1 a ]
+[e = _status . `E10868 2 ]
 "80
-[; ;main.c: 80:             PWM3_LoadDutyValue( ( ((int)dmxArray[3])/255.0 ) * 95 );
-[e ( _PWM3_LoadDutyValue (1 -> * / -> *U + &U _dmxArray * -> -> -> 3 `i `ui `ux -> -> # *U &U _dmxArray `ui `ux `d .255.0 -> -> 95 `i `d `us ]
+[; ;main.c: 80:         uint8_t dataToSend = 0x00;
+[v _dataToSend `uc ~T0 @X0 1 a ]
+[e = _dataToSend -> -> 0 `i `uc ]
+"81
+[; ;main.c: 81:         I2C1_MasterWrite(&dataToSend, 1, i, &status);
+[e ( _I2C1_MasterWrite (4 , , , &U _dataToSend -> -> 1 `i `uc -> _i `us &U _status ]
 "82
-[; ;main.c: 82:             PWM4_LoadDutyValue( ( ((int)dmxArray[4])/255.0 ) * 95 );
-[e ( _PWM4_LoadDutyValue (1 -> * / -> *U + &U _dmxArray * -> -> -> 4 `i `ui `ux -> -> # *U &U _dmxArray `ui `ux `d .255.0 -> -> 95 `i `d `us ]
-"83
-[; ;main.c: 83:         }
-}
-[e :U 1519 ]
+[; ;main.c: 82:         while (status == I2C1_MESSAGE_PENDING);
+[e $U 1520  ]
+[e :U 1521 ]
+[e :U 1520 ]
+[e $ == -> _status `ui -> . `E10868 2 `ui 1521  ]
+[e :U 1522 ]
 "84
-[; ;main.c: 84:     }
-}
-[e :U 1516 ]
-[e $U 1517  ]
-[e :U 1518 ]
+[; ;main.c: 84:         if (status == I2C1_MESSAGE_COMPLETE) {
+[e $ ! == -> _status `ui -> . `E10868 0 `ui 1523  ]
+{
 "85
-[; ;main.c: 85: }
-[e :UE 1515 ]
+[; ;main.c: 85:             volatile uint8_t foundAddress = i;
+[v _foundAddress `Vuc ~T0 @X0 1 a ]
+[e = _foundAddress -> _i `uc ]
+"86
+[; ;main.c: 86:             __builtin_software_breakpoint();
+[e ( ___builtin_software_breakpoint ..  ]
+"87
+[; ;main.c: 87:             volatile int dummy = 0;
+[v _dummy `Vi ~T0 @X0 1 a ]
+[e = _dummy -> 0 `i ]
+"88
+[; ;main.c: 88:         }
+}
+[e $U 1524  ]
+"90
+[; ;main.c: 90:         else if (status == I2C1_MESSAGE_ADDRESS_NO_ACK || status == I2C1_DATA_NO_ACK) {
+[e :U 1523 ]
+[e $ ! || == -> _status `ui -> . `E10868 4 `ui == -> _status `ui -> . `E10868 5 `ui 1525  ]
+{
+"92
+[; ;main.c: 92:         }
+}
+[e :U 1525 ]
+[e :U 1524 ]
+"93
+[; ;main.c: 93:     }
+}
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 128 `i 1517  ]
+[e :U 1518 ]
+}
+"94
+[; ;main.c: 94: }
+[e :UE 1516 ]
 }

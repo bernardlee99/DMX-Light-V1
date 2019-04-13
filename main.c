@@ -41,19 +41,19 @@
     SOFTWARE.
 */
 
-#include <pic16f18446.h>
-
 #include "mcc_generated_files/mcc.h"
-int dmxArray[513];
+#include<stdio.h>
+#include "tm1650.h"
+#include "clock.h"
 
 /*
                          Main application
  */
-
 void main(void)
 {
     // initialize the device
     SYSTEM_Initialize();
+    //TM1650_init();
 
     // When using interrupts, you need to set the Global and Peripheral Interrupt Enable bits
     // Use the following macros to:
@@ -69,18 +69,28 @@ void main(void)
 
     // Disable the Peripheral Interrupts
     //INTERRUPT_PeripheralInterruptDisable();
-    
-    while (1)
-    {
 
-            PWM1_LoadDutyValue( ( ((int)dmxArray[1])/255.0 ) * 95 );
+//    while (1)
+//    {
+//        printf("Test");
+//        
+//    }
 
-            PWM2_LoadDutyValue( ( ((int)dmxArray[2])/255.0 ) * 95 );
+    for (int i = 0; i < 128; i++) {
+        I2C1_MESSAGE_STATUS status = I2C1_MESSAGE_PENDING;
+        uint8_t dataToSend = 0x00;
+        I2C1_MasterWrite(&dataToSend, 1, i, &status);
+        while (status == I2C1_MESSAGE_PENDING); // wait for transaction to complete
 
-            PWM3_LoadDutyValue( ( ((int)dmxArray[3])/255.0 ) * 95 );
+        if (status == I2C1_MESSAGE_COMPLETE) {
+            volatile uint8_t foundAddress = i;
+            __debug_break();
+            volatile int dummy = 0; // stupid unused variable we can park at
+        }
 
-            PWM4_LoadDutyValue( ( ((int)dmxArray[4])/255.0 ) * 95 );
-            
+        else if (status == I2C1_MESSAGE_ADDRESS_NO_ACK || status == I2C1_DATA_NO_ACK) {
+            // device didn't ACK (no one's home at that address)
+        }
     }
 }
 /**

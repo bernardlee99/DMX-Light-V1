@@ -18055,9 +18055,9 @@ extern __bank0 __bit __timeout;
 # 50 "mcc_generated_files/mcc.h" 2
 
 # 1 "mcc_generated_files/pin_manager.h" 1
-# 150 "mcc_generated_files/pin_manager.h"
+# 118 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
-# 162 "mcc_generated_files/pin_manager.h"
+# 130 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_IOC(void);
 # 51 "mcc_generated_files/mcc.h" 2
 
@@ -18152,284 +18152,79 @@ typedef uint32_t uint_fast32_t;
 # 1 "mcc_generated_files/interrupt_manager.h" 1
 # 54 "mcc_generated_files/mcc.h" 2
 
-# 1 "mcc_generated_files/pwm1.h" 1
-# 97 "mcc_generated_files/pwm1.h"
-void PWM1_Initialize(void);
-# 124 "mcc_generated_files/pwm1.h"
-void PWM1_LoadDutyValue(uint16_t dutyValue);
-# 156 "mcc_generated_files/pwm1.h"
-_Bool PWM1_OutputStatusGet(void);
+# 1 "mcc_generated_files/i2c1.h" 1
+# 55 "mcc_generated_files/i2c1.h"
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stddef.h" 1 3
+# 19 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stddef.h" 3
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\bits/alltypes.h" 1 3
+# 140 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef long ptrdiff_t;
+# 19 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stddef.h" 2 3
+# 55 "mcc_generated_files/i2c1.h" 2
+# 86 "mcc_generated_files/i2c1.h"
+typedef enum
+{
+    I2C1_MESSAGE_COMPLETE,
+    I2C1_MESSAGE_FAIL,
+    I2C1_MESSAGE_PENDING,
+    I2C1_STUCK_START,
+    I2C1_MESSAGE_ADDRESS_NO_ACK,
+    I2C1_DATA_NO_ACK,
+    I2C1_LOST_STATE
+} I2C1_MESSAGE_STATUS;
+# 111 "mcc_generated_files/i2c1.h"
+typedef struct
+{
+    uint16_t address;
+
+
+    uint8_t length;
+    uint8_t *pbuffer;
+} I2C1_TRANSACTION_REQUEST_BLOCK;
+# 223 "mcc_generated_files/i2c1.h"
+void I2C1_Initialize(void);
+# 262 "mcc_generated_files/i2c1.h"
+void I2C1_MasterWrite(
+                                uint8_t *pdata,
+                                uint8_t length,
+                                uint16_t address,
+                                I2C1_MESSAGE_STATUS *pstatus);
+# 409 "mcc_generated_files/i2c1.h"
+void I2C1_MasterRead(
+                                uint8_t *pdata,
+                                uint8_t length,
+                                uint16_t address,
+                                I2C1_MESSAGE_STATUS *pstatus);
+# 519 "mcc_generated_files/i2c1.h"
+void I2C1_MasterTRBInsert(
+                                uint8_t count,
+                                I2C1_TRANSACTION_REQUEST_BLOCK *ptrb_list,
+                                I2C1_MESSAGE_STATUS *pflag);
+# 563 "mcc_generated_files/i2c1.h"
+void I2C1_MasterReadTRBBuild(
+                                I2C1_TRANSACTION_REQUEST_BLOCK *ptrb,
+                                uint8_t *pdata,
+                                uint8_t length,
+                                uint16_t address);
+# 608 "mcc_generated_files/i2c1.h"
+void I2C1_MasterWriteTRBBuild(
+                                I2C1_TRANSACTION_REQUEST_BLOCK *ptrb,
+                                uint8_t *pdata,
+                                uint8_t length,
+                                uint16_t address);
+# 650 "mcc_generated_files/i2c1.h"
+_Bool I2C1_MasterQueueIsEmpty(void);
+# 688 "mcc_generated_files/i2c1.h"
+_Bool I2C1_MasterQueueIsFull(void);
+
+void I2C1_BusCollisionISR( void );
+void I2C1_ISR ( void );
 # 55 "mcc_generated_files/mcc.h" 2
-
-# 1 "mcc_generated_files/pwm2.h" 1
-# 97 "mcc_generated_files/pwm2.h"
-void PWM2_Initialize(void);
-# 124 "mcc_generated_files/pwm2.h"
-void PWM2_LoadDutyValue(uint16_t dutyValue);
-# 156 "mcc_generated_files/pwm2.h"
-_Bool PWM2_OutputStatusGet(void);
-# 56 "mcc_generated_files/mcc.h" 2
-
-# 1 "mcc_generated_files/pwm3.h" 1
-# 97 "mcc_generated_files/pwm3.h"
-void PWM3_Initialize(void);
-# 124 "mcc_generated_files/pwm3.h"
-void PWM3_LoadDutyValue(uint16_t dutyValue);
-# 156 "mcc_generated_files/pwm3.h"
-_Bool PWM3_OutputStatusGet(void);
-# 57 "mcc_generated_files/mcc.h" 2
-
-# 1 "mcc_generated_files/tmr2.h" 1
-# 79 "mcc_generated_files/tmr2.h"
-typedef enum
-{
-# 89 "mcc_generated_files/tmr2.h"
-   TMR2_ROP_STARTS_TMRON,
-
-
-
-
-   TMR2_ROP_STARTS_TMRON_ERSHIGH,
-
-
-
-
-   TMR2_ROP_STARTS_TMRON_ERSLOW,
-
-
-
-
-   TMR2_ROP_RESETS_ERSBOTHEDGE,
-
-
-
-
-   TMR2_ROP_RESETS_ERSRISINGEDGE,
-
-
-
-
-   TMR2_ROP_RESETS_ERSFALLINGEDGE,
-
-
-
-
-   TMR2_ROP_RESETS_ERSLOW,
-
-
-
-
-   TMR2_ROP_RESETS_ERSHIGH,
-# 135 "mcc_generated_files/tmr2.h"
-   TMR2_OS_STARTS_TMRON,
-
-
-
-
-   TMR2_OS_STARTS_ERSRISINGEDGE ,
-
-
-
-
-   TMR2_OS_STARTS_ERSFALLINGEDGE ,
-
-
-
-
-   TMR2_OS_STARTS_ERSBOTHEDGE,
-
-
-
-
-
-   TMR2_OS_STARTS_ERSFIRSTRISINGEDGE,
-
-
-
-
-
-   TMR2_OS_STARTS_ERSFIRSTFALLINGEDGE,
-
-
-
-
-
-   TMR2_OS_STARTS_ERSRISINGEDGEDETECT,
-
-} TMR2_HLT_MODE;
-# 185 "mcc_generated_files/tmr2.h"
-typedef enum
-{
-
-
-    TMR2_T2INPPS,
-
-
-
-    TMR2_RESERVED,
-
-
-
-    TMR2_T4POSTSCALED,
-
-
-
-    TMR2_T6POSTSCALED,
-
-
-
-    TMR2_CCP1_OUT,
-
-
-
-    TMR2_CCP2_OUT,
-
-
-
-    TMR2_CCP3_OUT,
-
-
-
-    TMR2_CCP4_OUT,
-
-
-
-    TMR2_PWM6_OUT,
-
-
-
-    TMR2_PWM7_OUT,
-
-
-
-    TMR2_CMP1_OUT,
-
-
-
-    TMR2_CMP2_OUT,
-
-
-
-    TMR2_ZCD_OUTPUT,
-
-
-
-    TMR2_CLC1_OUT,
-
-
-
-    TMR2_CLC2_OUT,
-
-
-
-    TMR2_CLC3_OUT,
-
-
-
-    TMR2_CLC4_OUT,
-
-
-
-    TMR2_RESERVED_2,
-
-} TMR2_HLT_EXT_RESET_SOURCE;
-# 301 "mcc_generated_files/tmr2.h"
-void TMR2_Initialize(void);
-# 337 "mcc_generated_files/tmr2.h"
-void TMR2_ModeSet(TMR2_HLT_MODE mode);
-# 372 "mcc_generated_files/tmr2.h"
-void TMR2_ExtResetSourceSet(TMR2_HLT_EXT_RESET_SOURCE reset);
-# 401 "mcc_generated_files/tmr2.h"
-void TMR2_Start(void);
-# 430 "mcc_generated_files/tmr2.h"
-void TMR2_StartTimer(void);
-# 462 "mcc_generated_files/tmr2.h"
-void TMR2_Stop(void);
-# 494 "mcc_generated_files/tmr2.h"
-void TMR2_StopTimer(void);
-# 529 "mcc_generated_files/tmr2.h"
-uint8_t TMR2_Counter8BitGet(void);
-# 564 "mcc_generated_files/tmr2.h"
-uint8_t TMR2_ReadTimer(void);
-# 603 "mcc_generated_files/tmr2.h"
-void TMR2_Counter8BitSet(uint8_t timerVal);
-# 642 "mcc_generated_files/tmr2.h"
-void TMR2_WriteTimer(uint8_t timerVal);
-# 694 "mcc_generated_files/tmr2.h"
-void TMR2_Period8BitSet(uint8_t periodVal);
-# 746 "mcc_generated_files/tmr2.h"
-void TMR2_LoadPeriodRegister(uint8_t periodVal);
-# 784 "mcc_generated_files/tmr2.h"
-_Bool TMR2_HasOverflowOccured(void);
-# 58 "mcc_generated_files/mcc.h" 2
-
-# 1 "mcc_generated_files/pwm4.h" 1
-# 97 "mcc_generated_files/pwm4.h"
-void PWM4_Initialize(void);
-# 124 "mcc_generated_files/pwm4.h"
-void PWM4_LoadDutyValue(uint16_t dutyValue);
-# 156 "mcc_generated_files/pwm4.h"
-_Bool PWM4_OutputStatusGet(void);
-# 59 "mcc_generated_files/mcc.h" 2
-
-# 1 "mcc_generated_files/eusart1.h" 1
-# 75 "mcc_generated_files/eusart1.h"
-typedef union {
-    struct {
-        unsigned perr : 1;
-        unsigned ferr : 1;
-        unsigned oerr : 1;
-        unsigned reserved : 5;
-    };
-    uint8_t status;
-}eusart1_status_t;
-
-
-
-
-extern volatile uint8_t eusart1TxBufferRemaining;
-extern volatile uint8_t eusart1RxCount;
-
-
-
-
-
-void (*EUSART1_RxDefaultInterruptHandler)(void);
-# 117 "mcc_generated_files/eusart1.h"
-void EUSART1_Initialize(void);
-# 165 "mcc_generated_files/eusart1.h"
-_Bool EUSART1_is_tx_ready(void);
-# 217 "mcc_generated_files/eusart1.h"
-uint8_t EUSART1_is_rx_ready(void);
-# 264 "mcc_generated_files/eusart1.h"
-_Bool EUSART1_is_tx_done(void);
-# 312 "mcc_generated_files/eusart1.h"
-eusart1_status_t EUSART1_get_last_status(void);
-# 332 "mcc_generated_files/eusart1.h"
-uint8_t EUSART1_Read(void);
-# 352 "mcc_generated_files/eusart1.h"
-void EUSART1_Write(uint8_t txData);
-# 374 "mcc_generated_files/eusart1.h"
-void EUSART1_Receive_ISR(void);
-# 395 "mcc_generated_files/eusart1.h"
-void EUSART1_RxDataHandler(void);
-# 413 "mcc_generated_files/eusart1.h"
-void EUSART1_SetFramingErrorHandler(void (* interruptHandler)(void));
-# 431 "mcc_generated_files/eusart1.h"
-void EUSART1_SetOverrunErrorHandler(void (* interruptHandler)(void));
-# 449 "mcc_generated_files/eusart1.h"
-void EUSART1_SetErrorHandler(void (* interruptHandler)(void));
-# 470 "mcc_generated_files/eusart1.h"
-void EUSART1_SetRxInterruptHandler(void (* interruptHandler)(void));
-# 60 "mcc_generated_files/mcc.h" 2
-
-
-extern int dmxArray[513];
-# 76 "mcc_generated_files/mcc.h"
+# 70 "mcc_generated_files/mcc.h"
 void SYSTEM_Initialize(void);
-# 89 "mcc_generated_files/mcc.h"
+# 83 "mcc_generated_files/mcc.h"
 void OSCILLATOR_Initialize(void);
-# 102 "mcc_generated_files/mcc.h"
+# 96 "mcc_generated_files/mcc.h"
 void PMD_Initialize(void);
 # 47 "mcc_generated_files/mcc.c" 2
 
@@ -18440,18 +18235,13 @@ void SYSTEM_Initialize(void)
     PMD_Initialize();
     PIN_MANAGER_Initialize();
     OSCILLATOR_Initialize();
-    PWM1_Initialize();
-    PWM2_Initialize();
-    PWM4_Initialize();
-    PWM3_Initialize();
-    TMR2_Initialize();
-    EUSART1_Initialize();
+    I2C1_Initialize();
 }
 
 void OSCILLATOR_Initialize(void)
 {
 
-    OSCCON1 = 0x62;
+    OSCCON1 = 0x60;
 
     OSCCON3 = 0x00;
 

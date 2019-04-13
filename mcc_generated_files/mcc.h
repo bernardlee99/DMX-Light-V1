@@ -52,14 +52,8 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include "interrupt_manager.h"
-#include "pwm1.h"
-#include "pwm2.h"
-#include "pwm3.h"
-#include "tmr2.h"
-#include "pwm4.h"
-#include "eusart1.h"
+#include "i2c1.h"
 
-extern int dmxArray[513];
 
 
 /**
