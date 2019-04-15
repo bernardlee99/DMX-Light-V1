@@ -41,10 +41,15 @@
     SOFTWARE.
 */
 
-#include "mcc_generated_files/mcc.h"
+#include <stdbool.h>
 #include<stdio.h>
+#include "mcc_generated_files/mcc.h"
 #include "tm1650.h"
 #include "clock.h"
+#include "buttons.h"
+#include "controller.h"
+
+button_t *up, *down, *menu, *enter;
 
 /*
                          Main application
@@ -53,46 +58,28 @@ void main(void)
 {
     // initialize the device
     SYSTEM_Initialize();
-    //TM1650_init();
-
-    // When using interrupts, you need to set the Global and Peripheral Interrupt Enable bits
-    // Use the following macros to:
-
+    
+    CLOCK_init();
+    BUTTONS_init();
+     
     // Enable the Global Interrupts
     INTERRUPT_GlobalInterruptEnable();
 
     // Enable the Peripheral Interrupts
     INTERRUPT_PeripheralInterruptEnable();
-
-    // Disable the Global Interrupts
-    //INTERRUPT_GlobalInterruptDisable();
-
-    // Disable the Peripheral Interrupts
-    //INTERRUPT_PeripheralInterruptDisable();
-
-//    while (1)
-//    {
-//        printf("Test");
-//        
-//    }
-
-    for (int i = 0; i < 128; i++) {
-        I2C1_MESSAGE_STATUS status = I2C1_MESSAGE_PENDING;
-        uint8_t dataToSend = 0x00;
-        I2C1_MasterWrite(&dataToSend, 1, i, &status);
-        while (status == I2C1_MESSAGE_PENDING); // wait for transaction to complete
-
-        if (status == I2C1_MESSAGE_COMPLETE) {
-            volatile uint8_t foundAddress = i;
-            __debug_break();
-            volatile int dummy = 0; // stupid unused variable we can park at
-        }
-
-        else if (status == I2C1_MESSAGE_ADDRESS_NO_ACK || status == I2C1_DATA_NO_ACK) {
-            // device didn't ACK (no one's home at that address)
-        }
+    
+    TM1650_init();
+    CONTROLLER_init();
+    
+    printf("    \r");
+    for(int i = 1; i < 10000; i++){
+        printf("%d\r", i);
     }
+    
+    /*while(1){
+        printf("%d\r", 2);
+        //BUTTONS_task();
+        //CONTROLLER_task();
+    }*/
+ 
 }
-/**
- End of File
-*/

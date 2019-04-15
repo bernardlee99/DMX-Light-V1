@@ -76,7 +76,26 @@ void scrollPrint(char *array){
 
 void TM1650_setDigit(uint8_t digit, uint8_t data){
     
-    writeData(digit + 0x34, charTable[data]);
+    writeData(digit + 0x34, charTable[data - 32]);
+    
+}
+
+void TM1650_fastPrintNum(uint16_t num){
+    
+    if(num > 9999){
+        writeData(0x34, 0x79);
+        writeData(0x35, 0x79);
+        writeData(0x36, 0x79);
+        writeData(0x37, 0x79);
+        return;
+    }
+        
+    writeData(0x37, charTable[(num % 10) + 16]);
+    writeData(0x36, charTable[( (num/10) % 10) + 16]);
+    writeData(0x35, charTable[( (num/100) % 10) + 16]);
+    writeData(0x34, charTable[( (num/1000) % 10) + 16]);
+    
+    
     
 }
 
@@ -86,7 +105,7 @@ void putch(char n){
         position = 0;
     
     if(n != '\r'){  
-        TM1650_setDigit(position, n - 32);
+        TM1650_setDigit(position, n);
         position++;
     }
     

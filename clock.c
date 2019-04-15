@@ -1,13 +1,3 @@
-/*
- * File:   clock.c
- * Author: berna
- *
- * Created on April 13, 2019, 11:04 AM
- */
-
-
-#include <xc.h>
-
 #include "mcc_generated_files/tmr0.h"
 #include "clock.h"
 

@@ -1,13 +1,71 @@
-/*
- * File:   controller.c
- * Author: berna
- *
- * Created on April 13, 2019, 10:59 AM
+#include <stdint.h>
+#include<stdbool.h>
+#include "clock.h"
+#include "controller.h"
+#include "buttons.h"
+#include "tm1650.h"
+
+uint16_t address = 1;
+button_t *up, *down, *menu, *enter;
+int incInterval = MAX_INTERVAL_TIME;
+int lastIncTime = 0;
+
+void CONTROLLER_init() {
+    TM1650_fastPrintNum(address);
+}
+
+/**
+ * Increments the address and updates the display
  */
+void address_inc()
+{
+    if(address == 512)
+        address = 1;
+    else
+        address++;
+    
+    // update the display
+    TM1650_fastPrintNum(address);
+}
 
+/**
+ * Decrements the address and updates the display
+ */
+void address_dec() 
+{
+    if(address == 1)
+        address = 512;
+    else
+        address--;  
+    
+    // update the display
+    TM1650_fastPrintNum(address);
+}
 
-#include <xc.h>
+void CONTROLLER_task() {
+    if (BUTTONS_isClicked(up)) {
+        address_inc();
+        
+    } else if (BUTTONS_isClicked(down)) {
+        address_dec();
+    }
 
-void main(void) {
-    return;
+    if(BUTTONS_isHeld(up) && (CLOCK_getTime() - lastIncTime > incInterval)){
+        address_inc();
+        lastIncTime = CLOCK_getTime();
+        if(incInterval > MIN_INTERVAL_TIME){
+            incInterval-=INTERVAL_CONST;
+        }
+    } else if(BUTTONS_isHeld(down) && (CLOCK_getTime() - lastIncTime > incInterval)){
+        address_dec();
+        lastIncTime = CLOCK_getTime();
+        if(incInterval > MIN_INTERVAL_TIME){
+            incInterval-=INTERVAL_CONST;
+        }
+    } else if(BUTTONS_isHeld(enter)){
+        address = 1;
+    } else if(!BUTTONS_isHeld(up) && !BUTTONS_isHeld(down)){
+        incInterval = MAX_INTERVAL_TIME;
+    } 
+    
 }
