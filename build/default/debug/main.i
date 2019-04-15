@@ -18481,15 +18481,9 @@ void main(void)
     TM1650_init();
     CONTROLLER_init();
 
-    printf("    \r");
-    for(int i = 1; i < 10000; i++){
-        printf("%d\r", i);
+    while(1){
+        BUTTONS_task();
+        CONTROLLER_task();
     }
-
-
-
-
-
-
 
 }

@@ -36,8 +36,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 "8 ./controller.h
 [; ;./controller.h: 8: void CONTROLLER_init();
 [v _CONTROLLER_init `(v ~T0 @X0 0 e? ]
-"113 /Applications/microchip/xc8/v2.05/pic/include/c99/stdio.h
-[v _printf `(i ~T0 @X0 0 ev`*Cuc ]
+"28 ./buttons.h
+[; ;./buttons.h: 28: void BUTTONS_task();
+[v _BUTTONS_task `(v ~T0 @X0 0 e? ]
+"11 ./controller.h
+[; ;./controller.h: 11: void CONTROLLER_task();
+[v _CONTROLLER_task `(v ~T0 @X0 0 e? ]
 "110 /Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h
 [; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 110: __asm("INDF0 equ 00h");
 [; <" INDF0 equ 00h ;# ">
@@ -1437,31 +1441,22 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 72:     CONTROLLER_init();
 [e ( _CONTROLLER_init ..  ]
 "74
-[; ;main.c: 74:     printf("    \r");
-[e ( _printf :s 1C ]
+[; ;main.c: 74:     while(1){
+[e :U 1519 ]
+{
 "75
-[; ;main.c: 75:     for(int i = 1; i < 10000; i++){
-{
-[v _i `i ~T0 @X0 1 a ]
-[e = _i -> 1 `i ]
-[e $ < _i -> 10000 `i 1518  ]
-[e $U 1519  ]
-[e :U 1518 ]
-{
+[; ;main.c: 75:         BUTTONS_task();
+[e ( _BUTTONS_task ..  ]
 "76
-[; ;main.c: 76:         printf("%d\r", i);
-[e ( _printf , (. :s 2C _i ]
+[; ;main.c: 76:         CONTROLLER_task();
+[e ( _CONTROLLER_task ..  ]
 "77
 [; ;main.c: 77:     }
 }
-[e ++ _i -> 1 `i ]
-[e $ < _i -> 10000 `i 1518  ]
-[e :U 1519 ]
-}
-"85
-[; ;main.c: 85: }
+[e :U 1518 ]
+[e $U 1519  ]
+[e :U 1520 ]
+"79
+[; ;main.c: 79: }
 [e :UE 1517 ]
 }
-[p f _printf 8388736 ]
-[a 2C 37 100 13 0 ]
-[a 1C 32 32 32 32 13 0 ]
