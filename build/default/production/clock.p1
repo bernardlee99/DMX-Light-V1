@@ -1,0 +1,57 @@
+Version 4.0 HI-TECH Software Intermediate Code
+[v F44 `(v ~T0 @X0 0 tf ]
+"310 ./mcc_generated_files/tmr0.h
+[; ;./mcc_generated_files/tmr0.h: 310:  void TMR0_SetInterruptHandler(void (* InterruptHandler)(void));
+[v _TMR0_SetInterruptHandler `(v ~T0 @X0 0 ef1`*F44 ]
+"6 clock.c
+[; ;clock.c: 6: static void CLOCK_timerCallback();
+[v _CLOCK_timerCallback `(v ~T0 @X0 0 s? ]
+[v F56 `(v ~T0 @X0 0 tf ]
+"4 clock.c
+[; ;clock.c: 4: static time_t currentTime = 0;
+[v _currentTime `us ~T0 @X0 1 s ]
+[i _currentTime
+-> -> 0 `i `us
+]
+"8
+[; ;clock.c: 8: void CLOCK_init()
+[v _CLOCK_init `(v ~T0 @X0 1 ef ]
+"9
+[; ;clock.c: 9: {
+{
+[e :U _CLOCK_init ]
+[f ]
+"11
+[; ;clock.c: 11:     TMR0_SetInterruptHandler(CLOCK_timerCallback);
+[e ( _TMR0_SetInterruptHandler (1 -> &U _CLOCK_timerCallback `*F56 ]
+"14
+[; ;clock.c: 14: }
+[e :UE 1 ]
+}
+"16
+[; ;clock.c: 16: time_t CLOCK_getTime() {
+[v _CLOCK_getTime `(us ~T0 @X0 1 ef ]
+{
+[e :U _CLOCK_getTime ]
+[f ]
+"17
+[; ;clock.c: 17:     return currentTime;
+[e ) _currentTime ]
+[e $UE 2  ]
+"18
+[; ;clock.c: 18: }
+[e :UE 2 ]
+}
+"20
+[; ;clock.c: 20: static void CLOCK_timerCallback() {
+[v _CLOCK_timerCallback `(v ~T0 @X0 1 sf ]
+{
+[e :U _CLOCK_timerCallback ]
+[f ]
+"21
+[; ;clock.c: 21:     currentTime++;
+[e ++ _currentTime -> -> 1 `i `us ]
+"22
+[; ;clock.c: 22: }
+[e :UE 3 ]
+}

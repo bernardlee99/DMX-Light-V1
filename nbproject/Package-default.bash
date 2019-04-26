@@ -10,9 +10,9 @@ CND_CONF=default
 CND_DISTDIR=dist
 TMPDIR=build/${CND_CONF}/${IMAGE_TYPE}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/lab_10_2.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-OUTPUT_BASENAME=lab_10_2.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-PACKAGE_TOP_DIR=lab102.x/
+OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/lab_10.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+OUTPUT_BASENAME=lab_10.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+PACKAGE_TOP_DIR=lab10/
 
 # Functions
 function checkReturnCode
@@ -57,15 +57,15 @@ mkdir -p ${TMPDIR}
 
 # Copy files and create directories and links
 cd "${TOP}"
-makeDirectory ${TMPDIR}/lab102.x/bin
+makeDirectory ${TMPDIR}/lab10/bin
 copyFileToTmpDir "${OUTPUT_PATH}" "${TMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}" 0755
 
 
 # Generate tar file
 cd "${TOP}"
-rm -f ${CND_DISTDIR}/${CND_CONF}/package/lab102.x.tar
+rm -f ${CND_DISTDIR}/${CND_CONF}/package/lab10.tar
 cd ${TMPDIR}
-tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/lab102.x.tar *
+tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/lab10.tar *
 checkReturnCode
 
 # Cleanup

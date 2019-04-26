@@ -42,9 +42,15 @@
 */
 
 #include <pic16f18446.h>
-
+#include<stdint.h>
+#include "tm1650.h"
+#include "clock.h"
+#include "buttons.h"
+#include "controller.h"
 #include "mcc_generated_files/mcc.h"
 int dmxArray[513];
+
+button_t *up, *down, *menu, *enter;
 
 /*
                          Main application
@@ -54,6 +60,9 @@ void main(void)
 {
     // initialize the device
     SYSTEM_Initialize();
+    __delay_ms(500);
+    CLOCK_init();
+    BUTTONS_init();
 
     // When using interrupts, you need to set the Global and Peripheral Interrupt Enable bits
     // Use the following macros to:
@@ -70,9 +79,14 @@ void main(void)
     // Disable the Peripheral Interrupts
     //INTERRUPT_PeripheralInterruptDisable();
     
+    TM1650_init();
+    CONTROLLER_init();
+    
     while (1)
     {
-
+        BUTTONS_task();
+        CONTROLLER_task();
+        
             PWM1_LoadDutyValue( ( ((int)dmxArray[1])/255.0 ) * 95 );
 
             PWM2_LoadDutyValue( ( ((int)dmxArray[2])/255.0 ) * 95 );

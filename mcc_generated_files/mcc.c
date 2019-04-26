@@ -52,11 +52,13 @@ void SYSTEM_Initialize(void)
     PMD_Initialize();
     PIN_MANAGER_Initialize();
     OSCILLATOR_Initialize();
+    I2C1_Initialize();
     PWM1_Initialize();
     PWM2_Initialize();
     PWM4_Initialize();
     PWM3_Initialize();
     TMR2_Initialize();
+    TMR0_Initialize();
     EUSART1_Initialize();
 }
 
