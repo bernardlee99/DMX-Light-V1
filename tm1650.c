@@ -35,9 +35,17 @@ static void writeData(uint8_t address, uint8_t data){
     return;
 }
 
+void TM1650_enable(bool enable){
+    if(enable){
+        writeData(0x24, 0x01);          //Display ON command
+    } else {
+        writeData(0x24, 0x00);          //Display OFF command
+    }
+}
+
 void TM1650_init(){
     
-    writeData(0x24, 0x01);          //Display ON command
+    TM1650_enable(true);
     printf("    ");
     printf("\r");
     
@@ -45,7 +53,7 @@ void TM1650_init(){
 
 void TM1650_brightness(uint8_t brightness){
     
-    writeData(0x24, (brightness << 4) | 0x01);          //Brightness 4
+    writeData(0x24, (brightness << 4) | 0x00);          //Brightness 4
 }
 
 void scrollPrint(char *array){

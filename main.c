@@ -41,13 +41,13 @@
     SOFTWARE.
 */
 
-#include <stdbool.h>
 #include<stdio.h>
 #include "mcc_generated_files/mcc.h"
 #include "tm1650.h"
 #include "clock.h"
 #include "buttons.h"
 #include "controller.h"
+#define _XTAL_FREQ 32000000
 
 button_t *up, *down, *menu, *enter;
 
@@ -58,7 +58,7 @@ void main(void)
 {
     // initialize the device
     SYSTEM_Initialize();
-    
+    __delay_ms(500);
     CLOCK_init();
     BUTTONS_init();
      

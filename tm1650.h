@@ -1,3 +1,7 @@
+#ifndef stdbool.h
+#include<stdbool.h>
+#endif
+
 #ifndef TM1650_H
 #define TM1650_H
 
@@ -8,5 +12,6 @@ void TM1650_brightness(uint8_t brightness);
 void putch(char n);
 void scrollPrint(char *array);
 void TM1650_fastPrintNum(uint16_t num);
+void TM1650_enable(bool enable);
 
 #endif
