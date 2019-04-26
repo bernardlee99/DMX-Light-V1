@@ -45,38 +45,45 @@ void address_dec()
 
 void CONTROLLER_task() {
     
-    if(CLOCK_getTime() - lastActiveTime > TURN_OFF_TIME){
-        TM1650_enable(false);
-    } else {
-        TM1650_enable(true);
-    }
-    
+    bool isActive = true;
+
     if (BUTTONS_isClicked(up)) {
         address_inc();
         lastActiveTime = CLOCK_getTime();        
     } else if (BUTTONS_isClicked(down)) {
         address_dec();
-        lastActiveTime = CLOCK_getTime();
-    }
-
-    if(BUTTONS_isHeld(up) && (CLOCK_getTime() - lastIncTime > incInterval)){
+    } else if(BUTTONS_isHeld(up) && (CLOCK_getTime() - lastIncTime > incInterval)){
         address_inc();
         lastIncTime = CLOCK_getTime();
         if(incInterval > MIN_INTERVAL_TIME){
             incInterval-=INTERVAL_CONST;
         }
-        lastActiveTime = CLOCK_getTime();
     } else if(BUTTONS_isHeld(down) && (CLOCK_getTime() - lastIncTime > incInterval)){
         address_dec();
         lastIncTime = CLOCK_getTime();
         if(incInterval > MIN_INTERVAL_TIME){
             incInterval-=INTERVAL_CONST;
         }
-        lastActiveTime = CLOCK_getTime();
     } else if(BUTTONS_isHeld(enter)){
         address = 1;
-    } else if(!BUTTONS_isHeld(up) && !BUTTONS_isHeld(down)){
+    } else {
+        isActive = false;
+    }
+    
+    if(!BUTTONS_isHeld(up) && !BUTTONS_isHeld(down)){
         incInterval = MAX_INTERVAL_TIME;
     } 
+    
+    if(isActive) {
+        lastActiveTime = CLOCK_getTime();
+    }
+
+    if (CLOCK_getTime() - lastActiveTime >= TURN_OFF_TIME) {
+        TM1650_enable(false);
+        lastActiveTime = CLOCK_getTime() - (TURN_OFF_TIME + 1);
+    } else{
+        TM1650_enable(true);
+    }
+    
     
 }

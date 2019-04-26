@@ -3,7 +3,7 @@
 [d edition pro ]
 [d chip 16F18446 ]
 [d frameptr 6 ]
-"185 /home/bbd/Documents/Github/lab_10/mcc_generated_files/i2c1.c
+"185 /Users/student/Desktop/lab_10/mcc_generated_files/i2c1.c
 [e E10866 . `uc
 I2C1_MESSAGE_COMPLETE 0
 I2C1_MESSAGE_FAIL 1
@@ -28,7 +28,7 @@ S_MASTER_NOACK_STOP 9
 S_MASTER_SEND_ADDR_10BIT_LSB 10
 S_MASTER_10BIT_RESTART 11
 ]
-"52 /home/bbd/Documents/Github/lab_10/main.c
+"52 /Users/student/Desktop/lab_10/main.c
 [e E11274 . `uc
 STATE_UNPRESSED 0
 STATE_PRESSED 1
@@ -39,7 +39,7 @@ EVENT_PRESSED 1
 EVENT_INTER_HOLD 2
 EVENT_HELD 3
 ]
-"30 /home/bbd/Documents/Github/lab_10/tm1650.c
+"30 /Users/student/Desktop/lab_10/tm1650.c
 [e E10866 . `uc
 I2C1_MESSAGE_COMPLETE 0
 I2C1_MESSAGE_FAIL 1
@@ -49,7 +49,7 @@ I2C1_MESSAGE_ADDRESS_NO_ACK 4
 I2C1_DATA_NO_ACK 5
 I2C1_LOST_STATE 6
 ]
-"16 /home/bbd/Documents/Github/lab_10/buttons.c
+"16 /Users/student/Desktop/lab_10/buttons.c
 [e E10874 . `uc
 STATE_UNPRESSED 0
 STATE_PRESSED 1
@@ -60,7 +60,7 @@ EVENT_PRESSED 1
 EVENT_INTER_HOLD 2
 EVENT_HELD 3
 ]
-"9 /home/bbd/Documents/Github/lab_10/controller.c
+"9 /Users/student/Desktop/lab_10/controller.c
 [e E47 . `uc
 STATE_UNPRESSED 0
 STATE_PRESSED 1
@@ -71,7 +71,7 @@ EVENT_PRESSED 1
 EVENT_INTER_HOLD 2
 EVENT_HELD 3
 ]
-"72 /opt/microchip/xc8/v2.05/pic/sources/c99/common/doprnt.c
+"72 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/doprnt.c
 [v _pad pad `(i  1 s 2 pad ]
 "259
 [v _ctoa ctoa `(i  1 s 2 ctoa ]
@@ -79,27 +79,27 @@ EVENT_HELD 3
 [v _vfpfcnvrt vfpfcnvrt `(i  1 s 2 vfpfcnvrt ]
 "1368
 [v _vfprintf vfprintf `(i  1 e 2 0 ]
-"5 /opt/microchip/xc8/v2.05/pic/sources/c99/common/lwdiv.c
+"5 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/lwdiv.c
 [v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
-"5 /opt/microchip/xc8/v2.05/pic/sources/c99/common/lwmod.c
+"5 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/lwmod.c
 [v ___lwmod __lwmod `(ui  1 e 2 0 ]
-"8 /opt/microchip/xc8/v2.05/pic/sources/c99/common/nf_fputc.c
+"8 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/nf_fputc.c
 [v _fputc fputc `(i  1 e 2 0 ]
-"8 /opt/microchip/xc8/v2.05/pic/sources/c99/common/nf_fputs.c
+"8 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/nf_fputs.c
 [v _fputs fputs `(i  1 e 2 0 ]
-"5 /opt/microchip/xc8/v2.05/pic/sources/c99/common/printf.c
+"5 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/printf.c
 [v _printf printf `(i  1 e 2 0 ]
-"10 /opt/microchip/xc8/v2.05/pic/sources/c99/common/sprcadd.c
+"10 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
-"12 /opt/microchip/xc8/v2.05/pic/sources/c99/common/strlen.c
+"12 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/strlen.c
 [v _strlen strlen `(ui  1 e 2 0 ]
-"4 /opt/microchip/xc8/v2.05/pic/sources/c99/common/Umul8_16.c
+"4 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/Umul8_16.c
 [v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
-"6 /opt/microchip/xc8/v2.05/pic/sources/c99/pic/__eeprom.c
+"6 /Applications/microchip/xc8/v2.05/pic/sources/c99/pic/__eeprom.c
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"19 /home/bbd/Documents/Github/lab_10/buttons.c
+"19 /Users/student/Desktop/lab_10/buttons.c
 [v _init init `(v  1 s 1 init ]
 "26
 [v _BUTTONS_init BUTTONS_init `(v  1 e 1 0 ]
@@ -111,13 +111,13 @@ EVENT_HELD 3
 [v _BUTTONS_isClicked BUTTONS_isClicked `(a  1 e 1 0 ]
 "109
 [v _BUTTONS_isHeld BUTTONS_isHeld `(a  1 e 1 0 ]
-"8 /home/bbd/Documents/Github/lab_10/clock.c
+"8 /Users/student/Desktop/lab_10/clock.c
 [v _CLOCK_init CLOCK_init `(v  1 e 1 0 ]
 "16
 [v _CLOCK_getTime CLOCK_getTime `(us  1 e 2 0 ]
 "20
 [v _CLOCK_timerCallback CLOCK_timerCallback `(v  1 s 1 CLOCK_timerCallback ]
-"14 /home/bbd/Documents/Github/lab_10/controller.c
+"14 /Users/student/Desktop/lab_10/controller.c
 [v _CONTROLLER_init CONTROLLER_init `(v  1 e 1 0 ]
 "21
 [v _address_inc address_inc `(v  1 e 1 0 ]
@@ -125,9 +125,9 @@ EVENT_HELD 3
 [v _address_dec address_dec `(v  1 e 1 0 ]
 "46
 [v _CONTROLLER_task CONTROLLER_task `(v  1 e 1 0 ]
-"57 /home/bbd/Documents/Github/lab_10/main.c
+"57 /Users/student/Desktop/lab_10/main.c
 [v _main main `(v  1 e 1 0 ]
-"198 /home/bbd/Documents/Github/lab_10/mcc_generated_files/i2c1.c
+"198 /Users/student/Desktop/lab_10/mcc_generated_files/i2c1.c
 [v _I2C1_Initialize I2C1_Initialize `(v  1 e 1 0 ]
 "235
 [v _I2C1_ISR I2C1_ISR `(v  1 e 1 0 ]
@@ -147,17 +147,17 @@ EVENT_HELD 3
 [v _I2C1_MasterWriteTRBBuild I2C1_MasterWriteTRBBuild `(v  1 e 1 0 ]
 "742
 [v _I2C1_BusCollisionISR I2C1_BusCollisionISR `(v  1 e 1 0 ]
-"52 /home/bbd/Documents/Github/lab_10/mcc_generated_files/interrupt_manager.c
+"52 /Users/student/Desktop/lab_10/mcc_generated_files/interrupt_manager.c
 [v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
-"50 /home/bbd/Documents/Github/lab_10/mcc_generated_files/mcc.c
+"50 /Users/student/Desktop/lab_10/mcc_generated_files/mcc.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
 "59
 [v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
 "73
 [v _PMD_Initialize PMD_Initialize `(v  1 e 1 0 ]
-"55 /home/bbd/Documents/Github/lab_10/mcc_generated_files/pin_manager.c
+"55 /Users/student/Desktop/lab_10/mcc_generated_files/pin_manager.c
 [v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
-"61 /home/bbd/Documents/Github/lab_10/mcc_generated_files/tmr0.c
+"61 /Users/student/Desktop/lab_10/mcc_generated_files/tmr0.c
 [v _TMR0_Initialize TMR0_Initialize `(v  1 e 1 0 ]
 "121
 [v _TMR0_ISR TMR0_ISR `(v  1 e 1 0 ]
@@ -165,7 +165,7 @@ EVENT_HELD 3
 [v _TMR0_SetInterruptHandler TMR0_SetInterruptHandler `(v  1 e 1 0 ]
 "138
 [v _TMR0_DefaultInterruptHandler TMR0_DefaultInterruptHandler `(v  1 e 1 0 ]
-"28 /home/bbd/Documents/Github/lab_10/tm1650.c
+"28 /Users/student/Desktop/lab_10/tm1650.c
 [v _writeData writeData `(v  1 s 1 writeData ]
 "38
 [v _TM1650_enable TM1650_enable `(v  1 e 1 0 ]
@@ -182,7 +182,7 @@ EVENT_HELD 3
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
-"426 /opt/microchip/xc8/v2.05/pic/include/pic16f18446.h
+"426 /Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h
 [u S57 . 1 `S52 1 . 1 0 ]
 [v _INTCONbits INTCONbits `VES57  1 e 1 @11 ]
 "446
@@ -461,7 +461,7 @@ EVENT_HELD 3
 [v _ODCONC ODCONC `VEuc  1 e 1 @8016 ]
 "31446
 [v _SLRCONC SLRCONC `VEuc  1 e 1 @8017 ]
-"55 /opt/microchip/xc8/v2.05/pic/sources/c99/common/doprnt.c
+"55 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/doprnt.c
 [v _flags flags `i  1 s 2 flags ]
 [v _prec prec `i  1 s 2 prec ]
 [v _width width `i  1 s 2 width ]
@@ -469,14 +469,14 @@ EVENT_HELD 3
 [v _dbuf dbuf `[32]uc  1 s 32 dbuf ]
 "69
 [v _nout nout `i  1 s 2 nout ]
-"15 /home/bbd/Documents/Github/lab_10/buttons.c
+"15 /Users/student/Desktop/lab_10/buttons.c
 [v _lastTime lastTime `i  1 e 2 0 ]
 [s S630 . 8 `*.39VEuc 1 port 2 0 `uc 1 pin 1 2 `E11274 1 state 1 3 `E11274 1 lastState 1 4 `us 1 lastHoldTime 2 5 `E11268 1 event 1 7 ]
 "16
 [v _buttons buttons `[4]S630  1 e 32 0 ]
-"4 /home/bbd/Documents/Github/lab_10/clock.c
+"4 /Users/student/Desktop/lab_10/clock.c
 [v _currentTime currentTime `us  1 s 2 currentTime ]
-"8 /home/bbd/Documents/Github/lab_10/controller.c
+"8 /Users/student/Desktop/lab_10/controller.c
 [v _address address `us  1 e 2 0 ]
 "9
 [v _up up `*.5S630  1 e 1 0 ]
@@ -490,7 +490,7 @@ EVENT_HELD 3
 "12
 [v _lastActiveTime lastActiveTime `us  1 e 2 0 ]
 [s S172 . 4 `us 1 address 2 0 `uc 1 length 1 2 `*.4uc 1 pbuffer 1 3 ]
-"185 /home/bbd/Documents/Github/lab_10/mcc_generated_files/i2c1.c
+"185 /Users/student/Desktop/lab_10/mcc_generated_files/i2c1.c
 [s S184 . 3 `uc 1 count 1 0 `*.4S172 1 ptrb_list 1 1 `*.4E10866 1 pTrFlag 1 2 ]
 [v _i2c1_tr_queue i2c1_tr_queue `[1]S184  1 s 3 i2c1_tr_queue ]
 "186
@@ -509,23 +509,23 @@ EVENT_HELD 3
 [v _p_i2c1_trb_current p_i2c1_trb_current `*.4S172  1 s 1 p_i2c1_trb_current ]
 "191
 [v _p_i2c1_current p_i2c1_current `*.4VES184  1 s 1 p_i2c1_current ]
-"59 /home/bbd/Documents/Github/lab_10/mcc_generated_files/tmr0.c
+"59 /Users/student/Desktop/lab_10/mcc_generated_files/tmr0.c
 [v _TMR0_InterruptHandler TMR0_InterruptHandler `*.37(v  1 e 2 0 ]
-"16 /home/bbd/Documents/Github/lab_10/tm1650.c
+"16 /Users/student/Desktop/lab_10/tm1650.c
 [v _charTable charTable `DC[96]uc  1 e 96 0 ]
 "26
 [v _position position `uc  1 e 1 0 ]
-"57 /home/bbd/Documents/Github/lab_10/main.c
+"57 /Users/student/Desktop/lab_10/main.c
 [v _main main `(v  1 e 1 0 ]
 {
 "79
 } 0
-"46 /home/bbd/Documents/Github/lab_10/tm1650.c
+"46 /Users/student/Desktop/lab_10/tm1650.c
 [v _TM1650_init TM1650_init `(v  1 e 1 0 ]
 {
 "52
 } 0
-"5 /opt/microchip/xc8/v2.05/pic/sources/c99/common/printf.c
+"5 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/printf.c
 [v _printf printf `(i  1 e 2 0 ]
 {
 "8
@@ -534,71 +534,71 @@ EVENT_HELD 3
 [v printf@fmt fmt `*.25DCuc  1 p 2 0 ]
 "13
 } 0
-"1368 /opt/microchip/xc8/v2.05/pic/sources/c99/common/doprnt.c
+"1368 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/doprnt.c
 [v _vfprintf vfprintf `(i  1 e 2 0 ]
 {
-[s S1166 _IO_FILE 0 ]
-[v vfprintf@fp fp `*.1S1166  1 a 1 wreg ]
+[s S1167 _IO_FILE 0 ]
+[v vfprintf@fp fp `*.1S1167  1 a 1 wreg ]
 "1371
 [v vfprintf@cfmt cfmt `*.25uc  1 a 2 71 ]
 "1368
-[v vfprintf@fp fp `*.1S1166  1 a 1 wreg ]
+[v vfprintf@fp fp `*.1S1167  1 a 1 wreg ]
 [v vfprintf@fmt fmt `*.25DCuc  1 p 2 65 ]
 [v vfprintf@ap ap `*.4*.4v  1 p 1 67 ]
 "1373
 "1368
-[v vfprintf@fp fp `*.1S1166  1 a 1 70 ]
+[v vfprintf@fp fp `*.1S1167  1 a 1 70 ]
 "1382
 } 0
 "670
 [v _vfpfcnvrt vfpfcnvrt `(i  1 s 2 vfpfcnvrt ]
 {
-[s S1166 _IO_FILE 0 ]
-[v vfpfcnvrt@fp fp `*.1S1166  1 a 1 wreg ]
+[s S1167 _IO_FILE 0 ]
+[v vfpfcnvrt@fp fp `*.1S1167  1 a 1 wreg ]
 "672
 [v vfpfcnvrt@c c `uc  1 a 1 63 ]
 "670
-[v vfpfcnvrt@fp fp `*.1S1166  1 a 1 wreg ]
+[v vfpfcnvrt@fp fp `*.1S1167  1 a 1 wreg ]
 [v vfpfcnvrt@fmt fmt `*.4*.25uc  1 p 1 56 ]
 [v vfpfcnvrt@ap ap `*.4*.4v  1 p 1 57 ]
 "680
 "670
-[v vfpfcnvrt@fp fp `*.1S1166  1 a 1 64 ]
+[v vfpfcnvrt@fp fp `*.1S1167  1 a 1 64 ]
 "1365
 } 0
 "259
 [v _ctoa ctoa `(i  1 s 2 ctoa ]
 {
-[s S1166 _IO_FILE 0 ]
-[v ctoa@fp fp `*.1S1166  1 a 1 wreg ]
+[s S1167 _IO_FILE 0 ]
+[v ctoa@fp fp `*.1S1167  1 a 1 wreg ]
 "261
 [v ctoa@w w `i  1 a 2 53 ]
 "259
-[v ctoa@fp fp `*.1S1166  1 a 1 wreg ]
+[v ctoa@fp fp `*.1S1167  1 a 1 wreg ]
 [v ctoa@c c `uc  1 p 1 50 ]
 "264
 "259
-[v ctoa@fp fp `*.1S1166  1 a 1 55 ]
+[v ctoa@fp fp `*.1S1167  1 a 1 55 ]
 "270
 } 0
 "72
 [v _pad pad `(i  1 s 2 pad ]
 {
-[s S1166 _IO_FILE 0 ]
-[v pad@fp fp `*.1S1166  1 a 1 wreg ]
+[s S1167 _IO_FILE 0 ]
+[v pad@fp fp `*.1S1167  1 a 1 wreg ]
 "74
 [v pad@w w `i  1 a 2 47 ]
 [v pad@i i `i  1 a 2 45 ]
 "72
-[v pad@fp fp `*.1S1166  1 a 1 wreg ]
+[v pad@fp fp `*.1S1167  1 a 1 wreg ]
 [v pad@buf buf `*.5uc  1 p 1 41 ]
 [v pad@p p `i  1 p 2 42 ]
 "77
 "72
-[v pad@fp fp `*.1S1166  1 a 1 49 ]
+[v pad@fp fp `*.1S1167  1 a 1 49 ]
 "95
 } 0
-"12 /opt/microchip/xc8/v2.05/pic/sources/c99/common/strlen.c
+"12 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/strlen.c
 [v _strlen strlen `(ui  1 e 2 0 ]
 {
 [v strlen@s s `*.5DCuc  1 a 1 wreg ]
@@ -610,7 +610,7 @@ EVENT_HELD 3
 [v strlen@s s `*.5DCuc  1 a 1 4 ]
 "26
 } 0
-"8 /opt/microchip/xc8/v2.05/pic/sources/c99/common/nf_fputs.c
+"8 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/nf_fputs.c
 [v _fputs fputs `(i  1 e 2 0 ]
 {
 [v fputs@s s `*.5DCuc  1 a 1 wreg ]
@@ -620,21 +620,21 @@ EVENT_HELD 3
 [v fputs@c c `uc  1 a 1 37 ]
 "8
 [v fputs@s s `*.5DCuc  1 a 1 wreg ]
-[s S1497 _IO_FILE 5 `*.1uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
-[v fputs@fp fp `*.1S1497  1 p 1 33 ]
+[s S1498 _IO_FILE 5 `*.1uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
+[v fputs@fp fp `*.1S1498  1 p 1 33 ]
 "13
 [v fputs@s s `*.5DCuc  1 a 1 40 ]
 "19
 } 0
-"8 /opt/microchip/xc8/v2.05/pic/sources/c99/common/nf_fputc.c
+"8 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/nf_fputc.c
 [v _fputc fputc `(i  1 e 2 0 ]
 {
 [v fputc@c c `i  1 p 2 25 ]
-[s S1497 _IO_FILE 5 `*.1uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
-[v fputc@fp fp `*.1S1497  1 p 1 27 ]
+[s S1498 _IO_FILE 5 `*.1uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
+[v fputc@fp fp `*.1S1498  1 p 1 27 ]
 "21
 } 0
-"110 /home/bbd/Documents/Github/lab_10/tm1650.c
+"110 /Users/student/Desktop/lab_10/tm1650.c
 [v _putch putch `(v  1 e 1 0 ]
 {
 [v putch@n n `uc  1 a 1 wreg ]
@@ -653,40 +653,42 @@ EVENT_HELD 3
 [v TM1650_setDigit@digit digit `uc  1 a 1 22 ]
 "89
 } 0
-"50 /home/bbd/Documents/Github/lab_10/mcc_generated_files/mcc.c
+"50 /Users/student/Desktop/lab_10/mcc_generated_files/mcc.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
 {
 "57
 } 0
-"61 /home/bbd/Documents/Github/lab_10/mcc_generated_files/tmr0.c
+"61 /Users/student/Desktop/lab_10/mcc_generated_files/tmr0.c
 [v _TMR0_Initialize TMR0_Initialize `(v  1 e 1 0 ]
 {
 "85
 } 0
-"73 /home/bbd/Documents/Github/lab_10/mcc_generated_files/mcc.c
+"73 /Users/student/Desktop/lab_10/mcc_generated_files/mcc.c
 [v _PMD_Initialize PMD_Initialize `(v  1 e 1 0 ]
 {
 "91
 } 0
-"55 /home/bbd/Documents/Github/lab_10/mcc_generated_files/pin_manager.c
+"55 /Users/student/Desktop/lab_10/mcc_generated_files/pin_manager.c
 [v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
 {
 "110
 } 0
-"59 /home/bbd/Documents/Github/lab_10/mcc_generated_files/mcc.c
+"59 /Users/student/Desktop/lab_10/mcc_generated_files/mcc.c
 [v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
 {
 "71
 } 0
-"198 /home/bbd/Documents/Github/lab_10/mcc_generated_files/i2c1.c
+"198 /Users/student/Desktop/lab_10/mcc_generated_files/i2c1.c
 [v _I2C1_Initialize I2C1_Initialize `(v  1 e 1 0 ]
 {
 "224
 } 0
-"46 /home/bbd/Documents/Github/lab_10/controller.c
+"46 /Users/student/Desktop/lab_10/controller.c
 [v _CONTROLLER_task CONTROLLER_task `(v  1 e 1 0 ]
 {
-"82
+"48
+[v CONTROLLER_task@isActive isActive `a  1 a 1 25 ]
+"89
 } 0
 "21
 [v _address_inc address_inc `(v  1 e 1 0 ]
@@ -698,7 +700,7 @@ EVENT_HELD 3
 {
 "44
 } 0
-"38 /home/bbd/Documents/Github/lab_10/tm1650.c
+"38 /Users/student/Desktop/lab_10/tm1650.c
 [v _TM1650_enable TM1650_enable `(v  1 e 1 0 ]
 {
 [v TM1650_enable@enable enable `a  1 a 1 wreg ]
@@ -706,7 +708,7 @@ EVENT_HELD 3
 [v TM1650_enable@enable enable `a  1 a 1 20 ]
 "44
 } 0
-"109 /home/bbd/Documents/Github/lab_10/buttons.c
+"109 /Users/student/Desktop/lab_10/buttons.c
 [v _BUTTONS_isHeld BUTTONS_isHeld `(a  1 e 1 0 ]
 {
 [s S630 . 8 `*.39VEuc 1 port 2 0 `uc 1 pin 1 2 `E11274 1 state 1 3 `E11274 1 lastState 1 4 `us 1 lastHoldTime 2 5 `E11268 1 event 1 7 ]
@@ -724,12 +726,12 @@ EVENT_HELD 3
 [v BUTTONS_isClicked@button button `*.5S630  1 a 1 0 ]
 "107
 } 0
-"14 /home/bbd/Documents/Github/lab_10/controller.c
+"14 /Users/student/Desktop/lab_10/controller.c
 [v _CONTROLLER_init CONTROLLER_init `(v  1 e 1 0 ]
 {
 "16
 } 0
-"91 /home/bbd/Documents/Github/lab_10/tm1650.c
+"91 /Users/student/Desktop/lab_10/tm1650.c
 [v _TM1650_fastPrintNum TM1650_fastPrintNum `(v  1 e 1 0 ]
 {
 [v TM1650_fastPrintNum@num num `us  1 p 2 20 ]
@@ -748,7 +750,7 @@ EVENT_HELD 3
 [v writeData@address address `uc  1 a 1 18 ]
 "36
 } 0
-"600 /home/bbd/Documents/Github/lab_10/mcc_generated_files/i2c1.c
+"600 /Users/student/Desktop/lab_10/mcc_generated_files/i2c1.c
 [v _I2C1_MasterWrite I2C1_MasterWrite `(v  1 e 1 0 ]
 {
 "601
@@ -805,7 +807,7 @@ EVENT_HELD 3
 {
 "652
 } 0
-"5 /opt/microchip/xc8/v2.05/pic/sources/c99/common/lwmod.c
+"5 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/lwmod.c
 [v ___lwmod __lwmod `(ui  1 e 2 0 ]
 {
 "10
@@ -815,7 +817,7 @@ EVENT_HELD 3
 [v ___lwmod@dividend dividend `ui  1 p 2 10 ]
 "25
 } 0
-"5 /opt/microchip/xc8/v2.05/pic/sources/c99/common/lwdiv.c
+"5 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/lwdiv.c
 [v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
 {
 "10
@@ -827,18 +829,18 @@ EVENT_HELD 3
 [v ___lwdiv@dividend dividend `ui  1 p 2 2 ]
 "30
 } 0
-"8 /home/bbd/Documents/Github/lab_10/clock.c
+"8 /Users/student/Desktop/lab_10/clock.c
 [v _CLOCK_init CLOCK_init `(v  1 e 1 0 ]
 {
 "14
 } 0
-"134 /home/bbd/Documents/Github/lab_10/mcc_generated_files/tmr0.c
+"134 /Users/student/Desktop/lab_10/mcc_generated_files/tmr0.c
 [v _TMR0_SetInterruptHandler TMR0_SetInterruptHandler `(v  1 e 1 0 ]
 {
 [v TMR0_SetInterruptHandler@InterruptHandler InterruptHandler `*.37(v  1 p 2 0 ]
 "136
 } 0
-"59 /home/bbd/Documents/Github/lab_10/buttons.c
+"59 /Users/student/Desktop/lab_10/buttons.c
 [v _BUTTONS_task BUTTONS_task `(v  1 e 1 0 ]
 {
 [s S630 . 8 `*.39VEuc 1 port 2 0 `uc 1 pin 1 2 `E11274 1 state 1 3 `E11274 1 lastState 1 4 `us 1 lastHoldTime 2 5 `E11268 1 event 1 7 ]
@@ -850,12 +852,12 @@ EVENT_HELD 3
 [v BUTTONS_task@time time `us  1 a 2 6 ]
 "98
 } 0
-"16 /home/bbd/Documents/Github/lab_10/clock.c
+"16 /Users/student/Desktop/lab_10/clock.c
 [v _CLOCK_getTime CLOCK_getTime `(us  1 e 2 0 ]
 {
 "18
 } 0
-"26 /home/bbd/Documents/Github/lab_10/buttons.c
+"26 /Users/student/Desktop/lab_10/buttons.c
 [v _BUTTONS_init BUTTONS_init `(v  1 e 1 0 ]
 {
 "39
@@ -876,27 +878,27 @@ EVENT_HELD 3
 {
 "57
 } 0
-"52 /home/bbd/Documents/Github/lab_10/mcc_generated_files/interrupt_manager.c
+"52 /Users/student/Desktop/lab_10/mcc_generated_files/interrupt_manager.c
 [v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
 {
 "78
 } 0
-"121 /home/bbd/Documents/Github/lab_10/mcc_generated_files/tmr0.c
+"121 /Users/student/Desktop/lab_10/mcc_generated_files/tmr0.c
 [v _TMR0_ISR TMR0_ISR `(v  1 e 1 0 ]
 {
 "131
 } 0
-"20 /home/bbd/Documents/Github/lab_10/clock.c
+"20 /Users/student/Desktop/lab_10/clock.c
 [v _CLOCK_timerCallback CLOCK_timerCallback `(v  1 s 1 CLOCK_timerCallback ]
 {
 "22
 } 0
-"138 /home/bbd/Documents/Github/lab_10/mcc_generated_files/tmr0.c
+"138 /Users/student/Desktop/lab_10/mcc_generated_files/tmr0.c
 [v _TMR0_DefaultInterruptHandler TMR0_DefaultInterruptHandler `(v  1 e 1 0 ]
 {
 "141
 } 0
-"235 /home/bbd/Documents/Github/lab_10/mcc_generated_files/i2c1.c
+"235 /Users/student/Desktop/lab_10/mcc_generated_files/i2c1.c
 [v _I2C1_ISR I2C1_ISR `(v  1 e 1 0 ]
 {
 "238
