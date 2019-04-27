@@ -86,12 +86,12 @@ EVENT_PRESSED 1
 EVENT_INTER_HOLD 2
 EVENT_HELD 3
 ]
-"8 /home/bbd/Documents/Github/lab_10/controller.c
-[e E10886 . `uc
+"7 /home/bbd/Documents/Github/lab_10/controller.c
+[e E10887 . `uc
 STATE_UNPRESSED 0
 STATE_PRESSED 1
 ]
-[e E10880 . `uc
+[e E10881 . `uc
 EVENT_IDLE 0
 EVENT_PRESSED 1
 EVENT_INTER_HOLD 2
@@ -161,25 +161,27 @@ channel_FVR_Buffer2 63
 [v _BUTTONS_task BUTTONS_task `(v  1 e 1 0 ]
 "97
 [v _BUTTONS_isClicked BUTTONS_isClicked `(a  1 e 1 0 ]
+"106
+[v _BUTTONS_isHeld BUTTONS_isHeld `(a  1 e 1 0 ]
 "8 /home/bbd/Documents/Github/lab_10/clock.c
 [v _CLOCK_init CLOCK_init `(v  1 e 1 0 ]
 "16
 [v _CLOCK_getTime CLOCK_getTime `(us  1 e 2 0 ]
 "20
 [v _CLOCK_timerCallback CLOCK_timerCallback `(v  1 s 1 CLOCK_timerCallback ]
-"21 /home/bbd/Documents/Github/lab_10/controller.c
-[v _CONTROLLER_init CONTROLLER_init `(v  1 e 1 0 ]
-"28
-[v _address_inc address_inc `(v  1 e 1 0 ]
-"42
-[v _address_dec address_dec `(v  1 e 1 0 ]
-"53
+"20 /home/bbd/Documents/Github/lab_10/controller.c
 [v _CONTROLLER_task CONTROLLER_task `(v  1 e 1 0 ]
-"141
+"79
 [v _menuSelection menuSelection `(v  1 e 1 0 ]
-"18 /home/bbd/Documents/Github/lab_10/dmx.c
+"117
+[v _CONTROL_DMX CONTROL_DMX `(a  1 s 1 CONTROL_DMX ]
+"21 /home/bbd/Documents/Github/lab_10/dmx.c
 [v _DMX_init DMX_init `(v  1 e 1 0 ]
-"22
+"29
+[v _address_inc address_inc `(v  1 e 1 0 ]
+"43
+[v _address_dec address_dec `(v  1 e 1 0 ]
+"54
 [v _DMX_interrupt DMX_interrupt `(v  1 e 1 0 ]
 "21 /home/bbd/Documents/Github/lab_10/led.c
 [v _LED_task LED_task `(v  1 e 1 0 ]
@@ -313,7 +315,7 @@ channel_FVR_Buffer2 63
 [v _PORTC PORTC `VEuc  1 e 1 @14 ]
 "597
 [v _TRISA TRISA `VEuc  1 e 1 @18 ]
-[s S2011 . 1 `uc 1 TRISA0 1 0 :1:0 
+[s S2007 . 1 `uc 1 TRISA0 1 0 :1:0 
 `uc 1 TRISA1 1 0 :1:1 
 `uc 1 TRISA2 1 0 :1:2 
 `uc 1 TRISA3 1 0 :1:3 
@@ -321,13 +323,13 @@ channel_FVR_Buffer2 63
 `uc 1 TRISA5 1 0 :1:5 
 ]
 "612
-[u S2018 . 1 `S2011 1 . 1 0 ]
-[v _TRISAbits TRISAbits `VES2018  1 e 1 @18 ]
+[u S2014 . 1 `S2007 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES2014  1 e 1 @18 ]
 "647
 [v _TRISB TRISB `VEuc  1 e 1 @19 ]
 "686
 [v _TRISC TRISC `VEuc  1 e 1 @20 ]
-[s S2062 . 1 `uc 1 TRISC0 1 0 :1:0 
+[s S2058 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 TRISC3 1 0 :1:3 
@@ -337,8 +339,8 @@ channel_FVR_Buffer2 63
 `uc 1 TRISC7 1 0 :1:7 
 ]
 "703
-[u S2071 . 1 `S2062 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES2071  1 e 1 @20 ]
+[u S2067 . 1 `S2058 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES2067  1 e 1 @20 ]
 "748
 [v _LATA LATA `VEuc  1 e 1 @24 ]
 "798
@@ -1007,7 +1009,7 @@ channel_FVR_Buffer2 63
 [v _RC7PPS RC7PPS `VEuc  1 e 1 @7975 ]
 "30563
 [v _ANSELA ANSELA `VEuc  1 e 1 @7992 ]
-[s S2028 . 1 `uc 1 ANSA0 1 0 :1:0 
+[s S2024 . 1 `uc 1 ANSA0 1 0 :1:0 
 `uc 1 ANSA1 1 0 :1:1 
 `uc 1 ANSA2 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -1015,11 +1017,11 @@ channel_FVR_Buffer2 63
 `uc 1 ANSA5 1 0 :1:5 
 ]
 "30578
-[u S2035 . 1 `S2028 1 . 1 0 ]
-[v _ANSELAbits ANSELAbits `VES2035  1 e 1 @7992 ]
+[u S2031 . 1 `S2024 1 . 1 0 ]
+[v _ANSELAbits ANSELAbits `VES2031  1 e 1 @7992 ]
 "30608
 [v _WPUA WPUA `VEuc  1 e 1 @7993 ]
-[s S2045 . 1 `uc 1 WPUA0 1 0 :1:0 
+[s S2041 . 1 `uc 1 WPUA0 1 0 :1:0 
 `uc 1 WPUA1 1 0 :1:1 
 `uc 1 WPUA2 1 0 :1:2 
 `uc 1 WPUA3 1 0 :1:3 
@@ -1027,8 +1029,8 @@ channel_FVR_Buffer2 63
 `uc 1 WPUA5 1 0 :1:5 
 ]
 "30623
-[u S2052 . 1 `S2045 1 . 1 0 ]
-[v _WPUAbits WPUAbits `VES2052  1 e 1 @7993 ]
+[u S2048 . 1 `S2041 1 . 1 0 ]
+[v _WPUAbits WPUAbits `VES2048  1 e 1 @7993 ]
 "30658
 [v _ODCONA ODCONA `VEuc  1 e 1 @7994 ]
 "30703
@@ -1043,7 +1045,7 @@ channel_FVR_Buffer2 63
 [v _SLRCONB SLRCONB `VEuc  1 e 1 @8006 ]
 "31260
 [v _ANSELC ANSELC `VEuc  1 e 1 @8014 ]
-[s S2083 . 1 `uc 1 ANSC0 1 0 :1:0 
+[s S2079 . 1 `uc 1 ANSC0 1 0 :1:0 
 `uc 1 ANSC1 1 0 :1:1 
 `uc 1 ANSC2 1 0 :1:2 
 `uc 1 ANSC3 1 0 :1:3 
@@ -1053,11 +1055,11 @@ channel_FVR_Buffer2 63
 `uc 1 ANSC7 1 0 :1:7 
 ]
 "31277
-[u S2092 . 1 `S2083 1 . 1 0 ]
-[v _ANSELCbits ANSELCbits `VES2092  1 e 1 @8014 ]
+[u S2088 . 1 `S2079 1 . 1 0 ]
+[v _ANSELCbits ANSELCbits `VES2088  1 e 1 @8014 ]
 "31322
 [v _WPUC WPUC `VEuc  1 e 1 @8015 ]
-[s S2104 . 1 `uc 1 WPUC0 1 0 :1:0 
+[s S2100 . 1 `uc 1 WPUC0 1 0 :1:0 
 `uc 1 WPUC1 1 0 :1:1 
 `uc 1 WPUC2 1 0 :1:2 
 `uc 1 WPUC3 1 0 :1:3 
@@ -1067,8 +1069,8 @@ channel_FVR_Buffer2 63
 `uc 1 WPUC7 1 0 :1:7 
 ]
 "31339
-[u S2113 . 1 `S2104 1 . 1 0 ]
-[v _WPUCbits WPUCbits `VES2113  1 e 1 @8015 ]
+[u S2109 . 1 `S2100 1 . 1 0 ]
+[v _WPUCbits WPUCbits `VES2109  1 e 1 @8015 ]
 "31384
 [v _ODCONC ODCONC `VEuc  1 e 1 @8016 ]
 "31446
@@ -1101,45 +1103,45 @@ channel_FVR_Buffer2 63
 [v _lastDetected lastDetected `a  1 s 1 lastDetected ]
 "12 /home/bbd/Documents/Github/lab_10/buttons.c
 [v _lastTime lastTime `i  1 e 2 0 ]
-[s S1994 . 8 `*.39VEuc 1 port 2 0 `uc 1 pin 1 2 `E10875 1 state 1 3 `E10875 1 lastState 1 4 `us 1 lastHoldTime 2 5 `E10869 1 event 1 7 ]
+[s S1990 . 8 `*.39VEuc 1 port 2 0 `uc 1 pin 1 2 `E10875 1 state 1 3 `E10875 1 lastState 1 4 `us 1 lastHoldTime 2 5 `E10869 1 event 1 7 ]
 "13
-[v _buttons buttons `[4]S1994  1 e 32 0 ]
+[v _buttons buttons `[4]S1990  1 e 32 0 ]
 "4 /home/bbd/Documents/Github/lab_10/clock.c
 [v _currentTime currentTime `us  1 s 2 currentTime ]
 "7 /home/bbd/Documents/Github/lab_10/controller.c
-[v _address address `us  1 e 2 0 ]
+[v _menu menu `*.5S1990  1 e 1 0 ]
+[v _up up `*.5S1990  1 e 1 0 ]
+[v _down down `*.5S1990  1 e 1 0 ]
+[v _enter enter `*.5S1990  1 e 1 0 ]
 "8
-[v _menu menu `*.5S1994  1 e 1 0 ]
-[v _up up `*.5S1994  1 e 1 0 ]
-[v _down down `*.5S1994  1 e 1 0 ]
-[v _enter enter `*.5S1994  1 e 1 0 ]
-"9
 [v _incInterval incInterval `i  1 e 2 0 ]
-"10
+"9
 [v _lastIncTime lastIncTime `us  1 e 2 0 ]
-"11
+"10
 [v _lastActiveTime lastActiveTime `us  1 e 2 0 ]
-"12
+"11
 [v _startup startup `a  1 e 1 0 ]
-"14
+"13
 [v _menuSelected menuSelected `uc  1 e 1 0 ]
-"15
+"14
 [v _currentSelection currentSelection `uc  1 e 1 0 ]
-"16
+"15
 [v _menuPressed menuPressed `a  1 e 1 0 ]
-"17
+"16
 [v _enterPressed enterPressed `a  1 e 1 0 ]
-"19
+"18
 [v _upState upState `a  1 e 1 0 ]
 [v _downState downState `a  1 e 1 0 ]
 [v _menuState menuState `a  1 e 1 0 ]
 [v _enterState enterState `a  1 e 1 0 ]
-"14 /home/bbd/Documents/Github/lab_10/dmx.c
+"15 /home/bbd/Documents/Github/lab_10/dmx.c
 [v _initial initial `i  1 e 2 0 ]
-"15
-[v _arrayIndex arrayIndex `i  1 e 2 0 ]
 "16
+[v _arrayIndex arrayIndex `i  1 e 2 0 ]
+"17
 [v _dmxArray dmxArray `[513]i  1 e 1026 @9198 ]
+"19
+[v _address address `us  1 e 2 0 ]
 "14 /home/bbd/Documents/Github/lab_10/led.c
 [v _lastLedActiveTime lastLedActiveTime `us  1 e 2 0 ]
 "15
@@ -1203,7 +1205,7 @@ channel_FVR_Buffer2 63
 "58 /home/bbd/Documents/Github/lab_10/main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"82
+"81
 } 0
 "51 /home/bbd/Documents/Github/lab_10/tm1650.c
 [v _TM1650_init TM1650_init `(v  1 e 1 0 ]
@@ -1327,10 +1329,10 @@ channel_FVR_Buffer2 63
 {
 "56
 } 0
-"18 /home/bbd/Documents/Github/lab_10/dmx.c
+"21 /home/bbd/Documents/Github/lab_10/dmx.c
 [v _DMX_init DMX_init `(v  1 e 1 0 ]
 {
-"20
+"24
 } 0
 "232 /home/bbd/Documents/Github/lab_10/mcc_generated_files/eusart1.c
 [v _EUSART1_SetRxInterruptHandler EUSART1_SetRxInterruptHandler `(v  1 e 1 0 ]
@@ -1338,19 +1340,17 @@ channel_FVR_Buffer2 63
 [v EUSART1_SetRxInterruptHandler@interruptHandler interruptHandler `*.37(v  1 p 2 0 ]
 "234
 } 0
-"53 /home/bbd/Documents/Github/lab_10/controller.c
+"20 /home/bbd/Documents/Github/lab_10/controller.c
 [v _CONTROLLER_task CONTROLLER_task `(v  1 e 1 0 ]
 {
-"55
-[v CONTROLLER_task@isActive isActive `a  1 a 1 13 ]
+"22
+[v CONTROLLER_task@isActive isActive `a  1 a 1 79 ]
 "77
-[v CONTROLLER_task@status status `VEuc  1 a 1 12 ]
-"135
 } 0
-"141
+"79
 [v _menuSelection menuSelection `(v  1 e 1 0 ]
 {
-"177
+"115
 } 0
 "5 /opt/microchip/xc8/v2.05/pic/sources/c99/common/printf.c
 [v _printf printf `(i  1 e 2 0 ]
@@ -1364,65 +1364,65 @@ channel_FVR_Buffer2 63
 "1368 /opt/microchip/xc8/v2.05/pic/sources/c99/common/doprnt.c
 [v _vfprintf vfprintf `(i  1 e 2 0 ]
 {
-[s S2597 _IO_FILE 0 ]
-[v vfprintf@fp fp `*.1S2597  1 a 1 wreg ]
+[s S2606 _IO_FILE 0 ]
+[v vfprintf@fp fp `*.1S2606  1 a 1 wreg ]
 "1371
 [v vfprintf@cfmt cfmt `*.25uc  1 a 2 71 ]
 "1368
-[v vfprintf@fp fp `*.1S2597  1 a 1 wreg ]
+[v vfprintf@fp fp `*.1S2606  1 a 1 wreg ]
 [v vfprintf@fmt fmt `*.25DCuc  1 p 2 65 ]
 [v vfprintf@ap ap `*.4*.4v  1 p 1 67 ]
 "1373
 "1368
-[v vfprintf@fp fp `*.1S2597  1 a 1 70 ]
+[v vfprintf@fp fp `*.1S2606  1 a 1 70 ]
 "1382
 } 0
 "670
 [v _vfpfcnvrt vfpfcnvrt `(i  1 s 2 vfpfcnvrt ]
 {
-[s S2597 _IO_FILE 0 ]
-[v vfpfcnvrt@fp fp `*.1S2597  1 a 1 wreg ]
+[s S2606 _IO_FILE 0 ]
+[v vfpfcnvrt@fp fp `*.1S2606  1 a 1 wreg ]
 "672
 [v vfpfcnvrt@c c `uc  1 a 1 63 ]
 "670
-[v vfpfcnvrt@fp fp `*.1S2597  1 a 1 wreg ]
+[v vfpfcnvrt@fp fp `*.1S2606  1 a 1 wreg ]
 [v vfpfcnvrt@fmt fmt `*.4*.25uc  1 p 1 56 ]
 [v vfpfcnvrt@ap ap `*.4*.4v  1 p 1 57 ]
 "680
 "670
-[v vfpfcnvrt@fp fp `*.1S2597  1 a 1 64 ]
+[v vfpfcnvrt@fp fp `*.1S2606  1 a 1 64 ]
 "1365
 } 0
 "259
 [v _ctoa ctoa `(i  1 s 2 ctoa ]
 {
-[s S2597 _IO_FILE 0 ]
-[v ctoa@fp fp `*.1S2597  1 a 1 wreg ]
+[s S2606 _IO_FILE 0 ]
+[v ctoa@fp fp `*.1S2606  1 a 1 wreg ]
 "261
 [v ctoa@w w `i  1 a 2 53 ]
 "259
-[v ctoa@fp fp `*.1S2597  1 a 1 wreg ]
+[v ctoa@fp fp `*.1S2606  1 a 1 wreg ]
 [v ctoa@c c `uc  1 p 1 50 ]
 "264
 "259
-[v ctoa@fp fp `*.1S2597  1 a 1 55 ]
+[v ctoa@fp fp `*.1S2606  1 a 1 55 ]
 "270
 } 0
 "72
 [v _pad pad `(i  1 s 2 pad ]
 {
-[s S2597 _IO_FILE 0 ]
-[v pad@fp fp `*.1S2597  1 a 1 wreg ]
+[s S2606 _IO_FILE 0 ]
+[v pad@fp fp `*.1S2606  1 a 1 wreg ]
 "74
 [v pad@w w `i  1 a 2 47 ]
 [v pad@i i `i  1 a 2 45 ]
 "72
-[v pad@fp fp `*.1S2597  1 a 1 wreg ]
+[v pad@fp fp `*.1S2606  1 a 1 wreg ]
 [v pad@buf buf `*.5uc  1 p 1 41 ]
 [v pad@p p `i  1 p 2 42 ]
 "77
 "72
-[v pad@fp fp `*.1S2597  1 a 1 49 ]
+[v pad@fp fp `*.1S2606  1 a 1 49 ]
 "95
 } 0
 "12 /opt/microchip/xc8/v2.05/pic/sources/c99/common/strlen.c
@@ -1444,8 +1444,8 @@ channel_FVR_Buffer2 63
 [v fputs@c c `uc  1 a 1 37 ]
 "8
 [v fputs@s s `*.5DCuc  1 a 1 wreg ]
-[s S2928 _IO_FILE 5 `*.1uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
-[v fputs@fp fp `*.1S2928  1 p 1 33 ]
+[s S2937 _IO_FILE 5 `*.1uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
+[v fputs@fp fp `*.1S2937  1 p 1 33 ]
 "13
 [v fputs@s s `*.5DCuc  1 a 1 40 ]
 "19
@@ -1454,8 +1454,8 @@ channel_FVR_Buffer2 63
 [v _fputc fputc `(i  1 e 2 0 ]
 {
 [v fputc@c c `i  1 p 2 25 ]
-[s S2928 _IO_FILE 5 `*.1uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
-[v fputc@fp fp `*.1S2928  1 p 1 27 ]
+[s S2937 _IO_FILE 5 `*.1uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
+[v fputc@fp fp `*.1S2937  1 p 1 27 ]
 "21
 } 0
 "120 /home/bbd/Documents/Github/lab_10/tm1650.c
@@ -1477,17 +1477,7 @@ channel_FVR_Buffer2 63
 [v TM1650_setDigit@digit digit `uc  1 a 1 22 ]
 "99
 } 0
-"28 /home/bbd/Documents/Github/lab_10/controller.c
-[v _address_inc address_inc `(v  1 e 1 0 ]
-{
-"37
-} 0
-"42
-[v _address_dec address_dec `(v  1 e 1 0 ]
-{
-"51
-} 0
-"41 /home/bbd/Documents/Github/lab_10/tm1650.c
+"41
 [v _TM1650_enable TM1650_enable `(v  1 e 1 0 ]
 {
 [v TM1650_enable@enable enable `a  1 a 1 wreg ]
@@ -1495,19 +1485,20 @@ channel_FVR_Buffer2 63
 [v TM1650_enable@enable enable `a  1 a 1 20 ]
 "49
 } 0
-"97 /home/bbd/Documents/Github/lab_10/buttons.c
-[v _BUTTONS_isClicked BUTTONS_isClicked `(a  1 e 1 0 ]
+"117 /home/bbd/Documents/Github/lab_10/controller.c
+[v _CONTROL_DMX CONTROL_DMX `(a  1 s 1 CONTROL_DMX ]
 {
-[s S1994 . 8 `*.39VEuc 1 port 2 0 `uc 1 pin 1 2 `E10875 1 state 1 3 `E10875 1 lastState 1 4 `us 1 lastHoldTime 2 5 `E10869 1 event 1 7 ]
-[v BUTTONS_isClicked@button button `*.5S1994  1 a 1 wreg ]
-[v BUTTONS_isClicked@button button `*.5S1994  1 a 1 wreg ]
-[v BUTTONS_isClicked@button button `*.5S1994  1 a 1 0 ]
-"104
+"153
 } 0
-"21 /home/bbd/Documents/Github/lab_10/controller.c
-[v _CONTROLLER_init CONTROLLER_init `(v  1 e 1 0 ]
+"29 /home/bbd/Documents/Github/lab_10/dmx.c
+[v _address_inc address_inc `(v  1 e 1 0 ]
 {
-"23
+"38
+} 0
+"43
+[v _address_dec address_dec `(v  1 e 1 0 ]
+{
+"52
 } 0
 "101 /home/bbd/Documents/Github/lab_10/tm1650.c
 [v _TM1650_fastPrintNum TM1650_fastPrintNum `(v  1 e 1 0 ]
@@ -1595,6 +1586,24 @@ channel_FVR_Buffer2 63
 [v ___lwmod@dividend dividend `ui  1 p 2 10 ]
 "25
 } 0
+"106 /home/bbd/Documents/Github/lab_10/buttons.c
+[v _BUTTONS_isHeld BUTTONS_isHeld `(a  1 e 1 0 ]
+{
+[s S1990 . 8 `*.39VEuc 1 port 2 0 `uc 1 pin 1 2 `E10875 1 state 1 3 `E10875 1 lastState 1 4 `us 1 lastHoldTime 2 5 `E10869 1 event 1 7 ]
+[v BUTTONS_isHeld@button button `*.5S1990  1 a 1 wreg ]
+[v BUTTONS_isHeld@button button `*.5S1990  1 a 1 wreg ]
+[v BUTTONS_isHeld@button button `*.5S1990  1 a 1 0 ]
+"113
+} 0
+"97
+[v _BUTTONS_isClicked BUTTONS_isClicked `(a  1 e 1 0 ]
+{
+[s S1990 . 8 `*.39VEuc 1 port 2 0 `uc 1 pin 1 2 `E10875 1 state 1 3 `E10875 1 lastState 1 4 `us 1 lastHoldTime 2 5 `E10869 1 event 1 7 ]
+[v BUTTONS_isClicked@button button `*.5S1990  1 a 1 wreg ]
+[v BUTTONS_isClicked@button button `*.5S1990  1 a 1 wreg ]
+[v BUTTONS_isClicked@button button `*.5S1990  1 a 1 0 ]
+"104
+} 0
 "8 /home/bbd/Documents/Github/lab_10/clock.c
 [v _CLOCK_init CLOCK_init `(v  1 e 1 0 ]
 {
@@ -1609,9 +1618,9 @@ channel_FVR_Buffer2 63
 "56 /home/bbd/Documents/Github/lab_10/buttons.c
 [v _BUTTONS_task BUTTONS_task `(v  1 e 1 0 ]
 {
-[s S1994 . 8 `*.39VEuc 1 port 2 0 `uc 1 pin 1 2 `E10875 1 state 1 3 `E10875 1 lastState 1 4 `us 1 lastHoldTime 2 5 `E10869 1 event 1 7 ]
+[s S1990 . 8 `*.39VEuc 1 port 2 0 `uc 1 pin 1 2 `E10875 1 state 1 3 `E10875 1 lastState 1 4 `us 1 lastHoldTime 2 5 `E10869 1 event 1 7 ]
 "68
-[v BUTTONS_task@btn btn `*.5S1994  1 a 1 8 ]
+[v BUTTONS_task@btn btn `*.5S1990  1 a 1 8 ]
 "67
 [v BUTTONS_task@i i `uc  1 a 1 5 ]
 "58
@@ -1626,12 +1635,12 @@ channel_FVR_Buffer2 63
 "16
 [v _init init `(v  1 s 1 init ]
 {
-[s S1994 . 8 `*.39VEuc 1 port 2 0 `uc 1 pin 1 2 `E10875 1 state 1 3 `E10875 1 lastState 1 4 `us 1 lastHoldTime 2 5 `E10869 1 event 1 7 ]
-[v init@btn btn `*.5S1994  1 a 1 wreg ]
-[v init@btn btn `*.5S1994  1 a 1 wreg ]
+[s S1990 . 8 `*.39VEuc 1 port 2 0 `uc 1 pin 1 2 `E10875 1 state 1 3 `E10875 1 lastState 1 4 `us 1 lastHoldTime 2 5 `E10869 1 event 1 7 ]
+[v init@btn btn `*.5S1990  1 a 1 wreg ]
+[v init@btn btn `*.5S1990  1 a 1 wreg ]
 [v init@port port `*.39VEuc  1 p 2 0 ]
 [v init@pin pin `uc  1 p 1 2 ]
-[v init@btn btn `*.5S1994  1 a 1 4 ]
+[v init@btn btn `*.5S1990  1 a 1 4 ]
 "21
 } 0
 "38
@@ -1741,12 +1750,12 @@ channel_FVR_Buffer2 63
 {
 "746
 } 0
-"22 /home/bbd/Documents/Github/lab_10/dmx.c
+"54 /home/bbd/Documents/Github/lab_10/dmx.c
 [v _DMX_interrupt DMX_interrupt `(v  1 e 1 0 ]
 {
-"35
+"67
 [v DMX_interrupt@dummy dummy `VEuc  1 a 1 6 ]
-"39
+"71
 } 0
 "171 /home/bbd/Documents/Github/lab_10/mcc_generated_files/eusart1.c
 [v _EUSART1_Receive_ISR EUSART1_Receive_ISR `(v  1 e 1 0 ]

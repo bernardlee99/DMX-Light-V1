@@ -18247,7 +18247,7 @@ void BUTTONS_task() {
     time_t time = CLOCK_getTime();
 
 
-    if (time - lastTime < 2)
+    if (time - lastTime < 5)
         return;
 
     lastTime = time;

@@ -61,15 +61,14 @@ void main(void)
     SYSTEM_Initialize();
     __delay_ms(500);
     CLOCK_init();
-    BUTTONS_init();
-    DMX_init();    
+    BUTTONS_init();   
     BEAT_init();
  
     INTERRUPT_GlobalInterruptEnable();
     INTERRUPT_PeripheralInterruptEnable();
     
     TM1650_init();
-    CONTROLLER_init();
+    DMX_init(); 
     startTime = CLOCK_getTime();
 
     while (1)

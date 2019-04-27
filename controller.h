@@ -26,4 +26,6 @@ void CONTROLLER_task();
 uint8_t getAddress();
 void menuSelection();
 
+bool static CONTROL_DMX();
+
 #endif

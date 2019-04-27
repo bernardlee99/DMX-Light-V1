@@ -14,9 +14,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "36 ./buttons.h
 [; ;./buttons.h: 36: void BUTTONS_init();
 [v _BUTTONS_init `(v ~T0 @X0 0 e? ]
-"12 ./dmx.h
-[; ;./dmx.h: 12: void DMX_init();
-[v _DMX_init `(v ~T0 @X0 0 e? ]
 "12 ./beat.h
 [; ;./beat.h: 12: void BEAT_init();
 [v _BEAT_init `(v ~T0 @X0 0 e? ]
@@ -34,9 +31,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "11 ./tm1650.h
 [; ;./tm1650.h: 11: void TM1650_init();
 [v _TM1650_init `(v ~T0 @X0 0 e? ]
-"22 ./controller.h
-[; ;./controller.h: 22: void CONTROLLER_init();
-[v _CONTROLLER_init `(v ~T0 @X0 0 e? ]
+"12 ./dmx.h
+[; ;./dmx.h: 12: void DMX_init();
+[v _DMX_init `(v ~T0 @X0 0 e? ]
 "16 ./clock.h
 [; ;./clock.h: 16: time_t CLOCK_getTime();
 [v _CLOCK_getTime `(us ~T0 @X0 0 e? ]
@@ -1445,51 +1442,48 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 64:     BUTTONS_init();
 [e ( _BUTTONS_init ..  ]
 "65
-[; ;main.c: 65:     DMX_init();
-[e ( _DMX_init ..  ]
-"66
-[; ;main.c: 66:     BEAT_init();
+[; ;main.c: 65:     BEAT_init();
 [e ( _BEAT_init ..  ]
-"68
-[; ;main.c: 68:     (INTCONbits.GIE = 1);
+"67
+[; ;main.c: 67:     (INTCONbits.GIE = 1);
 [e = . . _INTCONbits 0 3 -> -> 1 `i `uc ]
-"69
-[; ;main.c: 69:     (INTCONbits.PEIE = 1);
+"68
+[; ;main.c: 68:     (INTCONbits.PEIE = 1);
 [e = . . _INTCONbits 0 2 -> -> 1 `i `uc ]
-"71
-[; ;main.c: 71:     TM1650_init();
+"70
+[; ;main.c: 70:     TM1650_init();
 [e ( _TM1650_init ..  ]
+"71
+[; ;main.c: 71:     DMX_init();
+[e ( _DMX_init ..  ]
 "72
-[; ;main.c: 72:     CONTROLLER_init();
-[e ( _CONTROLLER_init ..  ]
-"73
-[; ;main.c: 73:     startTime = CLOCK_getTime();
+[; ;main.c: 72:     startTime = CLOCK_getTime();
 [e = _startTime ( _CLOCK_getTime ..  ]
-"75
-[; ;main.c: 75:     while (1)
+"74
+[; ;main.c: 74:     while (1)
 [e :U 1519 ]
-"76
-[; ;main.c: 76:     {
+"75
+[; ;main.c: 75:     {
 {
-"77
-[; ;main.c: 77:         BUTTONS_task();
+"76
+[; ;main.c: 76:         BUTTONS_task();
 [e ( _BUTTONS_task ..  ]
-"78
-[; ;main.c: 78:         CONTROLLER_task();
+"77
+[; ;main.c: 77:         CONTROLLER_task();
 [e ( _CONTROLLER_task ..  ]
-"79
-[; ;main.c: 79:         BEAT_task();
+"78
+[; ;main.c: 78:         BEAT_task();
 [e ( _BEAT_task ..  ]
-"80
-[; ;main.c: 80:         LED_task();
+"79
+[; ;main.c: 79:         LED_task();
 [e ( _LED_task ..  ]
-"81
-[; ;main.c: 81:     }
+"80
+[; ;main.c: 80:     }
 }
 [e :U 1518 ]
 [e $U 1519  ]
 [e :U 1520 ]
-"82
-[; ;main.c: 82: }
+"81
+[; ;main.c: 81: }
 [e :UE 1517 ]
 }

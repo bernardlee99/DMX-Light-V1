@@ -1,13 +1,16 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[v F10877 `(v ~T0 @X0 0 tf ]
-[v F10901 `(v ~T0 @X0 0 tf ]
+[v F10902 `(v ~T0 @X0 0 tf ]
+[v F10926 `(v ~T0 @X0 0 tf ]
 "470 ./mcc_generated_files/eusart1.h
 [; ;./mcc_generated_files/eusart1.h: 470: void EUSART1_SetRxInterruptHandler(void (* interruptHandler)(void));
-[v _EUSART1_SetRxInterruptHandler `(v ~T0 @X0 0 ef1`*F10901 ]
-"12 dmx.c
-[; ;dmx.c: 12: void DMX_interrupt();
+[v _EUSART1_SetRxInterruptHandler `(v ~T0 @X0 0 ef1`*F10926 ]
+"13 dmx.c
+[; ;dmx.c: 13: void DMX_interrupt();
 [v _DMX_interrupt `(v ~T0 @X0 0 e? ]
-[v F10909 `(v ~T0 @X0 0 tf ]
+[v F10935 `(v ~T0 @X0 0 tf ]
+"17 ./tm1650.h
+[; ;./tm1650.h: 17: void TM1650_fastPrintNum(uint16_t num);
+[v _TM1650_fastPrintNum `(v ~T0 @X0 0 ef1`us ]
 "5210 /opt/microchip/xc8/v2.05/pic/include/pic16f18446.h
 [; ;/opt/microchip/xc8/v2.05/pic/include/pic16f18446.h: 5210:     struct {
 [s S240 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -1397,99 +1400,180 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; <" TOSH equ 01FEFh ;# ">
 "95 ./mcc_generated_files/eusart1.h
 [; ;./mcc_generated_files/eusart1.h: 95: void (*EUSART1_RxDefaultInterruptHandler)(void);
-[v _EUSART1_RxDefaultInterruptHandler `*F10877 ~T0 @X0 1 e ]
-"14 dmx.c
-[; ;dmx.c: 14: int initial = 1;
+[v _EUSART1_RxDefaultInterruptHandler `*F10902 ~T0 @X0 1 e ]
+"15 dmx.c
+[; ;dmx.c: 15: int initial = 1;
 [v _initial `i ~T0 @X0 1 e ]
 [i _initial
 -> 1 `i
 ]
-"15
-[; ;dmx.c: 15: int arrayIndex = 0;
+"16
+[; ;dmx.c: 16: int arrayIndex = 0;
 [v _arrayIndex `i ~T0 @X0 1 e ]
 [i _arrayIndex
 -> 0 `i
 ]
-"16
-[; ;dmx.c: 16: int dmxArray[513];
+"17
+[; ;dmx.c: 17: int dmxArray[513];
 [v _dmxArray `i ~T0 @X0 -> 513 `i e ]
-"18
-[; ;dmx.c: 18: void DMX_init(){
+"19
+[; ;dmx.c: 19: uint16_t address = 1;
+[v _address `us ~T0 @X0 1 e ]
+[i _address
+-> -> 1 `i `us
+]
+"21
+[; ;dmx.c: 21: void DMX_init(){
 [v _DMX_init `(v ~T0 @X0 1 ef ]
 {
 [e :U _DMX_init ]
 [f ]
-"19
-[; ;dmx.c: 19:     EUSART1_SetRxInterruptHandler(DMX_interrupt);
-[e ( _EUSART1_SetRxInterruptHandler (1 -> &U _DMX_interrupt `*F10909 ]
-"20
-[; ;dmx.c: 20: }
+"22
+[; ;dmx.c: 22:     EUSART1_SetRxInterruptHandler(DMX_interrupt);
+[e ( _EUSART1_SetRxInterruptHandler (1 -> &U _DMX_interrupt `*F10935 ]
+"23
+[; ;dmx.c: 23:     TM1650_fastPrintNum(address);
+[e ( _TM1650_fastPrintNum (1 _address ]
+"24
+[; ;dmx.c: 24: }
 [e :UE 1515 ]
 }
-"22
-[; ;dmx.c: 22: void DMX_interrupt(){
+"29
+[; ;dmx.c: 29: void address_inc()
+[v _address_inc `(v ~T0 @X0 1 ef ]
+"30
+[; ;dmx.c: 30: {
+{
+[e :U _address_inc ]
+[f ]
+"31
+[; ;dmx.c: 31:     if(address == 512)
+[e $ ! == -> _address `ui -> -> 512 `i `ui 1517  ]
+"32
+[; ;dmx.c: 32:         address = 1;
+[e = _address -> -> 1 `i `us ]
+[e $U 1518  ]
+"33
+[; ;dmx.c: 33:     else
+[e :U 1517 ]
+"34
+[; ;dmx.c: 34:         address++;
+[e ++ _address -> -> 1 `i `us ]
+[e :U 1518 ]
+"37
+[; ;dmx.c: 37:     TM1650_fastPrintNum(address);
+[e ( _TM1650_fastPrintNum (1 _address ]
+"38
+[; ;dmx.c: 38: }
+[e :UE 1516 ]
+}
+"43
+[; ;dmx.c: 43: void address_dec()
+[v _address_dec `(v ~T0 @X0 1 ef ]
+"44
+[; ;dmx.c: 44: {
+{
+[e :U _address_dec ]
+[f ]
+"45
+[; ;dmx.c: 45:     if(address == 1)
+[e $ ! == -> _address `ui -> -> 1 `i `ui 1520  ]
+"46
+[; ;dmx.c: 46:         address = 512;
+[e = _address -> -> 512 `i `us ]
+[e $U 1521  ]
+"47
+[; ;dmx.c: 47:     else
+[e :U 1520 ]
+"48
+[; ;dmx.c: 48:         address--;
+[e -- _address -> -> 1 `i `us ]
+[e :U 1521 ]
+"51
+[; ;dmx.c: 51:     TM1650_fastPrintNum(address);
+[e ( _TM1650_fastPrintNum (1 _address ]
+"52
+[; ;dmx.c: 52: }
+[e :UE 1519 ]
+}
+"54
+[; ;dmx.c: 54: void DMX_interrupt(){
 [v _DMX_interrupt `(v ~T0 @X0 1 ef ]
 {
 [e :U _DMX_interrupt ]
 [f ]
-"24
-[; ;dmx.c: 24:     if (RC1STAbits.OERR) {
-[e $ ! != -> . . _RC1STAbits 0 1 `i -> 0 `i 1517  ]
+"56
+[; ;dmx.c: 56:     if (RC1STAbits.OERR) {
+[e $ ! != -> . . _RC1STAbits 0 1 `i -> 0 `i 1523  ]
 {
-"25
-[; ;dmx.c: 25:         RC1STAbits.CREN = 0;
+"57
+[; ;dmx.c: 57:         RC1STAbits.CREN = 0;
 [e = . . _RC1STAbits 0 4 -> -> 0 `i `uc ]
-"26
-[; ;dmx.c: 26:         RC1STAbits.CREN = 1;
+"58
+[; ;dmx.c: 58:         RC1STAbits.CREN = 1;
 [e = . . _RC1STAbits 0 4 -> -> 1 `i `uc ]
-"27
-[; ;dmx.c: 27:     }
+"59
+[; ;dmx.c: 59:     }
 }
-[e :U 1517 ]
-"29
-[; ;dmx.c: 29:     if (initial == 0 && !(RC1STAbits.FERR)) {
-[e $ ! && == _initial -> 0 `i ! != -> . . _RC1STAbits 0 2 `i -> 0 `i 1518  ]
+[e :U 1523 ]
+"61
+[; ;dmx.c: 61:     if (initial == 0 && !(RC1STAbits.FERR)) {
+[e $ ! && == _initial -> 0 `i ! != -> . . _RC1STAbits 0 2 `i -> 0 `i 1524  ]
 {
-"30
-[; ;dmx.c: 30:         dmxArray[arrayIndex] = RC1REG;
+"62
+[; ;dmx.c: 62:         dmxArray[arrayIndex] = RC1REG;
 [e = *U + &U _dmxArray * -> -> _arrayIndex `ui `ux -> -> # *U &U _dmxArray `ui `ux -> _RC1REG `i ]
-"31
-[; ;dmx.c: 31:         arrayIndex += 1;
+"63
+[; ;dmx.c: 63:         arrayIndex += 1;
 [e =+ _arrayIndex -> 1 `i ]
-"32
-[; ;dmx.c: 32:     } else {
+"64
+[; ;dmx.c: 64:     } else {
 }
-[e $U 1519  ]
-[e :U 1518 ]
+[e $U 1525  ]
+[e :U 1524 ]
 {
-"33
-[; ;dmx.c: 33:         arrayIndex = 0;
+"65
+[; ;dmx.c: 65:         arrayIndex = 0;
 [e = _arrayIndex -> 0 `i ]
-"34
-[; ;dmx.c: 34:         initial = 0;
+"66
+[; ;dmx.c: 66:         initial = 0;
 [e = _initial -> 0 `i ]
-"35
-[; ;dmx.c: 35:         volatile uint8_t dummy = RC1REG;
+"67
+[; ;dmx.c: 67:         volatile uint8_t dummy = RC1REG;
 [v _dummy `Vuc ~T0 @X0 1 a ]
 [e = _dummy _RC1REG ]
-"36
-[; ;dmx.c: 36:     }
+"68
+[; ;dmx.c: 68:     }
 }
-[e :U 1519 ]
-"38
-[; ;dmx.c: 38:     PIR3bits.RC1IF = 0;
+[e :U 1525 ]
+"70
+[; ;dmx.c: 70:     PIR3bits.RC1IF = 0;
 [e = . . _PIR3bits 0 5 -> -> 0 `i `uc ]
-"39
-[; ;dmx.c: 39: }
-[e :UE 1516 ]
+"71
+[; ;dmx.c: 71: }
+[e :UE 1522 ]
 }
-"41
-[; ;dmx.c: 41: void DMX_task(){
+"73
+[; ;dmx.c: 73: uint8_t getAddress(){
+[v _getAddress `(uc ~T0 @X0 1 ef ]
+{
+[e :U _getAddress ]
+[f ]
+"74
+[; ;dmx.c: 74:     return address;
+[e ) -> _address `uc ]
+[e $UE 1526  ]
+"75
+[; ;dmx.c: 75: }
+[e :UE 1526 ]
+}
+"77
+[; ;dmx.c: 77: void DMX_task(){
 [v _DMX_task `(v ~T0 @X0 1 ef ]
 {
 [e :U _DMX_task ]
 [f ]
-"43
-[; ;dmx.c: 43: }
-[e :UE 1520 ]
+"79
+[; ;dmx.c: 79: }
+[e :UE 1527 ]
 }

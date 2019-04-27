@@ -28,7 +28,6 @@
       <itemPath>beat.h</itemPath>
       <itemPath>dmx.h</itemPath>
       <itemPath>led.h</itemPath>
-      <itemPath>ui.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -62,7 +61,6 @@
       <itemPath>beat.c</itemPath>
       <itemPath>dmx.c</itemPath>
       <itemPath>led.c</itemPath>
-      <itemPath>ui.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

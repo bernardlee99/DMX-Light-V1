@@ -3,4 +3,5 @@ controller.c  \
 clock.h  \
 controller.h  \
 buttons.h  \
-tm1650.h 
+tm1650.h  \
+dmx.h 

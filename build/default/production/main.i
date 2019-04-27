@@ -18663,6 +18663,8 @@ void address_dec();
 void CONTROLLER_task();
 uint8_t getAddress();
 void menuSelection();
+
+_Bool static CONTROL_DMX();
 # 49 "main.c" 2
 
 # 1 "./led.h" 1
@@ -18686,7 +18688,12 @@ void BEAT_task();
 # 1 "./dmx.h" 1
 # 12 "./dmx.h"
 void DMX_init();
+void address_inc();
+void address_dec();
+uint8_t getAddress();
 void DMX_task();
+
+extern uint16_t address;
 # 53 "main.c" 2
 
 
@@ -18700,14 +18707,13 @@ void main(void)
     _delay((unsigned long)((500)*(32000000/4000.0)));
     CLOCK_init();
     BUTTONS_init();
-    DMX_init();
     BEAT_init();
 
     (INTCONbits.GIE = 1);
     (INTCONbits.PEIE = 1);
 
     TM1650_init();
-    CONTROLLER_init();
+    DMX_init();
     startTime = CLOCK_getTime();
 
     while (1)

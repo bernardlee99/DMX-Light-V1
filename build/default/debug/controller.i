@@ -18168,6 +18168,8 @@ void address_dec();
 void CONTROLLER_task();
 uint8_t getAddress();
 void menuSelection();
+
+_Bool static CONTROL_DMX();
 # 2 "controller.c" 2
 
 # 1 "./buttons.h" 1
@@ -18219,9 +18221,18 @@ _Bool TM1650_isEnabled();
 void static welcomeMessage();
 # 4 "controller.c" 2
 
+# 1 "./dmx.h" 1
+# 12 "./dmx.h"
+void DMX_init();
+void address_inc();
+void address_dec();
+uint8_t getAddress();
+void DMX_task();
+
+extern uint16_t address;
+# 5 "controller.c" 2
 
 
-uint16_t address = 1;
 button_t *up, *down, *menu, *enter;
 int incInterval = 100;
 time_t lastIncTime = 0;
@@ -18235,38 +18246,6 @@ _Bool enterPressed = 0;
 
 _Bool upState, downState, menuState, enterState;
 
-void CONTROLLER_init() {
-    TM1650_fastPrintNum(address);
-}
-
-
-
-
-void address_inc()
-{
-    if(address == 512)
-        address = 1;
-    else
-        address++;
-
-
-    TM1650_fastPrintNum(address);
-}
-
-
-
-
-void address_dec()
-{
-    if(address == 1)
-        address = 512;
-    else
-        address--;
-
-
-    TM1650_fastPrintNum(address);
-}
-
 void CONTROLLER_task() {
 
     _Bool isActive = 1;
@@ -18275,84 +18254,55 @@ void CONTROLLER_task() {
     menuState = BUTTONS_isClicked(menu);
     enterState = BUTTONS_isClicked(enter);
 
-
-
-    if(startup == 1 && CLOCK_getTime() - startTime < 5000){
+    if (startup == 1 && CLOCK_getTime() - startTime < 5000) {
         menuSelection();
         if (upState || downState || menuState) {
             menuPressed = 1;
         }
 
-            return;
+        return;
 
     } else {
-        if(menuPressed == 0 && startup == 1)
+        if (menuPressed == 0 && startup == 1)
             currentSelection = 3;
         startup = 0;
     }
 
-    volatile uint8_t status = currentSelection;
-
-    if((menuState || menuPressed) && !enterPressed){
+    if ((menuState || menuPressed) && !enterPressed) {
         menuPressed = 1;
         menuSelection();
-    } else if (upState && currentSelection == 3) {
-        address_inc();
-        lastActiveTime = CLOCK_getTime();
-    } else if (downState && currentSelection == 3) {
-        address_dec();
-    } else if(upState && (CLOCK_getTime() - lastIncTime > incInterval) && currentSelection == 3){
-        address_inc();
-        lastIncTime = CLOCK_getTime();
-        if(incInterval > 20){
-            incInterval-=1;
-        }
-    } else if(downState && (CLOCK_getTime() - lastIncTime > incInterval) && currentSelection == 3){
-        address_dec();
-        lastIncTime = CLOCK_getTime();
-        if(incInterval > 20){
-            incInterval-=1;
-        }
-    } else if(enterState && currentSelection == 3){
-        address = 1;
+    } else if (currentSelection == 3) {
+        isActive = CONTROL_DMX();
+    } else if (currentSelection == 1) {
+        isActive = 1;
+    } else if (currentSelection == 2) {
+        isActive = 1;
     } else {
         isActive = 0;
     }
 
-    if (currentSelection == 1 || currentSelection == 2){
-        isActive = 1;
-    }
-
-    if(!upState && !downState){
-        incInterval = 100;
-    }
-
-    if(isActive) {
+    if (isActive) {
         lastActiveTime = CLOCK_getTime();
     }
 
     if (CLOCK_getTime() - lastActiveTime >= 5000) {
         TM1650_enable(0);
         lastActiveTime = CLOCK_getTime() - (5000 + 1);
-    } else{
+    } else {
         TM1650_enable(1);
     }
 
-    if(currentSelection == 3 && !menuPressed) {
+    if (currentSelection == 3 && !menuPressed) {
         TM1650_fastPrintNum(address);
         enterPressed = 0;
-    } else if(currentSelection == 1 && !menuPressed) {
+    } else if (currentSelection == 1 && !menuPressed) {
         printf("SEL1\r");
         enterPressed = 0;
-    } else if(currentSelection == 2 && !menuPressed) {
-        printf("B-1");
+    } else if (currentSelection == 2 && !menuPressed) {
+        printf("B-1 \r");
         enterPressed = 0;
     }
 
-}
-
-uint8_t getAddress(){
-    return address;
 }
 
 void menuSelection(){
@@ -18367,7 +18317,7 @@ void menuSelection(){
         if(menuSelected > 1){
             menuSelected--;
         } else {
-            menuSelected = 0;
+            menuSelected = 1;
         }
     }
 
@@ -18391,4 +18341,42 @@ void menuSelection(){
             printf("PC  \r");
             break;
     }
+}
+
+_Bool static CONTROL_DMX(){
+
+    if(BUTTONS_isHeld(up) && (CLOCK_getTime() - lastIncTime > incInterval)){
+        address_inc();
+        lastIncTime = CLOCK_getTime();
+        if(incInterval > 20){
+            incInterval-=1;
+        }
+        return 1;
+    } else if(BUTTONS_isHeld(down) && (CLOCK_getTime() - lastIncTime > incInterval)){
+        address_dec();
+        lastIncTime = CLOCK_getTime();
+        if(incInterval > 20){
+            incInterval-=1;
+        }
+        return 1;
+    } else if(BUTTONS_isHeld(enter)){
+        address = 1;
+        return 1;
+    } else if (upState) {
+        address_inc();
+        return 1;
+        lastActiveTime = CLOCK_getTime();
+    } else if (downState) {
+        address_dec();
+        return 1;
+    } else if(enterState){
+        return 1;
+    } else if((!upState || !downState) && !(BUTTONS_isHeld(down) || BUTTONS_isHeld(up))){
+        incInterval = 100;
+    } else {
+        return 0;
+    }
+
+    return 0;
+
 }

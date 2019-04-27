@@ -15,6 +15,115 @@
 
 
 
+# 1 "./dmx.h" 1
+
+
+# 1 "/opt/microchip/xc8/v2.05/pic/include/c99/stdbool.h" 1 3
+# 4 "./dmx.h" 2
+# 1 "/opt/microchip/xc8/v2.05/pic/include/c99/stdint.h" 1 3
+
+
+
+# 1 "/opt/microchip/xc8/v2.05/pic/include/c99/musl_xc8.h" 1 3
+# 5 "/opt/microchip/xc8/v2.05/pic/include/c99/stdint.h" 2 3
+# 22 "/opt/microchip/xc8/v2.05/pic/include/c99/stdint.h" 3
+# 1 "/opt/microchip/xc8/v2.05/pic/include/c99/bits/alltypes.h" 1 3
+# 135 "/opt/microchip/xc8/v2.05/pic/include/c99/bits/alltypes.h" 3
+typedef unsigned long uintptr_t;
+# 150 "/opt/microchip/xc8/v2.05/pic/include/c99/bits/alltypes.h" 3
+typedef long intptr_t;
+# 166 "/opt/microchip/xc8/v2.05/pic/include/c99/bits/alltypes.h" 3
+typedef signed char int8_t;
+
+
+
+
+typedef short int16_t;
+
+
+
+
+typedef __int24 int24_t;
+
+
+
+
+typedef long int32_t;
+
+
+
+
+
+typedef long long int64_t;
+# 196 "/opt/microchip/xc8/v2.05/pic/include/c99/bits/alltypes.h" 3
+typedef long long intmax_t;
+
+
+
+
+
+typedef unsigned char uint8_t;
+
+
+
+
+typedef unsigned short uint16_t;
+
+
+
+
+typedef __uint24 uint24_t;
+
+
+
+
+typedef unsigned long uint32_t;
+
+
+
+
+
+typedef unsigned long long uint64_t;
+# 237 "/opt/microchip/xc8/v2.05/pic/include/c99/bits/alltypes.h" 3
+typedef unsigned long long uintmax_t;
+# 23 "/opt/microchip/xc8/v2.05/pic/include/c99/stdint.h" 2 3
+
+typedef int8_t int_fast8_t;
+
+typedef int64_t int_fast64_t;
+
+
+typedef int8_t int_least8_t;
+typedef int16_t int_least16_t;
+
+typedef int24_t int_least24_t;
+
+typedef int32_t int_least32_t;
+
+typedef int64_t int_least64_t;
+
+
+typedef uint8_t uint_fast8_t;
+
+typedef uint64_t uint_fast64_t;
+
+
+typedef uint8_t uint_least8_t;
+typedef uint16_t uint_least16_t;
+
+typedef uint24_t uint_least24_t;
+
+typedef uint32_t uint_least32_t;
+
+typedef uint64_t uint_least64_t;
+# 155 "/opt/microchip/xc8/v2.05/pic/include/c99/stdint.h" 3
+# 1 "/opt/microchip/xc8/v2.05/pic/include/c99/bits/stdint.h" 1 3
+typedef int32_t int_fast16_t;
+typedef int32_t int_fast32_t;
+typedef uint32_t uint_fast16_t;
+typedef uint32_t uint_fast32_t;
+# 156 "/opt/microchip/xc8/v2.05/pic/include/c99/stdint.h" 2 3
+# 5 "./dmx.h" 2
 # 1 "/opt/microchip/xc8/v2.05/pic/include/xc.h" 1 3
 # 18 "/opt/microchip/xc8/v2.05/pic/include/xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -28,16 +137,7 @@ extern double __fpnormalize(double);
 
 
 # 1 "/opt/microchip/xc8/v2.05/pic/include/c99/stdlib.h" 1 3
-
-
-
-# 1 "/opt/microchip/xc8/v2.05/pic/include/c99/musl_xc8.h" 1 3
-# 5 "/opt/microchip/xc8/v2.05/pic/include/c99/stdlib.h" 2 3
-
-
-
-
-
+# 10 "/opt/microchip/xc8/v2.05/pic/include/c99/stdlib.h" 3
 # 1 "/opt/microchip/xc8/v2.05/pic/include/c99/features.h" 1 3
 # 11 "/opt/microchip/xc8/v2.05/pic/include/c99/stdlib.h" 2 3
 # 21 "/opt/microchip/xc8/v2.05/pic/include/c99/stdlib.h" 3
@@ -46,10 +146,6 @@ extern double __fpnormalize(double);
 typedef long int wchar_t;
 # 127 "/opt/microchip/xc8/v2.05/pic/include/c99/bits/alltypes.h" 3
 typedef unsigned size_t;
-# 176 "/opt/microchip/xc8/v2.05/pic/include/c99/bits/alltypes.h" 3
-typedef __int24 int24_t;
-# 212 "/opt/microchip/xc8/v2.05/pic/include/c99/bits/alltypes.h" 3
-typedef __uint24 uint24_t;
 # 22 "/opt/microchip/xc8/v2.05/pic/include/c99/stdlib.h" 2 3
 
 int atoi (const char *);
@@ -18048,95 +18144,35 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "/opt/microchip/xc8/v2.05/pic/include/xc.h" 2 3
+# 6 "./dmx.h" 2
+
+
+
+
+
+
+void DMX_init();
+void address_inc();
+void address_dec();
+uint8_t getAddress();
+void DMX_task();
+
+extern uint16_t address;
 # 10 "dmx.c" 2
+# 1 "./tm1650.h" 1
+# 11 "./tm1650.h"
+void TM1650_init();
+void TM1650_setDigit(uint8_t digit, uint8_t data);
+static void writeData(uint8_t address, uint8_t data);
+void TM1650_brightness(uint8_t brightness);
+void putch(char n);
+void TM1650_scrollPrint(char *array);
+void TM1650_fastPrintNum(uint16_t num);
+void TM1650_enable(_Bool enable);
+_Bool TM1650_isEnabled();
+void static welcomeMessage();
+# 11 "dmx.c" 2
 # 1 "./mcc_generated_files/eusart1.h" 1
-# 55 "./mcc_generated_files/eusart1.h"
-# 1 "/opt/microchip/xc8/v2.05/pic/include/c99/stdbool.h" 1 3
-# 55 "./mcc_generated_files/eusart1.h" 2
-
-# 1 "/opt/microchip/xc8/v2.05/pic/include/c99/stdint.h" 1 3
-# 22 "/opt/microchip/xc8/v2.05/pic/include/c99/stdint.h" 3
-# 1 "/opt/microchip/xc8/v2.05/pic/include/c99/bits/alltypes.h" 1 3
-# 135 "/opt/microchip/xc8/v2.05/pic/include/c99/bits/alltypes.h" 3
-typedef unsigned long uintptr_t;
-# 150 "/opt/microchip/xc8/v2.05/pic/include/c99/bits/alltypes.h" 3
-typedef long intptr_t;
-# 166 "/opt/microchip/xc8/v2.05/pic/include/c99/bits/alltypes.h" 3
-typedef signed char int8_t;
-
-
-
-
-typedef short int16_t;
-# 181 "/opt/microchip/xc8/v2.05/pic/include/c99/bits/alltypes.h" 3
-typedef long int32_t;
-
-
-
-
-
-typedef long long int64_t;
-# 196 "/opt/microchip/xc8/v2.05/pic/include/c99/bits/alltypes.h" 3
-typedef long long intmax_t;
-
-
-
-
-
-typedef unsigned char uint8_t;
-
-
-
-
-typedef unsigned short uint16_t;
-# 217 "/opt/microchip/xc8/v2.05/pic/include/c99/bits/alltypes.h" 3
-typedef unsigned long uint32_t;
-
-
-
-
-
-typedef unsigned long long uint64_t;
-# 237 "/opt/microchip/xc8/v2.05/pic/include/c99/bits/alltypes.h" 3
-typedef unsigned long long uintmax_t;
-# 23 "/opt/microchip/xc8/v2.05/pic/include/c99/stdint.h" 2 3
-
-typedef int8_t int_fast8_t;
-
-typedef int64_t int_fast64_t;
-
-
-typedef int8_t int_least8_t;
-typedef int16_t int_least16_t;
-
-typedef int24_t int_least24_t;
-
-typedef int32_t int_least32_t;
-
-typedef int64_t int_least64_t;
-
-
-typedef uint8_t uint_fast8_t;
-
-typedef uint64_t uint_fast64_t;
-
-
-typedef uint8_t uint_least8_t;
-typedef uint16_t uint_least16_t;
-
-typedef uint24_t uint_least24_t;
-
-typedef uint32_t uint_least32_t;
-
-typedef uint64_t uint_least64_t;
-# 155 "/opt/microchip/xc8/v2.05/pic/include/c99/stdint.h" 3
-# 1 "/opt/microchip/xc8/v2.05/pic/include/c99/bits/stdint.h" 1 3
-typedef int32_t int_fast16_t;
-typedef int32_t int_fast32_t;
-typedef uint32_t uint_fast16_t;
-typedef uint32_t uint_fast32_t;
-# 156 "/opt/microchip/xc8/v2.05/pic/include/c99/stdint.h" 2 3
-# 56 "./mcc_generated_files/eusart1.h" 2
 # 75 "./mcc_generated_files/eusart1.h"
 typedef union {
     struct {
@@ -18185,7 +18221,7 @@ void EUSART1_SetOverrunErrorHandler(void (* interruptHandler)(void));
 void EUSART1_SetErrorHandler(void (* interruptHandler)(void));
 # 470 "./mcc_generated_files/eusart1.h"
 void EUSART1_SetRxInterruptHandler(void (* interruptHandler)(void));
-# 11 "dmx.c" 2
+# 12 "dmx.c" 2
 
 void DMX_interrupt();
 
@@ -18193,8 +18229,39 @@ int initial = 1;
 int arrayIndex = 0;
 int dmxArray[513];
 
+uint16_t address = 1;
+
 void DMX_init(){
     EUSART1_SetRxInterruptHandler(DMX_interrupt);
+    TM1650_fastPrintNum(address);
+}
+
+
+
+
+void address_inc()
+{
+    if(address == 512)
+        address = 1;
+    else
+        address++;
+
+
+    TM1650_fastPrintNum(address);
+}
+
+
+
+
+void address_dec()
+{
+    if(address == 1)
+        address = 512;
+    else
+        address--;
+
+
+    TM1650_fastPrintNum(address);
 }
 
 void DMX_interrupt(){
@@ -18214,6 +18281,10 @@ void DMX_interrupt(){
     }
 
     PIR3bits.RC1IF = 0;
+}
+
+uint8_t getAddress(){
+    return address;
 }
 
 void DMX_task(){

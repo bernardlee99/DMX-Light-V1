@@ -28,9 +28,9 @@ typedef struct {
     event_t event;
 } button_t;
 
-#define BUTTON_SCAN_INTERVAL 2
+#define BUTTON_SCAN_INTERVAL 10
 #define BUTTON_COUNT 4
-#define HOLD_TIME 500
+#define HOLD_TIME 200
 
 void BUTTONS_task();
 void BUTTONS_init();
