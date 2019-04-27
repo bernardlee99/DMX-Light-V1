@@ -28,6 +28,7 @@
       <itemPath>beat.h</itemPath>
       <itemPath>dmx.h</itemPath>
       <itemPath>led.h</itemPath>
+      <itemPath>ui.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -61,6 +62,7 @@
       <itemPath>beat.c</itemPath>
       <itemPath>dmx.c</itemPath>
       <itemPath>led.c</itemPath>
+      <itemPath>ui.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -80,7 +82,7 @@
         <platformTool>snap</platformTool>
         <languageToolchain>XC8</languageToolchain>
         <languageToolchainVersion>2.05</languageToolchainVersion>
-        <platform>3</platform>
+        <platform>2</platform>
       </toolsSet>
       <packs>
         <pack name="PIC16F1xxxx_DFP" vendor="Microchip" version="1.0.62"/>

@@ -1,3 +1,10 @@
+#ifndef STD_H
+#define STD_H
+#include<stdbool.h>
+#include<stdint.h>
+#include <xc.h>
+#endif
+
 #ifndef BEAT_H
 #define BEAT_H
 

@@ -46,7 +46,6 @@
 
 #ifndef MCC_H
 #define	MCC_H
-#include <xc.h>
 #include "device_config.h"
 #include "pin_manager.h"
 #include <stdint.h>

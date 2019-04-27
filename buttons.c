@@ -6,9 +6,6 @@
  */
 
 
-#include <xc.h>
-#include <stdint.h>
-#include <stdbool.h>
 #include "clock.h"
 #include "buttons.h"
 

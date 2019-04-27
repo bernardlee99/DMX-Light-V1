@@ -6,8 +6,6 @@
  */
 
 
-#include <xc.h>
-#include<stdbool.h>
 #include "beat.h"
 #include "mcc_generated_files/adcc.h"
 #include "clock.h"

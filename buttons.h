@@ -1,3 +1,10 @@
+#ifndef STD_H
+#define STD_H
+#include<stdbool.h>
+#include<stdint.h>
+#include <xc.h>
+#endif
+
 #ifndef BUTTON_H
 #define BUTTON_H
 typedef enum {
@@ -21,7 +28,7 @@ typedef struct {
     event_t event;
 } button_t;
 
-#define BUTTON_SCAN_INTERVAL 5
+#define BUTTON_SCAN_INTERVAL 2
 #define BUTTON_COUNT 4
 #define HOLD_TIME 500
 

@@ -1,9 +1,8 @@
-#ifndef stdbool.h
+#ifndef STD_H
+#define STD_H
 #include<stdbool.h>
-#endif
-
-#ifndef stdint.h
 #include<stdint.h>
+#include <xc.h>
 #endif
 
 #ifndef TM1650_H

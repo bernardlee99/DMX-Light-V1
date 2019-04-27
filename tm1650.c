@@ -6,7 +6,6 @@
  */
 
 
-#include <xc.h>
 #include <string.h>
 #include<stdio.h>
 #include"tm1650.h"

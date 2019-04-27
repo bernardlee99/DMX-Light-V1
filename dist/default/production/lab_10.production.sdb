@@ -3,7 +3,7 @@
 [d edition pro ]
 [d chip 16F18446 ]
 [d frameptr 6 ]
-"88 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/tmr2.c
+"88 /home/bbd/Documents/Github/lab_10/mcc_generated_files/tmr2.c
 [e E10865 . `uc
 TMR2_ROP_STARTS_TMRON 0
 TMR2_ROP_STARTS_TMRON_ERSHIGH 1
@@ -42,7 +42,7 @@ TMR2_CLC3_OUT 15
 TMR2_CLC4_OUT 16
 TMR2_RESERVED_2 17
 ]
-"185 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/i2c1.c
+"185 /home/bbd/Documents/Github/lab_10/mcc_generated_files/i2c1.c
 [e E10866 . `uc
 I2C1_MESSAGE_COMPLETE 0
 I2C1_MESSAGE_FAIL 1
@@ -67,7 +67,7 @@ S_MASTER_NOACK_STOP 9
 S_MASTER_SEND_ADDR_10BIT_LSB 10
 S_MASTER_10BIT_RESTART 11
 ]
-"121 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/adcc.c
+"121 /home/bbd/Documents/Github/lab_10/mcc_generated_files/adcc.c
 [e E10867 . `uc
 channel_Vss 59
 channel_Temp_Sensor 60
@@ -75,40 +75,29 @@ channel_DAC1_Output 61
 channel_FVR_Buffer1 62
 channel_FVR_Buffer2 63
 ]
-"57 C:\Users\berna\Documents\Github\lab_10\main.c
-[e E10723 . `uc
+"13 /home/bbd/Documents/Github/lab_10/buttons.c
+[e E10875 . `uc
 STATE_UNPRESSED 0
 STATE_PRESSED 1
 ]
-[e E10717 . `uc
+[e E10869 . `uc
 EVENT_IDLE 0
 EVENT_PRESSED 1
 EVENT_INTER_HOLD 2
 EVENT_HELD 3
 ]
-"16 C:\Users\berna\Documents\Github\lab_10\buttons.c
-[e E10874 . `uc
+"8 /home/bbd/Documents/Github/lab_10/controller.c
+[e E10886 . `uc
 STATE_UNPRESSED 0
 STATE_PRESSED 1
 ]
-[e E10868 . `uc
+[e E10880 . `uc
 EVENT_IDLE 0
 EVENT_PRESSED 1
 EVENT_INTER_HOLD 2
 EVENT_HELD 3
 ]
-"9 C:\Users\berna\Documents\Github\lab_10\controller.c
-[e E48 . `uc
-STATE_UNPRESSED 0
-STATE_PRESSED 1
-]
-[e E42 . `uc
-EVENT_IDLE 0
-EVENT_PRESSED 1
-EVENT_INTER_HOLD 2
-EVENT_HELD 3
-]
-"34 C:\Users\berna\Documents\Github\lab_10\tm1650.c
+"33 /home/bbd/Documents/Github/lab_10/tm1650.c
 [e E11370 . `uc
 I2C1_MESSAGE_COMPLETE 0
 I2C1_MESSAGE_FAIL 1
@@ -118,7 +107,7 @@ I2C1_MESSAGE_ADDRESS_NO_ACK 4
 I2C1_DATA_NO_ACK 5
 I2C1_LOST_STATE 6
 ]
-"44 C:\Users\berna\Documents\Github\lab_10\beat.c
+"42 /home/bbd/Documents/Github/lab_10/beat.c
 [e E10873 . `uc
 channel_Vss 59
 channel_Temp_Sensor 60
@@ -126,27 +115,7 @@ channel_DAC1_Output 61
 channel_FVR_Buffer1 62
 channel_FVR_Buffer2 63
 ]
-"37
-[v _adcThresholdHandler adcThresholdHandler `(v  1 s 1 adcThresholdHandler ]
-"41
-[v _BEAT_init BEAT_init `(v  1 e 1 0 ]
-"51
-[v _BEAT_detected BEAT_detected `(a  1 e 1 0 ]
-"67
-[v _BEAT_task BEAT_task `(v  1 e 1 0 ]
-"19 C:\Users\berna\Documents\Github\lab_10\buttons.c
-[v _init init `(v  1 s 1 init ]
-"26
-[v _BUTTONS_init BUTTONS_init `(v  1 e 1 0 ]
-"41
-[v _GPIO_init GPIO_init `(v  1 s 1 GPIO_init ]
-"59
-[v _BUTTONS_task BUTTONS_task `(v  1 e 1 0 ]
-"100
-[v _BUTTONS_isClicked BUTTONS_isClicked `(a  1 e 1 0 ]
-"109
-[v _BUTTONS_isHeld BUTTONS_isHeld `(a  1 e 1 0 ]
-"72 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\doprnt.c
+"72 /opt/microchip/xc8/v2.05/pic/sources/c99/common/doprnt.c
 [v _pad pad `(i  1 s 2 pad ]
 "259
 [v _ctoa ctoa `(i  1 s 2 ctoa ]
@@ -154,49 +123,69 @@ channel_FVR_Buffer2 63
 [v _vfpfcnvrt vfpfcnvrt `(i  1 s 2 vfpfcnvrt ]
 "1368
 [v _vfprintf vfprintf `(i  1 e 2 0 ]
-"5 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\lwdiv.c
+"5 /opt/microchip/xc8/v2.05/pic/sources/c99/common/lwdiv.c
 [v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
-"5 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\lwmod.c
+"5 /opt/microchip/xc8/v2.05/pic/sources/c99/common/lwmod.c
 [v ___lwmod __lwmod `(ui  1 e 2 0 ]
-"8 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\nf_fputc.c
+"8 /opt/microchip/xc8/v2.05/pic/sources/c99/common/nf_fputc.c
 [v _fputc fputc `(i  1 e 2 0 ]
-"8 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\nf_fputs.c
+"8 /opt/microchip/xc8/v2.05/pic/sources/c99/common/nf_fputs.c
 [v _fputs fputs `(i  1 e 2 0 ]
-"5 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\printf.c
+"5 /opt/microchip/xc8/v2.05/pic/sources/c99/common/printf.c
 [v _printf printf `(i  1 e 2 0 ]
-"10 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\sprcadd.c
+"10 /opt/microchip/xc8/v2.05/pic/sources/c99/common/sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
-"12 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\strlen.c
+"12 /opt/microchip/xc8/v2.05/pic/sources/c99/common/strlen.c
 [v _strlen strlen `(ui  1 e 2 0 ]
-"4 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\Umul8_16.c
+"4 /opt/microchip/xc8/v2.05/pic/sources/c99/common/Umul8_16.c
 [v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
-"6 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\pic\__eeprom.c
+"6 /opt/microchip/xc8/v2.05/pic/sources/c99/pic/__eeprom.c
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"8 C:\Users\berna\Documents\Github\lab_10\clock.c
+"35 /home/bbd/Documents/Github/lab_10/beat.c
+[v _adcThresholdHandler adcThresholdHandler `(v  1 s 1 adcThresholdHandler ]
+"39
+[v _BEAT_init BEAT_init `(v  1 e 1 0 ]
+"49
+[v _BEAT_detected BEAT_detected `(a  1 e 1 0 ]
+"65
+[v _BEAT_task BEAT_task `(v  1 e 1 0 ]
+"16 /home/bbd/Documents/Github/lab_10/buttons.c
+[v _init init `(v  1 s 1 init ]
+"23
+[v _BUTTONS_init BUTTONS_init `(v  1 e 1 0 ]
+"38
+[v _GPIO_init GPIO_init `(v  1 s 1 GPIO_init ]
+"56
+[v _BUTTONS_task BUTTONS_task `(v  1 e 1 0 ]
+"97
+[v _BUTTONS_isClicked BUTTONS_isClicked `(a  1 e 1 0 ]
+"8 /home/bbd/Documents/Github/lab_10/clock.c
 [v _CLOCK_init CLOCK_init `(v  1 e 1 0 ]
 "16
 [v _CLOCK_getTime CLOCK_getTime `(us  1 e 2 0 ]
 "20
 [v _CLOCK_timerCallback CLOCK_timerCallback `(v  1 s 1 CLOCK_timerCallback ]
-"14 C:\Users\berna\Documents\Github\lab_10\controller.c
+"21 /home/bbd/Documents/Github/lab_10/controller.c
 [v _CONTROLLER_init CONTROLLER_init `(v  1 e 1 0 ]
-"21
+"28
 [v _address_inc address_inc `(v  1 e 1 0 ]
-"35
+"42
 [v _address_dec address_dec `(v  1 e 1 0 ]
-"46
+"53
 [v _CONTROLLER_task CONTROLLER_task `(v  1 e 1 0 ]
-"18 C:\Users\berna\Documents\Github\lab_10\dmx.c
+"141
+[v _menuSelection menuSelection `(v  1 e 1 0 ]
+"18 /home/bbd/Documents/Github/lab_10/dmx.c
 [v _DMX_init DMX_init `(v  1 e 1 0 ]
 "22
 [v _DMX_interrupt DMX_interrupt `(v  1 e 1 0 ]
-"24 C:\Users\berna\Documents\Github\lab_10\led.c
+"21 /home/bbd/Documents/Github/lab_10/led.c
 [v _LED_task LED_task `(v  1 e 1 0 ]
-"63 C:\Users\berna\Documents\Github\lab_10\main.c
+"58 /home/bbd/Documents/Github/lab_10/main.c
 [v _main main `(v  1 e 1 0 ]
-"64 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/adcc.c
+"64 /home/bbd/Documents/Github/lab_10/mcc_generated_files/adcc.c
 [v _ADCC_Initialize ADCC_Initialize `(v  1 e 1 0 ]
 "121
 [v _ADCC_StartConversion ADCC_StartConversion `(v  1 e 1 0 ]
@@ -208,7 +197,7 @@ channel_FVR_Buffer2 63
 [v _ADCC_SetADTIInterruptHandler ADCC_SetADTIInterruptHandler `(v  1 e 1 0 ]
 "320
 [v _ADCC_DefaultInterruptHandler ADCC_DefaultInterruptHandler `(v  1 e 1 0 ]
-"81 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/eusart1.c
+"81 /home/bbd/Documents/Github/lab_10/mcc_generated_files/eusart1.c
 [v _EUSART1_Initialize EUSART1_Initialize `(v  1 e 1 0 ]
 "171
 [v _EUSART1_Receive_ISR EUSART1_Receive_ISR `(v  1 e 1 0 ]
@@ -228,7 +217,7 @@ channel_FVR_Buffer2 63
 [v _EUSART1_SetErrorHandler EUSART1_SetErrorHandler `(v  1 e 1 0 ]
 "232
 [v _EUSART1_SetRxInterruptHandler EUSART1_SetRxInterruptHandler `(v  1 e 1 0 ]
-"198 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/i2c1.c
+"198 /home/bbd/Documents/Github/lab_10/mcc_generated_files/i2c1.c
 [v _I2C1_Initialize I2C1_Initialize `(v  1 e 1 0 ]
 "235
 [v _I2C1_ISR I2C1_ISR `(v  1 e 1 0 ]
@@ -248,33 +237,33 @@ channel_FVR_Buffer2 63
 [v _I2C1_MasterWriteTRBBuild I2C1_MasterWriteTRBBuild `(v  1 e 1 0 ]
 "742
 [v _I2C1_BusCollisionISR I2C1_BusCollisionISR `(v  1 e 1 0 ]
-"52 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/interrupt_manager.c
+"52 /home/bbd/Documents/Github/lab_10/mcc_generated_files/interrupt_manager.c
 [v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
-"50 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/mcc.c
+"50 /home/bbd/Documents/Github/lab_10/mcc_generated_files/mcc.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
 "66
 [v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
 "80
 [v _PMD_Initialize PMD_Initialize `(v  1 e 1 0 ]
-"55 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/pin_manager.c
+"55 /home/bbd/Documents/Github/lab_10/mcc_generated_files/pin_manager.c
 [v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
-"64 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/pwm1.c
+"64 /home/bbd/Documents/Github/lab_10/mcc_generated_files/pwm1.c
 [v _PWM1_Initialize PWM1_Initialize `(v  1 e 1 0 ]
 "82
 [v _PWM1_LoadDutyValue PWM1_LoadDutyValue `(v  1 e 1 0 ]
-"64 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/pwm2.c
+"64 /home/bbd/Documents/Github/lab_10/mcc_generated_files/pwm2.c
 [v _PWM2_Initialize PWM2_Initialize `(v  1 e 1 0 ]
 "82
 [v _PWM2_LoadDutyValue PWM2_LoadDutyValue `(v  1 e 1 0 ]
-"64 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/pwm3.c
+"64 /home/bbd/Documents/Github/lab_10/mcc_generated_files/pwm3.c
 [v _PWM3_Initialize PWM3_Initialize `(v  1 e 1 0 ]
 "82
 [v _PWM3_LoadDutyValue PWM3_LoadDutyValue `(v  1 e 1 0 ]
-"64 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/pwm4.c
+"64 /home/bbd/Documents/Github/lab_10/mcc_generated_files/pwm4.c
 [v _PWM4_Initialize PWM4_Initialize `(v  1 e 1 0 ]
 "82
 [v _PWM4_LoadDutyValue PWM4_LoadDutyValue `(v  1 e 1 0 ]
-"61 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/tmr0.c
+"61 /home/bbd/Documents/Github/lab_10/mcc_generated_files/tmr0.c
 [v _TMR0_Initialize TMR0_Initialize `(v  1 e 1 0 ]
 "121
 [v _TMR0_ISR TMR0_ISR `(v  1 e 1 0 ]
@@ -282,7 +271,7 @@ channel_FVR_Buffer2 63
 [v _TMR0_SetInterruptHandler TMR0_SetInterruptHandler `(v  1 e 1 0 ]
 "138
 [v _TMR0_DefaultInterruptHandler TMR0_DefaultInterruptHandler `(v  1 e 1 0 ]
-"62 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/tmr2.c
+"62 /home/bbd/Documents/Github/lab_10/mcc_generated_files/tmr2.c
 [v _TMR2_Initialize TMR2_Initialize `(v  1 e 1 0 ]
 "100
 [v _TMR2_Start TMR2_Start `(v  1 e 1 0 ]
@@ -294,51 +283,28 @@ channel_FVR_Buffer2 63
 [v _TMR2_Counter8BitSet TMR2_Counter8BitSet `(v  1 e 1 0 ]
 "147
 [v _TMR2_Period8BitSet TMR2_Period8BitSet `(v  1 e 1 0 ]
-"32 C:\Users\berna\Documents\Github\lab_10\tm1650.c
+"31 /home/bbd/Documents/Github/lab_10/tm1650.c
 [v _writeData writeData `(v  1 s 1 writeData ]
-"42
+"41
 [v _TM1650_enable TM1650_enable `(v  1 e 1 0 ]
-"52
+"51
 [v _TM1650_init TM1650_init `(v  1 e 1 0 ]
-"70
+"69
 [v _TM1650_scrollPrint TM1650_scrollPrint `(v  1 e 1 0 ]
-"96
+"95
 [v _TM1650_setDigit TM1650_setDigit `(v  1 e 1 0 ]
-"102
+"101
 [v _TM1650_fastPrintNum TM1650_fastPrintNum `(v  1 e 1 0 ]
-"121
+"120
 [v _putch putch `(v  1 e 1 0 ]
-"95 C:\Users\berna\Documents\Github\lab_10/mcc_generated_files/eusart1.h
+"95 /home/bbd/Documents/Github/lab_10/mcc_generated_files/eusart1.h
 [v _EUSART1_RxDefaultInterruptHandler EUSART1_RxDefaultInterruptHandler `*.37(v  1 e 2 0 ]
-"27 C:\Users\berna\Documents\Github\lab_10\beat.c
-[v _lastBeat lastBeat `us  1 s 2 lastBeat ]
-"28
-[v _bpm bpm `us  1 s 2 bpm ]
-"29
-[v _detected detected `a  1 s 1 detected ]
-"30
-[v _thresholdExceeded thresholdExceeded `a  1 s 1 thresholdExceeded ]
-"31
-[v _lastRun lastRun `us  1 s 2 lastRun ]
-"32
-[v _threshold threshold `us  1 s 2 threshold ]
-"33
-[v _delay delay `us  1 s 2 delay ]
-"34
-[v _thresholdCount thresholdCount `i  1 s 2 thresholdCount ]
-"35
-[v _lastDetected lastDetected `a  1 s 1 lastDetected ]
-"15 C:\Users\berna\Documents\Github\lab_10\buttons.c
-[v _lastTime lastTime `i  1 e 2 0 ]
-[s S1927 . 8 `*.39VEuc 1 port 2 0 `uc 1 pin 1 2 `E10723 1 state 1 3 `E10723 1 lastState 1 4 `us 1 lastHoldTime 2 5 `E10717 1 event 1 7 ]
-"16
-[v _buttons buttons `[4]S1927  1 e 32 0 ]
 [s S937 . 1 `uc 1 INTEDG 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
-"426 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f18446.h
+"426 /opt/microchip/xc8/v2.05/pic/include/pic16f18446.h
 [u S942 . 1 `S937 1 . 1 0 ]
 [v _INTCONbits INTCONbits `VES942  1 e 1 @11 ]
 "446
@@ -347,7 +313,7 @@ channel_FVR_Buffer2 63
 [v _PORTC PORTC `VEuc  1 e 1 @14 ]
 "597
 [v _TRISA TRISA `VEuc  1 e 1 @18 ]
-[s S2026 . 1 `uc 1 TRISA0 1 0 :1:0 
+[s S2011 . 1 `uc 1 TRISA0 1 0 :1:0 
 `uc 1 TRISA1 1 0 :1:1 
 `uc 1 TRISA2 1 0 :1:2 
 `uc 1 TRISA3 1 0 :1:3 
@@ -355,13 +321,13 @@ channel_FVR_Buffer2 63
 `uc 1 TRISA5 1 0 :1:5 
 ]
 "612
-[u S2033 . 1 `S2026 1 . 1 0 ]
-[v _TRISAbits TRISAbits `VES2033  1 e 1 @18 ]
+[u S2018 . 1 `S2011 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES2018  1 e 1 @18 ]
 "647
 [v _TRISB TRISB `VEuc  1 e 1 @19 ]
 "686
 [v _TRISC TRISC `VEuc  1 e 1 @20 ]
-[s S2077 . 1 `uc 1 TRISC0 1 0 :1:0 
+[s S2062 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 TRISC3 1 0 :1:3 
@@ -371,8 +337,8 @@ channel_FVR_Buffer2 63
 `uc 1 TRISC7 1 0 :1:7 
 ]
 "703
-[u S2086 . 1 `S2077 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES2086  1 e 1 @20 ]
+[u S2071 . 1 `S2062 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES2071  1 e 1 @20 ]
 "748
 [v _LATA LATA `VEuc  1 e 1 @24 ]
 "798
@@ -1041,7 +1007,7 @@ channel_FVR_Buffer2 63
 [v _RC7PPS RC7PPS `VEuc  1 e 1 @7975 ]
 "30563
 [v _ANSELA ANSELA `VEuc  1 e 1 @7992 ]
-[s S2043 . 1 `uc 1 ANSA0 1 0 :1:0 
+[s S2028 . 1 `uc 1 ANSA0 1 0 :1:0 
 `uc 1 ANSA1 1 0 :1:1 
 `uc 1 ANSA2 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -1049,11 +1015,11 @@ channel_FVR_Buffer2 63
 `uc 1 ANSA5 1 0 :1:5 
 ]
 "30578
-[u S2050 . 1 `S2043 1 . 1 0 ]
-[v _ANSELAbits ANSELAbits `VES2050  1 e 1 @7992 ]
+[u S2035 . 1 `S2028 1 . 1 0 ]
+[v _ANSELAbits ANSELAbits `VES2035  1 e 1 @7992 ]
 "30608
 [v _WPUA WPUA `VEuc  1 e 1 @7993 ]
-[s S2060 . 1 `uc 1 WPUA0 1 0 :1:0 
+[s S2045 . 1 `uc 1 WPUA0 1 0 :1:0 
 `uc 1 WPUA1 1 0 :1:1 
 `uc 1 WPUA2 1 0 :1:2 
 `uc 1 WPUA3 1 0 :1:3 
@@ -1061,8 +1027,8 @@ channel_FVR_Buffer2 63
 `uc 1 WPUA5 1 0 :1:5 
 ]
 "30623
-[u S2067 . 1 `S2060 1 . 1 0 ]
-[v _WPUAbits WPUAbits `VES2067  1 e 1 @7993 ]
+[u S2052 . 1 `S2045 1 . 1 0 ]
+[v _WPUAbits WPUAbits `VES2052  1 e 1 @7993 ]
 "30658
 [v _ODCONA ODCONA `VEuc  1 e 1 @7994 ]
 "30703
@@ -1077,7 +1043,7 @@ channel_FVR_Buffer2 63
 [v _SLRCONB SLRCONB `VEuc  1 e 1 @8006 ]
 "31260
 [v _ANSELC ANSELC `VEuc  1 e 1 @8014 ]
-[s S2098 . 1 `uc 1 ANSC0 1 0 :1:0 
+[s S2083 . 1 `uc 1 ANSC0 1 0 :1:0 
 `uc 1 ANSC1 1 0 :1:1 
 `uc 1 ANSC2 1 0 :1:2 
 `uc 1 ANSC3 1 0 :1:3 
@@ -1087,11 +1053,11 @@ channel_FVR_Buffer2 63
 `uc 1 ANSC7 1 0 :1:7 
 ]
 "31277
-[u S2107 . 1 `S2098 1 . 1 0 ]
-[v _ANSELCbits ANSELCbits `VES2107  1 e 1 @8014 ]
+[u S2092 . 1 `S2083 1 . 1 0 ]
+[v _ANSELCbits ANSELCbits `VES2092  1 e 1 @8014 ]
 "31322
 [v _WPUC WPUC `VEuc  1 e 1 @8015 ]
-[s S2119 . 1 `uc 1 WPUC0 1 0 :1:0 
+[s S2104 . 1 `uc 1 WPUC0 1 0 :1:0 
 `uc 1 WPUC1 1 0 :1:1 
 `uc 1 WPUC2 1 0 :1:2 
 `uc 1 WPUC3 1 0 :1:3 
@@ -1101,13 +1067,13 @@ channel_FVR_Buffer2 63
 `uc 1 WPUC7 1 0 :1:7 
 ]
 "31339
-[u S2128 . 1 `S2119 1 . 1 0 ]
-[v _WPUCbits WPUCbits `VES2128  1 e 1 @8015 ]
+[u S2113 . 1 `S2104 1 . 1 0 ]
+[v _WPUCbits WPUCbits `VES2113  1 e 1 @8015 ]
 "31384
 [v _ODCONC ODCONC `VEuc  1 e 1 @8016 ]
 "31446
 [v _SLRCONC SLRCONC `VEuc  1 e 1 @8017 ]
-"55 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\doprnt.c
+"55 /opt/microchip/xc8/v2.05/pic/sources/c99/common/doprnt.c
 [v _flags flags `i  1 s 2 flags ]
 [v _prec prec `i  1 s 2 prec ]
 [v _width width `i  1 s 2 width ]
@@ -1115,34 +1081,74 @@ channel_FVR_Buffer2 63
 [v _dbuf dbuf `[32]uc  1 s 32 dbuf ]
 "69
 [v _nout nout `i  1 s 2 nout ]
-"4 C:\Users\berna\Documents\Github\lab_10\clock.c
+"25 /home/bbd/Documents/Github/lab_10/beat.c
+[v _lastBeat lastBeat `us  1 s 2 lastBeat ]
+"26
+[v _bpm bpm `us  1 s 2 bpm ]
+"27
+[v _detected detected `a  1 s 1 detected ]
+"28
+[v _thresholdExceeded thresholdExceeded `a  1 s 1 thresholdExceeded ]
+"29
+[v _lastRun lastRun `us  1 s 2 lastRun ]
+"30
+[v _threshold threshold `us  1 s 2 threshold ]
+"31
+[v _delay delay `us  1 s 2 delay ]
+"32
+[v _thresholdCount thresholdCount `i  1 s 2 thresholdCount ]
+"33
+[v _lastDetected lastDetected `a  1 s 1 lastDetected ]
+"12 /home/bbd/Documents/Github/lab_10/buttons.c
+[v _lastTime lastTime `i  1 e 2 0 ]
+[s S1994 . 8 `*.39VEuc 1 port 2 0 `uc 1 pin 1 2 `E10875 1 state 1 3 `E10875 1 lastState 1 4 `us 1 lastHoldTime 2 5 `E10869 1 event 1 7 ]
+"13
+[v _buttons buttons `[4]S1994  1 e 32 0 ]
+"4 /home/bbd/Documents/Github/lab_10/clock.c
 [v _currentTime currentTime `us  1 s 2 currentTime ]
-"8 C:\Users\berna\Documents\Github\lab_10\controller.c
+"7 /home/bbd/Documents/Github/lab_10/controller.c
 [v _address address `us  1 e 2 0 ]
+"8
+[v _menu menu `*.5S1994  1 e 1 0 ]
+[v _up up `*.5S1994  1 e 1 0 ]
+[v _down down `*.5S1994  1 e 1 0 ]
+[v _enter enter `*.5S1994  1 e 1 0 ]
 "9
-[v _up up `*.5S1927  1 e 1 0 ]
-[v _down down `*.5S1927  1 e 1 0 ]
-[v _menu menu `*.5S1927  1 e 1 0 ]
-[v _enter enter `*.5S1927  1 e 1 0 ]
-"10
 [v _incInterval incInterval `i  1 e 2 0 ]
-"11
+"10
 [v _lastIncTime lastIncTime `us  1 e 2 0 ]
-"12
+"11
 [v _lastActiveTime lastActiveTime `us  1 e 2 0 ]
-"14 C:\Users\berna\Documents\Github\lab_10\dmx.c
+"12
+[v _startup startup `a  1 e 1 0 ]
+"14
+[v _menuSelected menuSelected `uc  1 e 1 0 ]
+"15
+[v _currentSelection currentSelection `uc  1 e 1 0 ]
+"16
+[v _menuPressed menuPressed `a  1 e 1 0 ]
+"17
+[v _enterPressed enterPressed `a  1 e 1 0 ]
+"19
+[v _upState upState `a  1 e 1 0 ]
+[v _downState downState `a  1 e 1 0 ]
+[v _menuState menuState `a  1 e 1 0 ]
+[v _enterState enterState `a  1 e 1 0 ]
+"14 /home/bbd/Documents/Github/lab_10/dmx.c
 [v _initial initial `i  1 e 2 0 ]
 "15
 [v _arrayIndex arrayIndex `i  1 e 2 0 ]
 "16
 [v _dmxArray dmxArray `[513]i  1 e 1026 @9198 ]
-"17 C:\Users\berna\Documents\Github\lab_10\led.c
+"14 /home/bbd/Documents/Github/lab_10/led.c
 [v _lastLedActiveTime lastLedActiveTime `us  1 e 2 0 ]
-"18
+"15
 [v _currentState currentState `i  1 e 2 0 ]
-"58 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/adcc.c
+"56 /home/bbd/Documents/Github/lab_10/main.c
+[v _startTime startTime `us  1 e 2 0 ]
+"58 /home/bbd/Documents/Github/lab_10/mcc_generated_files/adcc.c
 [v _ADCC_ADTI_InterruptHandler ADCC_ADTI_InterruptHandler `*.37(v  1 e 2 0 ]
-"63 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/eusart1.c
+"63 /home/bbd/Documents/Github/lab_10/mcc_generated_files/eusart1.c
 [v _eusart1RxHead eusart1RxHead `VEuc  1 e 1 0 ]
 "64
 [v _eusart1RxTail eusart1RxTail `VEuc  1 e 1 0 ]
@@ -1167,7 +1173,7 @@ channel_FVR_Buffer2 63
 "75
 [v _EUSART1_ErrorHandler EUSART1_ErrorHandler `*.37(v  1 e 2 0 ]
 [s S1140 . 4 `us 1 address 2 0 `uc 1 length 1 2 `*.4uc 1 pbuffer 1 3 ]
-"185 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/i2c1.c
+"185 /home/bbd/Documents/Github/lab_10/mcc_generated_files/i2c1.c
 [s S1152 . 3 `uc 1 count 1 0 `*.5S1140 1 ptrb_list 1 1 `*.4E10866 1 pTrFlag 1 2 ]
 [v _i2c1_tr_queue i2c1_tr_queue `[1]S1152  1 s 3 i2c1_tr_queue ]
 "186
@@ -1186,205 +1192,80 @@ channel_FVR_Buffer2 63
 [v _p_i2c1_trb_current p_i2c1_trb_current `*.5S1140  1 s 1 p_i2c1_trb_current ]
 "191
 [v _p_i2c1_current p_i2c1_current `*.4VES1152  1 s 1 p_i2c1_current ]
-"59 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/tmr0.c
+"59 /home/bbd/Documents/Github/lab_10/mcc_generated_files/tmr0.c
 [v _TMR0_InterruptHandler TMR0_InterruptHandler `*.37(v  1 e 2 0 ]
-"15 C:\Users\berna\Documents\Github\lab_10\tm1650.c
+"14 /home/bbd/Documents/Github/lab_10/tm1650.c
 [v _tm1650_status tm1650_status `a  1 e 1 0 ]
-"20
+"19
 [v _charTable charTable `DC[96]uc  1 e 96 0 ]
-"30
+"29
 [v _position position `uc  1 e 1 0 ]
-"63 C:\Users\berna\Documents\Github\lab_10\main.c
+"58 /home/bbd/Documents/Github/lab_10/main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"96
+"82
 } 0
-"52 C:\Users\berna\Documents\Github\lab_10\tm1650.c
+"51 /home/bbd/Documents/Github/lab_10/tm1650.c
 [v _TM1650_init TM1650_init `(v  1 e 1 0 ]
 {
-"58
+"57
 } 0
-"5 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\printf.c
-[v _printf printf `(i  1 e 2 0 ]
-{
-"8
-[v printf@ap ap `[1]*.4v  1 a 1 76 ]
-"5
-[v printf@fmt fmt `*.25DCuc  1 p 2 0 ]
-"13
-} 0
-"1368 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\doprnt.c
-[v _vfprintf vfprintf `(i  1 e 2 0 ]
-{
-[s S2596 _IO_FILE 0 ]
-[v vfprintf@fp fp `*.1S2596  1 a 1 wreg ]
-"1371
-[v vfprintf@cfmt cfmt `*.25uc  1 a 2 71 ]
-"1368
-[v vfprintf@fp fp `*.1S2596  1 a 1 wreg ]
-[v vfprintf@fmt fmt `*.25DCuc  1 p 2 65 ]
-[v vfprintf@ap ap `*.4*.4v  1 p 1 67 ]
-"1373
-"1368
-[v vfprintf@fp fp `*.1S2596  1 a 1 70 ]
-"1382
-} 0
-"670
-[v _vfpfcnvrt vfpfcnvrt `(i  1 s 2 vfpfcnvrt ]
-{
-[s S2596 _IO_FILE 0 ]
-[v vfpfcnvrt@fp fp `*.1S2596  1 a 1 wreg ]
-"672
-[v vfpfcnvrt@c c `uc  1 a 1 63 ]
-"670
-[v vfpfcnvrt@fp fp `*.1S2596  1 a 1 wreg ]
-[v vfpfcnvrt@fmt fmt `*.4*.25uc  1 p 1 56 ]
-[v vfpfcnvrt@ap ap `*.4*.4v  1 p 1 57 ]
-"680
-"670
-[v vfpfcnvrt@fp fp `*.1S2596  1 a 1 64 ]
-"1365
-} 0
-"259
-[v _ctoa ctoa `(i  1 s 2 ctoa ]
-{
-[s S2596 _IO_FILE 0 ]
-[v ctoa@fp fp `*.1S2596  1 a 1 wreg ]
-"261
-[v ctoa@w w `i  1 a 2 54 ]
-"259
-[v ctoa@fp fp `*.1S2596  1 a 1 wreg ]
-[v ctoa@c c `uc  1 p 1 50 ]
-"264
-"259
-[v ctoa@fp fp `*.1S2596  1 a 1 53 ]
-"270
-} 0
-"72
-[v _pad pad `(i  1 s 2 pad ]
-{
-[s S2596 _IO_FILE 0 ]
-[v pad@fp fp `*.1S2596  1 a 1 wreg ]
-"74
-[v pad@w w `i  1 a 2 47 ]
-[v pad@i i `i  1 a 2 45 ]
-"72
-[v pad@fp fp `*.1S2596  1 a 1 wreg ]
-[v pad@buf buf `*.5uc  1 p 1 41 ]
-[v pad@p p `i  1 p 2 42 ]
-"77
-"72
-[v pad@fp fp `*.1S2596  1 a 1 49 ]
-"95
-} 0
-"12 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\strlen.c
-[v _strlen strlen `(ui  1 e 2 0 ]
-{
-"14
-[v strlen@a a `*.26DCuc  1 a 2 3 ]
-"12
-[v strlen@s s `*.26DCuc  1 p 2 0 ]
-"26
-} 0
-"8 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\nf_fputs.c
-[v _fputs fputs `(i  1 e 2 0 ]
-{
-[v fputs@s s `*.5DCuc  1 a 1 wreg ]
-"11
-[v fputs@i i `i  1 a 2 39 ]
-"10
-[v fputs@c c `uc  1 a 1 37 ]
-"8
-[v fputs@s s `*.5DCuc  1 a 1 wreg ]
-[s S2927 _IO_FILE 5 `*.1uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
-[v fputs@fp fp `*.1S2927  1 p 1 33 ]
-"13
-[v fputs@s s `*.5DCuc  1 a 1 38 ]
-"19
-} 0
-"8 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\nf_fputc.c
-[v _fputc fputc `(i  1 e 2 0 ]
-{
-[v fputc@c c `i  1 p 2 25 ]
-[s S2927 _IO_FILE 5 `*.1uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
-[v fputc@fp fp `*.1S2927  1 p 1 27 ]
-"21
-} 0
-"121 C:\Users\berna\Documents\Github\lab_10\tm1650.c
-[v _putch putch `(v  1 e 1 0 ]
-{
-[v putch@n n `uc  1 a 1 wreg ]
-[v putch@n n `uc  1 a 1 wreg ]
-"123
-[v putch@n n `uc  1 a 1 24 ]
-"131
-} 0
-"96
-[v _TM1650_setDigit TM1650_setDigit `(v  1 e 1 0 ]
-{
-[v TM1650_setDigit@digit digit `uc  1 a 1 wreg ]
-[v TM1650_setDigit@digit digit `uc  1 a 1 wreg ]
-[v TM1650_setDigit@data data `uc  1 p 1 20 ]
-"98
-[v TM1650_setDigit@digit digit `uc  1 a 1 22 ]
-"100
-} 0
-"50 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/mcc.c
+"50 /home/bbd/Documents/Github/lab_10/mcc_generated_files/mcc.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
 {
 "64
 } 0
-"62 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/tmr2.c
+"62 /home/bbd/Documents/Github/lab_10/mcc_generated_files/tmr2.c
 [v _TMR2_Initialize TMR2_Initialize `(v  1 e 1 0 ]
 {
 "86
 } 0
-"61 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/tmr0.c
+"61 /home/bbd/Documents/Github/lab_10/mcc_generated_files/tmr0.c
 [v _TMR0_Initialize TMR0_Initialize `(v  1 e 1 0 ]
 {
 "85
 } 0
-"64 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/pwm4.c
+"64 /home/bbd/Documents/Github/lab_10/mcc_generated_files/pwm4.c
 [v _PWM4_Initialize PWM4_Initialize `(v  1 e 1 0 ]
 {
 "80
 } 0
-"64 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/pwm3.c
+"64 /home/bbd/Documents/Github/lab_10/mcc_generated_files/pwm3.c
 [v _PWM3_Initialize PWM3_Initialize `(v  1 e 1 0 ]
 {
 "80
 } 0
-"64 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/pwm2.c
+"64 /home/bbd/Documents/Github/lab_10/mcc_generated_files/pwm2.c
 [v _PWM2_Initialize PWM2_Initialize `(v  1 e 1 0 ]
 {
 "80
 } 0
-"64 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/pwm1.c
+"64 /home/bbd/Documents/Github/lab_10/mcc_generated_files/pwm1.c
 [v _PWM1_Initialize PWM1_Initialize `(v  1 e 1 0 ]
 {
 "80
 } 0
-"80 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/mcc.c
+"80 /home/bbd/Documents/Github/lab_10/mcc_generated_files/mcc.c
 [v _PMD_Initialize PMD_Initialize `(v  1 e 1 0 ]
 {
 "98
 } 0
-"55 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/pin_manager.c
+"55 /home/bbd/Documents/Github/lab_10/mcc_generated_files/pin_manager.c
 [v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
 {
 "116
 } 0
-"66 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/mcc.c
+"66 /home/bbd/Documents/Github/lab_10/mcc_generated_files/mcc.c
 [v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
 {
 "78
 } 0
-"198 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/i2c1.c
+"198 /home/bbd/Documents/Github/lab_10/mcc_generated_files/i2c1.c
 [v _I2C1_Initialize I2C1_Initialize `(v  1 e 1 0 ]
 {
 "224
 } 0
-"81 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/eusart1.c
+"81 /home/bbd/Documents/Github/lab_10/mcc_generated_files/eusart1.c
 [v _EUSART1_Initialize EUSART1_Initialize `(v  1 e 1 0 ]
 {
 "117
@@ -1407,124 +1288,247 @@ channel_FVR_Buffer2 63
 [v EUSART1_SetErrorHandler@interruptHandler interruptHandler `*.37(v  1 p 2 0 ]
 "229
 } 0
-"64 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/adcc.c
+"64 /home/bbd/Documents/Github/lab_10/mcc_generated_files/adcc.c
 [v _ADCC_Initialize ADCC_Initialize `(v  1 e 1 0 ]
 {
 "119
 } 0
-"24 C:\Users\berna\Documents\Github\lab_10\led.c
+"21 /home/bbd/Documents/Github/lab_10/led.c
 [v _LED_task LED_task `(v  1 e 1 0 ]
 {
-"87
+"84
 } 0
-"82 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/pwm4.c
+"82 /home/bbd/Documents/Github/lab_10/mcc_generated_files/pwm4.c
 [v _PWM4_LoadDutyValue PWM4_LoadDutyValue `(v  1 e 1 0 ]
 {
 [v PWM4_LoadDutyValue@dutyValue dutyValue `us  1 p 2 0 ]
 "100
 } 0
-"82 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/pwm3.c
+"82 /home/bbd/Documents/Github/lab_10/mcc_generated_files/pwm3.c
 [v _PWM3_LoadDutyValue PWM3_LoadDutyValue `(v  1 e 1 0 ]
 {
 [v PWM3_LoadDutyValue@dutyValue dutyValue `us  1 p 2 0 ]
 "100
 } 0
-"82 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/pwm2.c
+"82 /home/bbd/Documents/Github/lab_10/mcc_generated_files/pwm2.c
 [v _PWM2_LoadDutyValue PWM2_LoadDutyValue `(v  1 e 1 0 ]
 {
 [v PWM2_LoadDutyValue@dutyValue dutyValue `us  1 p 2 0 ]
 "100
 } 0
-"82 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/pwm1.c
+"82 /home/bbd/Documents/Github/lab_10/mcc_generated_files/pwm1.c
 [v _PWM1_LoadDutyValue PWM1_LoadDutyValue `(v  1 e 1 0 ]
 {
 [v PWM1_LoadDutyValue@dutyValue dutyValue `us  1 p 2 0 ]
 "100
 } 0
-"51 C:\Users\berna\Documents\Github\lab_10\beat.c
+"49 /home/bbd/Documents/Github/lab_10/beat.c
 [v _BEAT_detected BEAT_detected `(a  1 e 1 0 ]
 {
-"58
+"56
 } 0
-"18 C:\Users\berna\Documents\Github\lab_10\dmx.c
+"18 /home/bbd/Documents/Github/lab_10/dmx.c
 [v _DMX_init DMX_init `(v  1 e 1 0 ]
 {
 "20
 } 0
-"232 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/eusart1.c
+"232 /home/bbd/Documents/Github/lab_10/mcc_generated_files/eusart1.c
 [v _EUSART1_SetRxInterruptHandler EUSART1_SetRxInterruptHandler `(v  1 e 1 0 ]
 {
 [v EUSART1_SetRxInterruptHandler@interruptHandler interruptHandler `*.37(v  1 p 2 0 ]
 "234
 } 0
-"46 C:\Users\berna\Documents\Github\lab_10\controller.c
+"53 /home/bbd/Documents/Github/lab_10/controller.c
 [v _CONTROLLER_task CONTROLLER_task `(v  1 e 1 0 ]
 {
-"48
-[v CONTROLLER_task@isActive isActive `a  1 a 1 25 ]
-"89
+"55
+[v CONTROLLER_task@isActive isActive `a  1 a 1 13 ]
+"77
+[v CONTROLLER_task@status status `VEuc  1 a 1 12 ]
+"135
 } 0
+"141
+[v _menuSelection menuSelection `(v  1 e 1 0 ]
+{
+"177
+} 0
+"5 /opt/microchip/xc8/v2.05/pic/sources/c99/common/printf.c
+[v _printf printf `(i  1 e 2 0 ]
+{
+"8
+[v printf@ap ap `[1]*.4v  1 a 1 76 ]
+"5
+[v printf@fmt fmt `*.25DCuc  1 p 2 0 ]
+"13
+} 0
+"1368 /opt/microchip/xc8/v2.05/pic/sources/c99/common/doprnt.c
+[v _vfprintf vfprintf `(i  1 e 2 0 ]
+{
+[s S2597 _IO_FILE 0 ]
+[v vfprintf@fp fp `*.1S2597  1 a 1 wreg ]
+"1371
+[v vfprintf@cfmt cfmt `*.25uc  1 a 2 71 ]
+"1368
+[v vfprintf@fp fp `*.1S2597  1 a 1 wreg ]
+[v vfprintf@fmt fmt `*.25DCuc  1 p 2 65 ]
+[v vfprintf@ap ap `*.4*.4v  1 p 1 67 ]
+"1373
+"1368
+[v vfprintf@fp fp `*.1S2597  1 a 1 70 ]
+"1382
+} 0
+"670
+[v _vfpfcnvrt vfpfcnvrt `(i  1 s 2 vfpfcnvrt ]
+{
+[s S2597 _IO_FILE 0 ]
+[v vfpfcnvrt@fp fp `*.1S2597  1 a 1 wreg ]
+"672
+[v vfpfcnvrt@c c `uc  1 a 1 63 ]
+"670
+[v vfpfcnvrt@fp fp `*.1S2597  1 a 1 wreg ]
+[v vfpfcnvrt@fmt fmt `*.4*.25uc  1 p 1 56 ]
+[v vfpfcnvrt@ap ap `*.4*.4v  1 p 1 57 ]
+"680
+"670
+[v vfpfcnvrt@fp fp `*.1S2597  1 a 1 64 ]
+"1365
+} 0
+"259
+[v _ctoa ctoa `(i  1 s 2 ctoa ]
+{
+[s S2597 _IO_FILE 0 ]
+[v ctoa@fp fp `*.1S2597  1 a 1 wreg ]
+"261
+[v ctoa@w w `i  1 a 2 53 ]
+"259
+[v ctoa@fp fp `*.1S2597  1 a 1 wreg ]
+[v ctoa@c c `uc  1 p 1 50 ]
+"264
+"259
+[v ctoa@fp fp `*.1S2597  1 a 1 55 ]
+"270
+} 0
+"72
+[v _pad pad `(i  1 s 2 pad ]
+{
+[s S2597 _IO_FILE 0 ]
+[v pad@fp fp `*.1S2597  1 a 1 wreg ]
+"74
+[v pad@w w `i  1 a 2 47 ]
+[v pad@i i `i  1 a 2 45 ]
+"72
+[v pad@fp fp `*.1S2597  1 a 1 wreg ]
+[v pad@buf buf `*.5uc  1 p 1 41 ]
+[v pad@p p `i  1 p 2 42 ]
+"77
+"72
+[v pad@fp fp `*.1S2597  1 a 1 49 ]
+"95
+} 0
+"12 /opt/microchip/xc8/v2.05/pic/sources/c99/common/strlen.c
+[v _strlen strlen `(ui  1 e 2 0 ]
+{
+"14
+[v strlen@a a `*.26DCuc  1 a 2 3 ]
+"12
+[v strlen@s s `*.26DCuc  1 p 2 0 ]
+"26
+} 0
+"8 /opt/microchip/xc8/v2.05/pic/sources/c99/common/nf_fputs.c
+[v _fputs fputs `(i  1 e 2 0 ]
+{
+[v fputs@s s `*.5DCuc  1 a 1 wreg ]
+"11
+[v fputs@i i `i  1 a 2 38 ]
+"10
+[v fputs@c c `uc  1 a 1 37 ]
+"8
+[v fputs@s s `*.5DCuc  1 a 1 wreg ]
+[s S2928 _IO_FILE 5 `*.1uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
+[v fputs@fp fp `*.1S2928  1 p 1 33 ]
+"13
+[v fputs@s s `*.5DCuc  1 a 1 40 ]
+"19
+} 0
+"8 /opt/microchip/xc8/v2.05/pic/sources/c99/common/nf_fputc.c
+[v _fputc fputc `(i  1 e 2 0 ]
+{
+[v fputc@c c `i  1 p 2 25 ]
+[s S2928 _IO_FILE 5 `*.1uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
+[v fputc@fp fp `*.1S2928  1 p 1 27 ]
 "21
+} 0
+"120 /home/bbd/Documents/Github/lab_10/tm1650.c
+[v _putch putch `(v  1 e 1 0 ]
+{
+[v putch@n n `uc  1 a 1 wreg ]
+[v putch@n n `uc  1 a 1 wreg ]
+"122
+[v putch@n n `uc  1 a 1 24 ]
+"130
+} 0
+"95
+[v _TM1650_setDigit TM1650_setDigit `(v  1 e 1 0 ]
+{
+[v TM1650_setDigit@digit digit `uc  1 a 1 wreg ]
+[v TM1650_setDigit@digit digit `uc  1 a 1 wreg ]
+[v TM1650_setDigit@data data `uc  1 p 1 20 ]
+"97
+[v TM1650_setDigit@digit digit `uc  1 a 1 22 ]
+"99
+} 0
+"28 /home/bbd/Documents/Github/lab_10/controller.c
 [v _address_inc address_inc `(v  1 e 1 0 ]
 {
-"30
+"37
 } 0
-"35
+"42
 [v _address_dec address_dec `(v  1 e 1 0 ]
 {
-"44
+"51
 } 0
-"42 C:\Users\berna\Documents\Github\lab_10\tm1650.c
+"41 /home/bbd/Documents/Github/lab_10/tm1650.c
 [v _TM1650_enable TM1650_enable `(v  1 e 1 0 ]
 {
 [v TM1650_enable@enable enable `a  1 a 1 wreg ]
 [v TM1650_enable@enable enable `a  1 a 1 wreg ]
 [v TM1650_enable@enable enable `a  1 a 1 20 ]
-"50
+"49
 } 0
-"109 C:\Users\berna\Documents\Github\lab_10\buttons.c
-[v _BUTTONS_isHeld BUTTONS_isHeld `(a  1 e 1 0 ]
-{
-[s S1927 . 8 `*.39VEuc 1 port 2 0 `uc 1 pin 1 2 `E10723 1 state 1 3 `E10723 1 lastState 1 4 `us 1 lastHoldTime 2 5 `E10717 1 event 1 7 ]
-[v BUTTONS_isHeld@button button `*.5S1927  1 a 1 wreg ]
-[v BUTTONS_isHeld@button button `*.5S1927  1 a 1 wreg ]
-[v BUTTONS_isHeld@button button `*.5S1927  1 a 1 0 ]
-"116
-} 0
-"100
+"97 /home/bbd/Documents/Github/lab_10/buttons.c
 [v _BUTTONS_isClicked BUTTONS_isClicked `(a  1 e 1 0 ]
 {
-[s S1927 . 8 `*.39VEuc 1 port 2 0 `uc 1 pin 1 2 `E10723 1 state 1 3 `E10723 1 lastState 1 4 `us 1 lastHoldTime 2 5 `E10717 1 event 1 7 ]
-[v BUTTONS_isClicked@button button `*.5S1927  1 a 1 wreg ]
-[v BUTTONS_isClicked@button button `*.5S1927  1 a 1 wreg ]
-[v BUTTONS_isClicked@button button `*.5S1927  1 a 1 0 ]
-"107
+[s S1994 . 8 `*.39VEuc 1 port 2 0 `uc 1 pin 1 2 `E10875 1 state 1 3 `E10875 1 lastState 1 4 `us 1 lastHoldTime 2 5 `E10869 1 event 1 7 ]
+[v BUTTONS_isClicked@button button `*.5S1994  1 a 1 wreg ]
+[v BUTTONS_isClicked@button button `*.5S1994  1 a 1 wreg ]
+[v BUTTONS_isClicked@button button `*.5S1994  1 a 1 0 ]
+"104
 } 0
-"14 C:\Users\berna\Documents\Github\lab_10\controller.c
+"21 /home/bbd/Documents/Github/lab_10/controller.c
 [v _CONTROLLER_init CONTROLLER_init `(v  1 e 1 0 ]
 {
-"16
+"23
 } 0
-"102 C:\Users\berna\Documents\Github\lab_10\tm1650.c
+"101 /home/bbd/Documents/Github/lab_10/tm1650.c
 [v _TM1650_fastPrintNum TM1650_fastPrintNum `(v  1 e 1 0 ]
 {
 [v TM1650_fastPrintNum@num num `us  1 p 2 20 ]
-"119
+"118
 } 0
-"32
+"31
 [v _writeData writeData `(v  1 s 1 writeData ]
 {
 [v writeData@address address `uc  1 a 1 wreg ]
-"34
+"33
 [v writeData@status status `E11370  1 a 1 19 ]
-"32
+"31
 [v writeData@address address `uc  1 a 1 wreg ]
 [v writeData@data data `uc  1 p 1 14 ]
-"34
+"33
 [v writeData@address address `uc  1 a 1 18 ]
-"40
+"39
 } 0
-"600 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/i2c1.c
+"600 /home/bbd/Documents/Github/lab_10/mcc_generated_files/i2c1.c
 [v _I2C1_MasterWrite I2C1_MasterWrite `(v  1 e 1 0 ]
 {
 "601
@@ -1581,7 +1585,7 @@ channel_FVR_Buffer2 63
 {
 "652
 } 0
-"5 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\lwmod.c
+"5 /opt/microchip/xc8/v2.05/pic/sources/c99/common/lwmod.c
 [v ___lwmod __lwmod `(ui  1 e 2 0 ]
 {
 "10
@@ -1591,58 +1595,58 @@ channel_FVR_Buffer2 63
 [v ___lwmod@dividend dividend `ui  1 p 2 10 ]
 "25
 } 0
-"8 C:\Users\berna\Documents\Github\lab_10\clock.c
+"8 /home/bbd/Documents/Github/lab_10/clock.c
 [v _CLOCK_init CLOCK_init `(v  1 e 1 0 ]
 {
 "14
 } 0
-"134 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/tmr0.c
+"134 /home/bbd/Documents/Github/lab_10/mcc_generated_files/tmr0.c
 [v _TMR0_SetInterruptHandler TMR0_SetInterruptHandler `(v  1 e 1 0 ]
 {
 [v TMR0_SetInterruptHandler@InterruptHandler InterruptHandler `*.37(v  1 p 2 0 ]
 "136
 } 0
-"59 C:\Users\berna\Documents\Github\lab_10\buttons.c
+"56 /home/bbd/Documents/Github/lab_10/buttons.c
 [v _BUTTONS_task BUTTONS_task `(v  1 e 1 0 ]
 {
-[s S1927 . 8 `*.39VEuc 1 port 2 0 `uc 1 pin 1 2 `E10723 1 state 1 3 `E10723 1 lastState 1 4 `us 1 lastHoldTime 2 5 `E10717 1 event 1 7 ]
-"71
-[v BUTTONS_task@btn btn `*.5S1927  1 a 1 8 ]
-"70
+[s S1994 . 8 `*.39VEuc 1 port 2 0 `uc 1 pin 1 2 `E10875 1 state 1 3 `E10875 1 lastState 1 4 `us 1 lastHoldTime 2 5 `E10869 1 event 1 7 ]
+"68
+[v BUTTONS_task@btn btn `*.5S1994  1 a 1 8 ]
+"67
 [v BUTTONS_task@i i `uc  1 a 1 5 ]
-"61
+"58
 [v BUTTONS_task@time time `us  1 a 2 6 ]
-"98
+"95
 } 0
-"26
+"23
 [v _BUTTONS_init BUTTONS_init `(v  1 e 1 0 ]
 {
-"39
+"36
 } 0
-"19
+"16
 [v _init init `(v  1 s 1 init ]
 {
-[s S1927 . 8 `*.39VEuc 1 port 2 0 `uc 1 pin 1 2 `E10723 1 state 1 3 `E10723 1 lastState 1 4 `us 1 lastHoldTime 2 5 `E10717 1 event 1 7 ]
-[v init@btn btn `*.5S1927  1 a 1 wreg ]
-[v init@btn btn `*.5S1927  1 a 1 wreg ]
+[s S1994 . 8 `*.39VEuc 1 port 2 0 `uc 1 pin 1 2 `E10875 1 state 1 3 `E10875 1 lastState 1 4 `us 1 lastHoldTime 2 5 `E10869 1 event 1 7 ]
+[v init@btn btn `*.5S1994  1 a 1 wreg ]
+[v init@btn btn `*.5S1994  1 a 1 wreg ]
 [v init@port port `*.39VEuc  1 p 2 0 ]
 [v init@pin pin `uc  1 p 1 2 ]
-[v init@btn btn `*.5S1927  1 a 1 4 ]
-"24
+[v init@btn btn `*.5S1994  1 a 1 4 ]
+"21
 } 0
-"41
+"38
 [v _GPIO_init GPIO_init `(v  1 s 1 GPIO_init ]
 {
-"57
+"54
 } 0
-"67 C:\Users\berna\Documents\Github\lab_10\beat.c
+"65 /home/bbd/Documents/Github/lab_10/beat.c
 [v _BEAT_task BEAT_task `(v  1 e 1 0 ]
 {
-"97
+"95
 [v BEAT_task@offset offset `us  1 a 2 10 ]
-"126
+"124
 } 0
-"5 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\lwdiv.c
+"5 /opt/microchip/xc8/v2.05/pic/sources/c99/common/lwdiv.c
 [v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
 {
 "10
@@ -1654,17 +1658,17 @@ channel_FVR_Buffer2 63
 [v ___lwdiv@dividend dividend `ui  1 p 2 2 ]
 "30
 } 0
-"16 C:\Users\berna\Documents\Github\lab_10\clock.c
+"16 /home/bbd/Documents/Github/lab_10/clock.c
 [v _CLOCK_getTime CLOCK_getTime `(us  1 e 2 0 ]
 {
 "18
 } 0
-"41 C:\Users\berna\Documents\Github\lab_10\beat.c
+"39 /home/bbd/Documents/Github/lab_10/beat.c
 [v _BEAT_init BEAT_init `(v  1 e 1 0 ]
 {
-"45
+"43
 } 0
-"121 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/adcc.c
+"121 /home/bbd/Documents/Github/lab_10/mcc_generated_files/adcc.c
 [v _ADCC_StartConversion ADCC_StartConversion `(v  1 e 1 0 ]
 {
 [v ADCC_StartConversion@channel channel `E10867  1 a 1 wreg ]
@@ -1685,27 +1689,27 @@ channel_FVR_Buffer2 63
 [v ADCC_SetADTIInterruptHandler@InterruptHandler InterruptHandler `*.37(v  1 p 2 0 ]
 "319
 } 0
-"52 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/interrupt_manager.c
+"52 /home/bbd/Documents/Github/lab_10/mcc_generated_files/interrupt_manager.c
 [v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
 {
 "86
 } 0
-"121 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/tmr0.c
+"121 /home/bbd/Documents/Github/lab_10/mcc_generated_files/tmr0.c
 [v _TMR0_ISR TMR0_ISR `(v  1 e 1 0 ]
 {
 "131
 } 0
-"20 C:\Users\berna\Documents\Github\lab_10\clock.c
+"20 /home/bbd/Documents/Github/lab_10/clock.c
 [v _CLOCK_timerCallback CLOCK_timerCallback `(v  1 s 1 CLOCK_timerCallback ]
 {
 "22
 } 0
-"138 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/tmr0.c
+"138 /home/bbd/Documents/Github/lab_10/mcc_generated_files/tmr0.c
 [v _TMR0_DefaultInterruptHandler TMR0_DefaultInterruptHandler `(v  1 e 1 0 ]
 {
 "141
 } 0
-"235 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/i2c1.c
+"235 /home/bbd/Documents/Github/lab_10/mcc_generated_files/i2c1.c
 [v _I2C1_ISR I2C1_ISR `(v  1 e 1 0 ]
 {
 "238
@@ -1737,14 +1741,14 @@ channel_FVR_Buffer2 63
 {
 "746
 } 0
-"22 C:\Users\berna\Documents\Github\lab_10\dmx.c
+"22 /home/bbd/Documents/Github/lab_10/dmx.c
 [v _DMX_interrupt DMX_interrupt `(v  1 e 1 0 ]
 {
 "35
 [v DMX_interrupt@dummy dummy `VEuc  1 a 1 6 ]
 "39
 } 0
-"171 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/eusart1.c
+"171 /home/bbd/Documents/Github/lab_10/mcc_generated_files/eusart1.c
 [v _EUSART1_Receive_ISR EUSART1_Receive_ISR `(v  1 e 1 0 ]
 {
 "193
@@ -1768,7 +1772,7 @@ channel_FVR_Buffer2 63
 {
 "203
 } 0
-"308 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/adcc.c
+"308 /home/bbd/Documents/Github/lab_10/mcc_generated_files/adcc.c
 [v _ADCC_ThresholdISR ADCC_ThresholdISR `(v  1 e 1 0 ]
 {
 "315
@@ -1778,8 +1782,8 @@ channel_FVR_Buffer2 63
 {
 "323
 } 0
-"37 C:\Users\berna\Documents\Github\lab_10\beat.c
+"35 /home/bbd/Documents/Github/lab_10/beat.c
 [v _adcThresholdHandler adcThresholdHandler `(v  1 s 1 adcThresholdHandler ]
 {
-"39
+"37
 } 0

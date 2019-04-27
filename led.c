@@ -6,9 +6,6 @@
  */
 
 
-#include <xc.h>
-
-#include<stdbool.h>
 #include "led.h"
 #include "beat.h"
 #include "clock.h"

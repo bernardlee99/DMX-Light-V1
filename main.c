@@ -42,58 +42,41 @@
 */
 
 #include <pic16f18446.h>
-#include<stdint.h>
+#include "mcc_generated_files/mcc.h"
 #include "tm1650.h"
 #include "clock.h"
 #include "buttons.h"
 #include "controller.h"
 #include "led.h"
 #include "beat.h"
-#include "mcc_generated_files/mcc.h"
 #include "beat.h"
 #include "dmx.h"
-int dmxArray[513];
+#define _XTAL_FREQ 32000000
 
-button_t *up, *down, *menu, *enter;
-
-/*
-                         Main application
- */
+time_t startTime = 0;
 
 void main(void)
 {
-    // initialize the device
+    // Initialize the device
     SYSTEM_Initialize();
     __delay_ms(500);
     CLOCK_init();
     BUTTONS_init();
-    DMX_init();
-
+    DMX_init();    
+    BEAT_init();
+ 
     INTERRUPT_GlobalInterruptEnable();
     INTERRUPT_PeripheralInterruptEnable();
     
     TM1650_init();
     CONTROLLER_init();
-    BEAT_init();
-    
-    
+    startTime = CLOCK_getTime();
+
     while (1)
     {   
         BUTTONS_task();
         CONTROLLER_task();
         BEAT_task();
-        LED_task();
-
-            /*PWM1_LoadDutyValue( ( ((int)dmxArray[getAddress()])/255.0 ) * 120);
-
-            PWM2_LoadDutyValue( ( ((int)dmxArray[1+getAddress()])/255.0 ) * 120);
-
-            PWM3_LoadDutyValue( ( ((int)dmxArray[2+getAddress()])/255.0 ) * 120);
-
-            PWM4_LoadDutyValue( ( ((int)dmxArray[3+getAddress()])/255.0 ) * 120);*/
-            
+        LED_task();            
     }
 }
-/**
- End of File
-*/
