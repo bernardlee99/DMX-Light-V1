@@ -1,13 +1,13 @@
 Version 4.0 HI-TECH Software Intermediate Code
 "9 controller.c
 [; ;controller.c: 9: button_t *up, *down, *menu, *enter;
-[c E47 0 1 .. ]
-[n E47 . STATE_UNPRESSED STATE_PRESSED  ]
-[c E41 0 1 2 3 .. ]
-[n E41 . EVENT_IDLE EVENT_PRESSED EVENT_INTER_HOLD EVENT_HELD  ]
+[c E48 0 1 .. ]
+[n E48 . STATE_UNPRESSED STATE_PRESSED  ]
+[c E42 0 1 2 3 .. ]
+[n E42 . EVENT_IDLE EVENT_PRESSED EVENT_INTER_HOLD EVENT_HELD  ]
 "15 ./buttons.h
 [; ;./buttons.h: 15: typedef struct {
-[s S1 `*Vuc 1 `uc 1 `E47 1 `E47 1 `us 1 `E41 1 ]
+[s S1 `*Vuc 1 `uc 1 `E48 1 `E48 1 `us 1 `E42 1 ]
 [n S1 . port pin state lastState lastHoldTime event ]
 "18 ./tm1650.h
 [; ;./tm1650.h: 18: void TM1650_fastPrintNum(uint16_t num);
@@ -278,4 +278,18 @@ Version 4.0 HI-TECH Software Intermediate Code
 "89
 [; ;controller.c: 89: }
 [e :UE 9 ]
+}
+"91
+[; ;controller.c: 91: uint8_t getAddress(){
+[v _getAddress `(uc ~T0 @X0 1 ef ]
+{
+[e :U _getAddress ]
+[f ]
+"92
+[; ;controller.c: 92:     return address;
+[e ) -> _address `uc ]
+[e $UE 26  ]
+"93
+[; ;controller.c: 93: }
+[e :UE 26 ]
 }

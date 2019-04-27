@@ -81,19 +81,21 @@ void PWM4_Initialize(void)
 
 void PWM4_LoadDutyValue(uint16_t dutyValue)
 {
-    dutyValue &= 0x03FF;
-    
-    // Load duty cycle value
-    if(CCP4CONbits.FMT)
-    {
-        dutyValue <<= 6;
-        CCPR4H = dutyValue >> 8;
-        CCPR4L = dutyValue;
-    }
-    else
-    {
-        CCPR4H = dutyValue >> 8;
-        CCPR4L = dutyValue;
+    if(dutyValue <= 120){
+        dutyValue &= 0x03FF;
+
+        // Load duty cycle value
+        if(CCP4CONbits.FMT)
+        {
+            dutyValue <<= 6;
+            CCPR4H = dutyValue >> 8;
+            CCPR4L = dutyValue;
+        }
+        else
+        {
+            CCPR4H = dutyValue >> 8;
+            CCPR4L = dutyValue;
+        }
     }
 }
 

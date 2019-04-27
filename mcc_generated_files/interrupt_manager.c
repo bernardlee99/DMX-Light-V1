@@ -58,21 +58,21 @@ void __interrupt() INTERRUPT_InterruptManager (void)
     }
     else if(INTCONbits.PEIE == 1)
     {
-        if(PIE1bits.ADTIE == 1 && PIR1bits.ADTIF == 1)
-        {
-            ADCC_ThresholdISR();
-        } 
-        else if(PIE3bits.RC1IE == 1 && PIR3bits.RC1IF == 1)
-        {
-            EUSART1_RxDefaultInterruptHandler();
-        } 
-        else if(PIE3bits.BCL1IE == 1 && PIR3bits.BCL1IF == 1)
+        if(PIE3bits.BCL1IE == 1 && PIR3bits.BCL1IF == 1)
         {
             I2C1_BusCollisionISR();
         } 
         else if(PIE3bits.SSP1IE == 1 && PIR3bits.SSP1IF == 1)
         {
             I2C1_ISR();
+        } 
+        else if(PIE1bits.ADTIE == 1 && PIR1bits.ADTIF == 1)
+        {
+            ADCC_ThresholdISR();
+        } 
+        else if(PIE3bits.RC1IE == 1 && PIR3bits.RC1IF == 1)
+        {
+            EUSART1_RxDefaultInterruptHandler();
         } 
         else
         {

@@ -87,3 +87,7 @@ void CONTROLLER_task() {
     
     
 }
+
+uint8_t getAddress(){
+    return address;
+}

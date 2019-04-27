@@ -81,19 +81,21 @@ void PWM3_Initialize(void)
 
 void PWM3_LoadDutyValue(uint16_t dutyValue)
 {
-    dutyValue &= 0x03FF;
-    
-    // Load duty cycle value
-    if(CCP3CONbits.FMT)
-    {
-        dutyValue <<= 6;
-        CCPR3H = dutyValue >> 8;
-        CCPR3L = dutyValue;
-    }
-    else
-    {
-        CCPR3H = dutyValue >> 8;
-        CCPR3L = dutyValue;
+    if(dutyValue <= 120){
+        dutyValue &= 0x03FF;
+
+        // Load duty cycle value
+        if(CCP3CONbits.FMT)
+        {
+            dutyValue <<= 6;
+            CCPR3H = dutyValue >> 8;
+            CCPR3L = dutyValue;
+        }
+        else
+        {
+            CCPR3H = dutyValue >> 8;
+            CCPR3L = dutyValue;
+        }
     }
 }
 

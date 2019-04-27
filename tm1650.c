@@ -54,7 +54,12 @@ void TM1650_init(){
     TM1650_enable(true);
     printf("    ");
     printf("\r");
-    
+    //welcomeMessage();
+}
+
+void static welcomeMessage(){
+    TM1650_scrollPrint("HEYYYYYY");
+    __delay_ms(200);
 }
 
 void TM1650_brightness(uint8_t brightness){

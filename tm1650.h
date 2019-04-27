@@ -18,5 +18,6 @@ void TM1650_scrollPrint(char *array);
 void TM1650_fastPrintNum(uint16_t num);
 void TM1650_enable(bool enable);
 bool TM1650_isEnabled();
+void static welcomeMessage();
 
 #endif
