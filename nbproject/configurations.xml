@@ -19,11 +19,15 @@
         <itemPath>mcc_generated_files/eusart1.h</itemPath>
         <itemPath>mcc_generated_files/tmr0.h</itemPath>
         <itemPath>mcc_generated_files/i2c1.h</itemPath>
+        <itemPath>mcc_generated_files/adcc.h</itemPath>
       </logicalFolder>
       <itemPath>buttons.h</itemPath>
       <itemPath>clock.h</itemPath>
       <itemPath>controller.h</itemPath>
       <itemPath>tm1650.h</itemPath>
+      <itemPath>beat.h</itemPath>
+      <itemPath>dmx.h</itemPath>
+      <itemPath>led.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -47,12 +51,16 @@
         <itemPath>mcc_generated_files/interrupt_manager.c</itemPath>
         <itemPath>mcc_generated_files/tmr0.c</itemPath>
         <itemPath>mcc_generated_files/i2c1.c</itemPath>
+        <itemPath>mcc_generated_files/adcc.c</itemPath>
       </logicalFolder>
       <itemPath>main.c</itemPath>
       <itemPath>buttons.c</itemPath>
       <itemPath>clock.c</itemPath>
       <itemPath>controller.c</itemPath>
       <itemPath>tm1650.c</itemPath>
+      <itemPath>beat.c</itemPath>
+      <itemPath>dmx.c</itemPath>
+      <itemPath>led.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

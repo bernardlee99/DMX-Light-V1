@@ -1423,8 +1423,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;mcc_generated_files/pwm4.c: 72:  CCPR4H = 0x00;
 [e = _CCPR4H -> -> 0 `i `uc ]
 "75
-[; ;mcc_generated_files/pwm4.c: 75:  CCPR4L = 0x4F;
-[e = _CCPR4L -> -> 79 `i `uc ]
+[; ;mcc_generated_files/pwm4.c: 75:  CCPR4L = 0x00;
+[e = _CCPR4L -> -> 0 `i `uc ]
 "78
 [; ;mcc_generated_files/pwm4.c: 78:  CCPTMRS0bits.C4TSEL = 0x1;
 [e = . . _CCPTMRS0bits 0 3 -> -> 1 `i `uc ]
@@ -1448,66 +1448,58 @@ Version 4.0 HI-TECH Software Intermediate Code
 "84
 [; ;mcc_generated_files/pwm4.c: 84:     dutyValue &= 0x03FF;
 [e =& _dutyValue -> -> 1023 `i `us ]
-"86
-[; ;mcc_generated_files/pwm4.c: 86:     if(dutyValue <= 95){
-[e $ ! <= -> _dutyValue `ui -> -> 95 `i `ui 1515  ]
-{
+"87
+[; ;mcc_generated_files/pwm4.c: 87:     if(CCP4CONbits.FMT)
+[e $ ! != -> . . _CCP4CONbits 0 1 `i -> 0 `i 1515  ]
 "88
-[; ;mcc_generated_files/pwm4.c: 88:         if(CCP4CONbits.FMT)
-[e $ ! != -> . . _CCP4CONbits 0 1 `i -> 0 `i 1516  ]
+[; ;mcc_generated_files/pwm4.c: 88:     {
+{
 "89
-[; ;mcc_generated_files/pwm4.c: 89:         {
-{
-"90
-[; ;mcc_generated_files/pwm4.c: 90:             dutyValue <<= 6;
+[; ;mcc_generated_files/pwm4.c: 89:         dutyValue <<= 6;
 [e =<< _dutyValue -> -> 6 `i `us ]
+"90
+[; ;mcc_generated_files/pwm4.c: 90:         CCPR4H = dutyValue >> 8;
+[e = _CCPR4H -> >> -> _dutyValue `ui -> 8 `i `uc ]
 "91
-[; ;mcc_generated_files/pwm4.c: 91:             CCPR4H = dutyValue >> 8;
-[e = _CCPR4H -> >> -> _dutyValue `ui -> 8 `i `uc ]
+[; ;mcc_generated_files/pwm4.c: 91:         CCPR4L = dutyValue;
+[e = _CCPR4L -> _dutyValue `uc ]
 "92
-[; ;mcc_generated_files/pwm4.c: 92:             CCPR4L = dutyValue;
-[e = _CCPR4L -> _dutyValue `uc ]
+[; ;mcc_generated_files/pwm4.c: 92:     }
+}
+[e $U 1516  ]
 "93
-[; ;mcc_generated_files/pwm4.c: 93:         }
-}
-[e $U 1517  ]
-"94
-[; ;mcc_generated_files/pwm4.c: 94:         else
-[e :U 1516 ]
-"95
-[; ;mcc_generated_files/pwm4.c: 95:         {
-{
-"96
-[; ;mcc_generated_files/pwm4.c: 96:             CCPR4H = dutyValue >> 8;
-[e = _CCPR4H -> >> -> _dutyValue `ui -> 8 `i `uc ]
-"97
-[; ;mcc_generated_files/pwm4.c: 97:             CCPR4L = dutyValue;
-[e = _CCPR4L -> _dutyValue `uc ]
-"98
-[; ;mcc_generated_files/pwm4.c: 98:         }
-}
-[e :U 1517 ]
-"99
-[; ;mcc_generated_files/pwm4.c: 99:     }
-}
+[; ;mcc_generated_files/pwm4.c: 93:     else
 [e :U 1515 ]
-"100
-[; ;mcc_generated_files/pwm4.c: 100: }
+"94
+[; ;mcc_generated_files/pwm4.c: 94:     {
+{
+"95
+[; ;mcc_generated_files/pwm4.c: 95:         CCPR4H = dutyValue >> 8;
+[e = _CCPR4H -> >> -> _dutyValue `ui -> 8 `i `uc ]
+"96
+[; ;mcc_generated_files/pwm4.c: 96:         CCPR4L = dutyValue;
+[e = _CCPR4L -> _dutyValue `uc ]
+"97
+[; ;mcc_generated_files/pwm4.c: 97:     }
+}
+[e :U 1516 ]
+"98
+[; ;mcc_generated_files/pwm4.c: 98: }
 [e :UE 1514 ]
 }
-"102
-[; ;mcc_generated_files/pwm4.c: 102: _Bool PWM4_OutputStatusGet(void)
+"100
+[; ;mcc_generated_files/pwm4.c: 100: _Bool PWM4_OutputStatusGet(void)
 [v _PWM4_OutputStatusGet `(a ~T0 @X0 1 ef ]
-"103
-[; ;mcc_generated_files/pwm4.c: 103: {
+"101
+[; ;mcc_generated_files/pwm4.c: 101: {
 {
 [e :U _PWM4_OutputStatusGet ]
 [f ]
-"105
-[; ;mcc_generated_files/pwm4.c: 105:     return(CCP4CONbits.OUT);
+"103
+[; ;mcc_generated_files/pwm4.c: 103:     return(CCP4CONbits.OUT);
 [e ) -> . . _CCP4CONbits 0 2 `a ]
-[e $UE 1518  ]
-"106
-[; ;mcc_generated_files/pwm4.c: 106: }
-[e :UE 1518 ]
+[e $UE 1517  ]
+"104
+[; ;mcc_generated_files/pwm4.c: 104: }
+[e :UE 1517 ]
 }

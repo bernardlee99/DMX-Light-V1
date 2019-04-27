@@ -1550,8 +1550,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;mcc_generated_files/i2c1.c: 212:     SSP1CON3 = 0x00;
 [e = _SSP1CON3 -> -> 0 `i `uc ]
 "214
-[; ;mcc_generated_files/i2c1.c: 214:     SSP1ADD = 0x13;
-[e = _SSP1ADD -> -> 19 `i `uc ]
+[; ;mcc_generated_files/i2c1.c: 214:     SSP1ADD = 0x4F;
+[e = _SSP1ADD -> -> 79 `i `uc ]
 "217
 [; ;mcc_generated_files/i2c1.c: 217:     PIR3bits.SSP1IF = 0;
 [e = . . _PIR3bits 0 0 -> -> 0 `i `uc ]

@@ -18150,7 +18150,7 @@ void PWM1_Initialize(void)
  CCPR1H = 0x00;
 
 
- CCPR1L = 0x4F;
+ CCPR1L = 0x00;
 
 
  CCPTMRS0bits.C1TSEL = 0x1;
@@ -18161,19 +18161,17 @@ void PWM1_LoadDutyValue(uint16_t dutyValue)
 {
     dutyValue &= 0x03FF;
 
-    if(dutyValue <= 95){
 
-        if(CCP1CONbits.FMT)
-        {
-            dutyValue <<= 6;
-            CCPR1H = dutyValue >> 8;
-            CCPR1L = dutyValue;
-        }
-        else
-        {
-            CCPR1H = dutyValue >> 8;
-            CCPR1L = dutyValue;
-        }
+    if(CCP1CONbits.FMT)
+    {
+        dutyValue <<= 6;
+        CCPR1H = dutyValue >> 8;
+        CCPR1L = dutyValue;
+    }
+    else
+    {
+        CCPR1H = dutyValue >> 8;
+        CCPR1L = dutyValue;
     }
 }
 

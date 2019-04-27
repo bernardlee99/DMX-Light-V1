@@ -1,22 +1,22 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[v F11065 `(v ~T0 @X0 0 tf ]
-"53 main.c
-[; ;main.c: 53: button_t *up, *down, *menu, *enter;
-[c E10721 0 1 .. ]
-[n E10721 . STATE_UNPRESSED STATE_PRESSED  ]
-[c E10715 0 1 2 3 .. ]
-[n E10715 . EVENT_IDLE EVENT_PRESSED EVENT_INTER_HOLD EVENT_HELD  ]
+[v F11124 `(v ~T0 @X0 0 tf ]
+"56 main.c
+[; ;main.c: 56: button_t *up, *down, *menu, *enter;
+[c E10722 0 1 .. ]
+[n E10722 . STATE_UNPRESSED STATE_PRESSED  ]
+[c E10716 0 1 2 3 .. ]
+[n E10716 . EVENT_IDLE EVENT_PRESSED EVENT_INTER_HOLD EVENT_HELD  ]
 "15 ./buttons.h
 [; ;./buttons.h: 15: typedef struct {
-[s S1508 `*Vuc 1 `uc 1 `E10721 1 `E10721 1 `us 1 `E10715 1 ]
+[s S1508 `*Vuc 1 `uc 1 `E10722 1 `E10722 1 `us 1 `E10716 1 ]
 [n S1508 . port pin state lastState lastHoldTime event ]
 [p mainexit ]
-"77 ./mcc_generated_files/mcc.h
-[; ;./mcc_generated_files/mcc.h: 77: void SYSTEM_Initialize(void);
+"78 ./mcc_generated_files/mcc.h
+[; ;./mcc_generated_files/mcc.h: 78: void SYSTEM_Initialize(void);
 [v _SYSTEM_Initialize `(v ~T0 @X0 0 ef ]
-[v F10907 `(v ~T0 @X0 1 tf1`ul ]
+[v F10916 `(v ~T0 @X0 1 tf1`ul ]
 "92 /Applications/microchip/xc8/v2.05/pic/include/pic.h
-[v __delay `JF10907 ~T0 @X0 0 e ]
+[v __delay `JF10916 ~T0 @X0 0 e ]
 [p i __delay ]
 "8 ./clock.h
 [; ;./clock.h: 8: void CLOCK_init();
@@ -24,6 +24,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "29 ./buttons.h
 [; ;./buttons.h: 29: void BUTTONS_init();
 [v _BUTTONS_init `(v ~T0 @X0 0 e? ]
+"3 ./led.h
+[; ;./led.h: 3: void LED_init();
+[v _LED_init `(v ~T0 @X0 0 e? ]
 "419 /Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h
 [; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 419:     struct {
 [s S26 :1 `uc 1 :5 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -38,27 +41,27 @@ Version 4.0 HI-TECH Software Intermediate Code
 "12 ./tm1650.h
 [; ;./tm1650.h: 12: void TM1650_init();
 [v _TM1650_init `(v ~T0 @X0 0 e? ]
+"17
+[; ;./tm1650.h: 17: void TM1650_scrollPrint(char *array);
+[v _TM1650_scrollPrint `(v ~T0 @X0 0 ef1`*uc ]
 "9 ./controller.h
 [; ;./controller.h: 9: void CONTROLLER_init();
 [v _CONTROLLER_init `(v ~T0 @X0 0 e? ]
+"5 ./beat.h
+[; ;./beat.h: 5: void BEAT_init();
+[v _BEAT_init `(v ~T0 @X0 0 e? ]
 "28 ./buttons.h
 [; ;./buttons.h: 28: void BUTTONS_task();
 [v _BUTTONS_task `(v ~T0 @X0 0 e? ]
 "12 ./controller.h
 [; ;./controller.h: 12: void CONTROLLER_task();
 [v _CONTROLLER_task `(v ~T0 @X0 0 e? ]
-"124 ./mcc_generated_files/pwm1.h
-[; ;./mcc_generated_files/pwm1.h: 124: void PWM1_LoadDutyValue(uint16_t dutyValue);
-[v _PWM1_LoadDutyValue `(v ~T0 @X0 0 ef1`us ]
-"124 ./mcc_generated_files/pwm2.h
-[; ;./mcc_generated_files/pwm2.h: 124: void PWM2_LoadDutyValue(uint16_t dutyValue);
-[v _PWM2_LoadDutyValue `(v ~T0 @X0 0 ef1`us ]
-"124 ./mcc_generated_files/pwm3.h
-[; ;./mcc_generated_files/pwm3.h: 124: void PWM3_LoadDutyValue(uint16_t dutyValue);
-[v _PWM3_LoadDutyValue `(v ~T0 @X0 0 ef1`us ]
-"124 ./mcc_generated_files/pwm4.h
-[; ;./mcc_generated_files/pwm4.h: 124: void PWM4_LoadDutyValue(uint16_t dutyValue);
-[v _PWM4_LoadDutyValue `(v ~T0 @X0 0 ef1`us ]
+"8 ./beat.h
+[; ;./beat.h: 8: void BEAT_task();
+[v _BEAT_task `(v ~T0 @X0 0 e? ]
+"4 ./led.h
+[; ;./led.h: 4: void LED_task();
+[v _LED_task `(v ~T0 @X0 0 e? ]
 "110 /Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h
 [; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 110: __asm("INDF0 equ 00h");
 [; <" INDF0 equ 00h ;# ">
@@ -1423,80 +1426,87 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; <" TOSH equ 01FEFh ;# ">
 "95 ./mcc_generated_files/eusart1.h
 [; ;./mcc_generated_files/eusart1.h: 95: void (*EUSART1_RxDefaultInterruptHandler)(void);
-[v _EUSART1_RxDefaultInterruptHandler `*F11065 ~T0 @X0 1 e ]
-"51 main.c
-[; ;main.c: 51: int dmxArray[513];
+[v _EUSART1_RxDefaultInterruptHandler `*F11124 ~T0 @X0 1 e ]
+"54 main.c
+[; ;main.c: 54: int dmxArray[513];
 [v _dmxArray `i ~T0 @X0 -> 513 `i e ]
-"53
-[; ;main.c: 53: button_t *up, *down, *menu, *enter;
+"56
+[; ;main.c: 56: button_t *up, *down, *menu, *enter;
 [v _up `*S1508 ~T0 @X0 1 e ]
 [v _down `*S1508 ~T0 @X0 1 e ]
 [v _menu `*S1508 ~T0 @X0 1 e ]
 [v _enter `*S1508 ~T0 @X0 1 e ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"59
-[; ;main.c: 59: void main(void)
+"62
+[; ;main.c: 62: void main(void)
 [v _main `(v ~T0 @X0 1 ef ]
-"60
-[; ;main.c: 60: {
+"63
+[; ;main.c: 63: {
 {
 [e :U _main ]
 [f ]
-"62
-[; ;main.c: 62:     SYSTEM_Initialize();
-[e ( _SYSTEM_Initialize ..  ]
-"63
-[; ;main.c: 63:     _delay((unsigned long)((500)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"64
-[; ;main.c: 64:     CLOCK_init();
-[e ( _CLOCK_init ..  ]
 "65
-[; ;main.c: 65:     BUTTONS_init();
+[; ;main.c: 65:     SYSTEM_Initialize();
+[e ( _SYSTEM_Initialize ..  ]
+"66
+[; ;main.c: 66:     _delay((unsigned long)((500)*(32000000/4000.0)));
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
+"67
+[; ;main.c: 67:     CLOCK_init();
+[e ( _CLOCK_init ..  ]
+"68
+[; ;main.c: 68:     BUTTONS_init();
 [e ( _BUTTONS_init ..  ]
-"71
-[; ;main.c: 71:     (INTCONbits.GIE = 1);
+"69
+[; ;main.c: 69:     LED_init();
+[e ( _LED_init ..  ]
+"75
+[; ;main.c: 75:     (INTCONbits.GIE = 1);
 [e = . . _INTCONbits 0 3 -> -> 1 `i `uc ]
-"74
-[; ;main.c: 74:     (INTCONbits.PEIE = 1);
+"78
+[; ;main.c: 78:     (INTCONbits.PEIE = 1);
 [e = . . _INTCONbits 0 2 -> -> 1 `i `uc ]
-"82
-[; ;main.c: 82:     TM1650_init();
-[e ( _TM1650_init ..  ]
-"83
-[; ;main.c: 83:     CONTROLLER_init();
-[e ( _CONTROLLER_init ..  ]
-"85
-[; ;main.c: 85:     while (1)
-[e :U 1519 ]
 "86
-[; ;main.c: 86:     {
-{
+[; ;main.c: 86:     TM1650_init();
+[e ( _TM1650_init ..  ]
 "87
-[; ;main.c: 87:         BUTTONS_task();
-[e ( _BUTTONS_task ..  ]
+[; ;main.c: 87:     TM1650_scrollPrint("HEYYYYYY");
+[e ( _TM1650_scrollPrint (1 :s 1C ]
 "88
-[; ;main.c: 88:         CONTROLLER_task();
-[e ( _CONTROLLER_task ..  ]
+[; ;main.c: 88:     _delay((unsigned long)((200)*(32000000/4000.0)));
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
+"89
+[; ;main.c: 89:     CONTROLLER_init();
+[e ( _CONTROLLER_init ..  ]
 "90
-[; ;main.c: 90:             PWM1_LoadDutyValue( ( ((int)dmxArray[1])/255.0 ) * 95 );
-[e ( _PWM1_LoadDutyValue (1 -> * / -> *U + &U _dmxArray * -> -> -> 1 `i `ui `ux -> -> # *U &U _dmxArray `ui `ux `d .255.0 -> -> 95 `i `d `us ]
+[; ;main.c: 90:     BEAT_init();
+[e ( _BEAT_init ..  ]
 "92
-[; ;main.c: 92:             PWM2_LoadDutyValue( ( ((int)dmxArray[2])/255.0 ) * 95 );
-[e ( _PWM2_LoadDutyValue (1 -> * / -> *U + &U _dmxArray * -> -> -> 2 `i `ui `ux -> -> # *U &U _dmxArray `ui `ux `d .255.0 -> -> 95 `i `d `us ]
+[; ;main.c: 92:     while (1)
+[e :U 1519 ]
+"93
+[; ;main.c: 93:     {
+{
 "94
-[; ;main.c: 94:             PWM3_LoadDutyValue( ( ((int)dmxArray[3])/255.0 ) * 95 );
-[e ( _PWM3_LoadDutyValue (1 -> * / -> *U + &U _dmxArray * -> -> -> 3 `i `ui `ux -> -> # *U &U _dmxArray `ui `ux `d .255.0 -> -> 95 `i `d `us ]
+[; ;main.c: 94:         BUTTONS_task();
+[e ( _BUTTONS_task ..  ]
+"95
+[; ;main.c: 95:         CONTROLLER_task();
+[e ( _CONTROLLER_task ..  ]
 "96
-[; ;main.c: 96:             PWM4_LoadDutyValue( ( ((int)dmxArray[4])/255.0 ) * 95 );
-[e ( _PWM4_LoadDutyValue (1 -> * / -> *U + &U _dmxArray * -> -> -> 4 `i `ui `ux -> -> # *U &U _dmxArray `ui `ux `d .255.0 -> -> 95 `i `d `us ]
-"98
-[; ;main.c: 98:     }
+[; ;main.c: 96:         BEAT_task();
+[e ( _BEAT_task ..  ]
+"97
+[; ;main.c: 97:         LED_task();
+[e ( _LED_task ..  ]
+"107
+[; ;main.c: 107:     }
 }
 [e :U 1518 ]
 [e $U 1519  ]
 [e :U 1520 ]
-"99
-[; ;main.c: 99: }
+"108
+[; ;main.c: 108: }
 [e :UE 1517 ]
 }
+[a 1C 72 69 89 89 89 89 89 89 0 ]

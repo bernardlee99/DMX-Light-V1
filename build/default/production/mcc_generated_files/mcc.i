@@ -18430,6 +18430,82 @@ extern void (*TMR0_InterruptHandler)(void);
 void TMR0_DefaultInterruptHandler(void);
 # 58 "mcc_generated_files/mcc.h" 2
 
+# 1 "mcc_generated_files/adcc.h" 1
+# 72 "mcc_generated_files/adcc.h"
+typedef uint16_t adc_result_t;
+
+typedef __uint24 uint24_t;
+# 89 "mcc_generated_files/adcc.h"
+typedef enum
+{
+    channel_Vss = 0x3B,
+    channel_Temp_Sensor = 0x3C,
+    channel_DAC1_Output = 0x3D,
+    channel_FVR_Buffer1 = 0x3E,
+    channel_FVR_Buffer2 = 0x3F
+} adcc_channel_t;
+# 130 "mcc_generated_files/adcc.h"
+void ADCC_Initialize(void);
+# 159 "mcc_generated_files/adcc.h"
+void ADCC_StartConversion(adcc_channel_t channel);
+# 189 "mcc_generated_files/adcc.h"
+_Bool ADCC_IsConversionDone();
+# 221 "mcc_generated_files/adcc.h"
+adc_result_t ADCC_GetConversionResult(void);
+# 252 "mcc_generated_files/adcc.h"
+adc_result_t ADCC_GetSingleConversion(adcc_channel_t channel);
+# 277 "mcc_generated_files/adcc.h"
+void ADCC_StopConversion(void);
+# 304 "mcc_generated_files/adcc.h"
+void ADCC_SetStopOnInterrupt(void);
+# 329 "mcc_generated_files/adcc.h"
+void ADCC_DischargeSampleCapacitor(void);
+# 355 "mcc_generated_files/adcc.h"
+void ADCC_LoadAcquisitionRegister(uint16_t);
+# 381 "mcc_generated_files/adcc.h"
+void ADCC_SetPrechargeTime(uint16_t);
+# 406 "mcc_generated_files/adcc.h"
+void ADCC_SetRepeatCount(uint8_t);
+# 434 "mcc_generated_files/adcc.h"
+uint8_t ADCC_GetCurrentCountofConversions(void);
+# 458 "mcc_generated_files/adcc.h"
+void ADCC_ClearAccumulator(void);
+# 483 "mcc_generated_files/adcc.h"
+uint24_t ADCC_GetAccumulatorValue(void);
+# 511 "mcc_generated_files/adcc.h"
+_Bool ADCC_HasAccumulatorOverflowed(void);
+# 536 "mcc_generated_files/adcc.h"
+uint16_t ADCC_GetFilterValue(void);
+# 564 "mcc_generated_files/adcc.h"
+uint16_t ADCC_GetPreviousResult(void);
+# 590 "mcc_generated_files/adcc.h"
+void ADCC_DefineSetPoint(uint16_t);
+# 616 "mcc_generated_files/adcc.h"
+void ADCC_SetUpperThreshold(uint16_t);
+# 642 "mcc_generated_files/adcc.h"
+void ADCC_SetLowerThreshold(uint16_t);
+# 669 "mcc_generated_files/adcc.h"
+uint16_t ADCC_GetErrorCalculation(void);
+# 696 "mcc_generated_files/adcc.h"
+void ADCC_EnableDoubleSampling(void);
+# 720 "mcc_generated_files/adcc.h"
+void ADCC_EnableContinuousConversion(void);
+# 744 "mcc_generated_files/adcc.h"
+void ADCC_DisableContinuousConversion(void);
+# 772 "mcc_generated_files/adcc.h"
+_Bool ADCC_HasErrorCrossedUpperThreshold(void);
+# 800 "mcc_generated_files/adcc.h"
+_Bool ADCC_HasErrorCrossedLowerThreshold(void);
+# 827 "mcc_generated_files/adcc.h"
+uint8_t ADCC_GetConversionStageStatus(void);
+# 844 "mcc_generated_files/adcc.h"
+void ADCC_SetADTIInterruptHandler(void (* InterruptHandler)(void));
+# 860 "mcc_generated_files/adcc.h"
+void ADCC_ThresholdISR(void);
+# 878 "mcc_generated_files/adcc.h"
+void ADCC_DefaultInterruptHandler(void);
+# 59 "mcc_generated_files/mcc.h" 2
+
 # 1 "mcc_generated_files/pwm2.h" 1
 # 97 "mcc_generated_files/pwm2.h"
 void PWM2_Initialize(void);
@@ -18437,7 +18513,7 @@ void PWM2_Initialize(void);
 void PWM2_LoadDutyValue(uint16_t dutyValue);
 # 156 "mcc_generated_files/pwm2.h"
 _Bool PWM2_OutputStatusGet(void);
-# 59 "mcc_generated_files/mcc.h" 2
+# 60 "mcc_generated_files/mcc.h" 2
 
 # 1 "mcc_generated_files/pwm1.h" 1
 # 97 "mcc_generated_files/pwm1.h"
@@ -18446,7 +18522,7 @@ void PWM1_Initialize(void);
 void PWM1_LoadDutyValue(uint16_t dutyValue);
 # 156 "mcc_generated_files/pwm1.h"
 _Bool PWM1_OutputStatusGet(void);
-# 60 "mcc_generated_files/mcc.h" 2
+# 61 "mcc_generated_files/mcc.h" 2
 
 # 1 "mcc_generated_files/pwm3.h" 1
 # 97 "mcc_generated_files/pwm3.h"
@@ -18455,7 +18531,7 @@ void PWM3_Initialize(void);
 void PWM3_LoadDutyValue(uint16_t dutyValue);
 # 156 "mcc_generated_files/pwm3.h"
 _Bool PWM3_OutputStatusGet(void);
-# 61 "mcc_generated_files/mcc.h" 2
+# 62 "mcc_generated_files/mcc.h" 2
 
 # 1 "mcc_generated_files/eusart1.h" 1
 # 75 "mcc_generated_files/eusart1.h"
@@ -18506,12 +18582,12 @@ void EUSART1_SetOverrunErrorHandler(void (* interruptHandler)(void));
 void EUSART1_SetErrorHandler(void (* interruptHandler)(void));
 # 470 "mcc_generated_files/eusart1.h"
 void EUSART1_SetRxInterruptHandler(void (* interruptHandler)(void));
-# 62 "mcc_generated_files/mcc.h" 2
-# 77 "mcc_generated_files/mcc.h"
+# 63 "mcc_generated_files/mcc.h" 2
+# 78 "mcc_generated_files/mcc.h"
 void SYSTEM_Initialize(void);
-# 90 "mcc_generated_files/mcc.h"
+# 91 "mcc_generated_files/mcc.h"
 void OSCILLATOR_Initialize(void);
-# 103 "mcc_generated_files/mcc.h"
+# 104 "mcc_generated_files/mcc.h"
 void PMD_Initialize(void);
 # 47 "mcc_generated_files/mcc.c" 2
 
@@ -18525,6 +18601,7 @@ void SYSTEM_Initialize(void)
     I2C1_Initialize();
     PWM1_Initialize();
     PWM2_Initialize();
+    ADCC_Initialize();
     PWM4_Initialize();
     PWM3_Initialize();
     TMR2_Initialize();
@@ -18535,7 +18612,7 @@ void SYSTEM_Initialize(void)
 void OSCILLATOR_Initialize(void)
 {
 
-    OSCCON1 = 0x62;
+    OSCCON1 = 0x60;
 
     OSCCON3 = 0x00;
 

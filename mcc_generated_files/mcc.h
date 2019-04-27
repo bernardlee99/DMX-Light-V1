@@ -56,6 +56,7 @@
 #include "tmr2.h"
 #include "pwm4.h"
 #include "tmr0.h"
+#include "adcc.h"
 #include "pwm2.h"
 #include "pwm1.h"
 #include "pwm3.h"

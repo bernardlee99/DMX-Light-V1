@@ -12,7 +12,10 @@
 #include"tm1650.h"
 #include "mcc_generated_files/i2c1.h"
 
+bool tm1650_status = false;
+
 #define _XTAL_FREQ 4000000
+#define SPEED_SCROLL 2000
 
 const uint8_t charTable[] = 
 {
@@ -39,8 +42,10 @@ static void writeData(uint8_t address, uint8_t data){
 void TM1650_enable(bool enable){
     if(enable){
         writeData(0x24, 0x01);          //Display ON command
+        tm1650_status = true;
     } else {
         writeData(0x24, 0x00);          //Display OFF command
+        tm1650_status = false;
     }
 }
 
@@ -57,28 +62,28 @@ void TM1650_brightness(uint8_t brightness){
     writeData(0x24, (brightness << 4) | 0x00);          //Brightness 4
 }
 
-void scrollPrint(char *array){
+void TM1650_scrollPrint(char *array){
     
     printf("   %c\r", array[0]);
-    __delay_ms(150);
+    __delay_ms(SPEED_SCROLL);
     printf("  %c%c\r", array[0], array[1]);
-    __delay_ms(150);
+    __delay_ms(SPEED_SCROLL);
     printf(" %c%c%c\r", array[0], array[1], array[2]);
-    __delay_ms(150);
+    __delay_ms(SPEED_SCROLL);
     
     for(int i = 0; i < strlen(array) - 3; i++){
         printf("%c%c%c%c\r", array[i], array[i+1], array[i+2], array[i+3]);
-        __delay_ms(150);
+        __delay_ms(SPEED_SCROLL);
     }
     
     printf("%c%c%c \r", array[strlen(array) - 3], array[strlen(array) - 2], array[strlen(array) - 1]);
-    __delay_ms(150);
+    __delay_ms(SPEED_SCROLL);
     printf("%c%c  \r", array[strlen(array) - 2], array[strlen(array) - 1]);
-    __delay_ms(150);
+    __delay_ms(SPEED_SCROLL);
     printf("%c   \r", array[strlen(array) - 1]);
-    __delay_ms(150);
+    __delay_ms(SPEED_SCROLL);
     printf("    \r", array[strlen(array) - 1]);
-    __delay_ms(150);  
+    __delay_ms(SPEED_SCROLL);  
     
     
 }
@@ -118,6 +123,10 @@ void putch(char n){
         position++;
     }
     
+}
+
+bool TM1650_isEnabled(){
+    return tm1650_status;
 }
 
 

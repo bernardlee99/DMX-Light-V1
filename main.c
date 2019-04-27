@@ -47,7 +47,10 @@
 #include "clock.h"
 #include "buttons.h"
 #include "controller.h"
+#include "led.h"
+#include "beat.h"
 #include "mcc_generated_files/mcc.h"
+#include "beat.h"
 int dmxArray[513];
 
 button_t *up, *down, *menu, *enter;
@@ -63,6 +66,7 @@ void main(void)
     __delay_ms(500);
     CLOCK_init();
     BUTTONS_init();
+    LED_init();
 
     // When using interrupts, you need to set the Global and Peripheral Interrupt Enable bits
     // Use the following macros to:
@@ -80,20 +84,25 @@ void main(void)
     //INTERRUPT_PeripheralInterruptDisable();
     
     TM1650_init();
+    TM1650_scrollPrint("HEYYYYYY");
+    __delay_ms(200);
     CONTROLLER_init();
+    BEAT_init();
     
     while (1)
     {
         BUTTONS_task();
         CONTROLLER_task();
+        BEAT_task();
+        LED_task();
         
-            PWM1_LoadDutyValue( ( ((int)dmxArray[1])/255.0 ) * 95 );
-
-            PWM2_LoadDutyValue( ( ((int)dmxArray[2])/255.0 ) * 95 );
-
-            PWM3_LoadDutyValue( ( ((int)dmxArray[3])/255.0 ) * 95 );
-
-            PWM4_LoadDutyValue( ( ((int)dmxArray[4])/255.0 ) * 95 );
+//            PWM1_LoadDutyValue( ( ((int)dmxArray[1])/255.0 ) * 95 );
+//
+//            PWM2_LoadDutyValue( ( ((int)dmxArray[2])/255.0 ) * 95 );
+//
+//            PWM3_LoadDutyValue( ( ((int)dmxArray[3])/255.0 ) * 95 );
+//
+//            PWM4_LoadDutyValue( ( ((int)dmxArray[4])/255.0 ) * 95 );
             
     }
 }

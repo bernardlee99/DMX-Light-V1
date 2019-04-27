@@ -1491,8 +1491,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;mcc_generated_files/tmr2.c: 73:     T2RST = 0x00;
 [e = _T2RST -> -> 0 `i `uc ]
 "76
-[; ;mcc_generated_files/tmr2.c: 76:     T2PR = 0xC7;
-[e = _T2PR -> -> 199 `i `uc ]
+[; ;mcc_generated_files/tmr2.c: 76:     T2PR = 0xFF;
+[e = _T2PR -> -> 255 `i `uc ]
 "79
 [; ;mcc_generated_files/tmr2.c: 79:     T2TMR = 0x00;
 [e = _T2TMR -> -> 0 `i `uc ]
@@ -1500,8 +1500,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;mcc_generated_files/tmr2.c: 82:     PIR4bits.TMR2IF = 0;
 [e = . . _PIR4bits 0 1 -> -> 0 `i `uc ]
 "85
-[; ;mcc_generated_files/tmr2.c: 85:     T2CON = 0x80;
-[e = _T2CON -> -> 128 `i `uc ]
+[; ;mcc_generated_files/tmr2.c: 85:     T2CON = 0xD0;
+[e = _T2CON -> -> 208 `i `uc ]
 "86
 [; ;mcc_generated_files/tmr2.c: 86: }
 [e :UE 1513 ]

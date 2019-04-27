@@ -18346,9 +18346,10 @@ void TM1650_setDigit(uint8_t digit, uint8_t data);
 static void writeData(uint8_t address, uint8_t data);
 void TM1650_brightness(uint8_t brightness);
 void putch(char n);
-void scrollPrint(char *array);
+void TM1650_scrollPrint(char *array);
 void TM1650_fastPrintNum(uint16_t num);
 void TM1650_enable(_Bool enable);
+_Bool TM1650_isEnabled();
 # 12 "tm1650.c" 2
 
 # 1 "./mcc_generated_files/i2c1.h" 1
@@ -18421,6 +18422,9 @@ void I2C1_ISR ( void );
 # 13 "tm1650.c" 2
 
 
+_Bool tm1650_status = 0;
+
+
 
 
 const uint8_t charTable[] =
@@ -18448,8 +18452,10 @@ static void writeData(uint8_t address, uint8_t data){
 void TM1650_enable(_Bool enable){
     if(enable){
         writeData(0x24, 0x01);
+        tm1650_status = 1;
     } else {
         writeData(0x24, 0x00);
+        tm1650_status = 0;
     }
 }
 
@@ -18466,28 +18472,28 @@ void TM1650_brightness(uint8_t brightness){
     writeData(0x24, (brightness << 4) | 0x00);
 }
 
-void scrollPrint(char *array){
+void TM1650_scrollPrint(char *array){
 
     printf("   %c\r", array[0]);
-    _delay((unsigned long)((150)*(4000000/4000.0)));
+    _delay((unsigned long)((2000)*(4000000/4000.0)));
     printf("  %c%c\r", array[0], array[1]);
-    _delay((unsigned long)((150)*(4000000/4000.0)));
+    _delay((unsigned long)((2000)*(4000000/4000.0)));
     printf(" %c%c%c\r", array[0], array[1], array[2]);
-    _delay((unsigned long)((150)*(4000000/4000.0)));
+    _delay((unsigned long)((2000)*(4000000/4000.0)));
 
     for(int i = 0; i < strlen(array) - 3; i++){
         printf("%c%c%c%c\r", array[i], array[i+1], array[i+2], array[i+3]);
-        _delay((unsigned long)((150)*(4000000/4000.0)));
+        _delay((unsigned long)((2000)*(4000000/4000.0)));
     }
 
     printf("%c%c%c \r", array[strlen(array) - 3], array[strlen(array) - 2], array[strlen(array) - 1]);
-    _delay((unsigned long)((150)*(4000000/4000.0)));
+    _delay((unsigned long)((2000)*(4000000/4000.0)));
     printf("%c%c  \r", array[strlen(array) - 2], array[strlen(array) - 1]);
-    _delay((unsigned long)((150)*(4000000/4000.0)));
+    _delay((unsigned long)((2000)*(4000000/4000.0)));
     printf("%c   \r", array[strlen(array) - 1]);
-    _delay((unsigned long)((150)*(4000000/4000.0)));
+    _delay((unsigned long)((2000)*(4000000/4000.0)));
     printf("    \r", array[strlen(array) - 1]);
-    _delay((unsigned long)((150)*(4000000/4000.0)));
+    _delay((unsigned long)((2000)*(4000000/4000.0)));
 
 
 }
@@ -18527,4 +18533,8 @@ void putch(char n){
         position++;
     }
 
+}
+
+_Bool TM1650_isEnabled(){
+    return tm1650_status;
 }

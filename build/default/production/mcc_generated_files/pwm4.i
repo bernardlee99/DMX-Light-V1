@@ -18150,7 +18150,7 @@ void PWM4_Initialize(void)
  CCPR4H = 0x00;
 
 
- CCPR4L = 0x4F;
+ CCPR4L = 0x00;
 
 
  CCPTMRS0bits.C4TSEL = 0x1;
@@ -18161,19 +18161,17 @@ void PWM4_LoadDutyValue(uint16_t dutyValue)
 {
     dutyValue &= 0x03FF;
 
-    if(dutyValue <= 95){
 
-        if(CCP4CONbits.FMT)
-        {
-            dutyValue <<= 6;
-            CCPR4H = dutyValue >> 8;
-            CCPR4L = dutyValue;
-        }
-        else
-        {
-            CCPR4H = dutyValue >> 8;
-            CCPR4L = dutyValue;
-        }
+    if(CCP4CONbits.FMT)
+    {
+        dutyValue <<= 6;
+        CCPR4H = dutyValue >> 8;
+        CCPR4L = dutyValue;
+    }
+    else
+    {
+        CCPR4H = dutyValue >> 8;
+        CCPR4L = dutyValue;
     }
 }
 

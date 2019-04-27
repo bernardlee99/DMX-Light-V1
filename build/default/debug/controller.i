@@ -185,9 +185,10 @@ void TM1650_setDigit(uint8_t digit, uint8_t data);
 static void writeData(uint8_t address, uint8_t data);
 void TM1650_brightness(uint8_t brightness);
 void putch(char n);
-void scrollPrint(char *array);
+void TM1650_scrollPrint(char *array);
 void TM1650_fastPrintNum(uint16_t num);
 void TM1650_enable(_Bool enable);
+_Bool TM1650_isEnabled();
 # 6 "controller.c" 2
 
 

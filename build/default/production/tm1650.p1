@@ -1,11 +1,11 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"31 tm1650.c
-[; ;tm1650.c: 31:     I2C1_MESSAGE_STATUS status = I2C1_MESSAGE_PENDING;
-[c E11368 0 1 2 3 4 5 6 .. ]
-[n E11368 . I2C1_MESSAGE_COMPLETE I2C1_MESSAGE_FAIL I2C1_MESSAGE_PENDING I2C1_STUCK_START I2C1_MESSAGE_ADDRESS_NO_ACK I2C1_DATA_NO_ACK I2C1_LOST_STATE  ]
+"34 tm1650.c
+[; ;tm1650.c: 34:     I2C1_MESSAGE_STATUS status = I2C1_MESSAGE_PENDING;
+[c E11369 0 1 2 3 4 5 6 .. ]
+[n E11369 . I2C1_MESSAGE_COMPLETE I2C1_MESSAGE_FAIL I2C1_MESSAGE_PENDING I2C1_STUCK_START I2C1_MESSAGE_ADDRESS_NO_ACK I2C1_DATA_NO_ACK I2C1_LOST_STATE  ]
 "262 ./mcc_generated_files/i2c1.h
 [; ;./mcc_generated_files/i2c1.h: 262: void I2C1_MasterWrite(
-[v _I2C1_MasterWrite `(v ~T0 @X0 0 ef4`*uc`uc`us`*E11368 ]
+[v _I2C1_MasterWrite `(v ~T0 @X0 0 ef4`*uc`uc`us`*E11369 ]
 "113 /Applications/microchip/xc8/v2.05/pic/include/c99/stdio.h
 [v _printf `(i ~T0 @X0 0 ev`*Cuc ]
 [v F10824 `(v ~T0 @X0 1 tf1`ul ]
@@ -1377,8 +1377,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 "32039
 [; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 32039: __asm("TOSH equ 01FEFh");
 [; <" TOSH equ 01FEFh ;# ">
-"17 tm1650.c
-[; ;tm1650.c: 17: const uint8_t charTable[] =
+"15 tm1650.c
+[; ;tm1650.c: 15: _Bool tm1650_status = 0;
+[v _tm1650_status `a ~T0 @X0 1 e ]
+[i _tm1650_status
+-> -> 0 `i `a
+]
+"20
+[; ;tm1650.c: 20: const uint8_t charTable[] =
 [v _charTable `Cuc ~T0 @X0 -> 96 `i e ]
 [i _charTable
 :U ..
@@ -1480,272 +1486,292 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 ..
 ]
-"27
-[; ;tm1650.c: 27: uint8_t position = 0;
+"30
+[; ;tm1650.c: 30: uint8_t position = 0;
 [v _position `uc ~T0 @X0 1 e ]
 [i _position
 -> -> 0 `i `uc
 ]
-"29
-[; ;tm1650.c: 29: static void writeData(uint8_t address, uint8_t data){
+"32
+[; ;tm1650.c: 32: static void writeData(uint8_t address, uint8_t data){
 [v _writeData `(v ~T0 @X0 1 sf2`uc`uc ]
 {
 [e :U _writeData ]
 [v _address `uc ~T0 @X0 1 r1 ]
 [v _data `uc ~T0 @X0 1 r2 ]
 [f ]
-"31
-[; ;tm1650.c: 31:     I2C1_MESSAGE_STATUS status = I2C1_MESSAGE_PENDING;
-[v _status `E11368 ~T0 @X0 1 a ]
-[e = _status . `E11368 2 ]
-"32
-[; ;tm1650.c: 32:     I2C1_MasterWrite(&data, 1, address, &status);
-[e ( _I2C1_MasterWrite (4 , , , &U _data -> -> 1 `i `uc -> _address `us &U _status ]
 "34
-[; ;tm1650.c: 34:     while( status == I2C1_MESSAGE_PENDING );
+[; ;tm1650.c: 34:     I2C1_MESSAGE_STATUS status = I2C1_MESSAGE_PENDING;
+[v _status `E11369 ~T0 @X0 1 a ]
+[e = _status . `E11369 2 ]
+"35
+[; ;tm1650.c: 35:     I2C1_MasterWrite(&data, 1, address, &status);
+[e ( _I2C1_MasterWrite (4 , , , &U _data -> -> 1 `i `uc -> _address `us &U _status ]
+"37
+[; ;tm1650.c: 37:     while( status == I2C1_MESSAGE_PENDING );
 [e $U 1518  ]
 [e :U 1519 ]
 [e :U 1518 ]
-[e $ == -> _status `ui -> . `E11368 2 `ui 1519  ]
+[e $ == -> _status `ui -> . `E11369 2 `ui 1519  ]
 [e :U 1520 ]
-"36
-[; ;tm1650.c: 36:     return;
+"39
+[; ;tm1650.c: 39:     return;
 [e $UE 1517  ]
-"37
-[; ;tm1650.c: 37: }
+"40
+[; ;tm1650.c: 40: }
 [e :UE 1517 ]
 }
-"39
-[; ;tm1650.c: 39: void TM1650_enable(_Bool enable){
+"42
+[; ;tm1650.c: 42: void TM1650_enable(_Bool enable){
 [v _TM1650_enable `(v ~T0 @X0 1 ef1`a ]
 {
 [e :U _TM1650_enable ]
 [v _enable `a ~T0 @X0 1 r1 ]
 [f ]
-"40
-[; ;tm1650.c: 40:     if(enable){
+"43
+[; ;tm1650.c: 43:     if(enable){
 [e $ ! != -> _enable `i -> 0 `i 1522  ]
 {
-"41
-[; ;tm1650.c: 41:         writeData(0x24, 0x01);
+"44
+[; ;tm1650.c: 44:         writeData(0x24, 0x01);
 [e ( _writeData (2 , -> -> 36 `i `uc -> -> 1 `i `uc ]
-"42
-[; ;tm1650.c: 42:     } else {
+"45
+[; ;tm1650.c: 45:         tm1650_status = 1;
+[e = _tm1650_status -> -> 1 `i `a ]
+"46
+[; ;tm1650.c: 46:     } else {
 }
 [e $U 1523  ]
 [e :U 1522 ]
 {
-"43
-[; ;tm1650.c: 43:         writeData(0x24, 0x00);
+"47
+[; ;tm1650.c: 47:         writeData(0x24, 0x00);
 [e ( _writeData (2 , -> -> 36 `i `uc -> -> 0 `i `uc ]
-"44
-[; ;tm1650.c: 44:     }
+"48
+[; ;tm1650.c: 48:         tm1650_status = 0;
+[e = _tm1650_status -> -> 0 `i `a ]
+"49
+[; ;tm1650.c: 49:     }
 }
 [e :U 1523 ]
-"45
-[; ;tm1650.c: 45: }
+"50
+[; ;tm1650.c: 50: }
 [e :UE 1521 ]
 }
-"47
-[; ;tm1650.c: 47: void TM1650_init(){
+"52
+[; ;tm1650.c: 52: void TM1650_init(){
 [v _TM1650_init `(v ~T0 @X0 1 ef ]
 {
 [e :U _TM1650_init ]
 [f ]
-"49
-[; ;tm1650.c: 49:     TM1650_enable(1);
+"54
+[; ;tm1650.c: 54:     TM1650_enable(1);
 [e ( _TM1650_enable (1 -> -> 1 `i `a ]
-"50
-[; ;tm1650.c: 50:     printf("    ");
+"55
+[; ;tm1650.c: 55:     printf("    ");
 [e ( _printf :s 1C ]
-"51
-[; ;tm1650.c: 51:     printf("\r");
+"56
+[; ;tm1650.c: 56:     printf("\r");
 [e ( _printf :s 2C ]
-"53
-[; ;tm1650.c: 53: }
+"58
+[; ;tm1650.c: 58: }
 [e :UE 1524 ]
 }
-"55
-[; ;tm1650.c: 55: void TM1650_brightness(uint8_t brightness){
+"60
+[; ;tm1650.c: 60: void TM1650_brightness(uint8_t brightness){
 [v _TM1650_brightness `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _TM1650_brightness ]
 [v _brightness `uc ~T0 @X0 1 r1 ]
 [f ]
-"57
-[; ;tm1650.c: 57:     writeData(0x24, (brightness << 4) | 0x00);
+"62
+[; ;tm1650.c: 62:     writeData(0x24, (brightness << 4) | 0x00);
 [e ( _writeData (2 , -> -> 36 `i `uc -> | << -> _brightness `i -> 4 `i -> 0 `i `uc ]
-"58
-[; ;tm1650.c: 58: }
+"63
+[; ;tm1650.c: 63: }
 [e :UE 1525 ]
 }
-"60
-[; ;tm1650.c: 60: void scrollPrint(char *array){
-[v _scrollPrint `(v ~T0 @X0 1 ef1`*uc ]
+"65
+[; ;tm1650.c: 65: void TM1650_scrollPrint(char *array){
+[v _TM1650_scrollPrint `(v ~T0 @X0 1 ef1`*uc ]
 {
-[e :U _scrollPrint ]
+[e :U _TM1650_scrollPrint ]
 [v _array `*uc ~T0 @X0 1 r1 ]
 [f ]
-"62
-[; ;tm1650.c: 62:     printf("   %c\r", array[0]);
-[e ( _printf , (. :s 3C -> *U + _array * -> -> 0 `i `x -> -> # *U _array `i `x `i ]
-"63
-[; ;tm1650.c: 63:     _delay((unsigned long)((150)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 150 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"64
-[; ;tm1650.c: 64:     printf("  %c%c\r", array[0], array[1]);
-[e ( _printf , , (. :s 4C -> *U + _array * -> -> 0 `i `x -> -> # *U _array `i `x `i -> *U + _array * -> -> 1 `i `x -> -> # *U _array `i `x `i ]
-"65
-[; ;tm1650.c: 65:     _delay((unsigned long)((150)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 150 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"66
-[; ;tm1650.c: 66:     printf(" %c%c%c\r", array[0], array[1], array[2]);
-[e ( _printf , , , (. :s 5C -> *U + _array * -> -> 0 `i `x -> -> # *U _array `i `x `i -> *U + _array * -> -> 1 `i `x -> -> # *U _array `i `x `i -> *U + _array * -> -> 2 `i `x -> -> # *U _array `i `x `i ]
 "67
-[; ;tm1650.c: 67:     _delay((unsigned long)((150)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 150 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;tm1650.c: 67:     printf("   %c\r", array[0]);
+[e ( _printf , (. :s 3C -> *U + _array * -> -> 0 `i `x -> -> # *U _array `i `x `i ]
+"68
+[; ;tm1650.c: 68:     _delay((unsigned long)((2000)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
 "69
-[; ;tm1650.c: 69:     for(int i = 0; i < strlen(array) - 3; i++){
+[; ;tm1650.c: 69:     printf("  %c%c\r", array[0], array[1]);
+[e ( _printf , , (. :s 4C -> *U + _array * -> -> 0 `i `x -> -> # *U _array `i `x `i -> *U + _array * -> -> 1 `i `x -> -> # *U _array `i `x `i ]
+"70
+[; ;tm1650.c: 70:     _delay((unsigned long)((2000)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"71
+[; ;tm1650.c: 71:     printf(" %c%c%c\r", array[0], array[1], array[2]);
+[e ( _printf , , , (. :s 5C -> *U + _array * -> -> 0 `i `x -> -> # *U _array `i `x `i -> *U + _array * -> -> 1 `i `x -> -> # *U _array `i `x `i -> *U + _array * -> -> 2 `i `x -> -> # *U _array `i `x `i ]
+"72
+[; ;tm1650.c: 72:     _delay((unsigned long)((2000)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"74
+[; ;tm1650.c: 74:     for(int i = 0; i < strlen(array) - 3; i++){
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
 [e $U 1530  ]
 [e :U 1527 ]
 {
-"70
-[; ;tm1650.c: 70:         printf("%c%c%c%c\r", array[i], array[i+1], array[i+2], array[i+3]);
+"75
+[; ;tm1650.c: 75:         printf("%c%c%c%c\r", array[i], array[i+1], array[i+2], array[i+3]);
 [e ( _printf , , , , (. :s 6C -> *U + _array * -> _i `x -> -> # *U _array `i `x `i -> *U + _array * -> + _i -> 1 `i `x -> -> # *U _array `i `x `i -> *U + _array * -> + _i -> 2 `i `x -> -> # *U _array `i `x `i -> *U + _array * -> + _i -> 3 `i `x -> -> # *U _array `i `x `i ]
-"71
-[; ;tm1650.c: 71:         _delay((unsigned long)((150)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 150 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"72
-[; ;tm1650.c: 72:     }
+"76
+[; ;tm1650.c: 76:         _delay((unsigned long)((2000)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"77
+[; ;tm1650.c: 77:     }
 }
 [e ++ _i -> 1 `i ]
 [e :U 1530 ]
 [e $ < -> _i `ui - ( _strlen (1 -> _array `*Cuc -> -> 3 `i `ui 1527  ]
 [e :U 1528 ]
 }
-"74
-[; ;tm1650.c: 74:     printf("%c%c%c \r", array[strlen(array) - 3], array[strlen(array) - 2], array[strlen(array) - 1]);
-[e ( _printf , , , (. :s 7C -> *U + _array * -> - ( _strlen (1 -> _array `*Cuc -> -> 3 `i `ui `ux -> -> # *U _array `ui `ux `i -> *U + _array * -> - ( _strlen (1 -> _array `*Cuc -> -> 2 `i `ui `ux -> -> # *U _array `ui `ux `i -> *U + _array * -> - ( _strlen (1 -> _array `*Cuc -> -> 1 `i `ui `ux -> -> # *U _array `ui `ux `i ]
-"75
-[; ;tm1650.c: 75:     _delay((unsigned long)((150)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 150 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"76
-[; ;tm1650.c: 76:     printf("%c%c  \r", array[strlen(array) - 2], array[strlen(array) - 1]);
-[e ( _printf , , (. :s 8C -> *U + _array * -> - ( _strlen (1 -> _array `*Cuc -> -> 2 `i `ui `ux -> -> # *U _array `ui `ux `i -> *U + _array * -> - ( _strlen (1 -> _array `*Cuc -> -> 1 `i `ui `ux -> -> # *U _array `ui `ux `i ]
-"77
-[; ;tm1650.c: 77:     _delay((unsigned long)((150)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 150 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"78
-[; ;tm1650.c: 78:     printf("%c   \r", array[strlen(array) - 1]);
-[e ( _printf , (. :s 9C -> *U + _array * -> - ( _strlen (1 -> _array `*Cuc -> -> 1 `i `ui `ux -> -> # *U _array `ui `ux `i ]
 "79
-[; ;tm1650.c: 79:     _delay((unsigned long)((150)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 150 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;tm1650.c: 79:     printf("%c%c%c \r", array[strlen(array) - 3], array[strlen(array) - 2], array[strlen(array) - 1]);
+[e ( _printf , , , (. :s 7C -> *U + _array * -> - ( _strlen (1 -> _array `*Cuc -> -> 3 `i `ui `ux -> -> # *U _array `ui `ux `i -> *U + _array * -> - ( _strlen (1 -> _array `*Cuc -> -> 2 `i `ui `ux -> -> # *U _array `ui `ux `i -> *U + _array * -> - ( _strlen (1 -> _array `*Cuc -> -> 1 `i `ui `ux -> -> # *U _array `ui `ux `i ]
 "80
-[; ;tm1650.c: 80:     printf("    \r", array[strlen(array) - 1]);
-[e ( _printf , (. :s 10C -> *U + _array * -> - ( _strlen (1 -> _array `*Cuc -> -> 1 `i `ui `ux -> -> # *U _array `ui `ux `i ]
+[; ;tm1650.c: 80:     _delay((unsigned long)((2000)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
 "81
-[; ;tm1650.c: 81:     _delay((unsigned long)((150)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 150 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;tm1650.c: 81:     printf("%c%c  \r", array[strlen(array) - 2], array[strlen(array) - 1]);
+[e ( _printf , , (. :s 8C -> *U + _array * -> - ( _strlen (1 -> _array `*Cuc -> -> 2 `i `ui `ux -> -> # *U _array `ui `ux `i -> *U + _array * -> - ( _strlen (1 -> _array `*Cuc -> -> 1 `i `ui `ux -> -> # *U _array `ui `ux `i ]
+"82
+[; ;tm1650.c: 82:     _delay((unsigned long)((2000)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"83
+[; ;tm1650.c: 83:     printf("%c   \r", array[strlen(array) - 1]);
+[e ( _printf , (. :s 9C -> *U + _array * -> - ( _strlen (1 -> _array `*Cuc -> -> 1 `i `ui `ux -> -> # *U _array `ui `ux `i ]
 "84
-[; ;tm1650.c: 84: }
+[; ;tm1650.c: 84:     _delay((unsigned long)((2000)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"85
+[; ;tm1650.c: 85:     printf("    \r", array[strlen(array) - 1]);
+[e ( _printf , (. :s 10C -> *U + _array * -> - ( _strlen (1 -> _array `*Cuc -> -> 1 `i `ui `ux -> -> # *U _array `ui `ux `i ]
+"86
+[; ;tm1650.c: 86:     _delay((unsigned long)((2000)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"89
+[; ;tm1650.c: 89: }
 [e :UE 1526 ]
 }
-"86
-[; ;tm1650.c: 86: void TM1650_setDigit(uint8_t digit, uint8_t data){
+"91
+[; ;tm1650.c: 91: void TM1650_setDigit(uint8_t digit, uint8_t data){
 [v _TM1650_setDigit `(v ~T0 @X0 1 ef2`uc`uc ]
 {
 [e :U _TM1650_setDigit ]
 [v _digit `uc ~T0 @X0 1 r1 ]
 [v _data `uc ~T0 @X0 1 r2 ]
 [f ]
-"88
-[; ;tm1650.c: 88:     writeData(digit + 0x34, charTable[data - 32]);
+"93
+[; ;tm1650.c: 93:     writeData(digit + 0x34, charTable[data - 32]);
 [e ( _writeData (2 , -> + -> _digit `i -> 52 `i `uc *U + &U _charTable * -> -> - -> _data `i -> 32 `i `ui `ux -> -> # *U &U _charTable `ui `ux ]
-"90
-[; ;tm1650.c: 90: }
+"95
+[; ;tm1650.c: 95: }
 [e :UE 1531 ]
 }
-"92
-[; ;tm1650.c: 92: void TM1650_fastPrintNum(uint16_t num){
+"97
+[; ;tm1650.c: 97: void TM1650_fastPrintNum(uint16_t num){
 [v _TM1650_fastPrintNum `(v ~T0 @X0 1 ef1`us ]
 {
 [e :U _TM1650_fastPrintNum ]
 [v _num `us ~T0 @X0 1 r1 ]
 [f ]
-"94
-[; ;tm1650.c: 94:     if(num > 9999){
+"99
+[; ;tm1650.c: 99:     if(num > 9999){
 [e $ ! > -> _num `ui -> -> 9999 `i `ui 1533  ]
 {
-"95
-[; ;tm1650.c: 95:         writeData(0x34, 0x79);
-[e ( _writeData (2 , -> -> 52 `i `uc -> -> 121 `i `uc ]
-"96
-[; ;tm1650.c: 96:         writeData(0x35, 0x79);
-[e ( _writeData (2 , -> -> 53 `i `uc -> -> 121 `i `uc ]
-"97
-[; ;tm1650.c: 97:         writeData(0x36, 0x79);
-[e ( _writeData (2 , -> -> 54 `i `uc -> -> 121 `i `uc ]
-"98
-[; ;tm1650.c: 98:         writeData(0x37, 0x79);
-[e ( _writeData (2 , -> -> 55 `i `uc -> -> 121 `i `uc ]
-"99
-[; ;tm1650.c: 99:         return;
-[e $UE 1532  ]
 "100
-[; ;tm1650.c: 100:     }
+[; ;tm1650.c: 100:         writeData(0x34, 0x79);
+[e ( _writeData (2 , -> -> 52 `i `uc -> -> 121 `i `uc ]
+"101
+[; ;tm1650.c: 101:         writeData(0x35, 0x79);
+[e ( _writeData (2 , -> -> 53 `i `uc -> -> 121 `i `uc ]
+"102
+[; ;tm1650.c: 102:         writeData(0x36, 0x79);
+[e ( _writeData (2 , -> -> 54 `i `uc -> -> 121 `i `uc ]
+"103
+[; ;tm1650.c: 103:         writeData(0x37, 0x79);
+[e ( _writeData (2 , -> -> 55 `i `uc -> -> 121 `i `uc ]
+"104
+[; ;tm1650.c: 104:         return;
+[e $UE 1532  ]
+"105
+[; ;tm1650.c: 105:     }
 }
 [e :U 1533 ]
-"102
-[; ;tm1650.c: 102:     writeData(0x37, charTable[(num % 10) + 16]);
+"107
+[; ;tm1650.c: 107:     writeData(0x37, charTable[(num % 10) + 16]);
 [e ( _writeData (2 , -> -> 55 `i `uc *U + &U _charTable * -> + % -> _num `ui -> -> 10 `i `ui -> -> 16 `i `ui `ux -> -> # *U &U _charTable `ui `ux ]
-"103
-[; ;tm1650.c: 103:     writeData(0x36, charTable[( (num/10) % 10) + 16]);
+"108
+[; ;tm1650.c: 108:     writeData(0x36, charTable[( (num/10) % 10) + 16]);
 [e ( _writeData (2 , -> -> 54 `i `uc *U + &U _charTable * -> + % / -> _num `ui -> -> 10 `i `ui -> -> 10 `i `ui -> -> 16 `i `ui `ux -> -> # *U &U _charTable `ui `ux ]
-"104
-[; ;tm1650.c: 104:     writeData(0x35, charTable[( (num/100) % 10) + 16]);
-[e ( _writeData (2 , -> -> 53 `i `uc *U + &U _charTable * -> + % / -> _num `ui -> -> 100 `i `ui -> -> 10 `i `ui -> -> 16 `i `ui `ux -> -> # *U &U _charTable `ui `ux ]
-"105
-[; ;tm1650.c: 105:     writeData(0x34, charTable[( (num/1000) % 10) + 16]);
-[e ( _writeData (2 , -> -> 52 `i `uc *U + &U _charTable * -> + % / -> _num `ui -> -> 1000 `i `ui -> -> 10 `i `ui -> -> 16 `i `ui `ux -> -> # *U &U _charTable `ui `ux ]
 "109
-[; ;tm1650.c: 109: }
+[; ;tm1650.c: 109:     writeData(0x35, charTable[( (num/100) % 10) + 16]);
+[e ( _writeData (2 , -> -> 53 `i `uc *U + &U _charTable * -> + % / -> _num `ui -> -> 100 `i `ui -> -> 10 `i `ui -> -> 16 `i `ui `ux -> -> # *U &U _charTable `ui `ux ]
+"110
+[; ;tm1650.c: 110:     writeData(0x34, charTable[( (num/1000) % 10) + 16]);
+[e ( _writeData (2 , -> -> 52 `i `uc *U + &U _charTable * -> + % / -> _num `ui -> -> 1000 `i `ui -> -> 10 `i `ui -> -> 16 `i `ui `ux -> -> # *U &U _charTable `ui `ux ]
+"114
+[; ;tm1650.c: 114: }
 [e :UE 1532 ]
 }
-"111
-[; ;tm1650.c: 111: void putch(char n){
+"116
+[; ;tm1650.c: 116: void putch(char n){
 [v _putch `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _putch ]
 [v _n `uc ~T0 @X0 1 r1 ]
 [f ]
-"113
-[; ;tm1650.c: 113:     if(position > 3 || n == '\r' || n == '\0')
+"118
+[; ;tm1650.c: 118:     if(position > 3 || n == '\r' || n == '\0')
 [e $ ! || || > -> _position `i -> 3 `i == -> _n `ui -> 13 `ui == -> _n `ui -> 0 `ui 1535  ]
-"114
-[; ;tm1650.c: 114:         position = 0;
+"119
+[; ;tm1650.c: 119:         position = 0;
 [e = _position -> -> 0 `i `uc ]
 [e :U 1535 ]
-"116
-[; ;tm1650.c: 116:     if(n != '\r'){
+"121
+[; ;tm1650.c: 121:     if(n != '\r'){
 [e $ ! != -> _n `ui -> 13 `ui 1536  ]
 {
-"117
-[; ;tm1650.c: 117:         TM1650_setDigit(position, n);
+"122
+[; ;tm1650.c: 122:         TM1650_setDigit(position, n);
 [e ( _TM1650_setDigit (2 , _position -> _n `uc ]
-"118
-[; ;tm1650.c: 118:         position++;
+"123
+[; ;tm1650.c: 123:         position++;
 [e ++ _position -> -> 1 `i `uc ]
-"119
-[; ;tm1650.c: 119:     }
+"124
+[; ;tm1650.c: 124:     }
 }
 [e :U 1536 ]
-"121
-[; ;tm1650.c: 121: }
+"126
+[; ;tm1650.c: 126: }
 [e :UE 1534 ]
+}
+"128
+[; ;tm1650.c: 128: _Bool TM1650_isEnabled(){
+[v _TM1650_isEnabled `(a ~T0 @X0 1 ef ]
+{
+[e :U _TM1650_isEnabled ]
+[f ]
+"129
+[; ;tm1650.c: 129:     return tm1650_status;
+[e ) _tm1650_status ]
+[e $UE 1537  ]
+"130
+[; ;tm1650.c: 130: }
+[e :UE 1537 ]
 }
 [p f _printf 8912896 ]
 [a 1C 32 32 32 32 0 ]

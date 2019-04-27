@@ -55,7 +55,7 @@
   Section: Macro Declarations
 */
 
-#define PWM2_INITIALIZE_DUTY_VALUE    79
+#define PWM2_INITIALIZE_DUTY_VALUE    0
 
 /**
   Section: PWM Module APIs
@@ -71,8 +71,8 @@ void PWM2_Initialize(void)
 	// RH 0; 
 	CCPR2H = 0x00;    
 	
-	// RL 79; 
-	CCPR2L = 0x4F;    
+	// RL 0; 
+	CCPR2L = 0x00;    
 
 	// Selecting Timer 2
 	CCPTMRS0bits.C2TSEL = 0x1;
@@ -83,19 +83,17 @@ void PWM2_LoadDutyValue(uint16_t dutyValue)
 {
     dutyValue &= 0x03FF;
     
-    if(dutyValue <= 95){
-        // Load duty cycle value
-        if(CCP2CONbits.FMT)
-        {
-            dutyValue <<= 6;
-            CCPR2H = dutyValue >> 8;
-            CCPR2L = dutyValue;
-        }
-        else
-        {
-            CCPR2H = dutyValue >> 8;
-            CCPR2L = dutyValue;
-        }
+    // Load duty cycle value
+    if(CCP2CONbits.FMT)
+    {
+        dutyValue <<= 6;
+        CCPR2H = dutyValue >> 8;
+        CCPR2L = dutyValue;
+    }
+    else
+    {
+        CCPR2H = dutyValue >> 8;
+        CCPR2L = dutyValue;
     }
 }
 

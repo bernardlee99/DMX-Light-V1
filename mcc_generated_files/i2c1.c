@@ -210,8 +210,8 @@ void I2C1_Initialize(void)
     SSP1CON1 = 0x28;
     // SBCDE disabled; BOEN disabled; SCIE disabled; PCIE disabled; DHEN disabled; SDAHT 100ns; AHEN disabled; 
     SSP1CON3 = 0x00;
-    // SSPADD 19; 
-    SSP1ADD = 0x13;
+    // SSPADD 79; 
+    SSP1ADD = 0x4F;
     
     // clear the interrupt flags
     PIR3bits.SSP1IF = 0;

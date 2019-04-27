@@ -18150,7 +18150,7 @@ void PWM3_Initialize(void)
  CCPR3H = 0x00;
 
 
- CCPR3L = 0x4F;
+ CCPR3L = 0x00;
 
 
  CCPTMRS0bits.C3TSEL = 0x1;
@@ -18161,19 +18161,17 @@ void PWM3_LoadDutyValue(uint16_t dutyValue)
 {
     dutyValue &= 0x03FF;
 
-    if(dutyValue <= 95){
 
-        if(CCP3CONbits.FMT)
-        {
-            dutyValue <<= 6;
-            CCPR3H = dutyValue >> 8;
-            CCPR3L = dutyValue;
-        }
-        else
-        {
-            CCPR3H = dutyValue >> 8;
-            CCPR3L = dutyValue;
-        }
+    if(CCP3CONbits.FMT)
+    {
+        dutyValue <<= 6;
+        CCPR3H = dutyValue >> 8;
+        CCPR3L = dutyValue;
+    }
+    else
+    {
+        CCPR3H = dutyValue >> 8;
+        CCPR3L = dutyValue;
     }
 }
 
