@@ -47,7 +47,7 @@ void CONTROLLER_task() {
         isActive = CONTROL_DMX();
     } else if (currentSelection == MODE_ANIMATION) {
         isActive = true;
-    } else if (currentSelection == MODE_BEAT) {
+    } else if (currentSelection == MODE_BEAT_STROBE || currentSelection == MODE_BEAT_FADE) {
         isActive = CONTROL_BEAT();
     } else {
         isActive = false;
@@ -70,14 +70,20 @@ void CONTROLLER_task() {
     } else if (currentSelection == MODE_ANIMATION && !menuPressed) {
         printf("SEL1\r");
         enterPressed = false;
-    } else if (currentSelection == MODE_BEAT && !menuPressed) {
+    } else if (currentSelection == MODE_BEAT_STROBE && !menuPressed) {
         printf("B-%u  \r", beatBrightness);
+        enterPressed = false;
+    } else if (currentSelection == MODE_BEAT_FADE && !menuPressed) {
+        printf("F-%u  \r", beatBrightness);
         enterPressed = false;
     }
     
 }
 
 void menuSelection(){
+    
+    if(menuSelected == MODE_BEAT_FADE)
+        menuSelected = MODE_BEAT_STROBE;
     
     if(upState){
         if(menuSelected < 2){
@@ -105,7 +111,11 @@ void menuSelection(){
             printf("ANI \r");
             break;
             
-        case MODE_BEAT:
+        case MODE_BEAT_STROBE:
+            printf("BEAT\r");
+            break;
+            
+        case MODE_BEAT_FADE:
             printf("BEAT\r");
             break;
             
@@ -172,5 +182,11 @@ bool static CONTROL_BEAT(){
             beatBrightness = 0;
         }
         return true;     
+    }
+    
+    if(enterState && currentSelection == MODE_BEAT_FADE){
+        currentSelection = MODE_BEAT_STROBE;
+    } else if(enterState && currentSelection == MODE_BEAT_STROBE){
+        currentSelection = MODE_BEAT_FADE;
     }
 }

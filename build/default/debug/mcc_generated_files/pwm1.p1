@@ -1446,8 +1446,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;mcc_generated_files/pwm1.c: 83: {
 [f ]
 "84
-[; ;mcc_generated_files/pwm1.c: 84:     if(dutyValue <= 120){
-[e $ ! <= -> _dutyValue `ui -> -> 120 `i `ui 1515  ]
+[; ;mcc_generated_files/pwm1.c: 84:     if(dutyValue <= 127){
+[e $ ! <= -> _dutyValue `ui -> -> 127 `i `ui 1515  ]
 {
 "85
 [; ;mcc_generated_files/pwm1.c: 85:         dutyValue &= 0x03FF;

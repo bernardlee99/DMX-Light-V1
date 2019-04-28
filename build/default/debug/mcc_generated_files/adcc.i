@@ -18207,21 +18207,21 @@ void ADCC_DefaultInterruptHandler(void);
 # 52 "mcc_generated_files/adcc.c" 2
 
 # 1 "mcc_generated_files/mcc.h" 1
-# 49 "mcc_generated_files/mcc.h"
+# 50 "mcc_generated_files/mcc.h"
 # 1 "mcc_generated_files/device_config.h" 1
-# 49 "mcc_generated_files/mcc.h" 2
+# 50 "mcc_generated_files/mcc.h" 2
 
 # 1 "mcc_generated_files/pin_manager.h" 1
 # 190 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
 # 202 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_IOC(void);
-# 50 "mcc_generated_files/mcc.h" 2
+# 51 "mcc_generated_files/mcc.h" 2
 
 
 
 # 1 "mcc_generated_files/interrupt_manager.h" 1
-# 53 "mcc_generated_files/mcc.h" 2
+# 54 "mcc_generated_files/mcc.h" 2
 
 # 1 "mcc_generated_files/i2c1.h" 1
 # 55 "mcc_generated_files/i2c1.h"
@@ -18290,7 +18290,7 @@ _Bool I2C1_MasterQueueIsFull(void);
 
 void I2C1_BusCollisionISR( void );
 void I2C1_ISR ( void );
-# 54 "mcc_generated_files/mcc.h" 2
+# 55 "mcc_generated_files/mcc.h" 2
 
 # 1 "mcc_generated_files/tmr2.h" 1
 # 79 "mcc_generated_files/tmr2.h"
@@ -18474,7 +18474,7 @@ void TMR2_Period8BitSet(uint8_t periodVal);
 void TMR2_LoadPeriodRegister(uint8_t periodVal);
 # 784 "mcc_generated_files/tmr2.h"
 _Bool TMR2_HasOverflowOccured(void);
-# 55 "mcc_generated_files/mcc.h" 2
+# 56 "mcc_generated_files/mcc.h" 2
 
 # 1 "mcc_generated_files/pwm4.h" 1
 # 97 "mcc_generated_files/pwm4.h"
@@ -18483,7 +18483,7 @@ void PWM4_Initialize(void);
 void PWM4_LoadDutyValue(uint16_t dutyValue);
 # 156 "mcc_generated_files/pwm4.h"
 _Bool PWM4_OutputStatusGet(void);
-# 56 "mcc_generated_files/mcc.h" 2
+# 57 "mcc_generated_files/mcc.h" 2
 
 # 1 "mcc_generated_files/tmr0.h" 1
 # 100 "mcc_generated_files/tmr0.h"
@@ -18506,7 +18506,7 @@ void TMR0_ISR(void);
 extern void (*TMR0_InterruptHandler)(void);
 # 346 "mcc_generated_files/tmr0.h"
 void TMR0_DefaultInterruptHandler(void);
-# 57 "mcc_generated_files/mcc.h" 2
+# 58 "mcc_generated_files/mcc.h" 2
 
 # 1 "mcc_generated_files/pwm1.h" 1
 # 97 "mcc_generated_files/pwm1.h"
@@ -18515,7 +18515,7 @@ void PWM1_Initialize(void);
 void PWM1_LoadDutyValue(uint16_t dutyValue);
 # 156 "mcc_generated_files/pwm1.h"
 _Bool PWM1_OutputStatusGet(void);
-# 58 "mcc_generated_files/mcc.h" 2
+# 59 "mcc_generated_files/mcc.h" 2
 
 # 1 "mcc_generated_files/pwm2.h" 1
 # 97 "mcc_generated_files/pwm2.h"
@@ -18524,7 +18524,7 @@ void PWM2_Initialize(void);
 void PWM2_LoadDutyValue(uint16_t dutyValue);
 # 156 "mcc_generated_files/pwm2.h"
 _Bool PWM2_OutputStatusGet(void);
-# 59 "mcc_generated_files/mcc.h" 2
+# 60 "mcc_generated_files/mcc.h" 2
 
 
 # 1 "mcc_generated_files/pwm3.h" 1
@@ -18534,7 +18534,7 @@ void PWM3_Initialize(void);
 void PWM3_LoadDutyValue(uint16_t dutyValue);
 # 156 "mcc_generated_files/pwm3.h"
 _Bool PWM3_OutputStatusGet(void);
-# 61 "mcc_generated_files/mcc.h" 2
+# 62 "mcc_generated_files/mcc.h" 2
 
 # 1 "mcc_generated_files/eusart1.h" 1
 # 75 "mcc_generated_files/eusart1.h"
@@ -18585,12 +18585,12 @@ void EUSART1_SetOverrunErrorHandler(void (* interruptHandler)(void));
 void EUSART1_SetErrorHandler(void (* interruptHandler)(void));
 # 470 "mcc_generated_files/eusart1.h"
 void EUSART1_SetRxInterruptHandler(void (* interruptHandler)(void));
-# 62 "mcc_generated_files/mcc.h" 2
-# 77 "mcc_generated_files/mcc.h"
+# 63 "mcc_generated_files/mcc.h" 2
+# 78 "mcc_generated_files/mcc.h"
 void SYSTEM_Initialize(void);
-# 90 "mcc_generated_files/mcc.h"
+# 91 "mcc_generated_files/mcc.h"
 void OSCILLATOR_Initialize(void);
-# 103 "mcc_generated_files/mcc.h"
+# 104 "mcc_generated_files/mcc.h"
 void PMD_Initialize(void);
 # 53 "mcc_generated_files/adcc.c" 2
 

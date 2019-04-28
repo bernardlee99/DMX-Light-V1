@@ -18160,8 +18160,12 @@ typedef struct {
 void LED_init();
 void LED_task();
 void static LED_task_DMX();
-void static LED_task_BEAT();
+void static LED_task_BEAT_STROBE();
+void static LED_task_BEAT_FADE();
 void static LED_task_ANIMATION();
+color_t static beatColorCreator(_Bool inRed, _Bool inGreen, _Bool inBlue, _Bool inWhite);
+color_t static colorCreator(uint8_t inRed, uint8_t inGreen, uint8_t inBlue, uint8_t inWhite);
+float static beatBrightnessCalculation();
 
 extern uint8_t beatBrightness;
 # 10 "led.c" 2
@@ -18186,8 +18190,9 @@ extern time_t startTime;
 # 16 "./controller.h"
 typedef enum {
     MODE_ANIMATION,
-    MODE_BEAT,
-    MODE_DMX
+    MODE_BEAT_STROBE,
+    MODE_DMX,
+    MODE_BEAT_FADE
 }mode_t;
 
 void CONTROLLER_init();
@@ -18200,23 +18205,25 @@ mode_t getMode();
 
 _Bool static CONTROL_DMX();
 _Bool static CONTROL_BEAT();
+
+extern _Bool startup;
 # 13 "led.c" 2
 # 1 "./mcc_generated_files/mcc.h" 1
-# 49 "./mcc_generated_files/mcc.h"
+# 50 "./mcc_generated_files/mcc.h"
 # 1 "./mcc_generated_files/device_config.h" 1
-# 49 "./mcc_generated_files/mcc.h" 2
+# 50 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/pin_manager.h" 1
 # 190 "./mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
 # 202 "./mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_IOC(void);
-# 50 "./mcc_generated_files/mcc.h" 2
+# 51 "./mcc_generated_files/mcc.h" 2
 
 
 
 # 1 "./mcc_generated_files/interrupt_manager.h" 1
-# 53 "./mcc_generated_files/mcc.h" 2
+# 54 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/i2c1.h" 1
 # 55 "./mcc_generated_files/i2c1.h"
@@ -18285,7 +18292,7 @@ _Bool I2C1_MasterQueueIsFull(void);
 
 void I2C1_BusCollisionISR( void );
 void I2C1_ISR ( void );
-# 54 "./mcc_generated_files/mcc.h" 2
+# 55 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/tmr2.h" 1
 # 79 "./mcc_generated_files/tmr2.h"
@@ -18469,7 +18476,7 @@ void TMR2_Period8BitSet(uint8_t periodVal);
 void TMR2_LoadPeriodRegister(uint8_t periodVal);
 # 784 "./mcc_generated_files/tmr2.h"
 _Bool TMR2_HasOverflowOccured(void);
-# 55 "./mcc_generated_files/mcc.h" 2
+# 56 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/pwm4.h" 1
 # 97 "./mcc_generated_files/pwm4.h"
@@ -18478,7 +18485,7 @@ void PWM4_Initialize(void);
 void PWM4_LoadDutyValue(uint16_t dutyValue);
 # 156 "./mcc_generated_files/pwm4.h"
 _Bool PWM4_OutputStatusGet(void);
-# 56 "./mcc_generated_files/mcc.h" 2
+# 57 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/tmr0.h" 1
 # 100 "./mcc_generated_files/tmr0.h"
@@ -18501,7 +18508,7 @@ void TMR0_ISR(void);
 extern void (*TMR0_InterruptHandler)(void);
 # 346 "./mcc_generated_files/tmr0.h"
 void TMR0_DefaultInterruptHandler(void);
-# 57 "./mcc_generated_files/mcc.h" 2
+# 58 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/pwm1.h" 1
 # 97 "./mcc_generated_files/pwm1.h"
@@ -18510,7 +18517,7 @@ void PWM1_Initialize(void);
 void PWM1_LoadDutyValue(uint16_t dutyValue);
 # 156 "./mcc_generated_files/pwm1.h"
 _Bool PWM1_OutputStatusGet(void);
-# 58 "./mcc_generated_files/mcc.h" 2
+# 59 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/pwm2.h" 1
 # 97 "./mcc_generated_files/pwm2.h"
@@ -18519,7 +18526,7 @@ void PWM2_Initialize(void);
 void PWM2_LoadDutyValue(uint16_t dutyValue);
 # 156 "./mcc_generated_files/pwm2.h"
 _Bool PWM2_OutputStatusGet(void);
-# 59 "./mcc_generated_files/mcc.h" 2
+# 60 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/adcc.h" 1
 # 72 "./mcc_generated_files/adcc.h"
@@ -18595,7 +18602,7 @@ void ADCC_SetADTIInterruptHandler(void (* InterruptHandler)(void));
 void ADCC_ThresholdISR(void);
 # 878 "./mcc_generated_files/adcc.h"
 void ADCC_DefaultInterruptHandler(void);
-# 60 "./mcc_generated_files/mcc.h" 2
+# 61 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/pwm3.h" 1
 # 97 "./mcc_generated_files/pwm3.h"
@@ -18604,7 +18611,7 @@ void PWM3_Initialize(void);
 void PWM3_LoadDutyValue(uint16_t dutyValue);
 # 156 "./mcc_generated_files/pwm3.h"
 _Bool PWM3_OutputStatusGet(void);
-# 61 "./mcc_generated_files/mcc.h" 2
+# 62 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/eusart1.h" 1
 # 75 "./mcc_generated_files/eusart1.h"
@@ -18655,12 +18662,12 @@ void EUSART1_SetOverrunErrorHandler(void (* interruptHandler)(void));
 void EUSART1_SetErrorHandler(void (* interruptHandler)(void));
 # 470 "./mcc_generated_files/eusart1.h"
 void EUSART1_SetRxInterruptHandler(void (* interruptHandler)(void));
-# 62 "./mcc_generated_files/mcc.h" 2
-# 77 "./mcc_generated_files/mcc.h"
+# 63 "./mcc_generated_files/mcc.h" 2
+# 78 "./mcc_generated_files/mcc.h"
 void SYSTEM_Initialize(void);
-# 90 "./mcc_generated_files/mcc.h"
+# 91 "./mcc_generated_files/mcc.h"
 void OSCILLATOR_Initialize(void);
-# 103 "./mcc_generated_files/mcc.h"
+# 104 "./mcc_generated_files/mcc.h"
 void PMD_Initialize(void);
 # 14 "led.c" 2
 # 1 "./dmx.h" 1
@@ -18678,17 +18685,21 @@ time_t lastLedActiveTime = 0;
 int currentState = 0;
 uint8_t beatBrightness = 1;
  int dmxArray[513];
+ _Bool startup;
 
 void LED_setColor(color_t input){
-        PWM1_LoadDutyValue( ( ((int)input.red)/255.0 ) * 120 );
-        PWM2_LoadDutyValue( ( ((int)input.green)/255.0 ) * 120 );
-        PWM3_LoadDutyValue( ( ((int)input.blue)/255.0 ) * 120 );
-        PWM4_LoadDutyValue( ( ((int)input.white)/255.0 ) * 120 );
+    if(!startup){
+        PWM1_LoadDutyValue( ( ((int)input.red)/255.0 ) * 127 );
+        PWM2_LoadDutyValue( ( ((int)input.green)/255.0 ) * 127 );
+        PWM3_LoadDutyValue( ( ((int)input.blue)/255.0 ) * 127 );
+        PWM4_LoadDutyValue( ( ((int)input.white)/255.0 ) * 127 );
+    }
 }
 
 void static LED_task_DMX(){
 
     color_t dmx;
+
     dmx.red = dmxArray[DMX_getAddress()];
     dmx.green = dmxArray[DMX_getAddress() + 1];
     dmx.blue = dmxArray[DMX_getAddress() + 2];
@@ -18705,8 +18716,12 @@ void LED_task(){
             LED_task_DMX();
             break;
 
-        case MODE_BEAT:
-            LED_task_BEAT();
+        case MODE_BEAT_STROBE:
+            LED_task_BEAT_STROBE();
+            break;
+
+        case MODE_BEAT_FADE:
+            LED_task_BEAT_FADE();
             break;
 
         case MODE_ANIMATION:
@@ -18716,65 +18731,105 @@ void LED_task(){
 
 }
 
-void static LED_task_BEAT(){
+void static LED_task_BEAT_STROBE(){
 
-    if(CLOCK_getTime() - lastLedActiveTime < 100){
+    if(CLOCK_getTime() - lastLedActiveTime < 50){
         return;
     }
 
-    volatile int temp = (float)(beatBrightness/9.0) * 120;
-
     lastLedActiveTime = CLOCK_getTime();
 
-    if (currentState == 1){
-        PWM1_LoadDutyValue( (float)(beatBrightness/9.0) * 120);
-        PWM2_LoadDutyValue(0);
-        PWM3_LoadDutyValue(0);
-        PWM4_LoadDutyValue(0);
+     if(!BEAT_detected()){
+         LED_setColor(beatColorCreator(0,0,0,0));
+    } else if (currentState == 1){
+        LED_setColor(beatColorCreator(0,0,0,1));
         currentState++;
     } else if(currentState == 2){
-        PWM1_LoadDutyValue(0);
-        PWM2_LoadDutyValue((float)(beatBrightness/9.0) * 120);
-        PWM3_LoadDutyValue((float)(beatBrightness/9.0) * 120);
-        PWM4_LoadDutyValue(0);
+         LED_setColor(beatColorCreator(0,1,0,1));
         currentState++;
     } else if(currentState == 3){
-        PWM1_LoadDutyValue((float)(beatBrightness/9.0) * 120);
-        PWM2_LoadDutyValue(0);
-        PWM3_LoadDutyValue((float)(beatBrightness/9.0) * 120);
-        PWM4_LoadDutyValue(0);
+         LED_setColor(beatColorCreator(0,1,1,0));
         currentState++;
     } else if(currentState == 4){
-        PWM1_LoadDutyValue(0);
-        PWM2_LoadDutyValue(0);
-        PWM3_LoadDutyValue((float)(beatBrightness/9.0) * 120);
-        PWM4_LoadDutyValue((float)(beatBrightness/9.0) * 120);
+         LED_setColor(beatColorCreator(1,0,1,1));
         currentState++;
     }else if(currentState == 5){
-        PWM1_LoadDutyValue((float)(beatBrightness/9.0) * 120);
-        PWM2_LoadDutyValue((float)(beatBrightness/9.0) * 120);
-        PWM3_LoadDutyValue((float)(beatBrightness/9.0) * 120);
-        PWM4_LoadDutyValue(0);
+        LED_setColor(beatColorCreator(0,1,1,0));
         currentState++;
     } else if(currentState == 6){
-        PWM1_LoadDutyValue((float)(beatBrightness/9.0) * 120);
-        PWM2_LoadDutyValue(0);
-        PWM3_LoadDutyValue((float)(beatBrightness/9.0) * 120);
-        PWM4_LoadDutyValue((float)(beatBrightness/9.0) * 120);
+        LED_setColor(beatColorCreator(1,1,1,0));
         currentState++;
     } else if(currentState == 8){
-        PWM1_LoadDutyValue(0);
-        PWM2_LoadDutyValue((float)(beatBrightness/9.0) * 120);
-        PWM3_LoadDutyValue((float)(beatBrightness/9.0) * 120);
-        PWM4_LoadDutyValue((float)(beatBrightness/9.0) * 120);
+        LED_setColor(beatColorCreator(1,1,0,1));
+        currentState++;
+    } else if(currentState == 9){
+         LED_setColor(beatColorCreator(0,1,0,1));
+        currentState++;
+    } else if(currentState == 10){
+         LED_setColor(beatColorCreator(0,0,1,1));
+        currentState++;
+    } else if(currentState == 11){
+         LED_setColor(beatColorCreator(1,0,1,0));
+        currentState++;
+    }else if(currentState == 12){
+        LED_setColor(beatColorCreator(1,0,0,1));
+        currentState++;
+    } else if(currentState == 13){
+        LED_setColor(beatColorCreator(1,1,1,1));
+        currentState++;
+    } else if(currentState == 14){
+        LED_setColor(beatColorCreator(0,1,0,1));
         currentState++;
     } else {
-        PWM1_LoadDutyValue((float)(beatBrightness/9.0) * 120);
-        PWM2_LoadDutyValue((float)(beatBrightness/9.0) * 120);
-        PWM3_LoadDutyValue((float)(beatBrightness/9.0) * 120);
-        PWM4_LoadDutyValue((float)(beatBrightness/9.0) * 120);
+        LED_setColor(beatColorCreator(0,1,1,1));
         currentState = 1;
     }
+
+}
+
+float static beatBrightnessCalculation(){
+    uint8_t temp = (float)(beatBrightness/9.0) * 255;
+    return temp;
+}
+
+color_t static colorCreator(uint8_t inRed, uint8_t inGreen, uint8_t inBlue, uint8_t inWhite){
+    color_t tempColor;
+    tempColor.red = inRed;
+    tempColor.blue = inBlue;
+    tempColor.green = inGreen;
+    tempColor.white = inWhite;
+
+    return tempColor;
+}
+
+color_t static beatColorCreator(_Bool inRed, _Bool inGreen, _Bool inBlue, _Bool inWhite){
+    color_t tempColor;
+
+    if(inRed)
+        tempColor.red = beatBrightnessCalculation();
+    else
+        tempColor.red = 0;
+
+    if(inBlue)
+        tempColor.blue = beatBrightnessCalculation();
+    else
+        tempColor.blue = 0;
+
+    if(inGreen)
+        tempColor.green = beatBrightnessCalculation();
+    else
+        tempColor.green = 0;
+
+    if(inWhite)
+        tempColor.white = beatBrightnessCalculation();
+    else
+        tempColor.white = 0;
+
+    return tempColor;
+}
+
+void static LED_task_BEAT_FADE(){
+
 
 }
 

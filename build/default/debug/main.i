@@ -17884,11 +17884,6 @@ extern volatile __bit nWRITE2 __attribute__((address(0xCCA)));
 
 # 1 "./mcc_generated_files/mcc.h" 1
 # 49 "./mcc_generated_files/mcc.h"
-# 1 "./mcc_generated_files/device_config.h" 1
-# 49 "./mcc_generated_files/mcc.h" 2
-
-# 1 "./mcc_generated_files/pin_manager.h" 1
-# 54 "./mcc_generated_files/pin_manager.h"
 # 1 "/opt/microchip/xc8/v2.05/pic/include/xc.h" 1 3
 # 18 "/opt/microchip/xc8/v2.05/pic/include/xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -18048,12 +18043,17 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "/opt/microchip/xc8/v2.05/pic/include/xc.h" 2 3
-# 54 "./mcc_generated_files/pin_manager.h" 2
+# 49 "./mcc_generated_files/mcc.h" 2
+
+# 1 "./mcc_generated_files/device_config.h" 1
+# 50 "./mcc_generated_files/mcc.h" 2
+
+# 1 "./mcc_generated_files/pin_manager.h" 1
 # 190 "./mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
 # 202 "./mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_IOC(void);
-# 50 "./mcc_generated_files/mcc.h" 2
+# 51 "./mcc_generated_files/mcc.h" 2
 
 # 1 "/opt/microchip/xc8/v2.05/pic/include/c99/stdint.h" 1 3
 # 22 "/opt/microchip/xc8/v2.05/pic/include/c99/stdint.h" 3
@@ -18137,13 +18137,13 @@ typedef int32_t int_fast32_t;
 typedef uint32_t uint_fast16_t;
 typedef uint32_t uint_fast32_t;
 # 156 "/opt/microchip/xc8/v2.05/pic/include/c99/stdint.h" 2 3
-# 51 "./mcc_generated_files/mcc.h" 2
-
-# 1 "/opt/microchip/xc8/v2.05/pic/include/c99/stdbool.h" 1 3
 # 52 "./mcc_generated_files/mcc.h" 2
 
-# 1 "./mcc_generated_files/interrupt_manager.h" 1
+# 1 "/opt/microchip/xc8/v2.05/pic/include/c99/stdbool.h" 1 3
 # 53 "./mcc_generated_files/mcc.h" 2
+
+# 1 "./mcc_generated_files/interrupt_manager.h" 1
+# 54 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/i2c1.h" 1
 # 55 "./mcc_generated_files/i2c1.h"
@@ -18212,7 +18212,7 @@ _Bool I2C1_MasterQueueIsFull(void);
 
 void I2C1_BusCollisionISR( void );
 void I2C1_ISR ( void );
-# 54 "./mcc_generated_files/mcc.h" 2
+# 55 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/tmr2.h" 1
 # 79 "./mcc_generated_files/tmr2.h"
@@ -18396,7 +18396,7 @@ void TMR2_Period8BitSet(uint8_t periodVal);
 void TMR2_LoadPeriodRegister(uint8_t periodVal);
 # 784 "./mcc_generated_files/tmr2.h"
 _Bool TMR2_HasOverflowOccured(void);
-# 55 "./mcc_generated_files/mcc.h" 2
+# 56 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/pwm4.h" 1
 # 97 "./mcc_generated_files/pwm4.h"
@@ -18405,7 +18405,7 @@ void PWM4_Initialize(void);
 void PWM4_LoadDutyValue(uint16_t dutyValue);
 # 156 "./mcc_generated_files/pwm4.h"
 _Bool PWM4_OutputStatusGet(void);
-# 56 "./mcc_generated_files/mcc.h" 2
+# 57 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/tmr0.h" 1
 # 100 "./mcc_generated_files/tmr0.h"
@@ -18428,7 +18428,7 @@ void TMR0_ISR(void);
 extern void (*TMR0_InterruptHandler)(void);
 # 346 "./mcc_generated_files/tmr0.h"
 void TMR0_DefaultInterruptHandler(void);
-# 57 "./mcc_generated_files/mcc.h" 2
+# 58 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/pwm1.h" 1
 # 97 "./mcc_generated_files/pwm1.h"
@@ -18437,7 +18437,7 @@ void PWM1_Initialize(void);
 void PWM1_LoadDutyValue(uint16_t dutyValue);
 # 156 "./mcc_generated_files/pwm1.h"
 _Bool PWM1_OutputStatusGet(void);
-# 58 "./mcc_generated_files/mcc.h" 2
+# 59 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/pwm2.h" 1
 # 97 "./mcc_generated_files/pwm2.h"
@@ -18446,7 +18446,7 @@ void PWM2_Initialize(void);
 void PWM2_LoadDutyValue(uint16_t dutyValue);
 # 156 "./mcc_generated_files/pwm2.h"
 _Bool PWM2_OutputStatusGet(void);
-# 59 "./mcc_generated_files/mcc.h" 2
+# 60 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/adcc.h" 1
 # 72 "./mcc_generated_files/adcc.h"
@@ -18522,7 +18522,7 @@ void ADCC_SetADTIInterruptHandler(void (* InterruptHandler)(void));
 void ADCC_ThresholdISR(void);
 # 878 "./mcc_generated_files/adcc.h"
 void ADCC_DefaultInterruptHandler(void);
-# 60 "./mcc_generated_files/mcc.h" 2
+# 61 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/pwm3.h" 1
 # 97 "./mcc_generated_files/pwm3.h"
@@ -18531,7 +18531,7 @@ void PWM3_Initialize(void);
 void PWM3_LoadDutyValue(uint16_t dutyValue);
 # 156 "./mcc_generated_files/pwm3.h"
 _Bool PWM3_OutputStatusGet(void);
-# 61 "./mcc_generated_files/mcc.h" 2
+# 62 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/eusart1.h" 1
 # 75 "./mcc_generated_files/eusart1.h"
@@ -18582,12 +18582,12 @@ void EUSART1_SetOverrunErrorHandler(void (* interruptHandler)(void));
 void EUSART1_SetErrorHandler(void (* interruptHandler)(void));
 # 470 "./mcc_generated_files/eusart1.h"
 void EUSART1_SetRxInterruptHandler(void (* interruptHandler)(void));
-# 62 "./mcc_generated_files/mcc.h" 2
-# 77 "./mcc_generated_files/mcc.h"
+# 63 "./mcc_generated_files/mcc.h" 2
+# 78 "./mcc_generated_files/mcc.h"
 void SYSTEM_Initialize(void);
-# 90 "./mcc_generated_files/mcc.h"
+# 91 "./mcc_generated_files/mcc.h"
 void OSCILLATOR_Initialize(void);
-# 103 "./mcc_generated_files/mcc.h"
+# 104 "./mcc_generated_files/mcc.h"
 void PMD_Initialize(void);
 # 45 "main.c" 2
 
@@ -18653,8 +18653,9 @@ _Bool BUTTONS_isHeld(button_t* button);
 # 16 "./controller.h"
 typedef enum {
     MODE_ANIMATION,
-    MODE_BEAT,
-    MODE_DMX
+    MODE_BEAT_STROBE,
+    MODE_DMX,
+    MODE_BEAT_FADE
 }mode_t;
 
 void CONTROLLER_init();
@@ -18667,6 +18668,8 @@ mode_t getMode();
 
 _Bool static CONTROL_DMX();
 _Bool static CONTROL_BEAT();
+
+extern _Bool startup;
 # 49 "main.c" 2
 
 # 1 "./led.h" 1
@@ -18681,8 +18684,12 @@ typedef struct {
 void LED_init();
 void LED_task();
 void static LED_task_DMX();
-void static LED_task_BEAT();
+void static LED_task_BEAT_STROBE();
+void static LED_task_BEAT_FADE();
 void static LED_task_ANIMATION();
+color_t static beatColorCreator(_Bool inRed, _Bool inGreen, _Bool inBlue, _Bool inWhite);
+color_t static colorCreator(uint8_t inRed, uint8_t inGreen, uint8_t inBlue, uint8_t inWhite);
+float static beatBrightnessCalculation();
 
 extern uint8_t beatBrightness;
 # 50 "main.c" 2

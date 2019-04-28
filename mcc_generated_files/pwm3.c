@@ -81,7 +81,7 @@ void PWM3_Initialize(void)
 
 void PWM3_LoadDutyValue(uint16_t dutyValue)
 {
-    if(dutyValue <= 120){
+    if(dutyValue <= 127){
         dutyValue &= 0x03FF;
 
         // Load duty cycle value

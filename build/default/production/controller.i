@@ -18158,8 +18158,9 @@ extern time_t startTime;
 # 16 "./controller.h"
 typedef enum {
     MODE_ANIMATION,
-    MODE_BEAT,
-    MODE_DMX
+    MODE_BEAT_STROBE,
+    MODE_DMX,
+    MODE_BEAT_FADE
 }mode_t;
 
 void CONTROLLER_init();
@@ -18248,8 +18249,12 @@ typedef struct {
 void LED_init();
 void LED_task();
 void static LED_task_DMX();
-void static LED_task_BEAT();
+void static LED_task_BEAT_STROBE();
+void static LED_task_BEAT_FADE();
 void static LED_task_ANIMATION();
+color_t static beatColorCreator(_Bool inRed, _Bool inGreen, _Bool inBlue, _Bool inWhite);
+color_t static colorCreator(uint8_t inRed, uint8_t inGreen, uint8_t inBlue, uint8_t inWhite);
+float static beatBrightnessCalculation();
 
 extern uint8_t beatBrightness;
 # 6 "controller.c" 2
@@ -18297,7 +18302,7 @@ void CONTROLLER_task() {
         isActive = CONTROL_DMX();
     } else if (currentSelection == MODE_ANIMATION) {
         isActive = 1;
-    } else if (currentSelection == MODE_BEAT) {
+    } else if (currentSelection == MODE_BEAT_STROBE || currentSelection == MODE_BEAT_FADE) {
         isActive = CONTROL_BEAT();
     } else {
         isActive = 0;
@@ -18320,14 +18325,20 @@ void CONTROLLER_task() {
     } else if (currentSelection == MODE_ANIMATION && !menuPressed) {
         printf("SEL1\r");
         enterPressed = 0;
-    } else if (currentSelection == MODE_BEAT && !menuPressed) {
+    } else if (currentSelection == MODE_BEAT_STROBE && !menuPressed) {
         printf("B-%u  \r", beatBrightness);
+        enterPressed = 0;
+    } else if (currentSelection == MODE_BEAT_FADE && !menuPressed) {
+        printf("F-%u  \r", beatBrightness);
         enterPressed = 0;
     }
 
 }
 
 void menuSelection(){
+
+    if(menuSelected == MODE_BEAT_FADE)
+        menuSelected = MODE_BEAT_STROBE;
 
     if(upState){
         if(menuSelected < 2){
@@ -18355,7 +18366,11 @@ void menuSelection(){
             printf("ANI \r");
             break;
 
-        case MODE_BEAT:
+        case MODE_BEAT_STROBE:
+            printf("BEAT\r");
+            break;
+
+        case MODE_BEAT_FADE:
             printf("BEAT\r");
             break;
 
@@ -18422,5 +18437,11 @@ _Bool static CONTROL_BEAT(){
             beatBrightness = 0;
         }
         return 1;
+    }
+
+    if(enterState && currentSelection == MODE_BEAT_FADE){
+        currentSelection = MODE_BEAT_STROBE;
+    } else if(enterState && currentSelection == MODE_BEAT_STROBE){
+        currentSelection = MODE_BEAT_FADE;
     }
 }

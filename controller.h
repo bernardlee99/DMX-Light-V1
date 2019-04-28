@@ -15,8 +15,9 @@
 
 typedef enum {
     MODE_ANIMATION,
-    MODE_BEAT,
-    MODE_DMX    
+    MODE_BEAT_STROBE,
+    MODE_DMX,
+    MODE_BEAT_FADE
 }mode_t;
 
 void CONTROLLER_init();

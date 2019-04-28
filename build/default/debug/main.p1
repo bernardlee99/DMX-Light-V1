@@ -1,8 +1,8 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [v F11062 `(v ~T0 @X0 0 tf ]
 [p mainexit ]
-"77 ./mcc_generated_files/mcc.h
-[; ;./mcc_generated_files/mcc.h: 77: void SYSTEM_Initialize(void);
+"78 ./mcc_generated_files/mcc.h
+[; ;./mcc_generated_files/mcc.h: 78: void SYSTEM_Initialize(void);
 [v _SYSTEM_Initialize `(v ~T0 @X0 0 ef ]
 [v F10824 `(v ~T0 @X0 1 tf1`ul ]
 "92 /opt/microchip/xc8/v2.05/pic/include/pic.h
@@ -40,8 +40,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "35 ./buttons.h
 [; ;./buttons.h: 35: void BUTTONS_task();
 [v _BUTTONS_task `(v ~T0 @X0 0 e? ]
-"25 ./controller.h
-[; ;./controller.h: 25: void CONTROLLER_task();
+"26 ./controller.h
+[; ;./controller.h: 26: void CONTROLLER_task();
 [v _CONTROLLER_task `(v ~T0 @X0 0 e? ]
 "14 ./beat.h
 [; ;./beat.h: 14: void BEAT_task();
