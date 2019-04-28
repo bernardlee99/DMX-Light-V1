@@ -25,7 +25,11 @@ void address_dec();
 void CONTROLLER_task();
 uint8_t getAddress();
 void menuSelection();
+mode_t getMode();
 
 bool static CONTROL_DMX();
+bool static CONTROL_BEAT();
+
+extern bool startup;
 
 #endif

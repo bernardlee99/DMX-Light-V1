@@ -18663,14 +18663,28 @@ void address_dec();
 void CONTROLLER_task();
 uint8_t getAddress();
 void menuSelection();
+mode_t getMode();
 
 _Bool static CONTROL_DMX();
+_Bool static CONTROL_BEAT();
 # 49 "main.c" 2
 
 # 1 "./led.h" 1
-# 10 "./led.h"
+# 11 "./led.h"
+typedef struct {
+    uint8_t white;
+    uint8_t red;
+    uint8_t green;
+    uint8_t blue;
+}color_t;
+
 void LED_init();
 void LED_task();
+void static LED_task_DMX();
+void static LED_task_BEAT();
+void static LED_task_ANIMATION();
+
+extern uint8_t beatBrightness;
 # 50 "main.c" 2
 
 # 1 "./beat.h" 1
@@ -18678,8 +18692,9 @@ void LED_task();
 static void adcThresholdHandler();
 void BEAT_init();
 _Bool BEAT_detected();
-void putch(char character);
 void BEAT_task();
+
+extern uint8_t beatBrightness;
 # 51 "main.c" 2
 
 # 1 "./beat.h" 1
@@ -18690,7 +18705,7 @@ void BEAT_task();
 void DMX_init();
 void address_inc();
 void address_dec();
-uint8_t getAddress();
+uint8_t DMX_getAddress();
 void DMX_task();
 
 extern uint16_t address;

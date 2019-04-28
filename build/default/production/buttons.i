@@ -18247,7 +18247,7 @@ void BUTTONS_task() {
     time_t time = CLOCK_getTime();
 
 
-    if (time - lastTime < 5)
+    if (time - lastTime < 10)
         return;
 
     lastTime = time;
@@ -18270,7 +18270,7 @@ void BUTTONS_task() {
 
             btn->event = EVENT_PRESSED;
         } else if (btn->state == STATE_PRESSED && btn->lastState == STATE_PRESSED){
-            if(time - btn->lastHoldTime > 500){
+            if(time - btn->lastHoldTime > 200){
                 btn->event = EVENT_HELD;
             } else {
                 btn->event = EVENT_INTER_HOLD;

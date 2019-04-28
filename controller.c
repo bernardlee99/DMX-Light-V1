@@ -3,6 +3,7 @@
 #include "buttons.h"
 #include "tm1650.h"
 #include "dmx.h"
+#include "led.h"
 
 button_t *up, *down, *menu, *enter;
 int incInterval = MAX_INTERVAL_TIME;
@@ -10,8 +11,8 @@ time_t lastIncTime = 0;
 time_t lastActiveTime = 0;
 bool startup = true;
 
-uint8_t menuSelected = 3;
-uint8_t currentSelection = 3;
+mode_t menuSelected = MODE_DMX;
+mode_t currentSelection = MODE_DMX;
 bool menuPressed = false;
 bool enterPressed = false;
 
@@ -35,19 +36,19 @@ void CONTROLLER_task() {
         //}
     } else {
         if (menuPressed == false && startup == true)
-            currentSelection = 3;
+            currentSelection = MODE_DMX;
         startup = false;
     }
 
     if ((menuState || menuPressed) && !enterPressed) {
         menuPressed = true;
         menuSelection();
-    } else if (currentSelection == 3) {
+    } else if (currentSelection == MODE_DMX) {
         isActive = CONTROL_DMX();
-    } else if (currentSelection == 1) {
+    } else if (currentSelection == MODE_ANIMATION) {
         isActive = true;
-    } else if (currentSelection == 2) {
-        isActive = true;
+    } else if (currentSelection == MODE_BEAT) {
+        isActive = CONTROL_BEAT();
     } else {
         isActive = false;
     }
@@ -63,14 +64,14 @@ void CONTROLLER_task() {
         TM1650_enable(true);
     }
 
-    if (currentSelection == 3 && !menuPressed) {
+    if (currentSelection == MODE_DMX && !menuPressed) {
         TM1650_fastPrintNum(address);
         enterPressed = false;
-    } else if (currentSelection == 1 && !menuPressed) {
+    } else if (currentSelection == MODE_ANIMATION && !menuPressed) {
         printf("SEL1\r");
         enterPressed = false;
-    } else if (currentSelection == 2 && !menuPressed) {
-        printf("B-1 \r");
+    } else if (currentSelection == MODE_BEAT && !menuPressed) {
+        printf("B-%u  \r", beatBrightness);
         enterPressed = false;
     }
     
@@ -79,16 +80,16 @@ void CONTROLLER_task() {
 void menuSelection(){
     
     if(upState){
-        if(menuSelected < 3){
+        if(menuSelected < 2){
             menuSelected++;
         } else {
             menuSelected = 2;
         }
     } else if(downState){
-        if(menuSelected > 1){
+        if(menuSelected > 0){
             menuSelected--;
         } else {
-            menuSelected = 1;
+            menuSelected = 0;
         }
     }
 
@@ -100,18 +101,22 @@ void menuSelection(){
     }
     
     switch(menuSelected){
-        case 1:
+        case MODE_ANIMATION:
             printf("ANI \r");
             break;
             
-        case 2:
+        case MODE_BEAT:
             printf("BEAT\r");
             break;
             
-        case 3:
+        case MODE_DMX:
             printf("PC  \r");
             break;
     }
+}
+
+mode_t getMode(){
+    return currentSelection;
 }
 
 bool static CONTROL_DMX(){
@@ -150,4 +155,22 @@ bool static CONTROL_DMX(){
     
     return false;
     
+}
+
+bool static CONTROL_BEAT(){
+    if (upState) {
+        if(beatBrightness < 9){
+            beatBrightness++;
+        } else {
+            beatBrightness = 9;
+        }
+        return true;     
+    } else if (downState) {
+        if(beatBrightness > 0){
+            beatBrightness--;
+        } else {
+            beatBrightness = 0;
+        }
+        return true;     
+    }
 }

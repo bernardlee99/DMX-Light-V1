@@ -18153,8 +18153,9 @@ extern __bank0 __bit __timeout;
 static void adcThresholdHandler();
 void BEAT_init();
 _Bool BEAT_detected();
-void putch(char character);
 void BEAT_task();
+
+extern uint8_t beatBrightness;
 # 10 "beat.c" 2
 # 1 "./mcc_generated_files/adcc.h" 1
 # 72 "./mcc_generated_files/adcc.h"

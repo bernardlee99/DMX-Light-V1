@@ -1554,10 +1554,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 1522 ]
 }
 "73
-[; ;dmx.c: 73: uint8_t getAddress(){
-[v _getAddress `(uc ~T0 @X0 1 ef ]
+[; ;dmx.c: 73: uint8_t DMX_getAddress(){
+[v _DMX_getAddress `(uc ~T0 @X0 1 ef ]
 {
-[e :U _getAddress ]
+[e :U _DMX_getAddress ]
 [f ]
 "74
 [; ;dmx.c: 74:     return address;
@@ -1566,14 +1566,4 @@ Version 4.0 HI-TECH Software Intermediate Code
 "75
 [; ;dmx.c: 75: }
 [e :UE 1526 ]
-}
-"77
-[; ;dmx.c: 77: void DMX_task(){
-[v _DMX_task `(v ~T0 @X0 1 ef ]
-{
-[e :U _DMX_task ]
-[f ]
-"79
-[; ;dmx.c: 79: }
-[e :UE 1527 ]
 }

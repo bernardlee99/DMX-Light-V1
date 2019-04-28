@@ -1,22 +1,9 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[v F11074 `(v ~T0 @X0 0 tf ]
-"692 /opt/microchip/xc8/v2.05/pic/include/pic16f18446.h
-[; ;/opt/microchip/xc8/v2.05/pic/include/pic16f18446.h: 692:     struct {
-[s S43 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S43 . TRISC0 TRISC1 TRISC2 TRISC3 TRISC4 TRISC5 TRISC6 TRISC7 ]
-"691
-[; ;/opt/microchip/xc8/v2.05/pic/include/pic16f18446.h: 691: typedef union {
-[u S42 `S43 1 ]
-[n S42 . . ]
-"703
-[; ;/opt/microchip/xc8/v2.05/pic/include/pic16f18446.h: 703: extern volatile TRISCbits_t TRISCbits __attribute__((address(0x014)));
-[v _TRISCbits `VS42 ~T0 @X0 0 e@20 ]
-"16 ./clock.h
-[; ;./clock.h: 16: time_t CLOCK_getTime();
-[v _CLOCK_getTime `(us ~T0 @X0 0 e? ]
-"13 ./beat.h
-[; ;./beat.h: 13: _Bool BEAT_detected();
-[v _BEAT_detected `(a ~T0 @X0 0 e? ]
+[v F11097 `(v ~T0 @X0 0 tf ]
+"11 ./led.h
+[; ;./led.h: 11: typedef struct {
+[s S1513 `uc 1 `uc 1 `uc 1 `uc 1 ]
+[n S1513 . white red green blue ]
 "124 ./mcc_generated_files/pwm1.h
 [; ;./mcc_generated_files/pwm1.h: 124: void PWM1_LoadDutyValue(uint16_t dutyValue);
 [v _PWM1_LoadDutyValue `(v ~T0 @X0 0 ef1`us ]
@@ -29,6 +16,25 @@ Version 4.0 HI-TECH Software Intermediate Code
 "124 ./mcc_generated_files/pwm4.h
 [; ;./mcc_generated_files/pwm4.h: 124: void PWM4_LoadDutyValue(uint16_t dutyValue);
 [v _PWM4_LoadDutyValue `(v ~T0 @X0 0 ef1`us ]
+"15 ./dmx.h
+[; ;./dmx.h: 15: uint8_t DMX_getAddress();
+[v _DMX_getAddress `(uc ~T0 @X0 0 e? ]
+"21 ./led.h
+[; ;./led.h: 21: void static LED_task_BEAT();
+[v _LED_task_BEAT `(v ~T0 @X0 0 s? ]
+"22
+[; ;./led.h: 22: void static LED_task_ANIMATION();
+[v _LED_task_ANIMATION `(v ~T0 @X0 0 s? ]
+"54 led.c
+[; ;led.c: 54:     }
+[c E10886 0 1 2 .. ]
+[n E10886 . MODE_ANIMATION MODE_BEAT MODE_DMX  ]
+"28 ./controller.h
+[; ;./controller.h: 28: mode_t getMode();
+[v _getMode `(E10886 ~T0 @X0 0 e? ]
+"16 ./clock.h
+[; ;./clock.h: 16: time_t CLOCK_getTime();
+[v _CLOCK_getTime `(us ~T0 @X0 0 e? ]
 "110 /opt/microchip/xc8/v2.05/pic/include/pic16f18446.h
 [; ;/opt/microchip/xc8/v2.05/pic/include/pic16f18446.h: 110: __asm("INDF0 equ 00h");
 [; <" INDF0 equ 00h ;# ">
@@ -1393,255 +1399,347 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; <" TOSH equ 01FEFh ;# ">
 "95 ./mcc_generated_files/eusart1.h
 [; ;./mcc_generated_files/eusart1.h: 95: void (*EUSART1_RxDefaultInterruptHandler)(void);
-[v _EUSART1_RxDefaultInterruptHandler `*F11074 ~T0 @X0 1 e ]
-"14 led.c
-[; ;led.c: 14: time_t lastLedActiveTime = 0;
+[v _EUSART1_RxDefaultInterruptHandler `*F11097 ~T0 @X0 1 e ]
+"16 led.c
+[; ;led.c: 16: time_t lastLedActiveTime = 0;
 [v _lastLedActiveTime `us ~T0 @X0 1 e ]
 [i _lastLedActiveTime
 -> -> 0 `i `us
 ]
-"15
-[; ;led.c: 15: int currentState = 0;
+"17
+[; ;led.c: 17: int currentState = 0;
 [v _currentState `i ~T0 @X0 1 e ]
 [i _currentState
 -> 0 `i
 ]
-"17
-[; ;led.c: 17: void LED_init(){
-[v _LED_init `(v ~T0 @X0 1 ef ]
-{
-[e :U _LED_init ]
-[f ]
 "18
-[; ;led.c: 18:     TRISCbits.TRISC5 = 0;
-[e = . . _TRISCbits 0 5 -> -> 0 `i `uc ]
+[; ;led.c: 18: uint8_t beatBrightness = 1;
+[v _beatBrightness `uc ~T0 @X0 1 e ]
+[i _beatBrightness
+-> -> 1 `i `uc
+]
 "19
-[; ;led.c: 19: }
-[e :UE 1516 ]
-}
+[; ;led.c: 19:  int dmxArray[513];
+[v _dmxArray `i ~T0 @X0 -> 513 `i e ]
 "21
-[; ;led.c: 21: void LED_task(){
+[; ;led.c: 21: void LED_setColor(color_t input){
+[v _LED_setColor `(v ~T0 @X0 1 ef1`S1513 ]
+{
+[e :U _LED_setColor ]
+[v _input `S1513 ~T0 @X0 1 r1 ]
+[f ]
+"22
+[; ;led.c: 22:         PWM1_LoadDutyValue( ( ((int)input.red)/255.0 ) * 120 );
+[e ( _PWM1_LoadDutyValue (1 -> * / -> -> . _input 1 `i `d .255.0 -> -> 120 `i `d `us ]
+"23
+[; ;led.c: 23:         PWM2_LoadDutyValue( ( ((int)input.green)/255.0 ) * 120 );
+[e ( _PWM2_LoadDutyValue (1 -> * / -> -> . _input 2 `i `d .255.0 -> -> 120 `i `d `us ]
+"24
+[; ;led.c: 24:         PWM3_LoadDutyValue( ( ((int)input.blue)/255.0 ) * 120 );
+[e ( _PWM3_LoadDutyValue (1 -> * / -> -> . _input 3 `i `d .255.0 -> -> 120 `i `d `us ]
+"25
+[; ;led.c: 25:         PWM4_LoadDutyValue( ( ((int)input.white)/255.0 ) * 120 );
+[e ( _PWM4_LoadDutyValue (1 -> * / -> -> . _input 0 `i `d .255.0 -> -> 120 `i `d `us ]
+"26
+[; ;led.c: 26: }
+[e :UE 1517 ]
+}
+"28
+[; ;led.c: 28: void static LED_task_DMX(){
+[v _LED_task_DMX `(v ~T0 @X0 1 sf ]
+{
+[e :U _LED_task_DMX ]
+[f ]
+"30
+[; ;led.c: 30:     color_t dmx;
+[v _dmx `S1513 ~T0 @X0 1 a ]
+"31
+[; ;led.c: 31:     dmx.red = dmxArray[DMX_getAddress()];
+[e = . _dmx 1 -> *U + &U _dmxArray * -> ( _DMX_getAddress ..  `ux -> -> # *U &U _dmxArray `ui `ux `uc ]
+"32
+[; ;led.c: 32:     dmx.green = dmxArray[DMX_getAddress() + 1];
+[e = . _dmx 2 -> *U + &U _dmxArray * -> -> + -> ( _DMX_getAddress ..  `i -> 1 `i `ui `ux -> -> # *U &U _dmxArray `ui `ux `uc ]
+"33
+[; ;led.c: 33:     dmx.blue = dmxArray[DMX_getAddress() + 2];
+[e = . _dmx 3 -> *U + &U _dmxArray * -> -> + -> ( _DMX_getAddress ..  `i -> 2 `i `ui `ux -> -> # *U &U _dmxArray `ui `ux `uc ]
+"34
+[; ;led.c: 34:     dmx.white = dmxArray[DMX_getAddress() + 3];
+[e = . _dmx 0 -> *U + &U _dmxArray * -> -> + -> ( _DMX_getAddress ..  `i -> 3 `i `ui `ux -> -> # *U &U _dmxArray `ui `ux `uc ]
+"36
+[; ;led.c: 36:     LED_setColor(dmx);
+[e ( _LED_setColor (1 _dmx ]
+"38
+[; ;led.c: 38: }
+[e :UE 1518 ]
+}
+"40
+[; ;led.c: 40: void LED_task(){
 [v _LED_task `(v ~T0 @X0 1 ef ]
 {
 [e :U _LED_task ]
 [f ]
-"23
-[; ;led.c: 23:     if(CLOCK_getTime() - lastLedActiveTime < 100){
-[e $ ! < - -> ( _CLOCK_getTime ..  `ui -> _lastLedActiveTime `ui -> -> 100 `i `ui 1518  ]
+"42
+[; ;led.c: 42:     switch(getMode()){
+[e $U 1521  ]
 {
-"24
-[; ;led.c: 24:         return;
-[e $UE 1517  ]
-"25
-[; ;led.c: 25:     }
-}
-[e :U 1518 ]
-"27
-[; ;led.c: 27:     lastLedActiveTime = CLOCK_getTime();
-[e = _lastLedActiveTime ( _CLOCK_getTime ..  ]
-"29
-[; ;led.c: 29:     if(!BEAT_detected()){
-[e $ ! ! != -> ( _BEAT_detected ..  `i -> 0 `i 1519  ]
-{
-"30
-[; ;led.c: 30:         PWM1_LoadDutyValue(0);
-[e ( _PWM1_LoadDutyValue (1 -> -> 0 `i `us ]
-"31
-[; ;led.c: 31:         PWM2_LoadDutyValue(0);
-[e ( _PWM2_LoadDutyValue (1 -> -> 0 `i `us ]
-"32
-[; ;led.c: 32:         PWM3_LoadDutyValue(0);
-[e ( _PWM3_LoadDutyValue (1 -> -> 0 `i `us ]
-"33
-[; ;led.c: 33:         PWM4_LoadDutyValue(0);
-[e ( _PWM4_LoadDutyValue (1 -> -> 0 `i `us ]
-"34
-[; ;led.c: 34:     } else if (currentState == 1){
+"43
+[; ;led.c: 43:         case MODE_DMX:
+[e :U 1522 ]
+"44
+[; ;led.c: 44:             LED_task_DMX();
+[e ( _LED_task_DMX ..  ]
+"45
+[; ;led.c: 45:             break;
+[e $U 1520  ]
+"47
+[; ;led.c: 47:         case MODE_BEAT:
+[e :U 1523 ]
+"48
+[; ;led.c: 48:             LED_task_BEAT();
+[e ( _LED_task_BEAT ..  ]
+"49
+[; ;led.c: 49:             break;
+[e $U 1520  ]
+"51
+[; ;led.c: 51:         case MODE_ANIMATION:
+[e :U 1524 ]
+"52
+[; ;led.c: 52:             LED_task_ANIMATION();
+[e ( _LED_task_ANIMATION ..  ]
+"53
+[; ;led.c: 53:             break;
+[e $U 1520  ]
+"54
+[; ;led.c: 54:     }
 }
 [e $U 1520  ]
-[e :U 1519 ]
-[e $ ! == _currentState -> 1 `i 1521  ]
-{
-"35
-[; ;led.c: 35:         PWM1_LoadDutyValue(120);
-[e ( _PWM1_LoadDutyValue (1 -> -> 120 `i `us ]
-"36
-[; ;led.c: 36:         PWM2_LoadDutyValue(0);
-[e ( _PWM2_LoadDutyValue (1 -> -> 0 `i `us ]
-"37
-[; ;led.c: 37:         PWM3_LoadDutyValue(0);
-[e ( _PWM3_LoadDutyValue (1 -> -> 0 `i `us ]
-"38
-[; ;led.c: 38:         PWM4_LoadDutyValue(0);
-[e ( _PWM4_LoadDutyValue (1 -> -> 0 `i `us ]
-"39
-[; ;led.c: 39:         currentState++;
-[e ++ _currentState -> 1 `i ]
-"40
-[; ;led.c: 40:     } else if(currentState == 2){
-}
-[e $U 1522  ]
 [e :U 1521 ]
-[e $ ! == _currentState -> 2 `i 1523  ]
-{
-"41
-[; ;led.c: 41:         PWM1_LoadDutyValue(0);
-[e ( _PWM1_LoadDutyValue (1 -> -> 0 `i `us ]
-"42
-[; ;led.c: 42:         PWM2_LoadDutyValue(120);
-[e ( _PWM2_LoadDutyValue (1 -> -> 120 `i `us ]
-"43
-[; ;led.c: 43:         PWM3_LoadDutyValue(120);
-[e ( _PWM3_LoadDutyValue (1 -> -> 120 `i `us ]
-"44
-[; ;led.c: 44:         PWM4_LoadDutyValue(0);
-[e ( _PWM4_LoadDutyValue (1 -> -> 0 `i `us ]
-"45
-[; ;led.c: 45:         currentState++;
-[e ++ _currentState -> 1 `i ]
-"46
-[; ;led.c: 46:     } else if(currentState == 3){
-}
-[e $U 1524  ]
-[e :U 1523 ]
-[e $ ! == _currentState -> 3 `i 1525  ]
-{
-"47
-[; ;led.c: 47:         PWM1_LoadDutyValue(120);
-[e ( _PWM1_LoadDutyValue (1 -> -> 120 `i `us ]
-"48
-[; ;led.c: 48:         PWM2_LoadDutyValue(0);
-[e ( _PWM2_LoadDutyValue (1 -> -> 0 `i `us ]
-"49
-[; ;led.c: 49:         PWM3_LoadDutyValue(120);
-[e ( _PWM3_LoadDutyValue (1 -> -> 120 `i `us ]
-"50
-[; ;led.c: 50:         PWM4_LoadDutyValue(0);
-[e ( _PWM4_LoadDutyValue (1 -> -> 0 `i `us ]
-"51
-[; ;led.c: 51:         currentState++;
-[e ++ _currentState -> 1 `i ]
-"52
-[; ;led.c: 52:     } else if(currentState == 4){
-}
-[e $U 1526  ]
-[e :U 1525 ]
-[e $ ! == _currentState -> 4 `i 1527  ]
-{
-"53
-[; ;led.c: 53:         PWM1_LoadDutyValue(0);
-[e ( _PWM1_LoadDutyValue (1 -> -> 0 `i `us ]
-"54
-[; ;led.c: 54:         PWM2_LoadDutyValue(0);
-[e ( _PWM2_LoadDutyValue (1 -> -> 0 `i `us ]
-"55
-[; ;led.c: 55:         PWM3_LoadDutyValue(120);
-[e ( _PWM3_LoadDutyValue (1 -> -> 120 `i `us ]
+[e [\ -> ( _getMode ..  `ui , $ -> . `E10886 2 `ui 1522
+ , $ -> . `E10886 1 `ui 1523
+ , $ -> . `E10886 0 `ui 1524
+ 1520 ]
+[e :U 1520 ]
 "56
-[; ;led.c: 56:         PWM4_LoadDutyValue(120);
-[e ( _PWM4_LoadDutyValue (1 -> -> 120 `i `us ]
-"57
-[; ;led.c: 57:         currentState++;
-[e ++ _currentState -> 1 `i ]
+[; ;led.c: 56: }
+[e :UE 1519 ]
+}
 "58
-[; ;led.c: 58:     }else if(currentState == 5){
+[; ;led.c: 58: void static LED_task_BEAT(){
+[v _LED_task_BEAT `(v ~T0 @X0 1 sf ]
+{
+[e :U _LED_task_BEAT ]
+[f ]
+"60
+[; ;led.c: 60:     if(CLOCK_getTime() - lastLedActiveTime < 100){
+[e $ ! < - -> ( _CLOCK_getTime ..  `ui -> _lastLedActiveTime `ui -> -> 100 `i `ui 1526  ]
+{
+"61
+[; ;led.c: 61:         return;
+[e $UE 1525  ]
+"62
+[; ;led.c: 62:     }
+}
+[e :U 1526 ]
+"64
+[; ;led.c: 64:     volatile int temp = (float)(beatBrightness/9.0) * 120;
+[v _temp `Vi ~T0 @X0 1 a ]
+[e = _temp -> * -> / -> -> _beatBrightness `i `d .9.0 `f -> -> 120 `i `f `i ]
+"66
+[; ;led.c: 66:     lastLedActiveTime = CLOCK_getTime();
+[e = _lastLedActiveTime ( _CLOCK_getTime ..  ]
+"68
+[; ;led.c: 68:     if (currentState == 1){
+[e $ ! == _currentState -> 1 `i 1527  ]
+{
+"69
+[; ;led.c: 69:         PWM1_LoadDutyValue( (float)(beatBrightness/9.0) * 120);
+[e ( _PWM1_LoadDutyValue (1 -> * -> / -> -> _beatBrightness `i `d .9.0 `f -> -> 120 `i `f `us ]
+"70
+[; ;led.c: 70:         PWM2_LoadDutyValue(0);
+[e ( _PWM2_LoadDutyValue (1 -> -> 0 `i `us ]
+"71
+[; ;led.c: 71:         PWM3_LoadDutyValue(0);
+[e ( _PWM3_LoadDutyValue (1 -> -> 0 `i `us ]
+"72
+[; ;led.c: 72:         PWM4_LoadDutyValue(0);
+[e ( _PWM4_LoadDutyValue (1 -> -> 0 `i `us ]
+"73
+[; ;led.c: 73:         currentState++;
+[e ++ _currentState -> 1 `i ]
+"74
+[; ;led.c: 74:     } else if(currentState == 2){
 }
 [e $U 1528  ]
 [e :U 1527 ]
-[e $ ! == _currentState -> 5 `i 1529  ]
+[e $ ! == _currentState -> 2 `i 1529  ]
 {
-"59
-[; ;led.c: 59:         PWM1_LoadDutyValue(120);
-[e ( _PWM1_LoadDutyValue (1 -> -> 120 `i `us ]
-"60
-[; ;led.c: 60:         PWM2_LoadDutyValue(120);
-[e ( _PWM2_LoadDutyValue (1 -> -> 120 `i `us ]
-"61
-[; ;led.c: 61:         PWM3_LoadDutyValue(120);
-[e ( _PWM3_LoadDutyValue (1 -> -> 120 `i `us ]
-"62
-[; ;led.c: 62:         PWM4_LoadDutyValue(0);
+"75
+[; ;led.c: 75:         PWM1_LoadDutyValue(0);
+[e ( _PWM1_LoadDutyValue (1 -> -> 0 `i `us ]
+"76
+[; ;led.c: 76:         PWM2_LoadDutyValue((float)(beatBrightness/9.0) * 120);
+[e ( _PWM2_LoadDutyValue (1 -> * -> / -> -> _beatBrightness `i `d .9.0 `f -> -> 120 `i `f `us ]
+"77
+[; ;led.c: 77:         PWM3_LoadDutyValue((float)(beatBrightness/9.0) * 120);
+[e ( _PWM3_LoadDutyValue (1 -> * -> / -> -> _beatBrightness `i `d .9.0 `f -> -> 120 `i `f `us ]
+"78
+[; ;led.c: 78:         PWM4_LoadDutyValue(0);
 [e ( _PWM4_LoadDutyValue (1 -> -> 0 `i `us ]
-"63
-[; ;led.c: 63:         currentState++;
+"79
+[; ;led.c: 79:         currentState++;
 [e ++ _currentState -> 1 `i ]
-"64
-[; ;led.c: 64:     } else if(currentState == 6){
+"80
+[; ;led.c: 80:     } else if(currentState == 3){
 }
 [e $U 1530  ]
 [e :U 1529 ]
-[e $ ! == _currentState -> 6 `i 1531  ]
+[e $ ! == _currentState -> 3 `i 1531  ]
 {
-"65
-[; ;led.c: 65:         PWM1_LoadDutyValue(120);
-[e ( _PWM1_LoadDutyValue (1 -> -> 120 `i `us ]
-"66
-[; ;led.c: 66:         PWM2_LoadDutyValue(0);
+"81
+[; ;led.c: 81:         PWM1_LoadDutyValue((float)(beatBrightness/9.0) * 120);
+[e ( _PWM1_LoadDutyValue (1 -> * -> / -> -> _beatBrightness `i `d .9.0 `f -> -> 120 `i `f `us ]
+"82
+[; ;led.c: 82:         PWM2_LoadDutyValue(0);
 [e ( _PWM2_LoadDutyValue (1 -> -> 0 `i `us ]
-"67
-[; ;led.c: 67:         PWM3_LoadDutyValue(120);
-[e ( _PWM3_LoadDutyValue (1 -> -> 120 `i `us ]
-"68
-[; ;led.c: 68:         PWM4_LoadDutyValue(120);
-[e ( _PWM4_LoadDutyValue (1 -> -> 120 `i `us ]
-"69
-[; ;led.c: 69:         currentState++;
+"83
+[; ;led.c: 83:         PWM3_LoadDutyValue((float)(beatBrightness/9.0) * 120);
+[e ( _PWM3_LoadDutyValue (1 -> * -> / -> -> _beatBrightness `i `d .9.0 `f -> -> 120 `i `f `us ]
+"84
+[; ;led.c: 84:         PWM4_LoadDutyValue(0);
+[e ( _PWM4_LoadDutyValue (1 -> -> 0 `i `us ]
+"85
+[; ;led.c: 85:         currentState++;
 [e ++ _currentState -> 1 `i ]
-"70
-[; ;led.c: 70:     } else if(currentState == 8){
+"86
+[; ;led.c: 86:     } else if(currentState == 4){
 }
 [e $U 1532  ]
 [e :U 1531 ]
-[e $ ! == _currentState -> 8 `i 1533  ]
+[e $ ! == _currentState -> 4 `i 1533  ]
 {
-"71
-[; ;led.c: 71:         PWM1_LoadDutyValue(0);
+"87
+[; ;led.c: 87:         PWM1_LoadDutyValue(0);
 [e ( _PWM1_LoadDutyValue (1 -> -> 0 `i `us ]
-"72
-[; ;led.c: 72:         PWM2_LoadDutyValue(120);
-[e ( _PWM2_LoadDutyValue (1 -> -> 120 `i `us ]
-"73
-[; ;led.c: 73:         PWM3_LoadDutyValue(120);
-[e ( _PWM3_LoadDutyValue (1 -> -> 120 `i `us ]
-"74
-[; ;led.c: 74:         PWM4_LoadDutyValue(120);
-[e ( _PWM4_LoadDutyValue (1 -> -> 120 `i `us ]
-"75
-[; ;led.c: 75:         currentState++;
+"88
+[; ;led.c: 88:         PWM2_LoadDutyValue(0);
+[e ( _PWM2_LoadDutyValue (1 -> -> 0 `i `us ]
+"89
+[; ;led.c: 89:         PWM3_LoadDutyValue((float)(beatBrightness/9.0) * 120);
+[e ( _PWM3_LoadDutyValue (1 -> * -> / -> -> _beatBrightness `i `d .9.0 `f -> -> 120 `i `f `us ]
+"90
+[; ;led.c: 90:         PWM4_LoadDutyValue((float)(beatBrightness/9.0) * 120);
+[e ( _PWM4_LoadDutyValue (1 -> * -> / -> -> _beatBrightness `i `d .9.0 `f -> -> 120 `i `f `us ]
+"91
+[; ;led.c: 91:         currentState++;
 [e ++ _currentState -> 1 `i ]
-"76
-[; ;led.c: 76:     } else {
+"92
+[; ;led.c: 92:     }else if(currentState == 5){
 }
 [e $U 1534  ]
 [e :U 1533 ]
+[e $ ! == _currentState -> 5 `i 1535  ]
 {
-"77
-[; ;led.c: 77:         PWM1_LoadDutyValue(120);
-[e ( _PWM1_LoadDutyValue (1 -> -> 120 `i `us ]
-"78
-[; ;led.c: 78:         PWM2_LoadDutyValue(120);
-[e ( _PWM2_LoadDutyValue (1 -> -> 120 `i `us ]
-"79
-[; ;led.c: 79:         PWM3_LoadDutyValue(120);
-[e ( _PWM3_LoadDutyValue (1 -> -> 120 `i `us ]
-"80
-[; ;led.c: 80:         PWM4_LoadDutyValue(120);
-[e ( _PWM4_LoadDutyValue (1 -> -> 120 `i `us ]
-"81
-[; ;led.c: 81:         currentState = 1;
-[e = _currentState -> 1 `i ]
-"82
-[; ;led.c: 82:     }
+"93
+[; ;led.c: 93:         PWM1_LoadDutyValue((float)(beatBrightness/9.0) * 120);
+[e ( _PWM1_LoadDutyValue (1 -> * -> / -> -> _beatBrightness `i `d .9.0 `f -> -> 120 `i `f `us ]
+"94
+[; ;led.c: 94:         PWM2_LoadDutyValue((float)(beatBrightness/9.0) * 120);
+[e ( _PWM2_LoadDutyValue (1 -> * -> / -> -> _beatBrightness `i `d .9.0 `f -> -> 120 `i `f `us ]
+"95
+[; ;led.c: 95:         PWM3_LoadDutyValue((float)(beatBrightness/9.0) * 120);
+[e ( _PWM3_LoadDutyValue (1 -> * -> / -> -> _beatBrightness `i `d .9.0 `f -> -> 120 `i `f `us ]
+"96
+[; ;led.c: 96:         PWM4_LoadDutyValue(0);
+[e ( _PWM4_LoadDutyValue (1 -> -> 0 `i `us ]
+"97
+[; ;led.c: 97:         currentState++;
+[e ++ _currentState -> 1 `i ]
+"98
+[; ;led.c: 98:     } else if(currentState == 6){
 }
+[e $U 1536  ]
+[e :U 1535 ]
+[e $ ! == _currentState -> 6 `i 1537  ]
+{
+"99
+[; ;led.c: 99:         PWM1_LoadDutyValue((float)(beatBrightness/9.0) * 120);
+[e ( _PWM1_LoadDutyValue (1 -> * -> / -> -> _beatBrightness `i `d .9.0 `f -> -> 120 `i `f `us ]
+"100
+[; ;led.c: 100:         PWM2_LoadDutyValue(0);
+[e ( _PWM2_LoadDutyValue (1 -> -> 0 `i `us ]
+"101
+[; ;led.c: 101:         PWM3_LoadDutyValue((float)(beatBrightness/9.0) * 120);
+[e ( _PWM3_LoadDutyValue (1 -> * -> / -> -> _beatBrightness `i `d .9.0 `f -> -> 120 `i `f `us ]
+"102
+[; ;led.c: 102:         PWM4_LoadDutyValue((float)(beatBrightness/9.0) * 120);
+[e ( _PWM4_LoadDutyValue (1 -> * -> / -> -> _beatBrightness `i `d .9.0 `f -> -> 120 `i `f `us ]
+"103
+[; ;led.c: 103:         currentState++;
+[e ++ _currentState -> 1 `i ]
+"104
+[; ;led.c: 104:     } else if(currentState == 8){
+}
+[e $U 1538  ]
+[e :U 1537 ]
+[e $ ! == _currentState -> 8 `i 1539  ]
+{
+"105
+[; ;led.c: 105:         PWM1_LoadDutyValue(0);
+[e ( _PWM1_LoadDutyValue (1 -> -> 0 `i `us ]
+"106
+[; ;led.c: 106:         PWM2_LoadDutyValue((float)(beatBrightness/9.0) * 120);
+[e ( _PWM2_LoadDutyValue (1 -> * -> / -> -> _beatBrightness `i `d .9.0 `f -> -> 120 `i `f `us ]
+"107
+[; ;led.c: 107:         PWM3_LoadDutyValue((float)(beatBrightness/9.0) * 120);
+[e ( _PWM3_LoadDutyValue (1 -> * -> / -> -> _beatBrightness `i `d .9.0 `f -> -> 120 `i `f `us ]
+"108
+[; ;led.c: 108:         PWM4_LoadDutyValue((float)(beatBrightness/9.0) * 120);
+[e ( _PWM4_LoadDutyValue (1 -> * -> / -> -> _beatBrightness `i `d .9.0 `f -> -> 120 `i `f `us ]
+"109
+[; ;led.c: 109:         currentState++;
+[e ++ _currentState -> 1 `i ]
+"110
+[; ;led.c: 110:     } else {
+}
+[e $U 1540  ]
+[e :U 1539 ]
+{
+"111
+[; ;led.c: 111:         PWM1_LoadDutyValue((float)(beatBrightness/9.0) * 120);
+[e ( _PWM1_LoadDutyValue (1 -> * -> / -> -> _beatBrightness `i `d .9.0 `f -> -> 120 `i `f `us ]
+"112
+[; ;led.c: 112:         PWM2_LoadDutyValue((float)(beatBrightness/9.0) * 120);
+[e ( _PWM2_LoadDutyValue (1 -> * -> / -> -> _beatBrightness `i `d .9.0 `f -> -> 120 `i `f `us ]
+"113
+[; ;led.c: 113:         PWM3_LoadDutyValue((float)(beatBrightness/9.0) * 120);
+[e ( _PWM3_LoadDutyValue (1 -> * -> / -> -> _beatBrightness `i `d .9.0 `f -> -> 120 `i `f `us ]
+"114
+[; ;led.c: 114:         PWM4_LoadDutyValue((float)(beatBrightness/9.0) * 120);
+[e ( _PWM4_LoadDutyValue (1 -> * -> / -> -> _beatBrightness `i `d .9.0 `f -> -> 120 `i `f `us ]
+"115
+[; ;led.c: 115:         currentState = 1;
+[e = _currentState -> 1 `i ]
+"116
+[; ;led.c: 116:     }
+}
+[e :U 1540 ]
+[e :U 1538 ]
+[e :U 1536 ]
 [e :U 1534 ]
 [e :U 1532 ]
 [e :U 1530 ]
 [e :U 1528 ]
-[e :U 1526 ]
-[e :U 1524 ]
-[e :U 1522 ]
-[e :U 1520 ]
-"84
-[; ;led.c: 84: }
-[e :UE 1517 ]
+"118
+[; ;led.c: 118: }
+[e :UE 1525 ]
+}
+"120
+[; ;led.c: 120: void static LED_task_ANIMATION(){
+[v _LED_task_ANIMATION `(v ~T0 @X0 1 sf ]
+{
+[e :U _LED_task_ANIMATION ]
+[f ]
+"122
+[; ;led.c: 122: }
+[e :UE 1541 ]
 }

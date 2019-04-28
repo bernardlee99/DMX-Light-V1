@@ -43,11 +43,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 "25 ./controller.h
 [; ;./controller.h: 25: void CONTROLLER_task();
 [v _CONTROLLER_task `(v ~T0 @X0 0 e? ]
-"15 ./beat.h
-[; ;./beat.h: 15: void BEAT_task();
+"14 ./beat.h
+[; ;./beat.h: 14: void BEAT_task();
 [v _BEAT_task `(v ~T0 @X0 0 e? ]
-"11 ./led.h
-[; ;./led.h: 11: void LED_task();
+"19 ./led.h
+[; ;./led.h: 19: void LED_task();
 [v _LED_task `(v ~T0 @X0 0 e? ]
 "110 /opt/microchip/xc8/v2.05/pic/include/pic16f18446.h
 [; ;/opt/microchip/xc8/v2.05/pic/include/pic16f18446.h: 110: __asm("INDF0 equ 00h");
@@ -1461,7 +1461,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _startTime ( _CLOCK_getTime ..  ]
 "74
 [; ;main.c: 74:     while (1)
-[e :U 1519 ]
+[e :U 1520 ]
 "75
 [; ;main.c: 75:     {
 {
@@ -1480,10 +1480,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "80
 [; ;main.c: 80:     }
 }
-[e :U 1518 ]
-[e $U 1519  ]
-[e :U 1520 ]
+[e :U 1519 ]
+[e $U 1520  ]
+[e :U 1521 ]
 "81
 [; ;main.c: 81: }
-[e :UE 1517 ]
+[e :UE 1518 ]
 }

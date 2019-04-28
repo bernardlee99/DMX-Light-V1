@@ -70,10 +70,6 @@ void DMX_interrupt(){
     PIR3bits.RC1IF = 0;
 }
 
-uint8_t getAddress(){
+uint8_t DMX_getAddress(){
     return address;
-}
-
-void DMX_task(){
-    
 }

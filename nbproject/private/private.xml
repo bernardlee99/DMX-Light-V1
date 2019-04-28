@@ -3,13 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/bbd/Documents/Github/lab_10/tm1650.c</file>
+            <file>file:/home/bbd/Documents/Github/lab_10/beat.c</file>
             <file>file:/home/bbd/Documents/Github/lab_10/controller.c</file>
-            <file>file:/home/bbd/Documents/Github/lab_10/buttons.c</file>
             <file>file:/home/bbd/Documents/Github/lab_10/led.c</file>
-            <file>file:/home/bbd/Documents/Github/lab_10/mcc_generated_files/interrupt_manager.c</file>
+            <file>file:/home/bbd/Documents/Github/lab_10/controller.h</file>
+            <file>file:/home/bbd/Documents/Github/lab_10/dmx.c</file>
             <file>file:/home/bbd/Documents/Github/lab_10/main.c</file>
-            <file>file:/home/bbd/Documents/Github/lab_10/buttons.h</file>
         </group>
     </open-files>
 </project-private>

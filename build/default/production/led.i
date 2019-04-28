@@ -18149,16 +18149,30 @@ extern __bank0 __bit __timeout;
 
 
 
+
+typedef struct {
+    uint8_t white;
+    uint8_t red;
+    uint8_t green;
+    uint8_t blue;
+}color_t;
+
 void LED_init();
 void LED_task();
+void static LED_task_DMX();
+void static LED_task_BEAT();
+void static LED_task_ANIMATION();
+
+extern uint8_t beatBrightness;
 # 10 "led.c" 2
 # 1 "./beat.h" 1
 # 11 "./beat.h"
 static void adcThresholdHandler();
 void BEAT_init();
 _Bool BEAT_detected();
-void putch(char character);
 void BEAT_task();
+
+extern uint8_t beatBrightness;
 # 11 "led.c" 2
 # 1 "./clock.h" 1
 # 13 "./clock.h"
@@ -18168,6 +18182,27 @@ void CLOCK_init();
 time_t CLOCK_getTime();
 extern time_t startTime;
 # 12 "led.c" 2
+# 1 "./controller.h" 1
+# 16 "./controller.h"
+typedef enum {
+    MODE_ANIMATION,
+    MODE_BEAT,
+    MODE_DMX
+}mode_t;
+
+void CONTROLLER_init();
+void address_inc();
+void address_dec();
+void CONTROLLER_task();
+uint8_t getAddress();
+void menuSelection();
+mode_t getMode();
+
+_Bool static CONTROL_DMX();
+_Bool static CONTROL_BEAT();
+
+extern _Bool startup;
+# 13 "led.c" 2
 # 1 "./mcc_generated_files/mcc.h" 1
 # 49 "./mcc_generated_files/mcc.h"
 # 1 "./mcc_generated_files/device_config.h" 1
@@ -18629,16 +18664,65 @@ void SYSTEM_Initialize(void);
 void OSCILLATOR_Initialize(void);
 # 103 "./mcc_generated_files/mcc.h"
 void PMD_Initialize(void);
-# 13 "led.c" 2
+# 14 "led.c" 2
+# 1 "./dmx.h" 1
+# 12 "./dmx.h"
+void DMX_init();
+void address_inc();
+void address_dec();
+uint8_t DMX_getAddress();
+void DMX_task();
+
+extern uint16_t address;
+# 15 "led.c" 2
 
 time_t lastLedActiveTime = 0;
 int currentState = 0;
+uint8_t beatBrightness = 1;
+ int dmxArray[513];
+ _Bool startup;
 
-void LED_init(){
-    TRISCbits.TRISC5 = 0;
+void LED_setColor(color_t input){
+    if(!startup){
+        PWM1_LoadDutyValue( ( ((int)input.red)/255.0 ) * 120 );
+        PWM2_LoadDutyValue( ( ((int)input.green)/255.0 ) * 120 );
+        PWM3_LoadDutyValue( ( ((int)input.blue)/255.0 ) * 120 );
+        PWM4_LoadDutyValue( ( ((int)input.white)/255.0 ) * 120 );
+    }
+}
+
+void static LED_task_DMX(){
+
+    color_t dmx;
+
+    dmx.red = dmxArray[DMX_getAddress()];
+    dmx.green = dmxArray[DMX_getAddress() + 1];
+    dmx.blue = dmxArray[DMX_getAddress() + 2];
+    dmx.white = dmxArray[DMX_getAddress() + 3];
+
+    LED_setColor(dmx);
+
 }
 
 void LED_task(){
+
+    switch(getMode()){
+        case MODE_DMX:
+            LED_task_DMX();
+            break;
+
+        case MODE_BEAT:
+            LED_task_BEAT();
+            break;
+
+        case MODE_ANIMATION:
+            LED_task_ANIMATION();
+            break;
+    }
+
+}
+
+void static LED_task_BEAT(){
 
     if(CLOCK_getTime() - lastLedActiveTime < 100){
         return;
@@ -18646,59 +18730,65 @@ void LED_task(){
 
     lastLedActiveTime = CLOCK_getTime();
 
-    if(!BEAT_detected()){
+     if(!BEAT_detected()){
         PWM1_LoadDutyValue(0);
         PWM2_LoadDutyValue(0);
         PWM3_LoadDutyValue(0);
         PWM4_LoadDutyValue(0);
     } else if (currentState == 1){
-        PWM1_LoadDutyValue(120);
+        PWM1_LoadDutyValue((float)(beatBrightness/9.0) * 120);
         PWM2_LoadDutyValue(0);
         PWM3_LoadDutyValue(0);
         PWM4_LoadDutyValue(0);
         currentState++;
     } else if(currentState == 2){
         PWM1_LoadDutyValue(0);
-        PWM2_LoadDutyValue(120);
-        PWM3_LoadDutyValue(120);
+        PWM2_LoadDutyValue((float)(beatBrightness/9.0) * 120);
+        PWM3_LoadDutyValue((float)(beatBrightness/9.0) * 120);
         PWM4_LoadDutyValue(0);
         currentState++;
     } else if(currentState == 3){
-        PWM1_LoadDutyValue(120);
+        PWM1_LoadDutyValue((float)(beatBrightness/9.0) * 120);
         PWM2_LoadDutyValue(0);
-        PWM3_LoadDutyValue(120);
+        PWM3_LoadDutyValue((float)(beatBrightness/9.0) * 120);
         PWM4_LoadDutyValue(0);
         currentState++;
     } else if(currentState == 4){
         PWM1_LoadDutyValue(0);
         PWM2_LoadDutyValue(0);
-        PWM3_LoadDutyValue(120);
-        PWM4_LoadDutyValue(120);
+        PWM3_LoadDutyValue((float)(beatBrightness/9.0) * 120);
+        PWM4_LoadDutyValue((float)(beatBrightness/9.0) * 120);
         currentState++;
     }else if(currentState == 5){
-        PWM1_LoadDutyValue(120);
-        PWM2_LoadDutyValue(120);
-        PWM3_LoadDutyValue(120);
+        PWM1_LoadDutyValue((float)(beatBrightness/9.0) * 120);
+        PWM2_LoadDutyValue((float)(beatBrightness/9.0) * 120);
+        PWM3_LoadDutyValue((float)(beatBrightness/9.0) * 120);
         PWM4_LoadDutyValue(0);
         currentState++;
     } else if(currentState == 6){
-        PWM1_LoadDutyValue(120);
+        PWM1_LoadDutyValue((float)(beatBrightness/9.0) * 120);
         PWM2_LoadDutyValue(0);
-        PWM3_LoadDutyValue(120);
-        PWM4_LoadDutyValue(120);
+        PWM3_LoadDutyValue((float)(beatBrightness/9.0) * 120);
+        PWM4_LoadDutyValue((float)(beatBrightness/9.0) * 120);
         currentState++;
     } else if(currentState == 8){
         PWM1_LoadDutyValue(0);
-        PWM2_LoadDutyValue(120);
-        PWM3_LoadDutyValue(120);
-        PWM4_LoadDutyValue(120);
+        PWM2_LoadDutyValue((float)(beatBrightness/9.0) * 120);
+        PWM3_LoadDutyValue((float)(beatBrightness/9.0) * 120);
+        PWM4_LoadDutyValue((float)(beatBrightness/9.0) * 120);
         currentState++;
     } else {
-        PWM1_LoadDutyValue(120);
-        PWM2_LoadDutyValue(120);
-        PWM3_LoadDutyValue(120);
-        PWM4_LoadDutyValue(120);
+        PWM1_LoadDutyValue((float)(beatBrightness/9.0) * 120);
+        PWM2_LoadDutyValue((float)(beatBrightness/9.0) * 120);
+        PWM3_LoadDutyValue((float)(beatBrightness/9.0) * 120);
+        PWM4_LoadDutyValue((float)(beatBrightness/9.0) * 120);
         currentState = 1;
     }
+
+}
+
+
+
+void static LED_task_ANIMATION(){
 
 }

@@ -12,7 +12,7 @@
 void DMX_init();
 void address_inc();
 void address_dec();
-uint8_t getAddress();
+uint8_t DMX_getAddress();
 void DMX_task();
 
 extern uint16_t address;

@@ -1583,8 +1583,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _time `us ~T0 @X0 1 a ]
 [e = _time ( _CLOCK_getTime ..  ]
 "61
-[; ;buttons.c: 61:     if (time - lastTime < 5)
-[e $ ! < - -> _time `ui -> _lastTime `ui -> -> 5 `i `ui 1518  ]
+[; ;buttons.c: 61:     if (time - lastTime < 10)
+[e $ ! < - -> _time `ui -> _lastTime `ui -> -> 10 `i `ui 1518  ]
 "62
 [; ;buttons.c: 62:         return;
 [e $UE 1517  ]
@@ -1651,8 +1651,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! && == -> . *U _btn 2 `ui -> . `E10875 1 `ui == -> . *U _btn 3 `ui -> . `E10875 1 `ui 1527  ]
 {
 "84
-[; ;buttons.c: 84:             if(time - btn->lastHoldTime > 500){
-[e $ ! > - -> _time `ui -> . *U _btn 4 `ui -> -> 500 `i `ui 1528  ]
+[; ;buttons.c: 84:             if(time - btn->lastHoldTime > 200){
+[e $ ! > - -> _time `ui -> . *U _btn 4 `ui -> -> 200 `i `ui 1528  ]
 {
 "85
 [; ;buttons.c: 85:                 btn->event = EVENT_HELD;
