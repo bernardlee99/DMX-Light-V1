@@ -2,18 +2,18 @@ Version 4.0 HI-TECH Software Intermediate Code
 "616 ./mcc_generated_files/adcc.h
 [; ;./mcc_generated_files/adcc.h: 616: void ADCC_SetUpperThreshold(uint16_t);
 [v _ADCC_SetUpperThreshold `(v ~T0 @X0 0 ef1`us ]
-[v F10915 `(v ~T0 @X0 0 tf ]
+[v F10916 `(v ~T0 @X0 0 tf ]
 "844
 [; ;./mcc_generated_files/adcc.h: 844: void ADCC_SetADTIInterruptHandler(void (* InterruptHandler)(void));
-[v _ADCC_SetADTIInterruptHandler `(v ~T0 @X0 0 ef1`*F10915 ]
-[v F11273 `(v ~T0 @X0 0 tf ]
+[v _ADCC_SetADTIInterruptHandler `(v ~T0 @X0 0 ef1`*F10916 ]
+[v F11280 `(v ~T0 @X0 0 tf ]
 "42 beat.c
 [; ;beat.c: 42:     ADCC_StartConversion(0x0F);
-[c E10872 59 60 61 62 63 .. ]
-[n E10872 . channel_Vss channel_Temp_Sensor channel_DAC1_Output channel_FVR_Buffer1 channel_FVR_Buffer2  ]
+[c E10873 59 60 61 62 63 .. ]
+[n E10873 . channel_Vss channel_Temp_Sensor channel_DAC1_Output channel_FVR_Buffer1 channel_FVR_Buffer2  ]
 "159 ./mcc_generated_files/adcc.h
 [; ;./mcc_generated_files/adcc.h: 159: void ADCC_StartConversion(adcc_channel_t channel);
-[v _ADCC_StartConversion `(v ~T0 @X0 0 ef1`E10872 ]
+[v _ADCC_StartConversion `(v ~T0 @X0 0 ef1`E10873 ]
 "16 ./clock.h
 [; ;./clock.h: 16: time_t CLOCK_getTime();
 [v _CLOCK_getTime `(us ~T0 @X0 0 e? ]
@@ -1454,10 +1454,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _ADCC_SetUpperThreshold (1 _threshold ]
 "41
 [; ;beat.c: 41:     ADCC_SetADTIInterruptHandler(adcThresholdHandler);
-[e ( _ADCC_SetADTIInterruptHandler (1 -> &U _adcThresholdHandler `*F11273 ]
+[e ( _ADCC_SetADTIInterruptHandler (1 -> &U _adcThresholdHandler `*F11280 ]
 "42
 [; ;beat.c: 42:     ADCC_StartConversion(0x0F);
-[e ( _ADCC_StartConversion (1 -> -> 15 `i `E10872 ]
+[e ( _ADCC_StartConversion (1 -> -> 15 `i `E10873 ]
 "43
 [; ;beat.c: 43: }
 [e :UE 1516 ]

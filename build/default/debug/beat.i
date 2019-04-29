@@ -18156,6 +18156,7 @@ _Bool BEAT_detected();
 void BEAT_task();
 
 extern uint8_t beatBrightness;
+extern uint8_t animationBrightness;
 # 10 "beat.c" 2
 # 1 "./mcc_generated_files/adcc.h" 1
 # 72 "./mcc_generated_files/adcc.h"
@@ -18249,6 +18250,9 @@ void TM1650_brightness(uint8_t brightness);
 void putch(char n);
 void TM1650_scrollPrint(char *array);
 void TM1650_fastPrintNum(uint16_t num);
+void TM1650_fastPrintNum_3digit(uint16_t num);
+void TM1650_fastPrintNum_2digit(uint8_t num);
+void TM1650_fastPrintNum_1digit(uint8_t num);
 void TM1650_enable(_Bool enable);
 _Bool TM1650_isEnabled();
 void static welcomeMessage();

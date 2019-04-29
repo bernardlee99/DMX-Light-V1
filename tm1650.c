@@ -117,6 +117,52 @@ void TM1650_fastPrintNum(uint16_t num){
     
 }
 
+void TM1650_fastPrintNum_3digit(uint16_t num){
+    
+    if(num > 999){
+        writeData(0x34, 0x79);
+        writeData(0x35, 0x79);
+        writeData(0x36, 0x79);
+        writeData(0x37, 0x79);
+        return;
+    }
+        
+    writeData(0x37, charTable[(num % 10) + 16]);
+    writeData(0x36, charTable[( (num/10) % 10) + 16]);
+    writeData(0x35, charTable[( (num/100) % 10) + 16]);
+    
+}
+
+void TM1650_fastPrintNum_2digit(uint8_t num){
+    
+    if(num > 99){
+        writeData(0x34, 0x79);
+        writeData(0x35, 0x79);
+        writeData(0x36, 0x79);
+        writeData(0x37, 0x79);
+        return;
+    }
+        
+    writeData(0x37, charTable[(num % 10) + 16]);
+    writeData(0x36, charTable[( (num/10) % 10) + 16]);
+    
+}
+
+void TM1650_fastPrintNum_1digit(uint8_t num){
+    
+    if(num > 9){
+        writeData(0x34, 0x79);
+        writeData(0x35, 0x79);
+        writeData(0x36, 0x79);
+        writeData(0x37, 0x79);
+        return;
+    }
+        
+    writeData(0x37, charTable[num + 16]);
+    
+}
+
+
 void putch(char n){
 
     if(position > 3 || n == '\r' || n == '\0')

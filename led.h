@@ -26,7 +26,6 @@ color_t static colorCreator(uint8_t inRed, uint8_t inGreen, uint8_t inBlue, uint
 float static beatBrightnessCalculation();
 void static LED_task_BEAT_CONTINUOUS();
 void static LED_task_BEAT_MIXED();
-void static LED_task_MANUAL();
 
 void colorDec(colormode_t input);
 void colorInc(colormode_t input);

@@ -14,5 +14,6 @@ bool BEAT_detected();
 void BEAT_task();
 
 extern uint8_t beatBrightness;
+extern uint8_t animationBrightness;
 
 #endif

@@ -87,11 +87,11 @@ EVENT_INTER_HOLD 2
 EVENT_HELD 3
 ]
 "8 /Users/student/Desktop/lab_10/controller.c
-[e E10903 . `uc
+[e E10904 . `uc
 STATE_UNPRESSED 0
 STATE_PRESSED 1
 ]
-[e E10897 . `uc
+[e E10898 . `uc
 EVENT_IDLE 0
 EVENT_PRESSED 1
 EVENT_INTER_HOLD 2
@@ -115,7 +115,7 @@ CMODE_BLUE 2
 CMODE_WHITE 3
 ]
 "33 /Users/student/Desktop/lab_10/tm1650.c
-[e E11370 . `uc
+[e E11376 . `uc
 I2C1_MESSAGE_COMPLETE 0
 I2C1_MESSAGE_FAIL 1
 I2C1_MESSAGE_PENDING 2
@@ -125,15 +125,15 @@ I2C1_DATA_NO_ACK 5
 I2C1_LOST_STATE 6
 ]
 "42 /Users/student/Desktop/lab_10/beat.c
-[e E10872 . `uc
+[e E10873 . `uc
 channel_Vss 59
 channel_Temp_Sensor 60
 channel_DAC1_Output 61
 channel_FVR_Buffer1 62
 channel_FVR_Buffer2 63
 ]
-"87 /Users/student/Desktop/lab_10/led.c
-[e E10874 . `uc
+"90 /Users/student/Desktop/lab_10/led.c
+[e E10875 . `uc
 MODE_ANIMATION 2
 MODE_BEAT_STROBE 1
 MODE_DMX 0
@@ -142,13 +142,17 @@ MODE_BEAT_FADE 4
 MODE_BEAT_CONTINUOUS 5
 MODE_BEAT_MIXED 6
 ]
-"218
-[e E10883 . `uc
+"217
+[e E10884 . `uc
 CMODE_RED 0
 CMODE_GREEN 1
 CMODE_BLUE 2
 CMODE_WHITE 3
 ]
+"5 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+"5 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
 "72 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/doprnt.c
 [v _pad pad `(i  1 s 2 pad ]
 "259
@@ -211,20 +215,22 @@ CMODE_WHITE 3
 [v _CLOCK_getTime CLOCK_getTime `(us  1 e 2 0 ]
 "20
 [v _CLOCK_timerCallback CLOCK_timerCallback `(v  1 s 1 CLOCK_timerCallback ]
-"25 /Users/student/Desktop/lab_10/controller.c
+"29 /Users/student/Desktop/lab_10/controller.c
 [v _CONTROLLER_task CONTROLLER_task `(v  1 e 1 0 ]
-"122
+"146
 [v _menuSelection menuSelection `(v  1 e 1 0 ]
-"171
+"195
 [v _getMode getMode `(E10869  1 e 1 0 ]
-"175
+"199
 [v _CONTROL_DMX CONTROL_DMX `(a  1 s 1 CONTROL_DMX ]
-"213
+"237
 [v _CONTROL_BEAT CONTROL_BEAT `(a  1 s 1 CONTROL_BEAT ]
-"252
+"276
 [v _getIsHold getIsHold `(a  1 e 1 0 ]
-"256
+"280
 [v _CONTROL_MANUAL CONTROL_MANUAL `(a  1 s 1 CONTROL_MANUAL ]
+"332
+[v _CONTROL_ANIMATION CONTROL_ANIMATION `(a  1 s 1 CONTROL_ANIMATION ]
 "21 /Users/student/Desktop/lab_10/dmx.c
 [v _DMX_init DMX_init `(v  1 e 1 0 ]
 "29
@@ -235,37 +241,35 @@ CMODE_WHITE 3
 [v _DMX_interrupt DMX_interrupt `(v  1 e 1 0 ]
 "73
 [v _DMX_getAddress DMX_getAddress `(uc  1 e 1 0 ]
-"24 /Users/student/Desktop/lab_10/led.c
+"25 /Users/student/Desktop/lab_10/led.c
 [v _LED_setColor LED_setColor `(v  1 e 1 0 ]
-"33
+"34
 [v _LED_task_DMX LED_task_DMX `(v  1 s 1 LED_task_DMX ]
-"46
+"47
 [v _LED_init LED_init `(v  1 e 1 0 ]
-"54
+"55
 [v _LED_task LED_task `(v  1 e 1 0 ]
-"91
+"94
 [v _LED_task_BEAT_STROBE LED_task_BEAT_STROBE `(v  1 s 1 LED_task_BEAT_STROBE ]
-"155
+"158
 [v _beatBrightnessCalculation beatBrightnessCalculation `(f  1 s 4 beatBrightnessCalculation ]
 "11 /Users/student/Desktop/lab_10/led.h
-[s S2479 . 4 `uc 1 white 1 0 `uc 1 red 1 1 `uc 1 green 1 2 `uc 1 blue 1 3 ]
-"170 /Users/student/Desktop/lab_10/led.c
-[v _beatColorCreator beatColorCreator `(S2479  1 s 4 beatColorCreator ]
-"196
+[s S2518 . 4 `uc 1 white 1 0 `uc 1 red 1 1 `uc 1 green 1 2 `uc 1 blue 1 3 ]
+"173 /Users/student/Desktop/lab_10/led.c
+[v _beatColorCreator beatColorCreator `(S2518  1 s 4 beatColorCreator ]
+"199
 [v _LED_task_BEAT_FADE LED_task_BEAT_FADE `(v  1 s 1 LED_task_BEAT_FADE ]
-"202
+"205
 [v _LED_task_ANIMATION LED_task_ANIMATION `(v  1 s 1 LED_task_ANIMATION ]
-"206
+"209
 [v _LED_task_BEAT_CONTINUOUS LED_task_BEAT_CONTINUOUS `(v  1 s 1 LED_task_BEAT_CONTINUOUS ]
-"210
+"213
 [v _LED_task_BEAT_MIXED LED_task_BEAT_MIXED `(v  1 s 1 LED_task_BEAT_MIXED ]
-"214
-[v _LED_task_MANUAL LED_task_MANUAL `(v  1 s 1 LED_task_MANUAL ]
-"218
+"217
 [v _colorInc colorInc `(v  1 e 1 0 ]
-"246
+"245
 [v _colorDec colorDec `(v  1 e 1 0 ]
-"274
+"273
 [v _getManualColor getManualColor `(uc  1 e 1 0 ]
 "58 /Users/student/Desktop/lab_10/main.c
 [v _main main `(v  1 e 1 0 ]
@@ -380,6 +384,10 @@ CMODE_WHITE 3
 "101
 [v _TM1650_fastPrintNum TM1650_fastPrintNum `(v  1 e 1 0 ]
 "120
+[v _TM1650_fastPrintNum_3digit TM1650_fastPrintNum_3digit `(v  1 e 1 0 ]
+"136
+[v _TM1650_fastPrintNum_2digit TM1650_fastPrintNum_2digit `(v  1 e 1 0 ]
+"166
 [v _putch putch `(v  1 e 1 0 ]
 "95 /Users/student/Desktop/lab_10/mcc_generated_files/eusart1.h
 [v _EUSART1_RxDefaultInterruptHandler EUSART1_RxDefaultInterruptHandler `*.37(v  1 e 2 0 ]
@@ -1219,6 +1227,8 @@ CMODE_WHITE 3
 [v _beatHold beatHold `a  1 e 1 0 ]
 "23
 [v _colorModeSelected colorModeSelected `E10878  1 e 1 0 ]
+"25
+[v _animationModeSelected animationModeSelected `uc  1 e 1 0 ]
 "15 /Users/student/Desktop/lab_10/dmx.c
 [v _initial initial `i  1 e 2 0 ]
 "16
@@ -1232,12 +1242,14 @@ CMODE_WHITE 3
 "18
 [v _beatBrightness beatBrightness `uc  1 e 1 0 ]
 "19
-[v _dmxArray dmxArray `[513]i  1 e 1026 @9198 ]
+[v _animationBrightness animationBrightness `uc  1 e 1 0 ]
 "20
+[v _dmxArray dmxArray `[513]i  1 e 1026 @9198 ]
+"21
 [v _startup startup `a  1 e 1 0 ]
-[s S2479 . 4 `uc 1 white 1 0 `uc 1 red 1 1 `uc 1 green 1 2 `uc 1 blue 1 3 ]
-"22
-[v _manual manual `S2479  1 e 4 0 ]
+[s S2518 . 4 `uc 1 white 1 0 `uc 1 red 1 1 `uc 1 green 1 2 `uc 1 blue 1 3 ]
+"23
+[v _manual manual `S2518  1 e 4 0 ]
 "56 /Users/student/Desktop/lab_10/main.c
 [v _startTime startTime `us  1 e 2 0 ]
 "58 /Users/student/Desktop/lab_10/mcc_generated_files/adcc.c
@@ -1387,76 +1399,71 @@ CMODE_WHITE 3
 {
 "119
 } 0
-"54 /Users/student/Desktop/lab_10/led.c
+"55 /Users/student/Desktop/lab_10/led.c
 [v _LED_task LED_task `(v  1 e 1 0 ]
 {
-"89
+"92
 } 0
-"171 /Users/student/Desktop/lab_10/controller.c
+"195 /Users/student/Desktop/lab_10/controller.c
 [v _getMode getMode `(E10869  1 e 1 0 ]
 {
-"173
+"197
 } 0
-"252
+"276
 [v _getIsHold getIsHold `(a  1 e 1 0 ]
 {
-"254
+"278
 } 0
-"214 /Users/student/Desktop/lab_10/led.c
-[v _LED_task_MANUAL LED_task_MANUAL `(v  1 s 1 LED_task_MANUAL ]
-{
-"216
-} 0
-"33
+"34 /Users/student/Desktop/lab_10/led.c
 [v _LED_task_DMX LED_task_DMX `(v  1 s 1 LED_task_DMX ]
 {
-[s S2479 . 4 `uc 1 white 1 0 `uc 1 red 1 1 `uc 1 green 1 2 `uc 1 blue 1 3 ]
-"35
-[v LED_task_DMX@dmx dmx `S2479  1 a 4 0 ]
-"44
+[s S2518 . 4 `uc 1 white 1 0 `uc 1 red 1 1 `uc 1 green 1 2 `uc 1 blue 1 3 ]
+"36
+[v LED_task_DMX@dmx dmx `S2518  1 a 4 0 ]
+"45
 } 0
 "73 /Users/student/Desktop/lab_10/dmx.c
 [v _DMX_getAddress DMX_getAddress `(uc  1 e 1 0 ]
 {
 "75
 } 0
-"91 /Users/student/Desktop/lab_10/led.c
+"94 /Users/student/Desktop/lab_10/led.c
 [v _LED_task_BEAT_STROBE LED_task_BEAT_STROBE `(v  1 s 1 LED_task_BEAT_STROBE ]
 {
-"101
+"104
 [v LED_task_BEAT_STROBE@beatState beatState `a  1 a 1 79 ]
-"153
+"156
 } 0
 "11 /Users/student/Desktop/lab_10/led.h
-[s S2479 . 4 `uc 1 white 1 0 `uc 1 red 1 1 `uc 1 green 1 2 `uc 1 blue 1 3 ]
-"170 /Users/student/Desktop/lab_10/led.c
-[v _beatColorCreator beatColorCreator `(S2479  1 s 4 beatColorCreator ]
+[s S2518 . 4 `uc 1 white 1 0 `uc 1 red 1 1 `uc 1 green 1 2 `uc 1 blue 1 3 ]
+"173 /Users/student/Desktop/lab_10/led.c
+[v _beatColorCreator beatColorCreator `(S2518  1 s 4 beatColorCreator ]
 {
 [v beatColorCreator@inRed inRed `a  1 a 1 wreg ]
-"171
-[v beatColorCreator@tempColor tempColor `S2479  1 a 4 18 ]
-"170
+"174
+[v beatColorCreator@tempColor tempColor `S2518  1 a 4 18 ]
+"173
 [v beatColorCreator@inRed inRed `a  1 a 1 wreg ]
 [v beatColorCreator@inGreen inGreen `a  1 p 1 9 ]
 [v beatColorCreator@inBlue inBlue `a  1 p 1 10 ]
 [v beatColorCreator@inWhite inWhite `a  1 p 1 11 ]
-"173
+"176
 [v beatColorCreator@inRed inRed `a  1 a 1 13 ]
-"194
+"197
 } 0
-"155
+"158
 [v _beatBrightnessCalculation beatBrightnessCalculation `(f  1 s 4 beatBrightnessCalculation ]
 {
-"156
+"159
 [v beatBrightnessCalculation@temp temp `uc  1 a 1 77 ]
-"158
+"161
 } 0
-"24
+"25
 [v _LED_setColor LED_setColor `(v  1 e 1 0 ]
 {
-[s S2479 . 4 `uc 1 white 1 0 `uc 1 red 1 1 `uc 1 green 1 2 `uc 1 blue 1 3 ]
-[v LED_setColor@input input `S2479  1 p 4 22 ]
-"31
+[s S2518 . 4 `uc 1 white 1 0 `uc 1 red 1 1 `uc 1 green 1 2 `uc 1 blue 1 3 ]
+[v LED_setColor@input input `S2518  1 p 4 22 ]
+"32
 } 0
 "10 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/xxtofl.c
 [v ___xxtofl __xxtofl `(d  1 e 4 0 ]
@@ -1486,17 +1493,17 @@ CMODE_WHITE 3
 "8 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/sprcmul.c
 [v ___flmul __flmul `(d  1 e 4 0 ]
 {
-[s S2963 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
+[s S2998 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
 "13
-[s S2968 . 4 `i 1 wordA 2 0 `i 1 wordB 2 2 ]
-[u S2971 . 4 `l 1 i 4 0 `d 1 f 4 0 `S2963 1 fAsBytes 4 0 `S2968 1 fAsWords 4 0 ]
-[v ___flmul@prod prod `S2971  1 a 4 60 ]
+[s S3003 . 4 `i 1 wordA 2 0 `i 1 wordB 2 2 ]
+[u S3006 . 4 `l 1 i 4 0 `d 1 f 4 0 `S2998 1 fAsBytes 4 0 `S3003 1 fAsWords 4 0 ]
+[v ___flmul@prod prod `S3006  1 a 4 60 ]
 "12
 [v ___flmul@grs grs `ul  1 a 4 55 ]
-[s S3040 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
+[s S3075 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
 "14
-[u S3043 . 2 `i 1 i 2 0 `ui 1 n 2 0 `S3040 1 nAsBytes 2 0 ]
-[v ___flmul@temp temp `S3043  1 a 2 64 ]
+[u S3078 . 2 `i 1 i 2 0 `ui 1 n 2 0 `S3075 1 nAsBytes 2 0 ]
+[v ___flmul@temp temp `S3078  1 a 2 64 ]
 "10
 [v ___flmul@bexp bexp `uc  1 a 1 59 ]
 "11
@@ -1571,30 +1578,30 @@ CMODE_WHITE 3
 {
 "56
 } 0
-"210 /Users/student/Desktop/lab_10/led.c
+"213 /Users/student/Desktop/lab_10/led.c
 [v _LED_task_BEAT_MIXED LED_task_BEAT_MIXED `(v  1 s 1 LED_task_BEAT_MIXED ]
 {
-"212
+"215
 } 0
-"196
+"199
 [v _LED_task_BEAT_FADE LED_task_BEAT_FADE `(v  1 s 1 LED_task_BEAT_FADE ]
 {
-"200
+"203
 } 0
-"206
+"209
 [v _LED_task_BEAT_CONTINUOUS LED_task_BEAT_CONTINUOUS `(v  1 s 1 LED_task_BEAT_CONTINUOUS ]
 {
-"208
+"211
 } 0
-"202
+"205
 [v _LED_task_ANIMATION LED_task_ANIMATION `(v  1 s 1 LED_task_ANIMATION ]
 {
-"204
+"207
 } 0
-"46
+"47
 [v _LED_init LED_init `(v  1 e 1 0 ]
 {
-"52
+"53
 } 0
 "21 /Users/student/Desktop/lab_10/dmx.c
 [v _DMX_init DMX_init `(v  1 e 1 0 ]
@@ -1607,23 +1614,23 @@ CMODE_WHITE 3
 [v EUSART1_SetRxInterruptHandler@interruptHandler interruptHandler `*.37(v  1 p 2 0 ]
 "234
 } 0
-"25 /Users/student/Desktop/lab_10/controller.c
+"29 /Users/student/Desktop/lab_10/controller.c
 [v _CONTROLLER_task CONTROLLER_task `(v  1 e 1 0 ]
 {
-"27
+"31
 [v CONTROLLER_task@isActive isActive `a  1 a 1 79 ]
-"120
+"144
 } 0
-"122
+"146
 [v _menuSelection menuSelection `(v  1 e 1 0 ]
 {
-"169
+"193
 } 0
 "5 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/printf.c
 [v _printf printf `(i  1 e 2 0 ]
 {
 "8
-[v printf@ap ap `[1]*.4v  1 a 1 76 ]
+[v printf@ap ap `[1]*.4v  1 a 1 78 ]
 "5
 [v printf@fmt fmt `*.25DCuc  1 p 2 0 ]
 "13
@@ -1631,65 +1638,65 @@ CMODE_WHITE 3
 "1368 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/doprnt.c
 [v _vfprintf vfprintf `(i  1 e 2 0 ]
 {
-[s S2774 _IO_FILE 0 ]
-[v vfprintf@fp fp `*.1S2774  1 a 1 wreg ]
+[s S2809 _IO_FILE 0 ]
+[v vfprintf@fp fp `*.1S2809  1 a 1 wreg ]
 "1371
-[v vfprintf@cfmt cfmt `*.25uc  1 a 2 71 ]
+[v vfprintf@cfmt cfmt `*.25uc  1 a 2 73 ]
 "1368
-[v vfprintf@fp fp `*.1S2774  1 a 1 wreg ]
-[v vfprintf@fmt fmt `*.25DCuc  1 p 2 65 ]
-[v vfprintf@ap ap `*.4*.4v  1 p 1 67 ]
+[v vfprintf@fp fp `*.1S2809  1 a 1 wreg ]
+[v vfprintf@fmt fmt `*.25DCuc  1 p 2 67 ]
+[v vfprintf@ap ap `*.4*.4v  1 p 1 69 ]
 "1373
 "1368
-[v vfprintf@fp fp `*.1S2774  1 a 1 70 ]
+[v vfprintf@fp fp `*.1S2809  1 a 1 72 ]
 "1382
 } 0
 "670
 [v _vfpfcnvrt vfpfcnvrt `(i  1 s 2 vfpfcnvrt ]
 {
-[s S2774 _IO_FILE 0 ]
-[v vfpfcnvrt@fp fp `*.1S2774  1 a 1 wreg ]
+[s S2809 _IO_FILE 0 ]
+[v vfpfcnvrt@fp fp `*.1S2809  1 a 1 wreg ]
 "672
-[v vfpfcnvrt@c c `uc  1 a 1 63 ]
+[v vfpfcnvrt@c c `uc  1 a 1 65 ]
 "670
-[v vfpfcnvrt@fp fp `*.1S2774  1 a 1 wreg ]
-[v vfpfcnvrt@fmt fmt `*.4*.25uc  1 p 1 56 ]
-[v vfpfcnvrt@ap ap `*.4*.4v  1 p 1 57 ]
+[v vfpfcnvrt@fp fp `*.1S2809  1 a 1 wreg ]
+[v vfpfcnvrt@fmt fmt `*.4*.25uc  1 p 1 58 ]
+[v vfpfcnvrt@ap ap `*.4*.4v  1 p 1 59 ]
 "680
 "670
-[v vfpfcnvrt@fp fp `*.1S2774  1 a 1 64 ]
+[v vfpfcnvrt@fp fp `*.1S2809  1 a 1 66 ]
 "1365
 } 0
 "259
 [v _ctoa ctoa `(i  1 s 2 ctoa ]
 {
-[s S2774 _IO_FILE 0 ]
-[v ctoa@fp fp `*.1S2774  1 a 1 wreg ]
+[s S2809 _IO_FILE 0 ]
+[v ctoa@fp fp `*.1S2809  1 a 1 wreg ]
 "261
-[v ctoa@w w `i  1 a 2 53 ]
+[v ctoa@w w `i  1 a 2 55 ]
 "259
-[v ctoa@fp fp `*.1S2774  1 a 1 wreg ]
-[v ctoa@c c `uc  1 p 1 50 ]
+[v ctoa@fp fp `*.1S2809  1 a 1 wreg ]
+[v ctoa@c c `uc  1 p 1 52 ]
 "264
 "259
-[v ctoa@fp fp `*.1S2774  1 a 1 55 ]
+[v ctoa@fp fp `*.1S2809  1 a 1 57 ]
 "270
 } 0
 "72
 [v _pad pad `(i  1 s 2 pad ]
 {
-[s S2774 _IO_FILE 0 ]
-[v pad@fp fp `*.1S2774  1 a 1 wreg ]
+[s S2809 _IO_FILE 0 ]
+[v pad@fp fp `*.1S2809  1 a 1 wreg ]
 "74
-[v pad@w w `i  1 a 2 47 ]
-[v pad@i i `i  1 a 2 45 ]
+[v pad@w w `i  1 a 2 49 ]
+[v pad@i i `i  1 a 2 47 ]
 "72
-[v pad@fp fp `*.1S2774  1 a 1 wreg ]
-[v pad@buf buf `*.5uc  1 p 1 41 ]
-[v pad@p p `i  1 p 2 42 ]
+[v pad@fp fp `*.1S2809  1 a 1 wreg ]
+[v pad@buf buf `*.5uc  1 p 1 43 ]
+[v pad@p p `i  1 p 2 44 ]
 "77
 "72
-[v pad@fp fp `*.1S2774  1 a 1 49 ]
+[v pad@fp fp `*.1S2809  1 a 1 51 ]
 "95
 } 0
 "12 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/strlen.c
@@ -1706,89 +1713,128 @@ CMODE_WHITE 3
 {
 [v fputs@s s `*.5DCuc  1 a 1 wreg ]
 "11
-[v fputs@i i `i  1 a 2 38 ]
+[v fputs@i i `i  1 a 2 40 ]
 "10
-[v fputs@c c `uc  1 a 1 37 ]
+[v fputs@c c `uc  1 a 1 39 ]
 "8
 [v fputs@s s `*.5DCuc  1 a 1 wreg ]
-[s S3105 _IO_FILE 5 `*.1uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
-[v fputs@fp fp `*.1S3105  1 p 1 33 ]
+[s S3140 _IO_FILE 5 `*.1uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
+[v fputs@fp fp `*.1S3140  1 p 1 35 ]
 "13
-[v fputs@s s `*.5DCuc  1 a 1 40 ]
+[v fputs@s s `*.5DCuc  1 a 1 42 ]
 "19
 } 0
 "8 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/nf_fputc.c
 [v _fputc fputc `(i  1 e 2 0 ]
 {
-[v fputc@c c `i  1 p 2 25 ]
-[s S3105 _IO_FILE 5 `*.1uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
-[v fputc@fp fp `*.1S3105  1 p 1 27 ]
+[v fputc@c c `i  1 p 2 27 ]
+[s S3140 _IO_FILE 5 `*.1uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
+[v fputc@fp fp `*.1S3140  1 p 1 29 ]
 "21
 } 0
-"120 /Users/student/Desktop/lab_10/tm1650.c
+"166 /Users/student/Desktop/lab_10/tm1650.c
 [v _putch putch `(v  1 e 1 0 ]
 {
 [v putch@n n `uc  1 a 1 wreg ]
 [v putch@n n `uc  1 a 1 wreg ]
-"122
-[v putch@n n `uc  1 a 1 24 ]
-"130
+"168
+[v putch@n n `uc  1 a 1 26 ]
+"176
 } 0
 "95
 [v _TM1650_setDigit TM1650_setDigit `(v  1 e 1 0 ]
 {
 [v TM1650_setDigit@digit digit `uc  1 a 1 wreg ]
 [v TM1650_setDigit@digit digit `uc  1 a 1 wreg ]
-[v TM1650_setDigit@data data `uc  1 p 1 20 ]
+[v TM1650_setDigit@data data `uc  1 p 1 22 ]
 "97
-[v TM1650_setDigit@digit digit `uc  1 a 1 22 ]
+[v TM1650_setDigit@digit digit `uc  1 a 1 24 ]
 "99
 } 0
-"274 /Users/student/Desktop/lab_10/led.c
+"273 /Users/student/Desktop/lab_10/led.c
 [v _getManualColor getManualColor `(uc  1 e 1 0 ]
 {
-[v getManualColor@input input `E10883  1 a 1 wreg ]
-[v getManualColor@input input `E10883  1 a 1 wreg ]
-[v getManualColor@input input `E10883  1 a 1 2 ]
-"296
+[v getManualColor@input input `E10884  1 a 1 wreg ]
+[v getManualColor@input input `E10884  1 a 1 wreg ]
+[v getManualColor@input input `E10884  1 a 1 2 ]
+"295
+} 0
+"120 /Users/student/Desktop/lab_10/tm1650.c
+[v _TM1650_fastPrintNum_3digit TM1650_fastPrintNum_3digit `(v  1 e 1 0 ]
+{
+[v TM1650_fastPrintNum_3digit@num num `us  1 p 2 22 ]
+"134
+} 0
+"136
+[v _TM1650_fastPrintNum_2digit TM1650_fastPrintNum_2digit `(v  1 e 1 0 ]
+{
+[v TM1650_fastPrintNum_2digit@num num `uc  1 a 1 wreg ]
+[v TM1650_fastPrintNum_2digit@num num `uc  1 a 1 wreg ]
+"138
+[v TM1650_fastPrintNum_2digit@num num `uc  1 a 1 25 ]
+"149
+} 0
+"5 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
+{
+"10
+[v ___awmod@sign sign `uc  1 a 1 15 ]
+[v ___awmod@counter counter `uc  1 a 1 14 ]
+"5
+[v ___awmod@divisor divisor `i  1 p 2 9 ]
+[v ___awmod@dividend dividend `i  1 p 2 11 ]
+"34
+} 0
+"5 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+{
+"10
+[v ___awdiv@quotient quotient `i  1 a 2 7 ]
+"11
+[v ___awdiv@sign sign `uc  1 a 1 6 ]
+[v ___awdiv@counter counter `uc  1 a 1 5 ]
+"5
+[v ___awdiv@divisor divisor `i  1 p 2 0 ]
+[v ___awdiv@dividend dividend `i  1 p 2 2 ]
+"41
 } 0
 "41 /Users/student/Desktop/lab_10/tm1650.c
 [v _TM1650_enable TM1650_enable `(v  1 e 1 0 ]
 {
 [v TM1650_enable@enable enable `a  1 a 1 wreg ]
 [v TM1650_enable@enable enable `a  1 a 1 wreg ]
-[v TM1650_enable@enable enable `a  1 a 1 20 ]
+[v TM1650_enable@enable enable `a  1 a 1 22 ]
 "49
 } 0
-"256 /Users/student/Desktop/lab_10/controller.c
+"280 /Users/student/Desktop/lab_10/controller.c
 [v _CONTROL_MANUAL CONTROL_MANUAL `(a  1 s 1 CONTROL_MANUAL ]
 {
 [v CONTROL_MANUAL@input input `E10878  1 a 1 wreg ]
 [v CONTROL_MANUAL@input input `E10878  1 a 1 wreg ]
-"258
+"282
 [v CONTROL_MANUAL@input input `E10878  1 a 1 5 ]
-"306
+"330
 } 0
-"218 /Users/student/Desktop/lab_10/led.c
+"217 /Users/student/Desktop/lab_10/led.c
 [v _colorInc colorInc `(v  1 e 1 0 ]
 {
-[v colorInc@input input `E10883  1 a 1 wreg ]
-[v colorInc@input input `E10883  1 a 1 wreg ]
-[v colorInc@input input `E10883  1 a 1 2 ]
-"244
+[v colorInc@input input `E10884  1 a 1 wreg ]
+[v colorInc@input input `E10884  1 a 1 wreg ]
+[v colorInc@input input `E10884  1 a 1 2 ]
+"243
 } 0
-"246
+"245
 [v _colorDec colorDec `(v  1 e 1 0 ]
 {
-[v colorDec@input input `E10883  1 a 1 wreg ]
-[v colorDec@input input `E10883  1 a 1 wreg ]
-[v colorDec@input input `E10883  1 a 1 2 ]
-"272
+[v colorDec@input input `E10884  1 a 1 wreg ]
+[v colorDec@input input `E10884  1 a 1 wreg ]
+[v colorDec@input input `E10884  1 a 1 2 ]
+"271
 } 0
-"175 /Users/student/Desktop/lab_10/controller.c
+"199 /Users/student/Desktop/lab_10/controller.c
 [v _CONTROL_DMX CONTROL_DMX `(a  1 s 1 CONTROL_DMX ]
 {
-"211
+"235
 } 0
 "29 /Users/student/Desktop/lab_10/dmx.c
 [v _address_inc address_inc `(v  1 e 1 0 ]
@@ -1803,7 +1849,7 @@ CMODE_WHITE 3
 "101 /Users/student/Desktop/lab_10/tm1650.c
 [v _TM1650_fastPrintNum TM1650_fastPrintNum `(v  1 e 1 0 ]
 {
-[v TM1650_fastPrintNum@num num `us  1 p 2 20 ]
+[v TM1650_fastPrintNum@num num `us  1 p 2 22 ]
 "118
 } 0
 "31
@@ -1811,12 +1857,12 @@ CMODE_WHITE 3
 {
 [v writeData@address address `uc  1 a 1 wreg ]
 "33
-[v writeData@status status `E11370  1 a 1 19 ]
+[v writeData@status status `E11376  1 a 1 21 ]
 "31
 [v writeData@address address `uc  1 a 1 wreg ]
-[v writeData@data data `uc  1 p 1 14 ]
+[v writeData@data data `uc  1 p 1 16 ]
 "33
-[v writeData@address address `uc  1 a 1 18 ]
+[v writeData@address address `uc  1 a 1 20 ]
 "39
 } 0
 "600 /Users/student/Desktop/lab_10/mcc_generated_files/i2c1.c
@@ -1886,10 +1932,10 @@ CMODE_WHITE 3
 [v ___lwmod@dividend dividend `ui  1 p 2 10 ]
 "25
 } 0
-"213 /Users/student/Desktop/lab_10/controller.c
+"237 /Users/student/Desktop/lab_10/controller.c
 [v _CONTROL_BEAT CONTROL_BEAT `(a  1 s 1 CONTROL_BEAT ]
 {
-"250
+"274
 } 0
 "106 /Users/student/Desktop/lab_10/buttons.c
 [v _BUTTONS_isHeld BUTTONS_isHeld `(a  1 e 1 0 ]
@@ -1900,7 +1946,12 @@ CMODE_WHITE 3
 [v BUTTONS_isHeld@button button `*.5S1993  1 a 1 0 ]
 "113
 } 0
-"97
+"332 /Users/student/Desktop/lab_10/controller.c
+[v _CONTROL_ANIMATION CONTROL_ANIMATION `(a  1 s 1 CONTROL_ANIMATION ]
+{
+"369
+} 0
+"97 /Users/student/Desktop/lab_10/buttons.c
 [v _BUTTONS_isClicked BUTTONS_isClicked `(a  1 e 1 0 ]
 {
 [s S1993 . 8 `*.39VEuc 1 port 2 0 `uc 1 pin 1 2 `E10875 1 state 1 3 `E10875 1 lastState 1 4 `us 1 lastHoldTime 2 5 `E10869 1 event 1 7 ]

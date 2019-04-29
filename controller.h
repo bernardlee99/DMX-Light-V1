@@ -24,6 +24,7 @@ typedef enum {
     MODE_BEAT_MIXED            
 }mode_t;
 
+
 typedef enum {
     CMODE_RED,
     CMODE_GREEN,
@@ -43,6 +44,7 @@ bool getIsHold();
 bool static CONTROL_DMX();
 bool static CONTROL_BEAT();
 bool static CONTROL_MANUAL(colormode_t input);
+bool static CONTROL_ANIMATION();
 
 extern bool startup;
 

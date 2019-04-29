@@ -18185,6 +18185,7 @@ _Bool getIsHold();
 _Bool static CONTROL_DMX();
 _Bool static CONTROL_BEAT();
 _Bool static CONTROL_MANUAL(colormode_t input);
+_Bool static CONTROL_ANIMATION();
 
 extern _Bool startup;
 # 2 "controller.c" 2
@@ -18233,6 +18234,9 @@ void TM1650_brightness(uint8_t brightness);
 void putch(char n);
 void TM1650_scrollPrint(char *array);
 void TM1650_fastPrintNum(uint16_t num);
+void TM1650_fastPrintNum_3digit(uint16_t num);
+void TM1650_fastPrintNum_2digit(uint8_t num);
+void TM1650_fastPrintNum_1digit(uint8_t num);
 void TM1650_enable(_Bool enable);
 _Bool TM1650_isEnabled();
 void static welcomeMessage();
@@ -18269,7 +18273,6 @@ color_t static colorCreator(uint8_t inRed, uint8_t inGreen, uint8_t inBlue, uint
 float static beatBrightnessCalculation();
 void static LED_task_BEAT_CONTINUOUS();
 void static LED_task_BEAT_MIXED();
-void static LED_task_MANUAL();
 
 void colorDec(colormode_t input);
 void colorInc(colormode_t input);
@@ -18295,6 +18298,10 @@ _Bool upState, downState, menuState, enterState;
 _Bool beatHold = 0;
 
 colormode_t colorModeSelected = CMODE_RED;
+
+uint8_t animationModeSelected = 1;
+_Bool animationBrightnessControl = 0;
+uint8_t animationBrightness;
 
 void CONTROLLER_task() {
 
@@ -18324,7 +18331,7 @@ void CONTROLLER_task() {
     } else if (currentSelection == MODE_DMX) {
         isActive = CONTROL_DMX();
     } else if (currentSelection == MODE_ANIMATION) {
-        isActive = 1;
+        isActive = CONTROL_ANIMATION();
     } else if (currentSelection == MODE_BEAT_STROBE || currentSelection == MODE_BEAT_FADE || currentSelection == MODE_BEAT_CONTINUOUS || currentSelection == MODE_BEAT_MIXED) {
         isActive = CONTROL_BEAT();
     } else if(currentSelection == MODE_MANUAL && !enterPressed){
@@ -18352,40 +18359,60 @@ void CONTROLLER_task() {
         lastActiveTime = CLOCK_getTime();
         enterPressed = 0;
     } else if (currentSelection == MODE_ANIMATION && !menuPressed && !beatHold) {
-        printf("SEL1\r");
+        if (animationBrightnessControl) {
+            printf("BR");
+            TM1650_fastPrintNum_2digit(animationBrightness);
+            printf("\r");
+        } else {
+            printf("AN");
+            TM1650_fastPrintNum_2digit(animationModeSelected);
+            printf("\r");
+        }
         enterPressed = 0;
     } else if (currentSelection == MODE_BEAT_STROBE && !menuPressed&& !beatHold) {
-        printf("B-%u  \r", (uint8_t)beatBrightness);
+        printf("B-");
+        TM1650_fastPrintNum_2digit((uint8_t)beatBrightness);
+        printf("\r");
         enterPressed = 0;
     } else if (currentSelection == MODE_BEAT_FADE && !menuPressed && !beatHold) {
-        printf("F-%d  \r", (uint8_t)beatBrightness);
+        printf("F-");
+        TM1650_fastPrintNum_2digit((uint8_t)beatBrightness);
+        printf("\r");
         enterPressed = 0;
     } else if (currentSelection == MODE_BEAT_CONTINUOUS && !menuPressed && !beatHold) {
-        printf("C-%d  \r", (uint8_t)beatBrightness);
+        printf("C-");
+        TM1650_fastPrintNum_2digit((uint8_t)beatBrightness);
+        printf("\r");
         enterPressed = 0;
     } else if (currentSelection == MODE_BEAT_MIXED && !menuPressed && !beatHold) {
-        printf("A-%d  \r", (uint8_t)beatBrightness);
+        printf("A-");
+        TM1650_fastPrintNum_2digit((uint8_t)beatBrightness);
+        printf("\r");
         enterPressed = 0;
     } else if (currentSelection == MODE_MANUAL && !menuPressed){
         switch(colorModeSelected){
             case CMODE_RED:
-
-                TM1650_fastPrintNum(getManualColor(CMODE_RED));
+                printf("r");
+                TM1650_fastPrintNum_3digit(getManualColor(CMODE_RED));
+                printf("\r");
                 break;
 
             case CMODE_GREEN:
-                TM1650_fastPrintNum(getManualColor(CMODE_GREEN));
-
+                printf("G");
+                TM1650_fastPrintNum_3digit(getManualColor(CMODE_GREEN));
+                printf("\r");
                 break;
 
             case CMODE_BLUE:
-                TM1650_fastPrintNum(getManualColor(CMODE_BLUE));
-
+                printf("B");
+                TM1650_fastPrintNum_3digit(getManualColor(CMODE_BLUE));
+                printf("\r");
                 break;
 
             case CMODE_WHITE:
-                TM1650_fastPrintNum(getManualColor(CMODE_WHITE));
-
+                printf("H");
+                TM1650_fastPrintNum_3digit(getManualColor(CMODE_WHITE));
+                printf("\r");
                 break;
         }
         enterPressed = 0;
@@ -18576,5 +18603,44 @@ _Bool static CONTROL_MANUAL(colormode_t input){
     }
 
     return 0;
+
+}
+
+_Bool static CONTROL_ANIMATION(){
+
+    if(enterState){
+        !animationBrightnessControl;
+        return 1;
+    }
+
+    if (upState && !animationBrightnessControl) {
+        if (animationModeSelected < 10) {
+            animationModeSelected++;
+        } else {
+            animationModeSelected = 10;
+        }
+        return 1;
+    } else if (downState && !animationBrightnessControl) {
+        if (animationModeSelected > 1) {
+            animationModeSelected--;
+        } else {
+            animationModeSelected = 1;
+        }
+        return 1;
+    } else if (upState && animationBrightnessControl) {
+        if (animationBrightness < 10) {
+            animationBrightness++;
+        } else {
+            animationBrightness = 10;
+        }
+        return 1;
+    } else if (downState && animationBrightnessControl) {
+        if (animationBrightness > 0) {
+            animationBrightness--;
+        } else {
+            animationBrightness = 0;
+        }
+        return 1;
+    }
 
 }

@@ -1,11 +1,11 @@
 Version 4.0 HI-TECH Software Intermediate Code
 "33 tm1650.c
 [; ;tm1650.c: 33:     I2C1_MESSAGE_STATUS status = I2C1_MESSAGE_PENDING;
-[c E11370 0 1 2 3 4 5 6 .. ]
-[n E11370 . I2C1_MESSAGE_COMPLETE I2C1_MESSAGE_FAIL I2C1_MESSAGE_PENDING I2C1_STUCK_START I2C1_MESSAGE_ADDRESS_NO_ACK I2C1_DATA_NO_ACK I2C1_LOST_STATE  ]
+[c E11376 0 1 2 3 4 5 6 .. ]
+[n E11376 . I2C1_MESSAGE_COMPLETE I2C1_MESSAGE_FAIL I2C1_MESSAGE_PENDING I2C1_STUCK_START I2C1_MESSAGE_ADDRESS_NO_ACK I2C1_DATA_NO_ACK I2C1_LOST_STATE  ]
 "262 ./mcc_generated_files/i2c1.h
 [; ;./mcc_generated_files/i2c1.h: 262: void I2C1_MasterWrite(
-[v _I2C1_MasterWrite `(v ~T0 @X0 0 ef4`*uc`uc`us`*E11370 ]
+[v _I2C1_MasterWrite `(v ~T0 @X0 0 ef4`*uc`uc`us`*E11376 ]
 "113 /Applications/microchip/xc8/v2.05/pic/include/c99/stdio.h
 [v _printf `(i ~T0 @X0 0 ev`*Cuc ]
 "16 ./tm1650.h
@@ -1505,8 +1505,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "33
 [; ;tm1650.c: 33:     I2C1_MESSAGE_STATUS status = I2C1_MESSAGE_PENDING;
-[v _status `E11370 ~T0 @X0 1 a ]
-[e = _status . `E11370 2 ]
+[v _status `E11376 ~T0 @X0 1 a ]
+[e = _status . `E11376 2 ]
 "34
 [; ;tm1650.c: 34:     I2C1_MasterWrite(&data, 1, address, &status);
 [e ( _I2C1_MasterWrite (4 , , , &U _data -> -> 1 `i `uc -> _address `us &U _status ]
@@ -1515,7 +1515,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $U 1518  ]
 [e :U 1519 ]
 [e :U 1518 ]
-[e $ == -> _status `ui -> . `E11370 2 `ui 1519  ]
+[e $ == -> _status `ui -> . `E11376 2 `ui 1519  ]
 [e :U 1520 ]
 "38
 [; ;tm1650.c: 38:     return;
@@ -1747,50 +1747,170 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 1533 ]
 }
 "120
-[; ;tm1650.c: 120: void putch(char n){
+[; ;tm1650.c: 120: void TM1650_fastPrintNum_3digit(uint16_t num){
+[v _TM1650_fastPrintNum_3digit `(v ~T0 @X0 1 ef1`us ]
+{
+[e :U _TM1650_fastPrintNum_3digit ]
+[v _num `us ~T0 @X0 1 r1 ]
+[f ]
+"122
+[; ;tm1650.c: 122:     if(num > 999){
+[e $ ! > -> _num `ui -> -> 999 `i `ui 1536  ]
+{
+"123
+[; ;tm1650.c: 123:         writeData(0x34, 0x79);
+[e ( _writeData (2 , -> -> 52 `i `uc -> -> 121 `i `uc ]
+"124
+[; ;tm1650.c: 124:         writeData(0x35, 0x79);
+[e ( _writeData (2 , -> -> 53 `i `uc -> -> 121 `i `uc ]
+"125
+[; ;tm1650.c: 125:         writeData(0x36, 0x79);
+[e ( _writeData (2 , -> -> 54 `i `uc -> -> 121 `i `uc ]
+"126
+[; ;tm1650.c: 126:         writeData(0x37, 0x79);
+[e ( _writeData (2 , -> -> 55 `i `uc -> -> 121 `i `uc ]
+"127
+[; ;tm1650.c: 127:         return;
+[e $UE 1535  ]
+"128
+[; ;tm1650.c: 128:     }
+}
+[e :U 1536 ]
+"130
+[; ;tm1650.c: 130:     writeData(0x37, charTable[(num % 10) + 16]);
+[e ( _writeData (2 , -> -> 55 `i `uc *U + &U _charTable * -> + % -> _num `ui -> -> 10 `i `ui -> -> 16 `i `ui `ux -> -> # *U &U _charTable `ui `ux ]
+"131
+[; ;tm1650.c: 131:     writeData(0x36, charTable[( (num/10) % 10) + 16]);
+[e ( _writeData (2 , -> -> 54 `i `uc *U + &U _charTable * -> + % / -> _num `ui -> -> 10 `i `ui -> -> 10 `i `ui -> -> 16 `i `ui `ux -> -> # *U &U _charTable `ui `ux ]
+"132
+[; ;tm1650.c: 132:     writeData(0x35, charTable[( (num/100) % 10) + 16]);
+[e ( _writeData (2 , -> -> 53 `i `uc *U + &U _charTable * -> + % / -> _num `ui -> -> 100 `i `ui -> -> 10 `i `ui -> -> 16 `i `ui `ux -> -> # *U &U _charTable `ui `ux ]
+"134
+[; ;tm1650.c: 134: }
+[e :UE 1535 ]
+}
+"136
+[; ;tm1650.c: 136: void TM1650_fastPrintNum_2digit(uint8_t num){
+[v _TM1650_fastPrintNum_2digit `(v ~T0 @X0 1 ef1`uc ]
+{
+[e :U _TM1650_fastPrintNum_2digit ]
+[v _num `uc ~T0 @X0 1 r1 ]
+[f ]
+"138
+[; ;tm1650.c: 138:     if(num > 99){
+[e $ ! > -> _num `i -> 99 `i 1538  ]
+{
+"139
+[; ;tm1650.c: 139:         writeData(0x34, 0x79);
+[e ( _writeData (2 , -> -> 52 `i `uc -> -> 121 `i `uc ]
+"140
+[; ;tm1650.c: 140:         writeData(0x35, 0x79);
+[e ( _writeData (2 , -> -> 53 `i `uc -> -> 121 `i `uc ]
+"141
+[; ;tm1650.c: 141:         writeData(0x36, 0x79);
+[e ( _writeData (2 , -> -> 54 `i `uc -> -> 121 `i `uc ]
+"142
+[; ;tm1650.c: 142:         writeData(0x37, 0x79);
+[e ( _writeData (2 , -> -> 55 `i `uc -> -> 121 `i `uc ]
+"143
+[; ;tm1650.c: 143:         return;
+[e $UE 1537  ]
+"144
+[; ;tm1650.c: 144:     }
+}
+[e :U 1538 ]
+"146
+[; ;tm1650.c: 146:     writeData(0x37, charTable[(num % 10) + 16]);
+[e ( _writeData (2 , -> -> 55 `i `uc *U + &U _charTable * -> -> + % -> _num `i -> 10 `i -> 16 `i `ui `ux -> -> # *U &U _charTable `ui `ux ]
+"147
+[; ;tm1650.c: 147:     writeData(0x36, charTable[( (num/10) % 10) + 16]);
+[e ( _writeData (2 , -> -> 54 `i `uc *U + &U _charTable * -> -> + % / -> _num `i -> 10 `i -> 10 `i -> 16 `i `ui `ux -> -> # *U &U _charTable `ui `ux ]
+"149
+[; ;tm1650.c: 149: }
+[e :UE 1537 ]
+}
+"151
+[; ;tm1650.c: 151: void TM1650_fastPrintNum_1digit(uint8_t num){
+[v _TM1650_fastPrintNum_1digit `(v ~T0 @X0 1 ef1`uc ]
+{
+[e :U _TM1650_fastPrintNum_1digit ]
+[v _num `uc ~T0 @X0 1 r1 ]
+[f ]
+"153
+[; ;tm1650.c: 153:     if(num > 9){
+[e $ ! > -> _num `i -> 9 `i 1540  ]
+{
+"154
+[; ;tm1650.c: 154:         writeData(0x34, 0x79);
+[e ( _writeData (2 , -> -> 52 `i `uc -> -> 121 `i `uc ]
+"155
+[; ;tm1650.c: 155:         writeData(0x35, 0x79);
+[e ( _writeData (2 , -> -> 53 `i `uc -> -> 121 `i `uc ]
+"156
+[; ;tm1650.c: 156:         writeData(0x36, 0x79);
+[e ( _writeData (2 , -> -> 54 `i `uc -> -> 121 `i `uc ]
+"157
+[; ;tm1650.c: 157:         writeData(0x37, 0x79);
+[e ( _writeData (2 , -> -> 55 `i `uc -> -> 121 `i `uc ]
+"158
+[; ;tm1650.c: 158:         return;
+[e $UE 1539  ]
+"159
+[; ;tm1650.c: 159:     }
+}
+[e :U 1540 ]
+"161
+[; ;tm1650.c: 161:     writeData(0x37, charTable[num + 16]);
+[e ( _writeData (2 , -> -> 55 `i `uc *U + &U _charTable * -> -> + -> _num `i -> 16 `i `ui `ux -> -> # *U &U _charTable `ui `ux ]
+"163
+[; ;tm1650.c: 163: }
+[e :UE 1539 ]
+}
+"166
+[; ;tm1650.c: 166: void putch(char n){
 [v _putch `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _putch ]
 [v _n `uc ~T0 @X0 1 r1 ]
 [f ]
-"122
-[; ;tm1650.c: 122:     if(position > 3 || n == '\r' || n == '\0')
-[e $ ! || || > -> _position `i -> 3 `i == -> _n `ui -> 13 `ui == -> _n `ui -> 0 `ui 1536  ]
-"123
-[; ;tm1650.c: 123:         position = 0;
+"168
+[; ;tm1650.c: 168:     if(position > 3 || n == '\r' || n == '\0')
+[e $ ! || || > -> _position `i -> 3 `i == -> _n `ui -> 13 `ui == -> _n `ui -> 0 `ui 1542  ]
+"169
+[; ;tm1650.c: 169:         position = 0;
 [e = _position -> -> 0 `i `uc ]
-[e :U 1536 ]
-"125
-[; ;tm1650.c: 125:     if(n != '\r'){
-[e $ ! != -> _n `ui -> 13 `ui 1537  ]
+[e :U 1542 ]
+"171
+[; ;tm1650.c: 171:     if(n != '\r'){
+[e $ ! != -> _n `ui -> 13 `ui 1543  ]
 {
-"126
-[; ;tm1650.c: 126:         TM1650_setDigit(position, n);
+"172
+[; ;tm1650.c: 172:         TM1650_setDigit(position, n);
 [e ( _TM1650_setDigit (2 , _position -> _n `uc ]
-"127
-[; ;tm1650.c: 127:         position++;
+"173
+[; ;tm1650.c: 173:         position++;
 [e ++ _position -> -> 1 `i `uc ]
-"128
-[; ;tm1650.c: 128:     }
+"174
+[; ;tm1650.c: 174:     }
 }
-[e :U 1537 ]
-"130
-[; ;tm1650.c: 130: }
-[e :UE 1535 ]
+[e :U 1543 ]
+"176
+[; ;tm1650.c: 176: }
+[e :UE 1541 ]
 }
-"132
-[; ;tm1650.c: 132: _Bool TM1650_isEnabled(){
+"178
+[; ;tm1650.c: 178: _Bool TM1650_isEnabled(){
 [v _TM1650_isEnabled `(a ~T0 @X0 1 ef ]
 {
 [e :U _TM1650_isEnabled ]
 [f ]
-"133
-[; ;tm1650.c: 133:     return tm1650_status;
+"179
+[; ;tm1650.c: 179:     return tm1650_status;
 [e ) _tm1650_status ]
-[e $UE 1538  ]
-"134
-[; ;tm1650.c: 134: }
-[e :UE 1538 ]
+[e $UE 1544  ]
+"180
+[; ;tm1650.c: 180: }
+[e :UE 1544 ]
 }
 [p f _printf 8912896 ]
 [a 3C 72 69 89 89 89 89 89 89 0 ]

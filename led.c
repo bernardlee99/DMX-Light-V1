@@ -15,7 +15,8 @@
 
 time_t lastLedActiveTime = 0;
 int currentState = 0;
-uint8_t beatBrightness = 1;
+uint8_t beatBrightness = 5;
+uint8_t animationBrightness = 5;
  int dmxArray[513];
  bool startup;
  
@@ -64,24 +65,26 @@ void LED_task(){
             break;
 
         case MODE_BEAT_FADE:
-            LED_task_BEAT_FADE();
+            if(getIsHold()) LED_setColor(beatColorCreator(0,0,0,0));
+            else LED_task_BEAT_FADE();
             break;
 
         case MODE_BEAT_CONTINUOUS:
-            LED_task_BEAT_CONTINUOUS();
+            if(getIsHold()) LED_setColor(beatColorCreator(0,0,0,0));
+            else LED_task_BEAT_CONTINUOUS();
             break;
 
         case MODE_BEAT_MIXED:
-            LED_task_BEAT_MIXED();
+            if(getIsHold()) LED_setColor(beatColorCreator(0,0,0,0));
+            else LED_task_BEAT_MIXED();
             break;
 
         case MODE_ANIMATION:
-            //if(!getIsHold())
-            LED_task_ANIMATION();
+            if(getIsHold()) LED_setColor(beatColorCreator(0,0,0,0));
+            else LED_task_ANIMATION();
             break;
             
         case MODE_MANUAL:
-            LED_task_MANUAL();
             LED_setColor(manual);
             break;
     }
@@ -208,10 +211,6 @@ void static LED_task_BEAT_CONTINUOUS(){
 }
 
 void static LED_task_BEAT_MIXED(){
-    
-}
-
-void static LED_task_MANUAL(){
     
 }
 

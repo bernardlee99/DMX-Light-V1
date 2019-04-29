@@ -1,13 +1,13 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[v F10902 `(v ~T0 @X0 0 tf ]
-[v F10926 `(v ~T0 @X0 0 tf ]
+[v F10908 `(v ~T0 @X0 0 tf ]
+[v F10932 `(v ~T0 @X0 0 tf ]
 "470 ./mcc_generated_files/eusart1.h
 [; ;./mcc_generated_files/eusart1.h: 470: void EUSART1_SetRxInterruptHandler(void (* interruptHandler)(void));
-[v _EUSART1_SetRxInterruptHandler `(v ~T0 @X0 0 ef1`*F10926 ]
+[v _EUSART1_SetRxInterruptHandler `(v ~T0 @X0 0 ef1`*F10932 ]
 "13 dmx.c
 [; ;dmx.c: 13: void DMX_interrupt();
 [v _DMX_interrupt `(v ~T0 @X0 0 e? ]
-[v F10935 `(v ~T0 @X0 0 tf ]
+[v F10941 `(v ~T0 @X0 0 tf ]
 "17 ./tm1650.h
 [; ;./tm1650.h: 17: void TM1650_fastPrintNum(uint16_t num);
 [v _TM1650_fastPrintNum `(v ~T0 @X0 0 ef1`us ]
@@ -1400,7 +1400,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; <" TOSH equ 01FEFh ;# ">
 "95 ./mcc_generated_files/eusart1.h
 [; ;./mcc_generated_files/eusart1.h: 95: void (*EUSART1_RxDefaultInterruptHandler)(void);
-[v _EUSART1_RxDefaultInterruptHandler `*F10902 ~T0 @X0 1 e ]
+[v _EUSART1_RxDefaultInterruptHandler `*F10908 ~T0 @X0 1 e ]
 "15 dmx.c
 [; ;dmx.c: 15: int initial = 1;
 [v _initial `i ~T0 @X0 1 e ]
@@ -1430,7 +1430,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "22
 [; ;dmx.c: 22:     EUSART1_SetRxInterruptHandler(DMX_interrupt);
-[e ( _EUSART1_SetRxInterruptHandler (1 -> &U _DMX_interrupt `*F10935 ]
+[e ( _EUSART1_SetRxInterruptHandler (1 -> &U _DMX_interrupt `*F10941 ]
 "23
 [; ;dmx.c: 23:     TM1650_fastPrintNum(address);
 [e ( _TM1650_fastPrintNum (1 _address ]

@@ -1658,10 +1658,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;buttons.c: 85:                 btn->event = EVENT_HELD;
 [e = . *U _btn 5 . `E10869 3 ]
 "86
-[; ;buttons.c: 86:             } else {
+[; ;buttons.c: 86:             } else if(btn->event != EVENT_HELD) {
 }
 [e $U 1529  ]
 [e :U 1528 ]
+[e $ ! != -> . *U _btn 5 `ui -> . `E10869 3 `ui 1530  ]
 {
 "87
 [; ;buttons.c: 87:                 btn->event = EVENT_INTER_HOLD;
@@ -1669,13 +1670,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 "88
 [; ;buttons.c: 88:             }
 }
+[e :U 1530 ]
 [e :U 1529 ]
 "89
 [; ;buttons.c: 89:         } else if(btn->state == STATE_UNPRESSED && btn->lastState == STATE_PRESSED && btn->event == EVENT_HELD){
 }
-[e $U 1530  ]
+[e $U 1531  ]
 [e :U 1527 ]
-[e $ ! && && == -> . *U _btn 2 `ui -> . `E10875 0 `ui == -> . *U _btn 3 `ui -> . `E10875 1 `ui == -> . *U _btn 5 `ui -> . `E10869 3 `ui 1531  ]
+[e $ ! && && == -> . *U _btn 2 `ui -> . `E10875 0 `ui == -> . *U _btn 3 `ui -> . `E10875 1 `ui == -> . *U _btn 5 `ui -> . `E10869 3 `ui 1532  ]
 {
 "90
 [; ;buttons.c: 90:             btn->event = EVENT_IDLE;
@@ -1683,8 +1685,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "91
 [; ;buttons.c: 91:         }
 }
+[e :U 1532 ]
 [e :U 1531 ]
-[e :U 1530 ]
 [e :U 1526 ]
 "93
 [; ;buttons.c: 93:         btn->lastState = btn->state;
@@ -1709,7 +1711,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "98
 [; ;buttons.c: 98:     if (button->event == EVENT_PRESSED) {
-[e $ ! == -> . *U _button 5 `ui -> . `E10869 1 `ui 1533  ]
+[e $ ! == -> . *U _button 5 `ui -> . `E10869 1 `ui 1534  ]
 {
 "99
 [; ;buttons.c: 99:         button->event = EVENT_IDLE;
@@ -1717,18 +1719,18 @@ Version 4.0 HI-TECH Software Intermediate Code
 "100
 [; ;buttons.c: 100:         return 1;
 [e ) -> -> 1 `i `a ]
-[e $UE 1532  ]
+[e $UE 1533  ]
 "101
 [; ;buttons.c: 101:     }
 }
-[e :U 1533 ]
+[e :U 1534 ]
 "103
 [; ;buttons.c: 103:     return 0;
 [e ) -> -> 0 `i `a ]
-[e $UE 1532  ]
+[e $UE 1533  ]
 "104
 [; ;buttons.c: 104: }
-[e :UE 1532 ]
+[e :UE 1533 ]
 }
 "106
 [; ;buttons.c: 106: _Bool BUTTONS_isHeld(button_t* button) {
@@ -1739,21 +1741,21 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "107
 [; ;buttons.c: 107:     if(button->event == EVENT_HELD){
-[e $ ! == -> . *U _button 5 `ui -> . `E10869 3 `ui 1535  ]
+[e $ ! == -> . *U _button 5 `ui -> . `E10869 3 `ui 1536  ]
 {
 "108
 [; ;buttons.c: 108:         return 1;
 [e ) -> -> 1 `i `a ]
-[e $UE 1534  ]
+[e $UE 1535  ]
 "109
 [; ;buttons.c: 109:     }
 }
-[e :U 1535 ]
+[e :U 1536 ]
 "111
 [; ;buttons.c: 111:     return 0;
 [e ) -> -> 0 `i `a ]
-[e $UE 1534  ]
+[e $UE 1535  ]
 "113
 [; ;buttons.c: 113: }
-[e :UE 1534 ]
+[e :UE 1535 ]
 }

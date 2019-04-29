@@ -18600,6 +18600,9 @@ void TM1650_brightness(uint8_t brightness);
 void putch(char n);
 void TM1650_scrollPrint(char *array);
 void TM1650_fastPrintNum(uint16_t num);
+void TM1650_fastPrintNum_3digit(uint16_t num);
+void TM1650_fastPrintNum_2digit(uint8_t num);
+void TM1650_fastPrintNum_1digit(uint8_t num);
 void TM1650_enable(_Bool enable);
 _Bool TM1650_isEnabled();
 void static welcomeMessage();
@@ -18680,6 +18683,7 @@ _Bool getIsHold();
 _Bool static CONTROL_DMX();
 _Bool static CONTROL_BEAT();
 _Bool static CONTROL_MANUAL(colormode_t input);
+_Bool static CONTROL_ANIMATION();
 
 extern _Bool startup;
 # 49 "main.c" 2
@@ -18704,7 +18708,6 @@ color_t static colorCreator(uint8_t inRed, uint8_t inGreen, uint8_t inBlue, uint
 float static beatBrightnessCalculation();
 void static LED_task_BEAT_CONTINUOUS();
 void static LED_task_BEAT_MIXED();
-void static LED_task_MANUAL();
 
 void colorDec(colormode_t input);
 void colorInc(colormode_t input);
@@ -18721,6 +18724,7 @@ _Bool BEAT_detected();
 void BEAT_task();
 
 extern uint8_t beatBrightness;
+extern uint8_t animationBrightness;
 # 51 "main.c" 2
 
 # 1 "./beat.h" 1

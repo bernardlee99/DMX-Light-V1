@@ -18156,6 +18156,7 @@ _Bool BEAT_detected();
 void BEAT_task();
 
 extern uint8_t beatBrightness;
+extern uint8_t animationBrightness;
 # 10 "led.c" 2
 # 1 "./clock.h" 1
 # 13 "./clock.h"
@@ -18196,6 +18197,7 @@ _Bool getIsHold();
 _Bool static CONTROL_DMX();
 _Bool static CONTROL_BEAT();
 _Bool static CONTROL_MANUAL(colormode_t input);
+_Bool static CONTROL_ANIMATION();
 
 extern _Bool startup;
 # 12 "led.c" 2
@@ -18219,7 +18221,6 @@ color_t static colorCreator(uint8_t inRed, uint8_t inGreen, uint8_t inBlue, uint
 float static beatBrightnessCalculation();
 void static LED_task_BEAT_CONTINUOUS();
 void static LED_task_BEAT_MIXED();
-void static LED_task_MANUAL();
 
 void colorDec(colormode_t input);
 void colorInc(colormode_t input);
@@ -18702,7 +18703,8 @@ extern uint16_t address;
 
 time_t lastLedActiveTime = 0;
 int currentState = 0;
-uint8_t beatBrightness = 1;
+uint8_t beatBrightness = 5;
+uint8_t animationBrightness = 5;
  int dmxArray[513];
  _Bool startup;
 
@@ -18751,24 +18753,26 @@ void LED_task(){
             break;
 
         case MODE_BEAT_FADE:
-            LED_task_BEAT_FADE();
+            if(getIsHold()) LED_setColor(beatColorCreator(0,0,0,0));
+            else LED_task_BEAT_FADE();
             break;
 
         case MODE_BEAT_CONTINUOUS:
-            LED_task_BEAT_CONTINUOUS();
+            if(getIsHold()) LED_setColor(beatColorCreator(0,0,0,0));
+            else LED_task_BEAT_CONTINUOUS();
             break;
 
         case MODE_BEAT_MIXED:
-            LED_task_BEAT_MIXED();
+            if(getIsHold()) LED_setColor(beatColorCreator(0,0,0,0));
+            else LED_task_BEAT_MIXED();
             break;
 
         case MODE_ANIMATION:
-
-            LED_task_ANIMATION();
+            if(getIsHold()) LED_setColor(beatColorCreator(0,0,0,0));
+            else LED_task_ANIMATION();
             break;
 
         case MODE_MANUAL:
-            LED_task_MANUAL();
             LED_setColor(manual);
             break;
     }
@@ -18895,10 +18899,6 @@ void static LED_task_BEAT_CONTINUOUS(){
 }
 
 void static LED_task_BEAT_MIXED(){
-
-}
-
-void static LED_task_MANUAL(){
 
 }
 

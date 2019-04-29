@@ -5,6 +5,63 @@
 #include "dmx.h"
 #include "led.h"
 
+typedef void (*fn_t)(void);
+
+
+typedef struct {
+    menuItem_t* nextItem;
+    menuItem_t* prevItem;
+    char name[4];
+    fn_t config;
+} menuItem_t;
+
+menuItem_t currentMenu;
+
+void dmxAddressPrint() {
+    
+}
+
+    menuItem_t dmx;
+    menuItem_t beat;
+    menuItem_t animation;
+    menuItem_t manual;
+    
+      // beat configs
+    menuItem_t beatStrobe;
+    menuItem_t beatFade;
+    menuItem_t beatCont;
+    menuItem_t beatMixed;
+
+void beatConfig() {
+    setMenu(&beatStrobe);
+}
+
+
+    
+void CONTROLLER_init() {
+
+    dmx.nextItem = &beat;
+    beat.nextItem = &animation;
+    animation.nextItem = &manual;
+    
+    dmx.config = dmxAddressPrint;
+    
+    beat.config = beatConfig;
+    
+
+    
+    beatStrobe.nextItem = &beatFade;
+    
+    // animation configs
+    menuItem_t animationType;
+    
+    // manualConfigs;
+    menuItem_t manualRed;
+    
+    dmx.nextItem = &beatStrobe;
+    beat
+}
+
 button_t *up, *down, *menu, *enter;
 int incInterval = MAX_INTERVAL_TIME;
 time_t lastIncTime = 0;
@@ -22,6 +79,10 @@ bool beatHold = false;
 
 colormode_t colorModeSelected = CMODE_RED;
 
+uint8_t animationModeSelected = 1;
+bool animationBrightnessControl = false;
+uint8_t animationBrightness;
+
 void CONTROLLER_task() {
 
     bool isActive = true;
@@ -35,9 +96,9 @@ void CONTROLLER_task() {
         if (upState || downState || menuState) {
             menuPressed = true;
         }
-        //if (enterState) {
-        return;
-        //}
+        if (enterState) {
+            return;
+        }
     } else {
         if (menuPressed == false && startup == true)
             currentSelection = MODE_DMX;
@@ -50,7 +111,7 @@ void CONTROLLER_task() {
     } else if (currentSelection == MODE_DMX) {
         isActive = CONTROL_DMX();
     } else if (currentSelection == MODE_ANIMATION) {
-        isActive = true;
+        isActive = CONTROL_ANIMATION();
     } else if (currentSelection == MODE_BEAT_STROBE || currentSelection == MODE_BEAT_FADE || currentSelection == MODE_BEAT_CONTINUOUS || currentSelection == MODE_BEAT_MIXED) {
         isActive = CONTROL_BEAT();
     } else if(currentSelection == MODE_MANUAL && !enterPressed){
@@ -78,40 +139,60 @@ void CONTROLLER_task() {
         lastActiveTime = CLOCK_getTime();
         enterPressed = false;
     } else if (currentSelection == MODE_ANIMATION && !menuPressed && !beatHold) {
-        printf("SEL1\r");
+        if (animationBrightnessControl) {
+            printf("BR");
+            TM1650_fastPrintNum_2digit(animationBrightness);
+            printf("\r");
+        } else {
+            printf("AN");
+            TM1650_fastPrintNum_2digit(animationModeSelected);
+            printf("\r");
+        }
         enterPressed = false;
     } else if (currentSelection == MODE_BEAT_STROBE && !menuPressed&& !beatHold) {
-        printf("B-%u  \r", (uint8_t)beatBrightness);
+        printf("B-");
+        TM1650_fastPrintNum_2digit((uint8_t)beatBrightness);
+        printf("\r");
         enterPressed = false;
     } else if (currentSelection == MODE_BEAT_FADE && !menuPressed && !beatHold) {
-        printf("F-%d  \r", (uint8_t)beatBrightness);
+        printf("F-");
+        TM1650_fastPrintNum_2digit((uint8_t)beatBrightness);
+        printf("\r");
         enterPressed = false;
     } else if (currentSelection == MODE_BEAT_CONTINUOUS && !menuPressed && !beatHold) {
-        printf("C-%d  \r", (uint8_t)beatBrightness);
+        printf("C-");
+        TM1650_fastPrintNum_2digit((uint8_t)beatBrightness);
+        printf("\r");
         enterPressed = false;
     }  else if (currentSelection == MODE_BEAT_MIXED && !menuPressed && !beatHold) {
-        printf("A-%d  \r", (uint8_t)beatBrightness);
+        printf("A-");
+        TM1650_fastPrintNum_2digit((uint8_t)beatBrightness);
+        printf("\r");
         enterPressed = false;
     } else if (currentSelection == MODE_MANUAL && !menuPressed){
         switch(colorModeSelected){
             case CMODE_RED:
-                //printf("r   \r");
-                TM1650_fastPrintNum(getManualColor(CMODE_RED));
+                printf("r");
+                TM1650_fastPrintNum_3digit(getManualColor(CMODE_RED));
+                printf("\r");
                 break;
                 
             case CMODE_GREEN:
-                TM1650_fastPrintNum(getManualColor(CMODE_GREEN));
-                //printf("G   \r");
+                printf("G");
+                TM1650_fastPrintNum_3digit(getManualColor(CMODE_GREEN));
+                printf("\r");
                 break;
                 
             case CMODE_BLUE:
-                TM1650_fastPrintNum(getManualColor(CMODE_BLUE));
-                //printf("B   \r");
+                printf("B");
+                TM1650_fastPrintNum_3digit(getManualColor(CMODE_BLUE));
+                printf("\r");
                 break;
                 
             case CMODE_WHITE:
-                TM1650_fastPrintNum(getManualColor(CMODE_WHITE));
-                //printf("H   \r");
+                printf("H");
+                TM1650_fastPrintNum_3digit(getManualColor(CMODE_WHITE));
+                printf("\r");
                 break;
         }
         enterPressed = false;
@@ -302,5 +383,44 @@ bool static CONTROL_MANUAL(colormode_t input){
     }
     
     return false;
+    
+}
+
+bool static CONTROL_ANIMATION(){
+
+    if(enterState){
+        !animationBrightnessControl;
+        return true;
+    }
+    
+    if (upState && !animationBrightnessControl) {
+        if (animationModeSelected < 10) {
+            animationModeSelected++;
+        } else {
+            animationModeSelected = 10;
+        }
+        return true;
+    } else if (downState && !animationBrightnessControl) {
+        if (animationModeSelected > 1) {
+            animationModeSelected--;
+        } else {
+            animationModeSelected = 1;
+        }
+        return true;
+    } else if (upState && animationBrightnessControl) {
+        if (animationBrightness < 10) {
+            animationBrightness++;
+        } else {
+            animationBrightness = 10;
+        }
+        return true;
+    } else if (downState && animationBrightnessControl) {
+        if (animationBrightness > 0) {
+            animationBrightness--;
+        } else {
+            animationBrightness = 0;
+        }
+        return true;
+    }
     
 }
