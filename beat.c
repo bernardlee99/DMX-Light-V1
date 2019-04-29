@@ -14,9 +14,9 @@
 
 // private defines
 #define MIN_TEMPO               80
-#define MAX_TEMPO               220
+#define MAX_TEMPO               160
 #define DELAY_WAITING_FOR_BEAT  30
-#define DELAY_BEAT_FOUND        15
+#define DELAY_BEAT_FOUND        50
 
 // private methods
 static void adcThresholdHandler();

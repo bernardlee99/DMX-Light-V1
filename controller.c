@@ -73,22 +73,23 @@ void CONTROLLER_task() {
     if (currentSelection == MODE_DMX && !menuPressed) {
         TM1650_fastPrintNum(address);
         enterPressed = false;
-    } else if (currentSelection == MODE_ANIMATION && !menuPressed) {
+    } else if(beatHold == true && !menuPressed){
+        printf("HOLD\r");
+        lastActiveTime = CLOCK_getTime();
+        enterPressed = false;
+    } else if (currentSelection == MODE_ANIMATION && !menuPressed && !beatHold) {
         printf("SEL1\r");
         enterPressed = false;
-    } else if(currentSelection == MODE_BEAT_STROBE && beatHold){
-        printf("HOLD");
-        enterPressed = false;
-    }else if (currentSelection == MODE_BEAT_STROBE && !menuPressed) {
+    } else if (currentSelection == MODE_BEAT_STROBE && !menuPressed&& !beatHold) {
         printf("B-%u  \r", (uint8_t)beatBrightness);
         enterPressed = false;
-    } else if (currentSelection == MODE_BEAT_FADE && !menuPressed) {
+    } else if (currentSelection == MODE_BEAT_FADE && !menuPressed && !beatHold) {
         printf("F-%d  \r", (uint8_t)beatBrightness);
         enterPressed = false;
-    } else if (currentSelection == MODE_BEAT_CONTINUOUS && !menuPressed) {
+    } else if (currentSelection == MODE_BEAT_CONTINUOUS && !menuPressed && !beatHold) {
         printf("C-%d  \r", (uint8_t)beatBrightness);
         enterPressed = false;
-    } else if (currentSelection == MODE_BEAT_MIXED && !menuPressed) {
+    }  else if (currentSelection == MODE_BEAT_MIXED && !menuPressed && !beatHold) {
         printf("A-%d  \r", (uint8_t)beatBrightness);
         enterPressed = false;
     } else if (currentSelection == MODE_MANUAL && !menuPressed){
@@ -214,7 +215,10 @@ bool static CONTROL_BEAT(){
     if(BUTTONS_isHeld(enter) && !enterPressed){
         beatHold = !beatHold;
         enterPressed = true;
+        return true;
     }
+    
+    //beatHold = false;
     
     if (upState) {
         if(beatBrightness < 9){
@@ -234,7 +238,6 @@ bool static CONTROL_BEAT(){
     
     if(enterState && currentSelection == MODE_BEAT_FADE){
         currentSelection = MODE_BEAT_CONTINUOUS;
-        volatile uint8_t i = 0;
         //TM1650_scrollPrint("FLASH\r");
     } else if(enterState && currentSelection == MODE_BEAT_STROBE){
         currentSelection = MODE_BEAT_FADE;
@@ -247,7 +250,7 @@ bool static CONTROL_BEAT(){
 }
 
 bool getIsHold(){
-    return beatHold;
+    return false;
 }
 
 bool static CONTROL_MANUAL(colormode_t input){

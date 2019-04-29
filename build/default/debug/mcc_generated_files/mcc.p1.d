@@ -8,8 +8,8 @@ mcc_generated_files/i2c1.h  \
 mcc_generated_files/tmr2.h  \
 mcc_generated_files/pwm4.h  \
 mcc_generated_files/tmr0.h  \
+mcc_generated_files/adcc.h  \
 mcc_generated_files/pwm1.h  \
 mcc_generated_files/pwm2.h  \
-mcc_generated_files/adcc.h  \
 mcc_generated_files/pwm3.h  \
 mcc_generated_files/eusart1.h 

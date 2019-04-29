@@ -83,7 +83,7 @@ void BUTTONS_task() {
         } else if (btn->state == STATE_PRESSED && btn->lastState == STATE_PRESSED){
             if(time - btn->lastHoldTime > HOLD_TIME){
                 btn->event = EVENT_HELD;
-            } else {
+            } else if(btn->event != EVENT_HELD) {
                 btn->event = EVENT_INTER_HOLD;
             }
         } else if(btn->state == STATE_UNPRESSED && btn->lastState == STATE_PRESSED && btn->event == EVENT_HELD){

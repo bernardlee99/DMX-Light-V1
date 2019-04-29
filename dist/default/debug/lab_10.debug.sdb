@@ -3,7 +3,7 @@
 [d edition pro ]
 [d chip 16F18446 ]
 [d frameptr 6 ]
-"88 /home/bbd/Documents/Github/lab_10/mcc_generated_files/tmr2.c
+"88 /Users/student/Desktop/lab_10/mcc_generated_files/tmr2.c
 [e E10865 . `uc
 TMR2_ROP_STARTS_TMRON 0
 TMR2_ROP_STARTS_TMRON_ERSHIGH 1
@@ -42,7 +42,7 @@ TMR2_CLC3_OUT 15
 TMR2_CLC4_OUT 16
 TMR2_RESERVED_2 17
 ]
-"185 /home/bbd/Documents/Github/lab_10/mcc_generated_files/i2c1.c
+"185 /Users/student/Desktop/lab_10/mcc_generated_files/i2c1.c
 [e E10866 . `uc
 I2C1_MESSAGE_COMPLETE 0
 I2C1_MESSAGE_FAIL 1
@@ -67,7 +67,7 @@ S_MASTER_NOACK_STOP 9
 S_MASTER_SEND_ADDR_10BIT_LSB 10
 S_MASTER_10BIT_RESTART 11
 ]
-"121 /home/bbd/Documents/Github/lab_10/mcc_generated_files/adcc.c
+"121 /Users/student/Desktop/lab_10/mcc_generated_files/adcc.c
 [e E10867 . `uc
 channel_Vss 59
 channel_Temp_Sensor 60
@@ -75,7 +75,7 @@ channel_DAC1_Output 61
 channel_FVR_Buffer1 62
 channel_FVR_Buffer2 63
 ]
-"13 /home/bbd/Documents/Github/lab_10/buttons.c
+"13 /Users/student/Desktop/lab_10/buttons.c
 [e E10875 . `uc
 STATE_UNPRESSED 0
 STATE_PRESSED 1
@@ -86,7 +86,7 @@ EVENT_PRESSED 1
 EVENT_INTER_HOLD 2
 EVENT_HELD 3
 ]
-"8 /home/bbd/Documents/Github/lab_10/controller.c
+"8 /Users/student/Desktop/lab_10/controller.c
 [e E10903 . `uc
 STATE_UNPRESSED 0
 STATE_PRESSED 1
@@ -114,7 +114,7 @@ CMODE_GREEN 1
 CMODE_BLUE 2
 CMODE_WHITE 3
 ]
-"33 /home/bbd/Documents/Github/lab_10/tm1650.c
+"33 /Users/student/Desktop/lab_10/tm1650.c
 [e E11370 . `uc
 I2C1_MESSAGE_COMPLETE 0
 I2C1_MESSAGE_FAIL 1
@@ -124,7 +124,7 @@ I2C1_MESSAGE_ADDRESS_NO_ACK 4
 I2C1_DATA_NO_ACK 5
 I2C1_LOST_STATE 6
 ]
-"42 /home/bbd/Documents/Github/lab_10/beat.c
+"42 /Users/student/Desktop/lab_10/beat.c
 [e E10872 . `uc
 channel_Vss 59
 channel_Temp_Sensor 60
@@ -132,7 +132,7 @@ channel_DAC1_Output 61
 channel_FVR_Buffer1 62
 channel_FVR_Buffer2 63
 ]
-"89 /home/bbd/Documents/Github/lab_10/led.c
+"87 /Users/student/Desktop/lab_10/led.c
 [e E10874 . `uc
 MODE_ANIMATION 2
 MODE_BEAT_STROBE 1
@@ -142,14 +142,14 @@ MODE_BEAT_FADE 4
 MODE_BEAT_CONTINUOUS 5
 MODE_BEAT_MIXED 6
 ]
-"212
+"218
 [e E10883 . `uc
 CMODE_RED 0
 CMODE_GREEN 1
 CMODE_BLUE 2
 CMODE_WHITE 3
 ]
-"72 /opt/microchip/xc8/v2.05/pic/sources/c99/common/doprnt.c
+"72 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/doprnt.c
 [v _pad pad `(i  1 s 2 pad ]
 "259
 [v _ctoa ctoa `(i  1 s 2 ctoa ]
@@ -157,35 +157,35 @@ CMODE_WHITE 3
 [v _vfpfcnvrt vfpfcnvrt `(i  1 s 2 vfpfcnvrt ]
 "1368
 [v _vfprintf vfprintf `(i  1 e 2 0 ]
-"43 /opt/microchip/xc8/v2.05/pic/sources/c99/common/fltol.c
+"43 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/fltol.c
 [v ___fltol __fltol `(l  1 e 4 0 ]
-"5 /opt/microchip/xc8/v2.05/pic/sources/c99/common/lwdiv.c
+"5 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/lwdiv.c
 [v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
-"5 /opt/microchip/xc8/v2.05/pic/sources/c99/common/lwmod.c
+"5 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/lwmod.c
 [v ___lwmod __lwmod `(ui  1 e 2 0 ]
-"8 /opt/microchip/xc8/v2.05/pic/sources/c99/common/nf_fputc.c
+"8 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/nf_fputc.c
 [v _fputc fputc `(i  1 e 2 0 ]
-"8 /opt/microchip/xc8/v2.05/pic/sources/c99/common/nf_fputs.c
+"8 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/nf_fputs.c
 [v _fputs fputs `(i  1 e 2 0 ]
-"5 /opt/microchip/xc8/v2.05/pic/sources/c99/common/printf.c
+"5 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/printf.c
 [v _printf printf `(i  1 e 2 0 ]
-"10 /opt/microchip/xc8/v2.05/pic/sources/c99/common/sprcadd.c
+"10 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
-"8 /opt/microchip/xc8/v2.05/pic/sources/c99/common/sprcdiv.c
+"8 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/sprcdiv.c
 [v ___fldiv __fldiv `(d  1 e 4 0 ]
-"8 /opt/microchip/xc8/v2.05/pic/sources/c99/common/sprcmul.c
+"8 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/sprcmul.c
 [v ___flmul __flmul `(d  1 e 4 0 ]
-"12 /opt/microchip/xc8/v2.05/pic/sources/c99/common/strlen.c
+"12 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/strlen.c
 [v _strlen strlen `(ui  1 e 2 0 ]
-"4 /opt/microchip/xc8/v2.05/pic/sources/c99/common/Umul8_16.c
+"4 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/Umul8_16.c
 [v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
-"10 /opt/microchip/xc8/v2.05/pic/sources/c99/common/xxtofl.c
+"10 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/xxtofl.c
 [v ___xxtofl __xxtofl `(d  1 e 4 0 ]
-"6 /opt/microchip/xc8/v2.05/pic/sources/c99/pic/__eeprom.c
+"6 /Applications/microchip/xc8/v2.05/pic/sources/c99/pic/__eeprom.c
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"35 /home/bbd/Documents/Github/lab_10/beat.c
+"35 /Users/student/Desktop/lab_10/beat.c
 [v _adcThresholdHandler adcThresholdHandler `(v  1 s 1 adcThresholdHandler ]
 "39
 [v _BEAT_init BEAT_init `(v  1 e 1 0 ]
@@ -193,7 +193,7 @@ CMODE_WHITE 3
 [v _BEAT_detected BEAT_detected `(a  1 e 1 0 ]
 "65
 [v _BEAT_task BEAT_task `(v  1 e 1 0 ]
-"16 /home/bbd/Documents/Github/lab_10/buttons.c
+"16 /Users/student/Desktop/lab_10/buttons.c
 [v _init init `(v  1 s 1 init ]
 "23
 [v _BUTTONS_init BUTTONS_init `(v  1 e 1 0 ]
@@ -205,27 +205,27 @@ CMODE_WHITE 3
 [v _BUTTONS_isClicked BUTTONS_isClicked `(a  1 e 1 0 ]
 "106
 [v _BUTTONS_isHeld BUTTONS_isHeld `(a  1 e 1 0 ]
-"8 /home/bbd/Documents/Github/lab_10/clock.c
+"8 /Users/student/Desktop/lab_10/clock.c
 [v _CLOCK_init CLOCK_init `(v  1 e 1 0 ]
 "16
 [v _CLOCK_getTime CLOCK_getTime `(us  1 e 2 0 ]
 "20
 [v _CLOCK_timerCallback CLOCK_timerCallback `(v  1 s 1 CLOCK_timerCallback ]
-"25 /home/bbd/Documents/Github/lab_10/controller.c
+"25 /Users/student/Desktop/lab_10/controller.c
 [v _CONTROLLER_task CONTROLLER_task `(v  1 e 1 0 ]
-"121
+"122
 [v _menuSelection menuSelection `(v  1 e 1 0 ]
-"170
+"171
 [v _getMode getMode `(E10869  1 e 1 0 ]
-"174
+"175
 [v _CONTROL_DMX CONTROL_DMX `(a  1 s 1 CONTROL_DMX ]
-"212
+"213
 [v _CONTROL_BEAT CONTROL_BEAT `(a  1 s 1 CONTROL_BEAT ]
-"249
+"252
 [v _getIsHold getIsHold `(a  1 e 1 0 ]
-"253
+"256
 [v _CONTROL_MANUAL CONTROL_MANUAL `(a  1 s 1 CONTROL_MANUAL ]
-"21 /home/bbd/Documents/Github/lab_10/dmx.c
+"21 /Users/student/Desktop/lab_10/dmx.c
 [v _DMX_init DMX_init `(v  1 e 1 0 ]
 "29
 [v _address_inc address_inc `(v  1 e 1 0 ]
@@ -235,39 +235,41 @@ CMODE_WHITE 3
 [v _DMX_interrupt DMX_interrupt `(v  1 e 1 0 ]
 "73
 [v _DMX_getAddress DMX_getAddress `(uc  1 e 1 0 ]
-"24 /home/bbd/Documents/Github/lab_10/led.c
+"24 /Users/student/Desktop/lab_10/led.c
 [v _LED_setColor LED_setColor `(v  1 e 1 0 ]
 "33
 [v _LED_task_DMX LED_task_DMX `(v  1 s 1 LED_task_DMX ]
-"53
+"46
+[v _LED_init LED_init `(v  1 e 1 0 ]
+"54
 [v _LED_task LED_task `(v  1 e 1 0 ]
-"93
+"91
 [v _LED_task_BEAT_STROBE LED_task_BEAT_STROBE `(v  1 s 1 LED_task_BEAT_STROBE ]
-"149
+"155
 [v _beatBrightnessCalculation beatBrightnessCalculation `(f  1 s 4 beatBrightnessCalculation ]
-"11 /home/bbd/Documents/Github/lab_10/led.h
-[s S2477 . 4 `uc 1 white 1 0 `uc 1 red 1 1 `uc 1 green 1 2 `uc 1 blue 1 3 ]
-"164 /home/bbd/Documents/Github/lab_10/led.c
-[v _beatColorCreator beatColorCreator `(S2477  1 s 4 beatColorCreator ]
-"190
-[v _LED_task_BEAT_FADE LED_task_BEAT_FADE `(v  1 s 1 LED_task_BEAT_FADE ]
+"11 /Users/student/Desktop/lab_10/led.h
+[s S2479 . 4 `uc 1 white 1 0 `uc 1 red 1 1 `uc 1 green 1 2 `uc 1 blue 1 3 ]
+"170 /Users/student/Desktop/lab_10/led.c
+[v _beatColorCreator beatColorCreator `(S2479  1 s 4 beatColorCreator ]
 "196
+[v _LED_task_BEAT_FADE LED_task_BEAT_FADE `(v  1 s 1 LED_task_BEAT_FADE ]
+"202
 [v _LED_task_ANIMATION LED_task_ANIMATION `(v  1 s 1 LED_task_ANIMATION ]
-"200
+"206
 [v _LED_task_BEAT_CONTINUOUS LED_task_BEAT_CONTINUOUS `(v  1 s 1 LED_task_BEAT_CONTINUOUS ]
-"204
+"210
 [v _LED_task_BEAT_MIXED LED_task_BEAT_MIXED `(v  1 s 1 LED_task_BEAT_MIXED ]
-"208
+"214
 [v _LED_task_MANUAL LED_task_MANUAL `(v  1 s 1 LED_task_MANUAL ]
-"212
+"218
 [v _colorInc colorInc `(v  1 e 1 0 ]
-"240
+"246
 [v _colorDec colorDec `(v  1 e 1 0 ]
-"268
+"274
 [v _getManualColor getManualColor `(uc  1 e 1 0 ]
-"58 /home/bbd/Documents/Github/lab_10/main.c
+"58 /Users/student/Desktop/lab_10/main.c
 [v _main main `(v  1 e 1 0 ]
-"64 /home/bbd/Documents/Github/lab_10/mcc_generated_files/adcc.c
+"64 /Users/student/Desktop/lab_10/mcc_generated_files/adcc.c
 [v _ADCC_Initialize ADCC_Initialize `(v  1 e 1 0 ]
 "121
 [v _ADCC_StartConversion ADCC_StartConversion `(v  1 e 1 0 ]
@@ -279,7 +281,7 @@ CMODE_WHITE 3
 [v _ADCC_SetADTIInterruptHandler ADCC_SetADTIInterruptHandler `(v  1 e 1 0 ]
 "320
 [v _ADCC_DefaultInterruptHandler ADCC_DefaultInterruptHandler `(v  1 e 1 0 ]
-"81 /home/bbd/Documents/Github/lab_10/mcc_generated_files/eusart1.c
+"81 /Users/student/Desktop/lab_10/mcc_generated_files/eusart1.c
 [v _EUSART1_Initialize EUSART1_Initialize `(v  1 e 1 0 ]
 "171
 [v _EUSART1_Receive_ISR EUSART1_Receive_ISR `(v  1 e 1 0 ]
@@ -299,7 +301,7 @@ CMODE_WHITE 3
 [v _EUSART1_SetErrorHandler EUSART1_SetErrorHandler `(v  1 e 1 0 ]
 "232
 [v _EUSART1_SetRxInterruptHandler EUSART1_SetRxInterruptHandler `(v  1 e 1 0 ]
-"198 /home/bbd/Documents/Github/lab_10/mcc_generated_files/i2c1.c
+"198 /Users/student/Desktop/lab_10/mcc_generated_files/i2c1.c
 [v _I2C1_Initialize I2C1_Initialize `(v  1 e 1 0 ]
 "235
 [v _I2C1_ISR I2C1_ISR `(v  1 e 1 0 ]
@@ -319,33 +321,33 @@ CMODE_WHITE 3
 [v _I2C1_MasterWriteTRBBuild I2C1_MasterWriteTRBBuild `(v  1 e 1 0 ]
 "742
 [v _I2C1_BusCollisionISR I2C1_BusCollisionISR `(v  1 e 1 0 ]
-"52 /home/bbd/Documents/Github/lab_10/mcc_generated_files/interrupt_manager.c
+"52 /Users/student/Desktop/lab_10/mcc_generated_files/interrupt_manager.c
 [v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
-"50 /home/bbd/Documents/Github/lab_10/mcc_generated_files/mcc.c
+"50 /Users/student/Desktop/lab_10/mcc_generated_files/mcc.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
 "66
 [v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
 "80
 [v _PMD_Initialize PMD_Initialize `(v  1 e 1 0 ]
-"55 /home/bbd/Documents/Github/lab_10/mcc_generated_files/pin_manager.c
+"55 /Users/student/Desktop/lab_10/mcc_generated_files/pin_manager.c
 [v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
-"64 /home/bbd/Documents/Github/lab_10/mcc_generated_files/pwm1.c
+"64 /Users/student/Desktop/lab_10/mcc_generated_files/pwm1.c
 [v _PWM1_Initialize PWM1_Initialize `(v  1 e 1 0 ]
 "82
 [v _PWM1_LoadDutyValue PWM1_LoadDutyValue `(v  1 e 1 0 ]
-"64 /home/bbd/Documents/Github/lab_10/mcc_generated_files/pwm2.c
+"64 /Users/student/Desktop/lab_10/mcc_generated_files/pwm2.c
 [v _PWM2_Initialize PWM2_Initialize `(v  1 e 1 0 ]
 "82
 [v _PWM2_LoadDutyValue PWM2_LoadDutyValue `(v  1 e 1 0 ]
-"64 /home/bbd/Documents/Github/lab_10/mcc_generated_files/pwm3.c
+"64 /Users/student/Desktop/lab_10/mcc_generated_files/pwm3.c
 [v _PWM3_Initialize PWM3_Initialize `(v  1 e 1 0 ]
 "82
 [v _PWM3_LoadDutyValue PWM3_LoadDutyValue `(v  1 e 1 0 ]
-"64 /home/bbd/Documents/Github/lab_10/mcc_generated_files/pwm4.c
+"64 /Users/student/Desktop/lab_10/mcc_generated_files/pwm4.c
 [v _PWM4_Initialize PWM4_Initialize `(v  1 e 1 0 ]
 "82
 [v _PWM4_LoadDutyValue PWM4_LoadDutyValue `(v  1 e 1 0 ]
-"61 /home/bbd/Documents/Github/lab_10/mcc_generated_files/tmr0.c
+"61 /Users/student/Desktop/lab_10/mcc_generated_files/tmr0.c
 [v _TMR0_Initialize TMR0_Initialize `(v  1 e 1 0 ]
 "121
 [v _TMR0_ISR TMR0_ISR `(v  1 e 1 0 ]
@@ -353,7 +355,7 @@ CMODE_WHITE 3
 [v _TMR0_SetInterruptHandler TMR0_SetInterruptHandler `(v  1 e 1 0 ]
 "138
 [v _TMR0_DefaultInterruptHandler TMR0_DefaultInterruptHandler `(v  1 e 1 0 ]
-"62 /home/bbd/Documents/Github/lab_10/mcc_generated_files/tmr2.c
+"62 /Users/student/Desktop/lab_10/mcc_generated_files/tmr2.c
 [v _TMR2_Initialize TMR2_Initialize `(v  1 e 1 0 ]
 "100
 [v _TMR2_Start TMR2_Start `(v  1 e 1 0 ]
@@ -365,7 +367,7 @@ CMODE_WHITE 3
 [v _TMR2_Counter8BitSet TMR2_Counter8BitSet `(v  1 e 1 0 ]
 "147
 [v _TMR2_Period8BitSet TMR2_Period8BitSet `(v  1 e 1 0 ]
-"31 /home/bbd/Documents/Github/lab_10/tm1650.c
+"31 /Users/student/Desktop/lab_10/tm1650.c
 [v _writeData writeData `(v  1 s 1 writeData ]
 "41
 [v _TM1650_enable TM1650_enable `(v  1 e 1 0 ]
@@ -379,23 +381,23 @@ CMODE_WHITE 3
 [v _TM1650_fastPrintNum TM1650_fastPrintNum `(v  1 e 1 0 ]
 "120
 [v _putch putch `(v  1 e 1 0 ]
-"95 /home/bbd/Documents/Github/lab_10/mcc_generated_files/eusart1.h
+"95 /Users/student/Desktop/lab_10/mcc_generated_files/eusart1.h
 [v _EUSART1_RxDefaultInterruptHandler EUSART1_RxDefaultInterruptHandler `*.37(v  1 e 2 0 ]
-[s S937 . 1 `uc 1 INTEDG 1 0 :1:0 
+[s S936 . 1 `uc 1 INTEDG 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
-"426 /opt/microchip/xc8/v2.05/pic/include/pic16f18446.h
-[u S942 . 1 `S937 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES942  1 e 1 @11 ]
+"426 /Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h
+[u S941 . 1 `S936 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES941  1 e 1 @11 ]
 "446
 [v _PORTA PORTA `VEuc  1 e 1 @12 ]
 "535
 [v _PORTC PORTC `VEuc  1 e 1 @14 ]
 "597
 [v _TRISA TRISA `VEuc  1 e 1 @18 ]
-[s S2007 . 1 `uc 1 TRISA0 1 0 :1:0 
+[s S2010 . 1 `uc 1 TRISA0 1 0 :1:0 
 `uc 1 TRISA1 1 0 :1:1 
 `uc 1 TRISA2 1 0 :1:2 
 `uc 1 TRISA3 1 0 :1:3 
@@ -403,13 +405,13 @@ CMODE_WHITE 3
 `uc 1 TRISA5 1 0 :1:5 
 ]
 "612
-[u S2014 . 1 `S2007 1 . 1 0 ]
-[v _TRISAbits TRISAbits `VES2014  1 e 1 @18 ]
+[u S2017 . 1 `S2010 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES2017  1 e 1 @18 ]
 "647
 [v _TRISB TRISB `VEuc  1 e 1 @19 ]
 "686
 [v _TRISC TRISC `VEuc  1 e 1 @20 ]
-[s S2058 . 1 `uc 1 TRISC0 1 0 :1:0 
+[s S2061 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 TRISC3 1 0 :1:3 
@@ -419,8 +421,8 @@ CMODE_WHITE 3
 `uc 1 TRISC7 1 0 :1:7 
 ]
 "703
-[u S2067 . 1 `S2058 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES2067  1 e 1 @20 ]
+[u S2070 . 1 `S2061 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES2070  1 e 1 @20 ]
 "748
 [v _LATA LATA `VEuc  1 e 1 @24 ]
 "798
@@ -479,7 +481,7 @@ CMODE_WHITE 3
 [v _ADPREH ADPREH `VEuc  1 e 1 @272 ]
 "3945
 [v _ADCON0 ADCON0 `VEuc  1 e 1 @273 ]
-[s S1525 . 1 `uc 1 GO 1 0 :1:0 
+[s S1524 . 1 `uc 1 GO 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 FM 1 0 :2:2 
 `uc 1 CS 1 0 :1:4 
@@ -488,7 +490,7 @@ CMODE_WHITE 3
 `uc 1 ON 1 0 :1:7 
 ]
 "3986
-[s S1533 . 1 `uc 1 ADGO 1 0 :1:0 
+[s S1532 . 1 `uc 1 ADGO 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 ADFM 1 0 :2:2 
 `uc 1 ADCS 1 0 :1:4 
@@ -496,24 +498,24 @@ CMODE_WHITE 3
 `uc 1 ADCONT 1 0 :1:6 
 `uc 1 ADON 1 0 :1:7 
 ]
-[s S1541 . 1 `uc 1 DONE 1 0 :1:0 
+[s S1540 . 1 `uc 1 DONE 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 FM0 1 0 :1:2 
 `uc 1 FM1 1 0 :1:3 
 ]
-[s S1546 . 1 `uc 1 GO_nDONE 1 0 :1:0 
+[s S1545 . 1 `uc 1 GO_nDONE 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 ADFM0 1 0 :1:2 
 `uc 1 ADFM1 1 0 :1:3 
 ]
-[s S1551 . 1 `uc 1 . 1 0 :7:0 
+[s S1550 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 ADCAL 1 0 :1:7 
 ]
-[u S1554 . 1 `S1525 1 . 1 0 `S1533 1 . 1 0 `S1541 1 . 1 0 `S1546 1 . 1 0 `S1551 1 . 1 0 ]
-[v _ADCON0bits ADCON0bits `VES1554  1 e 1 @273 ]
+[u S1553 . 1 `S1524 1 . 1 0 `S1532 1 . 1 0 `S1540 1 . 1 0 `S1545 1 . 1 0 `S1550 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES1553  1 e 1 @273 ]
 "4076
 [v _ADCON1 ADCON1 `VEuc  1 e 1 @274 ]
-[s S1786 . 1 `uc 1 DSEN 1 0 :1:0 
+[s S1785 . 1 `uc 1 DSEN 1 0 :1:0 
 `uc 1 . 1 0 :2:1 
 `uc 1 GBOE 1 0 :1:3 
 `uc 1 GAOE 1 0 :1:4 
@@ -522,7 +524,7 @@ CMODE_WHITE 3
 `uc 1 PPOL 1 0 :1:7 
 ]
 "4107
-[s S1794 . 1 `uc 1 ADDSEN 1 0 :1:0 
+[s S1793 . 1 `uc 1 ADDSEN 1 0 :1:0 
 `uc 1 . 1 0 :2:1 
 `uc 1 ADGBOE 1 0 :1:3 
 `uc 1 ADGAOE 1 0 :1:4 
@@ -530,22 +532,22 @@ CMODE_WHITE 3
 `uc 1 ADIPEN 1 0 :1:6 
 `uc 1 ADPPOL 1 0 :1:7 
 ]
-[s S1802 . 1 `uc 1 . 1 0 :3:0 
+[s S1801 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 CHSN3 1 0 :1:3 
 `uc 1 VCFG01 1 0 :1:4 
 `uc 1 VCFG11 1 0 :1:5 
 ]
-[u S1807 . 1 `S1786 1 . 1 0 `S1794 1 . 1 0 `S1802 1 . 1 0 ]
-[v _ADCON1bits ADCON1bits `VES1807  1 e 1 @274 ]
+[u S1806 . 1 `S1785 1 . 1 0 `S1793 1 . 1 0 `S1801 1 . 1 0 ]
+[v _ADCON1bits ADCON1bits `VES1806  1 e 1 @274 ]
 "4187
 [v _ADCON2 ADCON2 `VEuc  1 e 1 @275 ]
-[s S1647 . 1 `uc 1 MODE 1 0 :3:0 
+[s S1646 . 1 `uc 1 MODE 1 0 :3:0 
 `uc 1 ACLR 1 0 :1:3 
 `uc 1 CRS 1 0 :3:4 
 `uc 1 PSIS 1 0 :1:7 
 ]
 "4235
-[s S1652 . 1 `uc 1 ADMD0 1 0 :1:0 
+[s S1651 . 1 `uc 1 ADMD0 1 0 :1:0 
 `uc 1 ADMD1 1 0 :1:1 
 `uc 1 ADMD2 1 0 :1:2 
 `uc 1 ADACLR 1 0 :1:3 
@@ -554,11 +556,11 @@ CMODE_WHITE 3
 `uc 1 ADCRS2 1 0 :1:6 
 `uc 1 ADPSIS 1 0 :1:7 
 ]
-[s S1661 . 1 `uc 1 ADMD 1 0 :3:0 
+[s S1660 . 1 `uc 1 ADMD 1 0 :3:0 
 `uc 1 . 1 0 :1:3 
 `uc 1 ADCRS 1 0 :3:4 
 ]
-[s S1665 . 1 `uc 1 MODE0 1 0 :1:0 
+[s S1664 . 1 `uc 1 MODE0 1 0 :1:0 
 `uc 1 MODE1 1 0 :1:1 
 `uc 1 MODE2 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -566,24 +568,24 @@ CMODE_WHITE 3
 `uc 1 CRS1 1 0 :1:5 
 `uc 1 CRS2 1 0 :1:6 
 ]
-[s S1673 . 1 `uc 1 MD 1 0 :3:0 
+[s S1672 . 1 `uc 1 MD 1 0 :3:0 
 ]
-[s S1675 . 1 `uc 1 MD0 1 0 :1:0 
+[s S1674 . 1 `uc 1 MD0 1 0 :1:0 
 `uc 1 MD1 1 0 :1:1 
 `uc 1 MD2 1 0 :1:2 
 ]
-[s S1679 . 1 `uc 1 ADMODE 1 0 :3:0 
+[s S1678 . 1 `uc 1 ADMODE 1 0 :3:0 
 ]
-[u S1681 . 1 `S1647 1 . 1 0 `S1652 1 . 1 0 `S1661 1 . 1 0 `S1665 1 . 1 0 `S1673 1 . 1 0 `S1675 1 . 1 0 `S1679 1 . 1 0 ]
-[v _ADCON2bits ADCON2bits `VES1681  1 e 1 @275 ]
+[u S1680 . 1 `S1646 1 . 1 0 `S1651 1 . 1 0 `S1660 1 . 1 0 `S1664 1 . 1 0 `S1672 1 . 1 0 `S1674 1 . 1 0 `S1678 1 . 1 0 ]
+[v _ADCON2bits ADCON2bits `VES1680  1 e 1 @275 ]
 "4365
 [v _ADCON3 ADCON3 `VEuc  1 e 1 @276 ]
-[s S1592 . 1 `uc 1 TMD 1 0 :3:0 
+[s S1591 . 1 `uc 1 TMD 1 0 :3:0 
 `uc 1 SOI 1 0 :1:3 
 `uc 1 CALC 1 0 :3:4 
 ]
 "4400
-[s S1596 . 1 `uc 1 ADTMD0 1 0 :1:0 
+[s S1595 . 1 `uc 1 ADTMD0 1 0 :1:0 
 `uc 1 ADTMD1 1 0 :1:1 
 `uc 1 ADTMD2 1 0 :1:2 
 `uc 1 ADSOI 1 0 :1:3 
@@ -591,11 +593,11 @@ CMODE_WHITE 3
 `uc 1 ADCALC1 1 0 :1:5 
 `uc 1 ADCALC2 1 0 :1:6 
 ]
-[s S1604 . 1 `uc 1 ADTMD 1 0 :3:0 
+[s S1603 . 1 `uc 1 ADTMD 1 0 :3:0 
 `uc 1 . 1 0 :1:3 
 `uc 1 ADCALC 1 0 :3:4 
 ]
-[s S1608 . 1 `uc 1 TMD0 1 0 :1:0 
+[s S1607 . 1 `uc 1 TMD0 1 0 :1:0 
 `uc 1 TMD1 1 0 :1:1 
 `uc 1 TMD2 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -603,11 +605,11 @@ CMODE_WHITE 3
 `uc 1 CALC1 1 0 :1:5 
 `uc 1 CALC2 1 0 :1:6 
 ]
-[u S1616 . 1 `S1592 1 . 1 0 `S1596 1 . 1 0 `S1604 1 . 1 0 `S1608 1 . 1 0 ]
-[v _ADCON3bits ADCON3bits `VES1616  1 e 1 @276 ]
+[u S1615 . 1 `S1591 1 . 1 0 `S1595 1 . 1 0 `S1603 1 . 1 0 `S1607 1 . 1 0 ]
+[v _ADCON3bits ADCON3bits `VES1615  1 e 1 @276 ]
 "4495
 [v _ADSTAT ADSTAT `VEuc  1 e 1 @277 ]
-[s S1726 . 1 `uc 1 STAT 1 0 :3:0 
+[s S1725 . 1 `uc 1 STAT 1 0 :3:0 
 `uc 1 . 1 0 :1:3 
 `uc 1 MATH 1 0 :1:4 
 `uc 1 LTHR 1 0 :1:5 
@@ -615,7 +617,7 @@ CMODE_WHITE 3
 `uc 1 OV 1 0 :1:7 
 ]
 "4530
-[s S1733 . 1 `uc 1 ADSTAT0 1 0 :1:0 
+[s S1732 . 1 `uc 1 ADSTAT0 1 0 :1:0 
 `uc 1 ADSTAT1 1 0 :1:1 
 `uc 1 ADSTAT2 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -624,16 +626,16 @@ CMODE_WHITE 3
 `uc 1 ADUTHR 1 0 :1:6 
 `uc 1 ADAOV 1 0 :1:7 
 ]
-[s S1742 . 1 `uc 1 ADSTAT 1 0 :3:0 
+[s S1741 . 1 `uc 1 ADSTAT 1 0 :3:0 
 `uc 1 . 1 0 :4:3 
 `uc 1 ADOV 1 0 :1:7 
 ]
-[s S1746 . 1 `uc 1 STAT0 1 0 :1:0 
+[s S1745 . 1 `uc 1 STAT0 1 0 :1:0 
 `uc 1 STAT1 1 0 :1:1 
 `uc 1 STAT2 1 0 :1:2 
 ]
-[u S1750 . 1 `S1726 1 . 1 0 `S1733 1 . 1 0 `S1742 1 . 1 0 `S1746 1 . 1 0 ]
-[v _ADSTATbits ADSTATbits `VES1750  1 e 1 @277 ]
+[u S1749 . 1 `S1725 1 . 1 0 `S1732 1 . 1 0 `S1741 1 . 1 0 `S1745 1 . 1 0 ]
+[v _ADSTATbits ADSTATbits `VES1749  1 e 1 @277 ]
 "4620
 [v _ADREF ADREF `VEuc  1 e 1 @278 ]
 "4760
@@ -650,7 +652,7 @@ CMODE_WHITE 3
 [v _SP1BRGH SP1BRGH `VEuc  1 e 1 @284 ]
 "5195
 [v _RC1STA RC1STA `VEuc  1 e 1 @285 ]
-[s S798 . 1 `uc 1 RX9D 1 0 :1:0 
+[s S797 . 1 `uc 1 RX9D 1 0 :1:0 
 `uc 1 OERR 1 0 :1:1 
 `uc 1 FERR 1 0 :1:2 
 `uc 1 ADDEN 1 0 :1:3 
@@ -660,11 +662,11 @@ CMODE_WHITE 3
 `uc 1 SPEN 1 0 :1:7 
 ]
 "5221
-[u S807 . 1 `S798 1 . 1 0 ]
-[v _RC1STAbits RC1STAbits `VES807  1 e 1 @285 ]
+[u S806 . 1 `S797 1 . 1 0 ]
+[v _RC1STAbits RC1STAbits `VES806  1 e 1 @285 ]
 "5375
 [v _TX1STA TX1STA `VEuc  1 e 1 @286 ]
-[s S776 . 1 `uc 1 TX9D 1 0 :1:0 
+[s S775 . 1 `uc 1 TX9D 1 0 :1:0 
 `uc 1 TRMT 1 0 :1:1 
 `uc 1 BRGH 1 0 :1:2 
 `uc 1 SENDB 1 0 :1:3 
@@ -674,8 +676,8 @@ CMODE_WHITE 3
 `uc 1 CSRC 1 0 :1:7 
 ]
 "5401
-[u S785 . 1 `S776 1 . 1 0 ]
-[v _TX1STAbits TX1STAbits `VES785  1 e 1 @286 ]
+[u S784 . 1 `S775 1 . 1 0 ]
+[v _TX1STAbits TX1STAbits `VES784  1 e 1 @286 ]
 "5555
 [v _BAUD1CON BAUD1CON `VEuc  1 e 1 @287 ]
 "5801
@@ -686,19 +688,19 @@ CMODE_WHITE 3
 [v _SSP1STAT SSP1STAT `VEuc  1 e 1 @399 ]
 "6375
 [v _SSP1CON1 SSP1CON1 `VEuc  1 e 1 @400 ]
-[s S1206 . 1 `uc 1 SSPM 1 0 :4:0 
+[s S1205 . 1 `uc 1 SSPM 1 0 :4:0 
 `uc 1 CKP 1 0 :1:4 
 `uc 1 SSPEN 1 0 :1:5 
 `uc 1 SSPOV 1 0 :1:6 
 `uc 1 WCOL 1 0 :1:7 
 ]
 "6405
-[s S1212 . 1 `uc 1 SSPM0 1 0 :1:0 
+[s S1211 . 1 `uc 1 SSPM0 1 0 :1:0 
 `uc 1 SSPM1 1 0 :1:1 
 `uc 1 SSPM2 1 0 :1:2 
 `uc 1 SSPM3 1 0 :1:3 
 ]
-[s S1217 . 1 `uc 1 SSPM01 1 0 :1:0 
+[s S1216 . 1 `uc 1 SSPM01 1 0 :1:0 
 `uc 1 SSPM11 1 0 :1:1 
 `uc 1 SSPM21 1 0 :1:2 
 `uc 1 SSPM31 1 0 :1:3 
@@ -707,9 +709,9 @@ CMODE_WHITE 3
 `uc 1 SSPOV1 1 0 :1:6 
 `uc 1 WCOL1 1 0 :1:7 
 ]
-[u S1226 . 1 `S1206 1 . 1 0 `S1212 1 . 1 0 `S1217 1 . 1 0 ]
-[v _SSP1CON1bits SSP1CON1bits `VES1226  1 e 1 @400 ]
-[s S1251 . 1 `uc 1 SEN 1 0 :1:0 
+[u S1225 . 1 `S1205 1 . 1 0 `S1211 1 . 1 0 `S1216 1 . 1 0 ]
+[v _SSP1CON1bits SSP1CON1bits `VES1225  1 e 1 @400 ]
+[s S1250 . 1 `uc 1 SEN 1 0 :1:0 
 `uc 1 RSEN 1 0 :1:1 
 `uc 1 PEN 1 0 :1:2 
 `uc 1 RCEN 1 0 :1:3 
@@ -719,17 +721,17 @@ CMODE_WHITE 3
 `uc 1 GCEN 1 0 :1:7 
 ]
 "6542
-[s S1260 . 1 `uc 1 . 1 0 :1:0 
+[s S1259 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 ADMSK 1 0 :5:1 
 ]
-[s S1263 . 1 `uc 1 . 1 0 :1:0 
+[s S1262 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 ADMSK1 1 0 :1:1 
 `uc 1 ADMSK2 1 0 :1:2 
 `uc 1 ADMSK3 1 0 :1:3 
 `uc 1 ADMSK4 1 0 :1:4 
 `uc 1 ADMSK5 1 0 :1:5 
 ]
-[s S1270 . 1 `uc 1 SEN1 1 0 :1:0 
+[s S1269 . 1 `uc 1 SEN1 1 0 :1:0 
 `uc 1 ADMSK11 1 0 :1:1 
 `uc 1 ADMSK21 1 0 :1:2 
 `uc 1 ADMSK31 1 0 :1:3 
@@ -738,25 +740,25 @@ CMODE_WHITE 3
 `uc 1 ACKSTAT1 1 0 :1:6 
 `uc 1 GCEN1 1 0 :1:7 
 ]
-[s S1279 . 1 `uc 1 . 1 0 :1:0 
+[s S1278 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 RSEN1 1 0 :1:1 
 `uc 1 PEN1 1 0 :1:2 
 `uc 1 RCEN1 1 0 :1:3 
 `uc 1 ADMSK41 1 0 :1:4 
 `uc 1 ADMSK51 1 0 :1:5 
 ]
-[u S1286 . 1 `S1251 1 . 1 0 `S1260 1 . 1 0 `S1263 1 . 1 0 `S1270 1 . 1 0 `S1279 1 . 1 0 ]
-[v _SSP1CON2bits SSP1CON2bits `VES1286  1 e 1 @401 ]
+[u S1285 . 1 `S1250 1 . 1 0 `S1259 1 . 1 0 `S1262 1 . 1 0 `S1269 1 . 1 0 `S1278 1 . 1 0 ]
+[v _SSP1CON2bits SSP1CON2bits `VES1285  1 e 1 @401 ]
 "6682
 [v _SSP1CON3 SSP1CON3 `VEuc  1 e 1 @402 ]
-[s S371 . 1 `uc 1 C1TSEL 1 0 :2:0 
+[s S370 . 1 `uc 1 C1TSEL 1 0 :2:0 
 `uc 1 C2TSEL 1 0 :2:2 
 `uc 1 C3TSEL 1 0 :2:4 
 `uc 1 C4TSEL 1 0 :2:6 
 ]
 "10328
-[u S376 . 1 `S371 1 . 1 0 ]
-[v _CCPTMRS0bits CCPTMRS0bits `VES376  1 e 1 @542 ]
+[u S375 . 1 `S370 1 . 1 0 ]
+[v _CCPTMRS0bits CCPTMRS0bits `VES375  1 e 1 @542 ]
 "10385
 [v _T2TMR T2TMR `VEuc  1 e 1 @652 ]
 "10390
@@ -767,12 +769,12 @@ CMODE_WHITE 3
 [v _PR2 PR2 `VEuc  1 e 1 @653 ]
 "10493
 [v _T2CON T2CON `VEuc  1 e 1 @654 ]
-[s S264 . 1 `uc 1 OUTPS 1 0 :4:0 
+[s S263 . 1 `uc 1 OUTPS 1 0 :4:0 
 `uc 1 CKPS 1 0 :3:4 
 `uc 1 ON 1 0 :1:7 
 ]
 "10529
-[s S268 . 1 `uc 1 OUTPS0 1 0 :1:0 
+[s S267 . 1 `uc 1 OUTPS0 1 0 :1:0 
 `uc 1 OUTPS1 1 0 :1:1 
 `uc 1 OUTPS2 1 0 :1:2 
 `uc 1 OUTPS3 1 0 :1:3 
@@ -780,11 +782,11 @@ CMODE_WHITE 3
 `uc 1 CKPS1 1 0 :1:5 
 `uc 1 CKPS2 1 0 :1:6 
 ]
-[s S276 . 1 `uc 1 T2OUTPS 1 0 :4:0 
+[s S275 . 1 `uc 1 T2OUTPS 1 0 :4:0 
 `uc 1 T2CKPS 1 0 :3:4 
 `uc 1 T2ON 1 0 :1:7 
 ]
-[s S280 . 1 `uc 1 T2OUTPS0 1 0 :1:0 
+[s S279 . 1 `uc 1 T2OUTPS0 1 0 :1:0 
 `uc 1 T2OUTPS1 1 0 :1:1 
 `uc 1 T2OUTPS2 1 0 :1:2 
 `uc 1 T2OUTPS3 1 0 :1:3 
@@ -793,92 +795,92 @@ CMODE_WHITE 3
 `uc 1 T2CKPS2 1 0 :1:6 
 `uc 1 TMR2ON 1 0 :1:7 
 ]
-[u S289 . 1 `S264 1 . 1 0 `S268 1 . 1 0 `S276 1 . 1 0 `S280 1 . 1 0 ]
-[v _T2CONbits T2CONbits `VES289  1 e 1 @654 ]
+[u S288 . 1 `S263 1 . 1 0 `S267 1 . 1 0 `S275 1 . 1 0 `S279 1 . 1 0 ]
+[v _T2CONbits T2CONbits `VES288  1 e 1 @654 ]
 "10639
 [v _T2HLT T2HLT `VEuc  1 e 1 @655 ]
-[s S157 . 1 `uc 1 MODE 1 0 :5:0 
+[s S156 . 1 `uc 1 MODE 1 0 :5:0 
 `uc 1 CKSYNC 1 0 :1:5 
 `uc 1 CKPOL 1 0 :1:6 
 `uc 1 PSYNC 1 0 :1:7 
 ]
 "10672
-[s S162 . 1 `uc 1 MODE0 1 0 :1:0 
+[s S161 . 1 `uc 1 MODE0 1 0 :1:0 
 `uc 1 MODE1 1 0 :1:1 
 `uc 1 MODE2 1 0 :1:2 
 `uc 1 MODE3 1 0 :1:3 
 `uc 1 MODE4 1 0 :1:4 
 ]
-[s S168 . 1 `uc 1 T2MODE 1 0 :5:0 
+[s S167 . 1 `uc 1 T2MODE 1 0 :5:0 
 `uc 1 T2CKSYNC 1 0 :1:5 
 `uc 1 T2CKPOL 1 0 :1:6 
 `uc 1 T2PSYNC 1 0 :1:7 
 ]
-[s S173 . 1 `uc 1 T2MODE0 1 0 :1:0 
+[s S172 . 1 `uc 1 T2MODE0 1 0 :1:0 
 `uc 1 T2MODE1 1 0 :1:1 
 `uc 1 T2MODE2 1 0 :1:2 
 `uc 1 T2MODE3 1 0 :1:3 
 `uc 1 T2MODE4 1 0 :1:4 
 ]
-[u S179 . 1 `S157 1 . 1 0 `S162 1 . 1 0 `S168 1 . 1 0 `S173 1 . 1 0 ]
-[v _T2HLTbits T2HLTbits `VES179  1 e 1 @655 ]
+[u S178 . 1 `S156 1 . 1 0 `S161 1 . 1 0 `S167 1 . 1 0 `S172 1 . 1 0 ]
+[v _T2HLTbits T2HLTbits `VES178  1 e 1 @655 ]
 "10767
 [v _T2CLKCON T2CLKCON `VEuc  1 e 1 @656 ]
 "10847
 [v _T2RST T2RST `VEuc  1 e 1 @657 ]
-[s S226 . 1 `uc 1 RSEL 1 0 :5:0 
+[s S225 . 1 `uc 1 RSEL 1 0 :5:0 
 ]
 "10874
-[s S228 . 1 `uc 1 RSEL0 1 0 :1:0 
+[s S227 . 1 `uc 1 RSEL0 1 0 :1:0 
 `uc 1 RSEL1 1 0 :1:1 
 `uc 1 RSEL2 1 0 :1:2 
 `uc 1 RSEL3 1 0 :1:3 
 `uc 1 RSEL4 1 0 :1:4 
 ]
-[s S234 . 1 `uc 1 T2RSEL 1 0 :5:0 
+[s S233 . 1 `uc 1 T2RSEL 1 0 :5:0 
 ]
-[s S236 . 1 `uc 1 T2RSEL0 1 0 :1:0 
+[s S235 . 1 `uc 1 T2RSEL0 1 0 :1:0 
 `uc 1 T2RSEL1 1 0 :1:1 
 `uc 1 T2RSEL2 1 0 :1:2 
 `uc 1 T2RSEL3 1 0 :1:3 
 `uc 1 T2RSEL4 1 0 :1:4 
 ]
-[u S242 . 1 `S226 1 . 1 0 `S228 1 . 1 0 `S234 1 . 1 0 `S236 1 . 1 0 ]
-[v _T2RSTbits T2RSTbits `VES242  1 e 1 @657 ]
+[u S241 . 1 `S225 1 . 1 0 `S227 1 . 1 0 `S233 1 . 1 0 `S235 1 . 1 0 ]
+[v _T2RSTbits T2RSTbits `VES241  1 e 1 @657 ]
 "12081
 [v _CCPR1L CCPR1L `VEuc  1 e 1 @780 ]
 "12101
 [v _CCPR1H CCPR1H `VEuc  1 e 1 @781 ]
 "12121
 [v _CCP1CON CCP1CON `VEuc  1 e 1 @782 ]
-[s S384 . 1 `uc 1 MODE 1 0 :4:0 
+[s S383 . 1 `uc 1 MODE 1 0 :4:0 
 `uc 1 FMT 1 0 :1:4 
 `uc 1 OUT 1 0 :1:5 
 `uc 1 . 1 0 :1:6 
 `uc 1 EN 1 0 :1:7 
 ]
 "12158
-[s S390 . 1 `uc 1 MODE0 1 0 :1:0 
+[s S389 . 1 `uc 1 MODE0 1 0 :1:0 
 `uc 1 MODE1 1 0 :1:1 
 `uc 1 MODE2 1 0 :1:2 
 `uc 1 MODE3 1 0 :1:3 
 ]
-[s S553 . 1 `uc 1 CCP1MODE 1 0 :4:0 
+[s S552 . 1 `uc 1 CCP1MODE 1 0 :4:0 
 `uc 1 CCP1FMT 1 0 :1:4 
 `uc 1 CCP1OUT 1 0 :1:5 
 `uc 1 . 1 0 :1:6 
 `uc 1 CCP1EN 1 0 :1:7 
 ]
-[s S559 . 1 `uc 1 CCP1MODE0 1 0 :1:0 
+[s S558 . 1 `uc 1 CCP1MODE0 1 0 :1:0 
 `uc 1 CCP1MODE1 1 0 :1:1 
 `uc 1 CCP1MODE2 1 0 :1:2 
 `uc 1 CCP1MODE3 1 0 :1:3 
 ]
-[s S564 . 1 `uc 1 . 1 0 :7:0 
+[s S563 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 P1M1 1 0 :1:7 
 ]
-[u S567 . 1 `S384 1 . 1 0 `S390 1 . 1 0 `S553 1 . 1 0 `S559 1 . 1 0 `S564 1 . 1 0 ]
-[v _CCP1CONbits CCP1CONbits `VES567  1 e 1 @782 ]
+[u S566 . 1 `S383 1 . 1 0 `S389 1 . 1 0 `S552 1 . 1 0 `S558 1 . 1 0 `S563 1 . 1 0 ]
+[v _CCP1CONbits CCP1CONbits `VES566  1 e 1 @782 ]
 "12323
 [v _CCPR2L CCPR2L `VEuc  1 e 1 @784 ]
 "12343
@@ -886,22 +888,22 @@ CMODE_WHITE 3
 "12363
 [v _CCP2CON CCP2CON `VEuc  1 e 1 @786 ]
 "12400
-[s S630 . 1 `uc 1 CCP2MODE 1 0 :4:0 
+[s S629 . 1 `uc 1 CCP2MODE 1 0 :4:0 
 `uc 1 CCP2FMT 1 0 :1:4 
 `uc 1 CCP2OUT 1 0 :1:5 
 `uc 1 . 1 0 :1:6 
 `uc 1 CCP2EN 1 0 :1:7 
 ]
-[s S636 . 1 `uc 1 CCP2MODE0 1 0 :1:0 
+[s S635 . 1 `uc 1 CCP2MODE0 1 0 :1:0 
 `uc 1 CCP2MODE1 1 0 :1:1 
 `uc 1 CCP2MODE2 1 0 :1:2 
 `uc 1 CCP2MODE3 1 0 :1:3 
 ]
-[s S641 . 1 `uc 1 . 1 0 :7:0 
+[s S640 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 P2M1 1 0 :1:7 
 ]
-[u S644 . 1 `S384 1 . 1 0 `S390 1 . 1 0 `S630 1 . 1 0 `S636 1 . 1 0 `S641 1 . 1 0 ]
-[v _CCP2CONbits CCP2CONbits `VES644  1 e 1 @786 ]
+[u S643 . 1 `S383 1 . 1 0 `S389 1 . 1 0 `S629 1 . 1 0 `S635 1 . 1 0 `S640 1 . 1 0 ]
+[v _CCP2CONbits CCP2CONbits `VES643  1 e 1 @786 ]
 "12565
 [v _CCPR3L CCPR3L `VEuc  1 e 1 @788 ]
 "12585
@@ -909,22 +911,22 @@ CMODE_WHITE 3
 "12605
 [v _CCP3CON CCP3CON `VEuc  1 e 1 @790 ]
 "12642
-[s S395 . 1 `uc 1 CCP3MODE 1 0 :4:0 
+[s S394 . 1 `uc 1 CCP3MODE 1 0 :4:0 
 `uc 1 CCP3FMT 1 0 :1:4 
 `uc 1 CCP3OUT 1 0 :1:5 
 `uc 1 . 1 0 :1:6 
 `uc 1 CCP3EN 1 0 :1:7 
 ]
-[s S401 . 1 `uc 1 CCP3MODE0 1 0 :1:0 
+[s S400 . 1 `uc 1 CCP3MODE0 1 0 :1:0 
 `uc 1 CCP3MODE1 1 0 :1:1 
 `uc 1 CCP3MODE2 1 0 :1:2 
 `uc 1 CCP3MODE3 1 0 :1:3 
 ]
-[s S406 . 1 `uc 1 . 1 0 :7:0 
+[s S405 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 P3M1 1 0 :1:7 
 ]
-[u S409 . 1 `S384 1 . 1 0 `S390 1 . 1 0 `S395 1 . 1 0 `S401 1 . 1 0 `S406 1 . 1 0 ]
-[v _CCP3CONbits CCP3CONbits `VES409  1 e 1 @790 ]
+[u S408 . 1 `S383 1 . 1 0 `S389 1 . 1 0 `S394 1 . 1 0 `S400 1 . 1 0 `S405 1 . 1 0 ]
+[v _CCP3CONbits CCP3CONbits `VES408  1 e 1 @790 ]
 "12807
 [v _CCPR4L CCPR4L `VEuc  1 e 1 @792 ]
 "12827
@@ -932,69 +934,69 @@ CMODE_WHITE 3
 "12847
 [v _CCP4CON CCP4CON `VEuc  1 e 1 @794 ]
 "12884
-[s S476 . 1 `uc 1 CCP4MODE 1 0 :4:0 
+[s S475 . 1 `uc 1 CCP4MODE 1 0 :4:0 
 `uc 1 CCP4FMT 1 0 :1:4 
 `uc 1 CCP4OUT 1 0 :1:5 
 `uc 1 . 1 0 :1:6 
 `uc 1 CCP4EN 1 0 :1:7 
 ]
-[s S482 . 1 `uc 1 CCP4MODE0 1 0 :1:0 
+[s S481 . 1 `uc 1 CCP4MODE0 1 0 :1:0 
 `uc 1 CCP4MODE1 1 0 :1:1 
 `uc 1 CCP4MODE2 1 0 :1:2 
 `uc 1 CCP4MODE3 1 0 :1:3 
 ]
-[s S487 . 1 `uc 1 . 1 0 :7:0 
+[s S486 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 P4M1 1 0 :1:7 
 ]
-[u S490 . 1 `S384 1 . 1 0 `S390 1 . 1 0 `S476 1 . 1 0 `S482 1 . 1 0 `S487 1 . 1 0 ]
-[v _CCP4CONbits CCP4CONbits `VES490  1 e 1 @794 ]
+[u S489 . 1 `S383 1 . 1 0 `S389 1 . 1 0 `S475 1 . 1 0 `S481 1 . 1 0 `S486 1 . 1 0 ]
+[v _CCP4CONbits CCP4CONbits `VES489  1 e 1 @794 ]
 "16651
 [v _TMR0L TMR0L `VEuc  1 e 1 @1436 ]
 "16789
 [v _TMR0H TMR0H `VEuc  1 e 1 @1437 ]
 "17043
 [v _T0CON0 T0CON0 `VEuc  1 e 1 @1438 ]
-[s S1072 . 1 `uc 1 OUTPS 1 0 :4:0 
+[s S1071 . 1 `uc 1 OUTPS 1 0 :4:0 
 `uc 1 MD16 1 0 :1:4 
 `uc 1 OUT 1 0 :1:5 
 `uc 1 . 1 0 :1:6 
 `uc 1 EN 1 0 :1:7 
 ]
 "17071
-[s S1078 . 1 `uc 1 T0OUTPS 1 0 :4:0 
+[s S1077 . 1 `uc 1 T0OUTPS 1 0 :4:0 
 `uc 1 T0MD16 1 0 :1:4 
 `uc 1 T0OUT 1 0 :1:5 
 `uc 1 . 1 0 :1:6 
 `uc 1 T0EN 1 0 :1:7 
 ]
-[s S1084 . 1 `uc 1 OUTPS0 1 0 :1:0 
+[s S1083 . 1 `uc 1 OUTPS0 1 0 :1:0 
 `uc 1 OUTPS1 1 0 :1:1 
 `uc 1 OUTPS2 1 0 :1:2 
 `uc 1 OUTPS3 1 0 :1:3 
 `uc 1 T016BIT 1 0 :1:4 
 ]
-[u S1090 . 1 `S1072 1 . 1 0 `S1078 1 . 1 0 `S1084 1 . 1 0 ]
-[v _T0CON0bits T0CON0bits `VES1090  1 e 1 @1438 ]
+[u S1089 . 1 `S1071 1 . 1 0 `S1077 1 . 1 0 `S1083 1 . 1 0 ]
+[v _T0CON0bits T0CON0bits `VES1089  1 e 1 @1438 ]
 "17141
 [v _T0CON1 T0CON1 `VEuc  1 e 1 @1439 ]
-[s S920 . 1 `uc 1 INTF 1 0 :1:0 
+[s S919 . 1 `uc 1 INTF 1 0 :1:0 
 `uc 1 . 1 0 :3:1 
 `uc 1 IOCIF 1 0 :1:4 
 `uc 1 TMR0IF 1 0 :1:5 
 ]
 "18934
-[u S925 . 1 `S920 1 . 1 0 ]
-[v _PIR0bits PIR0bits `VES925  1 e 1 @1804 ]
-[s S993 . 1 `uc 1 ADIF 1 0 :1:0 
+[u S924 . 1 `S919 1 . 1 0 ]
+[v _PIR0bits PIR0bits `VES924  1 e 1 @1804 ]
+[s S992 . 1 `uc 1 ADIF 1 0 :1:0 
 `uc 1 ADTIF 1 0 :1:1 
 `uc 1 . 1 0 :4:2 
 `uc 1 CSWIF 1 0 :1:6 
 `uc 1 OSFIF 1 0 :1:7 
 ]
 "18968
-[u S999 . 1 `S993 1 . 1 0 ]
-[v _PIR1bits PIR1bits `VES999  1 e 1 @1805 ]
-[s S759 . 1 `uc 1 SSP1IF 1 0 :1:0 
+[u S998 . 1 `S992 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES998  1 e 1 @1805 ]
+[s S758 . 1 `uc 1 SSP1IF 1 0 :1:0 
 `uc 1 BCL1IF 1 0 :1:1 
 `uc 1 SSP2IF 1 0 :1:2 
 `uc 1 BCL2IF 1 0 :1:3 
@@ -1002,9 +1004,9 @@ CMODE_WHITE 3
 `uc 1 RC1IF 1 0 :1:5 
 ]
 "19041
-[u S766 . 1 `S759 1 . 1 0 ]
-[v _PIR3bits PIR3bits `VES766  1 e 1 @1807 ]
-[s S123 . 1 `uc 1 TMR1IF 1 0 :1:0 
+[u S765 . 1 `S758 1 . 1 0 ]
+[v _PIR3bits PIR3bits `VES765  1 e 1 @1807 ]
+[s S122 . 1 `uc 1 TMR1IF 1 0 :1:0 
 `uc 1 TMR2IF 1 0 :1:1 
 `uc 1 TMR3IF 1 0 :1:2 
 `uc 1 TMR4IF 1 0 :1:3 
@@ -1012,26 +1014,26 @@ CMODE_WHITE 3
 `uc 1 TMR6IF 1 0 :1:5 
 ]
 "19091
-[u S130 . 1 `S123 1 . 1 0 ]
-[v _PIR4bits PIR4bits `VES130  1 e 1 @1808 ]
-[s S907 . 1 `uc 1 INTE 1 0 :1:0 
+[u S129 . 1 `S122 1 . 1 0 ]
+[v _PIR4bits PIR4bits `VES129  1 e 1 @1808 ]
+[s S906 . 1 `uc 1 INTE 1 0 :1:0 
 `uc 1 . 1 0 :3:1 
 `uc 1 IOCIE 1 0 :1:4 
 `uc 1 TMR0IE 1 0 :1:5 
 ]
 "19305
-[u S912 . 1 `S907 1 . 1 0 ]
-[v _PIE0bits PIE0bits `VES912  1 e 1 @1814 ]
-[s S978 . 1 `uc 1 ADIE 1 0 :1:0 
+[u S911 . 1 `S906 1 . 1 0 ]
+[v _PIE0bits PIE0bits `VES911  1 e 1 @1814 ]
+[s S977 . 1 `uc 1 ADIE 1 0 :1:0 
 `uc 1 ADTIE 1 0 :1:1 
 `uc 1 . 1 0 :4:2 
 `uc 1 CSWIE 1 0 :1:6 
 `uc 1 OSFIE 1 0 :1:7 
 ]
 "19339
-[u S984 . 1 `S978 1 . 1 0 ]
-[v _PIE1bits PIE1bits `VES984  1 e 1 @1815 ]
-[s S697 . 1 `uc 1 SSP1IE 1 0 :1:0 
+[u S983 . 1 `S977 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES983  1 e 1 @1815 ]
+[s S696 . 1 `uc 1 SSP1IE 1 0 :1:0 
 `uc 1 BCL1IE 1 0 :1:1 
 `uc 1 SSP2IE 1 0 :1:2 
 `uc 1 BCL2IE 1 0 :1:3 
@@ -1039,8 +1041,8 @@ CMODE_WHITE 3
 `uc 1 RC1IE 1 0 :1:5 
 ]
 "19412
-[u S704 . 1 `S697 1 . 1 0 ]
-[v _PIE3bits PIE3bits `VES704  1 e 1 @1817 ]
+[u S703 . 1 `S696 1 . 1 0 ]
+[v _PIE3bits PIE3bits `VES703  1 e 1 @1817 ]
 "19672
 [v _PMD0 PMD0 `VEuc  1 e 1 @1942 ]
 "19717
@@ -1081,15 +1083,13 @@ CMODE_WHITE 3
 [v _RC3PPS RC3PPS `VEuc  1 e 1 @7971 ]
 "30331
 [v _RC4PPS RC4PPS `VEuc  1 e 1 @7972 ]
-"30389
-[v _RC5PPS RC5PPS `VEuc  1 e 1 @7973 ]
 "30447
 [v _RC6PPS RC6PPS `VEuc  1 e 1 @7974 ]
 "30505
 [v _RC7PPS RC7PPS `VEuc  1 e 1 @7975 ]
 "30563
 [v _ANSELA ANSELA `VEuc  1 e 1 @7992 ]
-[s S2024 . 1 `uc 1 ANSA0 1 0 :1:0 
+[s S2027 . 1 `uc 1 ANSA0 1 0 :1:0 
 `uc 1 ANSA1 1 0 :1:1 
 `uc 1 ANSA2 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -1097,11 +1097,11 @@ CMODE_WHITE 3
 `uc 1 ANSA5 1 0 :1:5 
 ]
 "30578
-[u S2031 . 1 `S2024 1 . 1 0 ]
-[v _ANSELAbits ANSELAbits `VES2031  1 e 1 @7992 ]
+[u S2034 . 1 `S2027 1 . 1 0 ]
+[v _ANSELAbits ANSELAbits `VES2034  1 e 1 @7992 ]
 "30608
 [v _WPUA WPUA `VEuc  1 e 1 @7993 ]
-[s S2041 . 1 `uc 1 WPUA0 1 0 :1:0 
+[s S2044 . 1 `uc 1 WPUA0 1 0 :1:0 
 `uc 1 WPUA1 1 0 :1:1 
 `uc 1 WPUA2 1 0 :1:2 
 `uc 1 WPUA3 1 0 :1:3 
@@ -1109,8 +1109,8 @@ CMODE_WHITE 3
 `uc 1 WPUA5 1 0 :1:5 
 ]
 "30623
-[u S2048 . 1 `S2041 1 . 1 0 ]
-[v _WPUAbits WPUAbits `VES2048  1 e 1 @7993 ]
+[u S2051 . 1 `S2044 1 . 1 0 ]
+[v _WPUAbits WPUAbits `VES2051  1 e 1 @7993 ]
 "30658
 [v _ODCONA ODCONA `VEuc  1 e 1 @7994 ]
 "30703
@@ -1125,7 +1125,7 @@ CMODE_WHITE 3
 [v _SLRCONB SLRCONB `VEuc  1 e 1 @8006 ]
 "31260
 [v _ANSELC ANSELC `VEuc  1 e 1 @8014 ]
-[s S2079 . 1 `uc 1 ANSC0 1 0 :1:0 
+[s S2082 . 1 `uc 1 ANSC0 1 0 :1:0 
 `uc 1 ANSC1 1 0 :1:1 
 `uc 1 ANSC2 1 0 :1:2 
 `uc 1 ANSC3 1 0 :1:3 
@@ -1135,11 +1135,11 @@ CMODE_WHITE 3
 `uc 1 ANSC7 1 0 :1:7 
 ]
 "31277
-[u S2088 . 1 `S2079 1 . 1 0 ]
-[v _ANSELCbits ANSELCbits `VES2088  1 e 1 @8014 ]
+[u S2091 . 1 `S2082 1 . 1 0 ]
+[v _ANSELCbits ANSELCbits `VES2091  1 e 1 @8014 ]
 "31322
 [v _WPUC WPUC `VEuc  1 e 1 @8015 ]
-[s S2100 . 1 `uc 1 WPUC0 1 0 :1:0 
+[s S2103 . 1 `uc 1 WPUC0 1 0 :1:0 
 `uc 1 WPUC1 1 0 :1:1 
 `uc 1 WPUC2 1 0 :1:2 
 `uc 1 WPUC3 1 0 :1:3 
@@ -1149,13 +1149,16 @@ CMODE_WHITE 3
 `uc 1 WPUC7 1 0 :1:7 
 ]
 "31339
-[u S2109 . 1 `S2100 1 . 1 0 ]
-[v _WPUCbits WPUCbits `VES2109  1 e 1 @8015 ]
+[u S2112 . 1 `S2103 1 . 1 0 ]
+[v _WPUCbits WPUCbits `VES2112  1 e 1 @8015 ]
 "31384
 [v _ODCONC ODCONC `VEuc  1 e 1 @8016 ]
 "31446
 [v _SLRCONC SLRCONC `VEuc  1 e 1 @8017 ]
-"55 /opt/microchip/xc8/v2.05/pic/sources/c99/common/doprnt.c
+"34816
+"34816
+[v _LATC5 LATC5 `VEb  1 e 0 @213 ]
+"55 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/doprnt.c
 [v _flags flags `i  1 s 2 flags ]
 [v _prec prec `i  1 s 2 prec ]
 [v _width width `i  1 s 2 width ]
@@ -1163,7 +1166,7 @@ CMODE_WHITE 3
 [v _dbuf dbuf `[32]uc  1 s 32 dbuf ]
 "69
 [v _nout nout `i  1 s 2 nout ]
-"25 /home/bbd/Documents/Github/lab_10/beat.c
+"25 /Users/student/Desktop/lab_10/beat.c
 [v _lastBeat lastBeat `us  1 s 2 lastBeat ]
 "26
 [v _bpm bpm `us  1 s 2 bpm ]
@@ -1181,18 +1184,18 @@ CMODE_WHITE 3
 [v _thresholdCount thresholdCount `i  1 s 2 thresholdCount ]
 "33
 [v _lastDetected lastDetected `a  1 s 1 lastDetected ]
-"12 /home/bbd/Documents/Github/lab_10/buttons.c
+"12 /Users/student/Desktop/lab_10/buttons.c
 [v _lastTime lastTime `i  1 e 2 0 ]
-[s S1990 . 8 `*.39VEuc 1 port 2 0 `uc 1 pin 1 2 `E10875 1 state 1 3 `E10875 1 lastState 1 4 `us 1 lastHoldTime 2 5 `E10869 1 event 1 7 ]
+[s S1993 . 8 `*.39VEuc 1 port 2 0 `uc 1 pin 1 2 `E10875 1 state 1 3 `E10875 1 lastState 1 4 `us 1 lastHoldTime 2 5 `E10869 1 event 1 7 ]
 "13
-[v _buttons buttons `[4]S1990  1 e 32 0 ]
-"4 /home/bbd/Documents/Github/lab_10/clock.c
+[v _buttons buttons `[4]S1993  1 e 32 0 ]
+"4 /Users/student/Desktop/lab_10/clock.c
 [v _currentTime currentTime `us  1 s 2 currentTime ]
-"8 /home/bbd/Documents/Github/lab_10/controller.c
-[v _menu menu `*.5S1990  1 e 1 0 ]
-[v _up up `*.5S1990  1 e 1 0 ]
-[v _down down `*.5S1990  1 e 1 0 ]
-[v _enter enter `*.5S1990  1 e 1 0 ]
+"8 /Users/student/Desktop/lab_10/controller.c
+[v _menu menu `*.5S1993  1 e 1 0 ]
+[v _up up `*.5S1993  1 e 1 0 ]
+[v _down down `*.5S1993  1 e 1 0 ]
+[v _enter enter `*.5S1993  1 e 1 0 ]
 "9
 [v _incInterval incInterval `i  1 e 2 0 ]
 "10
@@ -1216,13 +1219,13 @@ CMODE_WHITE 3
 [v _beatHold beatHold `a  1 e 1 0 ]
 "23
 [v _colorModeSelected colorModeSelected `E10878  1 e 1 0 ]
-"15 /home/bbd/Documents/Github/lab_10/dmx.c
+"15 /Users/student/Desktop/lab_10/dmx.c
 [v _initial initial `i  1 e 2 0 ]
 "16
 [v _arrayIndex arrayIndex `i  1 e 2 0 ]
 "19
 [v _address address `us  1 e 2 0 ]
-"16 /home/bbd/Documents/Github/lab_10/led.c
+"16 /Users/student/Desktop/lab_10/led.c
 [v _lastLedActiveTime lastLedActiveTime `us  1 e 2 0 ]
 "17
 [v _currentState currentState `i  1 e 2 0 ]
@@ -1232,131 +1235,131 @@ CMODE_WHITE 3
 [v _dmxArray dmxArray `[513]i  1 e 1026 @9198 ]
 "20
 [v _startup startup `a  1 e 1 0 ]
-[s S2477 . 4 `uc 1 white 1 0 `uc 1 red 1 1 `uc 1 green 1 2 `uc 1 blue 1 3 ]
+[s S2479 . 4 `uc 1 white 1 0 `uc 1 red 1 1 `uc 1 green 1 2 `uc 1 blue 1 3 ]
 "22
-[v _manual manual `S2477  1 e 4 0 ]
-"56 /home/bbd/Documents/Github/lab_10/main.c
+[v _manual manual `S2479  1 e 4 0 ]
+"56 /Users/student/Desktop/lab_10/main.c
 [v _startTime startTime `us  1 e 2 0 ]
-"58 /home/bbd/Documents/Github/lab_10/mcc_generated_files/adcc.c
+"58 /Users/student/Desktop/lab_10/mcc_generated_files/adcc.c
 [v _ADCC_ADTI_InterruptHandler ADCC_ADTI_InterruptHandler `*.37(v  1 e 2 0 ]
-"63 /home/bbd/Documents/Github/lab_10/mcc_generated_files/eusart1.c
+"63 /Users/student/Desktop/lab_10/mcc_generated_files/eusart1.c
 [v _eusart1RxHead eusart1RxHead `VEuc  1 e 1 0 ]
 "64
 [v _eusart1RxTail eusart1RxTail `VEuc  1 e 1 0 ]
 "65
 [v _eusart1RxBuffer eusart1RxBuffer `VE[8]uc  1 e 8 0 ]
-[s S686 . 1 `uc 1 perr 1 0 :1:0 
+[s S685 . 1 `uc 1 perr 1 0 :1:0 
 `uc 1 ferr 1 0 :1:1 
 `uc 1 oerr 1 0 :1:2 
 `uc 1 reserved 1 0 :5:3 
 ]
 "66
-[u S691 . 1 `S686 1 . 1 0 `uc 1 status 1 0 ]
-[v _eusart1RxStatusBuffer eusart1RxStatusBuffer `VE[8]S691  1 e 8 0 ]
+[u S690 . 1 `S685 1 . 1 0 `uc 1 status 1 0 ]
+[v _eusart1RxStatusBuffer eusart1RxStatusBuffer `VE[8]S690  1 e 8 0 ]
 "67
 [v _eusart1RxCount eusart1RxCount `VEuc  1 e 1 0 ]
 "68
-[v _eusart1RxLastError eusart1RxLastError `VES691  1 e 1 0 ]
+[v _eusart1RxLastError eusart1RxLastError `VES690  1 e 1 0 ]
 "73
 [v _EUSART1_FramingErrorHandler EUSART1_FramingErrorHandler `*.37(v  1 e 2 0 ]
 "74
 [v _EUSART1_OverrunErrorHandler EUSART1_OverrunErrorHandler `*.37(v  1 e 2 0 ]
 "75
 [v _EUSART1_ErrorHandler EUSART1_ErrorHandler `*.37(v  1 e 2 0 ]
-[s S1140 . 4 `us 1 address 2 0 `uc 1 length 1 2 `*.4uc 1 pbuffer 1 3 ]
-"185 /home/bbd/Documents/Github/lab_10/mcc_generated_files/i2c1.c
-[s S1152 . 3 `uc 1 count 1 0 `*.5S1140 1 ptrb_list 1 1 `*.4E10866 1 pTrFlag 1 2 ]
-[v _i2c1_tr_queue i2c1_tr_queue `[1]S1152  1 s 3 i2c1_tr_queue ]
+[s S1139 . 4 `us 1 address 2 0 `uc 1 length 1 2 `*.4uc 1 pbuffer 1 3 ]
+"185 /Users/student/Desktop/lab_10/mcc_generated_files/i2c1.c
+[s S1151 . 3 `uc 1 count 1 0 `*.5S1139 1 ptrb_list 1 1 `*.4E10866 1 pTrFlag 1 2 ]
+[v _i2c1_tr_queue i2c1_tr_queue `[1]S1151  1 s 3 i2c1_tr_queue ]
 "186
-[s S1156 . 1 `uc 1 full 1 0 :1:0 
+[s S1155 . 1 `uc 1 full 1 0 :1:0 
 `uc 1 empty 1 0 :1:1 
 `uc 1 reserved 1 0 :6:2 
 ]
-[u S1160 . 1 `S1156 1 s 1 0 `uc 1 status 1 0 ]
-[s S1163 . 5 `*.5S1152 1 pTrTail 1 0 `*.5S1152 1 pTrHead 1 1 `S1160 1 trStatus 1 2 `uc 1 i2cDoneFlag 1 3 `uc 1 i2cErrors 1 4 ]
-[v _i2c1_object i2c1_object `S1163  1 s 5 i2c1_object ]
+[u S1159 . 1 `S1155 1 s 1 0 `uc 1 status 1 0 ]
+[s S1162 . 5 `*.5S1151 1 pTrTail 1 0 `*.5S1151 1 pTrHead 1 1 `S1159 1 trStatus 1 2 `uc 1 i2cDoneFlag 1 3 `uc 1 i2cErrors 1 4 ]
+[v _i2c1_object i2c1_object `S1162  1 s 5 i2c1_object ]
 "187
 [v _i2c1_state i2c1_state `E10929  1 s 1 i2c1_state ]
 "188
 [v _i2c1_trb_count i2c1_trb_count `uc  1 s 1 i2c1_trb_count ]
 "190
-[v _p_i2c1_trb_current p_i2c1_trb_current `*.5S1140  1 s 1 p_i2c1_trb_current ]
+[v _p_i2c1_trb_current p_i2c1_trb_current `*.5S1139  1 s 1 p_i2c1_trb_current ]
 "191
-[v _p_i2c1_current p_i2c1_current `*.5VES1152  1 s 1 p_i2c1_current ]
-"59 /home/bbd/Documents/Github/lab_10/mcc_generated_files/tmr0.c
+[v _p_i2c1_current p_i2c1_current `*.5VES1151  1 s 1 p_i2c1_current ]
+"59 /Users/student/Desktop/lab_10/mcc_generated_files/tmr0.c
 [v _TMR0_InterruptHandler TMR0_InterruptHandler `*.37(v  1 e 2 0 ]
-"14 /home/bbd/Documents/Github/lab_10/tm1650.c
+"14 /Users/student/Desktop/lab_10/tm1650.c
 [v _tm1650_status tm1650_status `a  1 e 1 0 ]
 "19
 [v _charTable charTable `DC[96]uc  1 e 96 0 ]
 "29
 [v _position position `uc  1 e 1 0 ]
-"58 /home/bbd/Documents/Github/lab_10/main.c
+"58 /Users/student/Desktop/lab_10/main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"83
+"84
 } 0
-"51 /home/bbd/Documents/Github/lab_10/tm1650.c
+"51 /Users/student/Desktop/lab_10/tm1650.c
 [v _TM1650_init TM1650_init `(v  1 e 1 0 ]
 {
 "57
 } 0
-"50 /home/bbd/Documents/Github/lab_10/mcc_generated_files/mcc.c
+"50 /Users/student/Desktop/lab_10/mcc_generated_files/mcc.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
 {
 "64
 } 0
-"62 /home/bbd/Documents/Github/lab_10/mcc_generated_files/tmr2.c
+"62 /Users/student/Desktop/lab_10/mcc_generated_files/tmr2.c
 [v _TMR2_Initialize TMR2_Initialize `(v  1 e 1 0 ]
 {
 "86
 } 0
-"61 /home/bbd/Documents/Github/lab_10/mcc_generated_files/tmr0.c
+"61 /Users/student/Desktop/lab_10/mcc_generated_files/tmr0.c
 [v _TMR0_Initialize TMR0_Initialize `(v  1 e 1 0 ]
 {
 "85
 } 0
-"64 /home/bbd/Documents/Github/lab_10/mcc_generated_files/pwm4.c
+"64 /Users/student/Desktop/lab_10/mcc_generated_files/pwm4.c
 [v _PWM4_Initialize PWM4_Initialize `(v  1 e 1 0 ]
 {
 "80
 } 0
-"64 /home/bbd/Documents/Github/lab_10/mcc_generated_files/pwm3.c
+"64 /Users/student/Desktop/lab_10/mcc_generated_files/pwm3.c
 [v _PWM3_Initialize PWM3_Initialize `(v  1 e 1 0 ]
 {
 "80
 } 0
-"64 /home/bbd/Documents/Github/lab_10/mcc_generated_files/pwm2.c
+"64 /Users/student/Desktop/lab_10/mcc_generated_files/pwm2.c
 [v _PWM2_Initialize PWM2_Initialize `(v  1 e 1 0 ]
 {
 "80
 } 0
-"64 /home/bbd/Documents/Github/lab_10/mcc_generated_files/pwm1.c
+"64 /Users/student/Desktop/lab_10/mcc_generated_files/pwm1.c
 [v _PWM1_Initialize PWM1_Initialize `(v  1 e 1 0 ]
 {
 "80
 } 0
-"80 /home/bbd/Documents/Github/lab_10/mcc_generated_files/mcc.c
+"80 /Users/student/Desktop/lab_10/mcc_generated_files/mcc.c
 [v _PMD_Initialize PMD_Initialize `(v  1 e 1 0 ]
 {
 "98
 } 0
-"55 /home/bbd/Documents/Github/lab_10/mcc_generated_files/pin_manager.c
+"55 /Users/student/Desktop/lab_10/mcc_generated_files/pin_manager.c
 [v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
 {
-"116
+"115
 } 0
-"66 /home/bbd/Documents/Github/lab_10/mcc_generated_files/mcc.c
+"66 /Users/student/Desktop/lab_10/mcc_generated_files/mcc.c
 [v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
 {
 "78
 } 0
-"198 /home/bbd/Documents/Github/lab_10/mcc_generated_files/i2c1.c
+"198 /Users/student/Desktop/lab_10/mcc_generated_files/i2c1.c
 [v _I2C1_Initialize I2C1_Initialize `(v  1 e 1 0 ]
 {
 "224
 } 0
-"81 /home/bbd/Documents/Github/lab_10/mcc_generated_files/eusart1.c
+"81 /Users/student/Desktop/lab_10/mcc_generated_files/eusart1.c
 [v _EUSART1_Initialize EUSART1_Initialize `(v  1 e 1 0 ]
 {
 "117
@@ -1379,81 +1382,83 @@ CMODE_WHITE 3
 [v EUSART1_SetErrorHandler@interruptHandler interruptHandler `*.37(v  1 p 2 0 ]
 "229
 } 0
-"64 /home/bbd/Documents/Github/lab_10/mcc_generated_files/adcc.c
+"64 /Users/student/Desktop/lab_10/mcc_generated_files/adcc.c
 [v _ADCC_Initialize ADCC_Initialize `(v  1 e 1 0 ]
 {
 "119
 } 0
-"53 /home/bbd/Documents/Github/lab_10/led.c
+"54 /Users/student/Desktop/lab_10/led.c
 [v _LED_task LED_task `(v  1 e 1 0 ]
 {
-"91
+"89
 } 0
-"170 /home/bbd/Documents/Github/lab_10/controller.c
+"171 /Users/student/Desktop/lab_10/controller.c
 [v _getMode getMode `(E10869  1 e 1 0 ]
 {
-"172
+"173
 } 0
-"249
+"252
 [v _getIsHold getIsHold `(a  1 e 1 0 ]
 {
-"251
+"254
 } 0
-"208 /home/bbd/Documents/Github/lab_10/led.c
+"214 /Users/student/Desktop/lab_10/led.c
 [v _LED_task_MANUAL LED_task_MANUAL `(v  1 s 1 LED_task_MANUAL ]
 {
-"210
+"216
 } 0
 "33
 [v _LED_task_DMX LED_task_DMX `(v  1 s 1 LED_task_DMX ]
 {
-[s S2477 . 4 `uc 1 white 1 0 `uc 1 red 1 1 `uc 1 green 1 2 `uc 1 blue 1 3 ]
+[s S2479 . 4 `uc 1 white 1 0 `uc 1 red 1 1 `uc 1 green 1 2 `uc 1 blue 1 3 ]
 "35
-[v LED_task_DMX@dmx dmx `S2477  1 a 4 0 ]
+[v LED_task_DMX@dmx dmx `S2479  1 a 4 0 ]
 "44
 } 0
-"73 /home/bbd/Documents/Github/lab_10/dmx.c
+"73 /Users/student/Desktop/lab_10/dmx.c
 [v _DMX_getAddress DMX_getAddress `(uc  1 e 1 0 ]
 {
 "75
 } 0
-"93 /home/bbd/Documents/Github/lab_10/led.c
+"91 /Users/student/Desktop/lab_10/led.c
 [v _LED_task_BEAT_STROBE LED_task_BEAT_STROBE `(v  1 s 1 LED_task_BEAT_STROBE ]
 {
-"147
+"101
+[v LED_task_BEAT_STROBE@beatState beatState `a  1 a 1 79 ]
+"153
 } 0
-"11 /home/bbd/Documents/Github/lab_10/led.h
-[s S2477 . 4 `uc 1 white 1 0 `uc 1 red 1 1 `uc 1 green 1 2 `uc 1 blue 1 3 ]
-"164 /home/bbd/Documents/Github/lab_10/led.c
-[v _beatColorCreator beatColorCreator `(S2477  1 s 4 beatColorCreator ]
+"11 /Users/student/Desktop/lab_10/led.h
+[s S2479 . 4 `uc 1 white 1 0 `uc 1 red 1 1 `uc 1 green 1 2 `uc 1 blue 1 3 ]
+"170 /Users/student/Desktop/lab_10/led.c
+[v _beatColorCreator beatColorCreator `(S2479  1 s 4 beatColorCreator ]
 {
 [v beatColorCreator@inRed inRed `a  1 a 1 wreg ]
-"165
-[v beatColorCreator@tempColor tempColor `S2477  1 a 4 18 ]
-"164
+"171
+[v beatColorCreator@tempColor tempColor `S2479  1 a 4 18 ]
+"170
 [v beatColorCreator@inRed inRed `a  1 a 1 wreg ]
 [v beatColorCreator@inGreen inGreen `a  1 p 1 9 ]
 [v beatColorCreator@inBlue inBlue `a  1 p 1 10 ]
 [v beatColorCreator@inWhite inWhite `a  1 p 1 11 ]
-"167
+"173
 [v beatColorCreator@inRed inRed `a  1 a 1 13 ]
-"188
+"194
 } 0
-"149
+"155
 [v _beatBrightnessCalculation beatBrightnessCalculation `(f  1 s 4 beatBrightnessCalculation ]
 {
-"150
+"156
 [v beatBrightnessCalculation@temp temp `uc  1 a 1 77 ]
-"152
+"158
 } 0
 "24
 [v _LED_setColor LED_setColor `(v  1 e 1 0 ]
 {
-[s S2477 . 4 `uc 1 white 1 0 `uc 1 red 1 1 `uc 1 green 1 2 `uc 1 blue 1 3 ]
-[v LED_setColor@input input `S2477  1 p 4 22 ]
+[s S2479 . 4 `uc 1 white 1 0 `uc 1 red 1 1 `uc 1 green 1 2 `uc 1 blue 1 3 ]
+[v LED_setColor@input input `S2479  1 p 4 22 ]
 "31
 } 0
-"10 /opt/microchip/xc8/v2.05/pic/sources/c99/common/xxtofl.c
+"10 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/xxtofl.c
 [v ___xxtofl __xxtofl `(d  1 e 4 0 ]
 {
 [v ___xxtofl@sign sign `uc  1 a 1 wreg ]
@@ -1468,7 +1473,7 @@ CMODE_WHITE 3
 [v ___xxtofl@sign sign `uc  1 a 1 8 ]
 "44
 } 0
-"43 /opt/microchip/xc8/v2.05/pic/sources/c99/common/fltol.c
+"43 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/fltol.c
 [v ___fltol __fltol `(l  1 e 4 0 ]
 {
 "45
@@ -1478,20 +1483,20 @@ CMODE_WHITE 3
 [v ___fltol@f1 f1 `d  1 p 4 66 ]
 "70
 } 0
-"8 /opt/microchip/xc8/v2.05/pic/sources/c99/common/sprcmul.c
+"8 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/sprcmul.c
 [v ___flmul __flmul `(d  1 e 4 0 ]
 {
-[s S2947 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
+[s S2963 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
 "13
-[s S2952 . 4 `i 1 wordA 2 0 `i 1 wordB 2 2 ]
-[u S2955 . 4 `l 1 i 4 0 `d 1 f 4 0 `S2947 1 fAsBytes 4 0 `S2952 1 fAsWords 4 0 ]
-[v ___flmul@prod prod `S2955  1 a 4 60 ]
+[s S2968 . 4 `i 1 wordA 2 0 `i 1 wordB 2 2 ]
+[u S2971 . 4 `l 1 i 4 0 `d 1 f 4 0 `S2963 1 fAsBytes 4 0 `S2968 1 fAsWords 4 0 ]
+[v ___flmul@prod prod `S2971  1 a 4 60 ]
 "12
 [v ___flmul@grs grs `ul  1 a 4 55 ]
-[s S3024 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
+[s S3040 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
 "14
-[u S3027 . 2 `i 1 i 2 0 `ui 1 n 2 0 `S3024 1 nAsBytes 2 0 ]
-[v ___flmul@temp temp `S3027  1 a 2 64 ]
+[u S3043 . 2 `i 1 i 2 0 `ui 1 n 2 0 `S3040 1 nAsBytes 2 0 ]
+[v ___flmul@temp temp `S3043  1 a 2 64 ]
 "10
 [v ___flmul@bexp bexp `uc  1 a 1 59 ]
 "11
@@ -1503,7 +1508,7 @@ CMODE_WHITE 3
 [v ___flmul@a a `d  1 p 4 44 ]
 "205
 } 0
-"4 /opt/microchip/xc8/v2.05/pic/sources/c99/common/Umul8_16.c
+"4 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/Umul8_16.c
 [v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
 {
 [v __Umul8_16@multiplier multiplier `uc  1 a 1 wreg ]
@@ -1517,7 +1522,7 @@ CMODE_WHITE 3
 [v __Umul8_16@multiplier multiplier `uc  1 a 1 8 ]
 "60
 } 0
-"8 /opt/microchip/xc8/v2.05/pic/sources/c99/common/sprcdiv.c
+"8 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/sprcdiv.c
 [v ___fldiv __fldiv `(d  1 e 4 0 ]
 {
 "21
@@ -1537,79 +1542,84 @@ CMODE_WHITE 3
 [v ___fldiv@b b `d  1 p 4 18 ]
 "185
 } 0
-"82 /home/bbd/Documents/Github/lab_10/mcc_generated_files/pwm4.c
+"82 /Users/student/Desktop/lab_10/mcc_generated_files/pwm4.c
 [v _PWM4_LoadDutyValue PWM4_LoadDutyValue `(v  1 e 1 0 ]
 {
 [v PWM4_LoadDutyValue@dutyValue dutyValue `us  1 p 2 0 ]
 "100
 } 0
-"82 /home/bbd/Documents/Github/lab_10/mcc_generated_files/pwm3.c
+"82 /Users/student/Desktop/lab_10/mcc_generated_files/pwm3.c
 [v _PWM3_LoadDutyValue PWM3_LoadDutyValue `(v  1 e 1 0 ]
 {
 [v PWM3_LoadDutyValue@dutyValue dutyValue `us  1 p 2 0 ]
 "100
 } 0
-"82 /home/bbd/Documents/Github/lab_10/mcc_generated_files/pwm2.c
+"82 /Users/student/Desktop/lab_10/mcc_generated_files/pwm2.c
 [v _PWM2_LoadDutyValue PWM2_LoadDutyValue `(v  1 e 1 0 ]
 {
 [v PWM2_LoadDutyValue@dutyValue dutyValue `us  1 p 2 0 ]
 "100
 } 0
-"82 /home/bbd/Documents/Github/lab_10/mcc_generated_files/pwm1.c
+"82 /Users/student/Desktop/lab_10/mcc_generated_files/pwm1.c
 [v _PWM1_LoadDutyValue PWM1_LoadDutyValue `(v  1 e 1 0 ]
 {
 [v PWM1_LoadDutyValue@dutyValue dutyValue `us  1 p 2 0 ]
 "100
 } 0
-"49 /home/bbd/Documents/Github/lab_10/beat.c
+"49 /Users/student/Desktop/lab_10/beat.c
 [v _BEAT_detected BEAT_detected `(a  1 e 1 0 ]
 {
 "56
 } 0
-"204 /home/bbd/Documents/Github/lab_10/led.c
+"210 /Users/student/Desktop/lab_10/led.c
 [v _LED_task_BEAT_MIXED LED_task_BEAT_MIXED `(v  1 s 1 LED_task_BEAT_MIXED ]
 {
-"206
-} 0
-"190
-[v _LED_task_BEAT_FADE LED_task_BEAT_FADE `(v  1 s 1 LED_task_BEAT_FADE ]
-{
-"194
-} 0
-"200
-[v _LED_task_BEAT_CONTINUOUS LED_task_BEAT_CONTINUOUS `(v  1 s 1 LED_task_BEAT_CONTINUOUS ]
-{
-"202
+"212
 } 0
 "196
+[v _LED_task_BEAT_FADE LED_task_BEAT_FADE `(v  1 s 1 LED_task_BEAT_FADE ]
+{
+"200
+} 0
+"206
+[v _LED_task_BEAT_CONTINUOUS LED_task_BEAT_CONTINUOUS `(v  1 s 1 LED_task_BEAT_CONTINUOUS ]
+{
+"208
+} 0
+"202
 [v _LED_task_ANIMATION LED_task_ANIMATION `(v  1 s 1 LED_task_ANIMATION ]
 {
-"198
+"204
 } 0
-"21 /home/bbd/Documents/Github/lab_10/dmx.c
+"46
+[v _LED_init LED_init `(v  1 e 1 0 ]
+{
+"52
+} 0
+"21 /Users/student/Desktop/lab_10/dmx.c
 [v _DMX_init DMX_init `(v  1 e 1 0 ]
 {
 "24
 } 0
-"232 /home/bbd/Documents/Github/lab_10/mcc_generated_files/eusart1.c
+"232 /Users/student/Desktop/lab_10/mcc_generated_files/eusart1.c
 [v _EUSART1_SetRxInterruptHandler EUSART1_SetRxInterruptHandler `(v  1 e 1 0 ]
 {
 [v EUSART1_SetRxInterruptHandler@interruptHandler interruptHandler `*.37(v  1 p 2 0 ]
 "234
 } 0
-"25 /home/bbd/Documents/Github/lab_10/controller.c
+"25 /Users/student/Desktop/lab_10/controller.c
 [v _CONTROLLER_task CONTROLLER_task `(v  1 e 1 0 ]
 {
 "27
 [v CONTROLLER_task@isActive isActive `a  1 a 1 79 ]
-"119
+"120
 } 0
-"121
+"122
 [v _menuSelection menuSelection `(v  1 e 1 0 ]
 {
-"168
+"169
 } 0
-"5 /opt/microchip/xc8/v2.05/pic/sources/c99/common/printf.c
+"5 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/printf.c
 [v _printf printf `(i  1 e 2 0 ]
 {
 "8
@@ -1618,71 +1628,71 @@ CMODE_WHITE 3
 [v printf@fmt fmt `*.25DCuc  1 p 2 0 ]
 "13
 } 0
-"1368 /opt/microchip/xc8/v2.05/pic/sources/c99/common/doprnt.c
+"1368 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/doprnt.c
 [v _vfprintf vfprintf `(i  1 e 2 0 ]
 {
-[s S2758 _IO_FILE 0 ]
-[v vfprintf@fp fp `*.1S2758  1 a 1 wreg ]
+[s S2774 _IO_FILE 0 ]
+[v vfprintf@fp fp `*.1S2774  1 a 1 wreg ]
 "1371
 [v vfprintf@cfmt cfmt `*.25uc  1 a 2 71 ]
 "1368
-[v vfprintf@fp fp `*.1S2758  1 a 1 wreg ]
+[v vfprintf@fp fp `*.1S2774  1 a 1 wreg ]
 [v vfprintf@fmt fmt `*.25DCuc  1 p 2 65 ]
 [v vfprintf@ap ap `*.4*.4v  1 p 1 67 ]
 "1373
 "1368
-[v vfprintf@fp fp `*.1S2758  1 a 1 70 ]
+[v vfprintf@fp fp `*.1S2774  1 a 1 70 ]
 "1382
 } 0
 "670
 [v _vfpfcnvrt vfpfcnvrt `(i  1 s 2 vfpfcnvrt ]
 {
-[s S2758 _IO_FILE 0 ]
-[v vfpfcnvrt@fp fp `*.1S2758  1 a 1 wreg ]
+[s S2774 _IO_FILE 0 ]
+[v vfpfcnvrt@fp fp `*.1S2774  1 a 1 wreg ]
 "672
 [v vfpfcnvrt@c c `uc  1 a 1 63 ]
 "670
-[v vfpfcnvrt@fp fp `*.1S2758  1 a 1 wreg ]
+[v vfpfcnvrt@fp fp `*.1S2774  1 a 1 wreg ]
 [v vfpfcnvrt@fmt fmt `*.4*.25uc  1 p 1 56 ]
 [v vfpfcnvrt@ap ap `*.4*.4v  1 p 1 57 ]
 "680
 "670
-[v vfpfcnvrt@fp fp `*.1S2758  1 a 1 64 ]
+[v vfpfcnvrt@fp fp `*.1S2774  1 a 1 64 ]
 "1365
 } 0
 "259
 [v _ctoa ctoa `(i  1 s 2 ctoa ]
 {
-[s S2758 _IO_FILE 0 ]
-[v ctoa@fp fp `*.1S2758  1 a 1 wreg ]
+[s S2774 _IO_FILE 0 ]
+[v ctoa@fp fp `*.1S2774  1 a 1 wreg ]
 "261
 [v ctoa@w w `i  1 a 2 53 ]
 "259
-[v ctoa@fp fp `*.1S2758  1 a 1 wreg ]
+[v ctoa@fp fp `*.1S2774  1 a 1 wreg ]
 [v ctoa@c c `uc  1 p 1 50 ]
 "264
 "259
-[v ctoa@fp fp `*.1S2758  1 a 1 55 ]
+[v ctoa@fp fp `*.1S2774  1 a 1 55 ]
 "270
 } 0
 "72
 [v _pad pad `(i  1 s 2 pad ]
 {
-[s S2758 _IO_FILE 0 ]
-[v pad@fp fp `*.1S2758  1 a 1 wreg ]
+[s S2774 _IO_FILE 0 ]
+[v pad@fp fp `*.1S2774  1 a 1 wreg ]
 "74
 [v pad@w w `i  1 a 2 47 ]
 [v pad@i i `i  1 a 2 45 ]
 "72
-[v pad@fp fp `*.1S2758  1 a 1 wreg ]
+[v pad@fp fp `*.1S2774  1 a 1 wreg ]
 [v pad@buf buf `*.5uc  1 p 1 41 ]
 [v pad@p p `i  1 p 2 42 ]
 "77
 "72
-[v pad@fp fp `*.1S2758  1 a 1 49 ]
+[v pad@fp fp `*.1S2774  1 a 1 49 ]
 "95
 } 0
-"12 /opt/microchip/xc8/v2.05/pic/sources/c99/common/strlen.c
+"12 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/strlen.c
 [v _strlen strlen `(ui  1 e 2 0 ]
 {
 "14
@@ -1691,7 +1701,7 @@ CMODE_WHITE 3
 [v strlen@s s `*.26DCuc  1 p 2 0 ]
 "26
 } 0
-"8 /opt/microchip/xc8/v2.05/pic/sources/c99/common/nf_fputs.c
+"8 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/nf_fputs.c
 [v _fputs fputs `(i  1 e 2 0 ]
 {
 [v fputs@s s `*.5DCuc  1 a 1 wreg ]
@@ -1701,21 +1711,21 @@ CMODE_WHITE 3
 [v fputs@c c `uc  1 a 1 37 ]
 "8
 [v fputs@s s `*.5DCuc  1 a 1 wreg ]
-[s S3089 _IO_FILE 5 `*.1uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
-[v fputs@fp fp `*.1S3089  1 p 1 33 ]
+[s S3105 _IO_FILE 5 `*.1uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
+[v fputs@fp fp `*.1S3105  1 p 1 33 ]
 "13
 [v fputs@s s `*.5DCuc  1 a 1 40 ]
 "19
 } 0
-"8 /opt/microchip/xc8/v2.05/pic/sources/c99/common/nf_fputc.c
+"8 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/nf_fputc.c
 [v _fputc fputc `(i  1 e 2 0 ]
 {
 [v fputc@c c `i  1 p 2 25 ]
-[s S3089 _IO_FILE 5 `*.1uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
-[v fputc@fp fp `*.1S3089  1 p 1 27 ]
+[s S3105 _IO_FILE 5 `*.1uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
+[v fputc@fp fp `*.1S3105  1 p 1 27 ]
 "21
 } 0
-"120 /home/bbd/Documents/Github/lab_10/tm1650.c
+"120 /Users/student/Desktop/lab_10/tm1650.c
 [v _putch putch `(v  1 e 1 0 ]
 {
 [v putch@n n `uc  1 a 1 wreg ]
@@ -1734,15 +1744,15 @@ CMODE_WHITE 3
 [v TM1650_setDigit@digit digit `uc  1 a 1 22 ]
 "99
 } 0
-"268 /home/bbd/Documents/Github/lab_10/led.c
+"274 /Users/student/Desktop/lab_10/led.c
 [v _getManualColor getManualColor `(uc  1 e 1 0 ]
 {
 [v getManualColor@input input `E10883  1 a 1 wreg ]
 [v getManualColor@input input `E10883  1 a 1 wreg ]
 [v getManualColor@input input `E10883  1 a 1 2 ]
-"290
+"296
 } 0
-"41 /home/bbd/Documents/Github/lab_10/tm1650.c
+"41 /Users/student/Desktop/lab_10/tm1650.c
 [v _TM1650_enable TM1650_enable `(v  1 e 1 0 ]
 {
 [v TM1650_enable@enable enable `a  1 a 1 wreg ]
@@ -1750,37 +1760,37 @@ CMODE_WHITE 3
 [v TM1650_enable@enable enable `a  1 a 1 20 ]
 "49
 } 0
-"253 /home/bbd/Documents/Github/lab_10/controller.c
+"256 /Users/student/Desktop/lab_10/controller.c
 [v _CONTROL_MANUAL CONTROL_MANUAL `(a  1 s 1 CONTROL_MANUAL ]
 {
 [v CONTROL_MANUAL@input input `E10878  1 a 1 wreg ]
 [v CONTROL_MANUAL@input input `E10878  1 a 1 wreg ]
-"255
+"258
 [v CONTROL_MANUAL@input input `E10878  1 a 1 5 ]
-"303
+"306
 } 0
-"212 /home/bbd/Documents/Github/lab_10/led.c
+"218 /Users/student/Desktop/lab_10/led.c
 [v _colorInc colorInc `(v  1 e 1 0 ]
 {
 [v colorInc@input input `E10883  1 a 1 wreg ]
 [v colorInc@input input `E10883  1 a 1 wreg ]
 [v colorInc@input input `E10883  1 a 1 2 ]
-"238
+"244
 } 0
-"240
+"246
 [v _colorDec colorDec `(v  1 e 1 0 ]
 {
 [v colorDec@input input `E10883  1 a 1 wreg ]
 [v colorDec@input input `E10883  1 a 1 wreg ]
 [v colorDec@input input `E10883  1 a 1 2 ]
-"266
+"272
 } 0
-"174 /home/bbd/Documents/Github/lab_10/controller.c
+"175 /Users/student/Desktop/lab_10/controller.c
 [v _CONTROL_DMX CONTROL_DMX `(a  1 s 1 CONTROL_DMX ]
 {
-"210
+"211
 } 0
-"29 /home/bbd/Documents/Github/lab_10/dmx.c
+"29 /Users/student/Desktop/lab_10/dmx.c
 [v _address_inc address_inc `(v  1 e 1 0 ]
 {
 "38
@@ -1790,7 +1800,7 @@ CMODE_WHITE 3
 {
 "52
 } 0
-"101 /home/bbd/Documents/Github/lab_10/tm1650.c
+"101 /Users/student/Desktop/lab_10/tm1650.c
 [v _TM1650_fastPrintNum TM1650_fastPrintNum `(v  1 e 1 0 ]
 {
 [v TM1650_fastPrintNum@num num `us  1 p 2 20 ]
@@ -1809,7 +1819,7 @@ CMODE_WHITE 3
 [v writeData@address address `uc  1 a 1 18 ]
 "39
 } 0
-"600 /home/bbd/Documents/Github/lab_10/mcc_generated_files/i2c1.c
+"600 /Users/student/Desktop/lab_10/mcc_generated_files/i2c1.c
 [v _I2C1_MasterWrite I2C1_MasterWrite `(v  1 e 1 0 ]
 {
 "601
@@ -1821,9 +1831,9 @@ CMODE_WHITE 3
 [v I2C1_MasterWrite@address address `us  1 p 2 8 ]
 "604
 [v I2C1_MasterWrite@pflag pflag `*.4E10866  1 p 1 10 ]
-[s S1140 . 4 `us 1 address 2 0 `uc 1 length 1 2 `*.4uc 1 pbuffer 1 3 ]
+[s S1139 . 4 `us 1 address 2 0 `uc 1 length 1 2 `*.4uc 1 pbuffer 1 3 ]
 "606
-[v I2C1_MasterWrite@trBlock trBlock `S1140  1 s 4 trBlock ]
+[v I2C1_MasterWrite@trBlock trBlock `S1139  1 s 4 trBlock ]
 "609
 [v I2C1_MasterWrite@pdata pdata `*.4uc  1 a 1 13 ]
 "619
@@ -1831,10 +1841,10 @@ CMODE_WHITE 3
 "721
 [v _I2C1_MasterWriteTRBBuild I2C1_MasterWriteTRBBuild `(v  1 e 1 0 ]
 {
-[s S1140 . 4 `us 1 address 2 0 `uc 1 length 1 2 `*.4uc 1 pbuffer 1 3 ]
+[s S1139 . 4 `us 1 address 2 0 `uc 1 length 1 2 `*.4uc 1 pbuffer 1 3 ]
 "722
-[v I2C1_MasterWriteTRBBuild@ptrb ptrb `*.5S1140  1 a 1 wreg ]
-[v I2C1_MasterWriteTRBBuild@ptrb ptrb `*.5S1140  1 a 1 wreg ]
+[v I2C1_MasterWriteTRBBuild@ptrb ptrb `*.5S1139  1 a 1 wreg ]
+[v I2C1_MasterWriteTRBBuild@ptrb ptrb `*.5S1139  1 a 1 wreg ]
 "723
 [v I2C1_MasterWriteTRBBuild@pdata pdata `*.4uc  1 p 1 0 ]
 "724
@@ -1843,7 +1853,7 @@ CMODE_WHITE 3
 [v I2C1_MasterWriteTRBBuild@address address `us  1 p 2 2 ]
 "727
 "722
-[v I2C1_MasterWriteTRBBuild@ptrb ptrb `*.5S1140  1 a 1 6 ]
+[v I2C1_MasterWriteTRBBuild@ptrb ptrb `*.5S1139  1 a 1 6 ]
 "730
 } 0
 "654
@@ -1852,9 +1862,9 @@ CMODE_WHITE 3
 "655
 [v I2C1_MasterTRBInsert@count count `uc  1 a 1 wreg ]
 [v I2C1_MasterTRBInsert@count count `uc  1 a 1 wreg ]
-[s S1140 . 4 `us 1 address 2 0 `uc 1 length 1 2 `*.4uc 1 pbuffer 1 3 ]
+[s S1139 . 4 `us 1 address 2 0 `uc 1 length 1 2 `*.4uc 1 pbuffer 1 3 ]
 "656
-[v I2C1_MasterTRBInsert@ptrb_list ptrb_list `*.5S1140  1 p 1 0 ]
+[v I2C1_MasterTRBInsert@ptrb_list ptrb_list `*.5S1139  1 p 1 0 ]
 "657
 [v I2C1_MasterTRBInsert@pflag pflag `*.4E10866  1 p 1 1 ]
 "661
@@ -1866,7 +1876,7 @@ CMODE_WHITE 3
 {
 "652
 } 0
-"5 /opt/microchip/xc8/v2.05/pic/sources/c99/common/lwmod.c
+"5 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/lwmod.c
 [v ___lwmod __lwmod `(ui  1 e 2 0 ]
 {
 "10
@@ -1876,48 +1886,46 @@ CMODE_WHITE 3
 [v ___lwmod@dividend dividend `ui  1 p 2 10 ]
 "25
 } 0
-"212 /home/bbd/Documents/Github/lab_10/controller.c
+"213 /Users/student/Desktop/lab_10/controller.c
 [v _CONTROL_BEAT CONTROL_BEAT `(a  1 s 1 CONTROL_BEAT ]
 {
-"237
-[v CONTROL_BEAT@i i `VEuc  1 a 1 2 ]
-"247
+"250
 } 0
-"106 /home/bbd/Documents/Github/lab_10/buttons.c
+"106 /Users/student/Desktop/lab_10/buttons.c
 [v _BUTTONS_isHeld BUTTONS_isHeld `(a  1 e 1 0 ]
 {
-[s S1990 . 8 `*.39VEuc 1 port 2 0 `uc 1 pin 1 2 `E10875 1 state 1 3 `E10875 1 lastState 1 4 `us 1 lastHoldTime 2 5 `E10869 1 event 1 7 ]
-[v BUTTONS_isHeld@button button `*.5S1990  1 a 1 wreg ]
-[v BUTTONS_isHeld@button button `*.5S1990  1 a 1 wreg ]
-[v BUTTONS_isHeld@button button `*.5S1990  1 a 1 0 ]
+[s S1993 . 8 `*.39VEuc 1 port 2 0 `uc 1 pin 1 2 `E10875 1 state 1 3 `E10875 1 lastState 1 4 `us 1 lastHoldTime 2 5 `E10869 1 event 1 7 ]
+[v BUTTONS_isHeld@button button `*.5S1993  1 a 1 wreg ]
+[v BUTTONS_isHeld@button button `*.5S1993  1 a 1 wreg ]
+[v BUTTONS_isHeld@button button `*.5S1993  1 a 1 0 ]
 "113
 } 0
 "97
 [v _BUTTONS_isClicked BUTTONS_isClicked `(a  1 e 1 0 ]
 {
-[s S1990 . 8 `*.39VEuc 1 port 2 0 `uc 1 pin 1 2 `E10875 1 state 1 3 `E10875 1 lastState 1 4 `us 1 lastHoldTime 2 5 `E10869 1 event 1 7 ]
-[v BUTTONS_isClicked@button button `*.5S1990  1 a 1 wreg ]
-[v BUTTONS_isClicked@button button `*.5S1990  1 a 1 wreg ]
-[v BUTTONS_isClicked@button button `*.5S1990  1 a 1 0 ]
+[s S1993 . 8 `*.39VEuc 1 port 2 0 `uc 1 pin 1 2 `E10875 1 state 1 3 `E10875 1 lastState 1 4 `us 1 lastHoldTime 2 5 `E10869 1 event 1 7 ]
+[v BUTTONS_isClicked@button button `*.5S1993  1 a 1 wreg ]
+[v BUTTONS_isClicked@button button `*.5S1993  1 a 1 wreg ]
+[v BUTTONS_isClicked@button button `*.5S1993  1 a 1 0 ]
 "104
 } 0
-"8 /home/bbd/Documents/Github/lab_10/clock.c
+"8 /Users/student/Desktop/lab_10/clock.c
 [v _CLOCK_init CLOCK_init `(v  1 e 1 0 ]
 {
 "14
 } 0
-"134 /home/bbd/Documents/Github/lab_10/mcc_generated_files/tmr0.c
+"134 /Users/student/Desktop/lab_10/mcc_generated_files/tmr0.c
 [v _TMR0_SetInterruptHandler TMR0_SetInterruptHandler `(v  1 e 1 0 ]
 {
 [v TMR0_SetInterruptHandler@InterruptHandler InterruptHandler `*.37(v  1 p 2 0 ]
 "136
 } 0
-"56 /home/bbd/Documents/Github/lab_10/buttons.c
+"56 /Users/student/Desktop/lab_10/buttons.c
 [v _BUTTONS_task BUTTONS_task `(v  1 e 1 0 ]
 {
-[s S1990 . 8 `*.39VEuc 1 port 2 0 `uc 1 pin 1 2 `E10875 1 state 1 3 `E10875 1 lastState 1 4 `us 1 lastHoldTime 2 5 `E10869 1 event 1 7 ]
+[s S1993 . 8 `*.39VEuc 1 port 2 0 `uc 1 pin 1 2 `E10875 1 state 1 3 `E10875 1 lastState 1 4 `us 1 lastHoldTime 2 5 `E10869 1 event 1 7 ]
 "68
-[v BUTTONS_task@btn btn `*.5S1990  1 a 1 8 ]
+[v BUTTONS_task@btn btn `*.5S1993  1 a 1 8 ]
 "67
 [v BUTTONS_task@i i `uc  1 a 1 5 ]
 "58
@@ -1932,12 +1940,12 @@ CMODE_WHITE 3
 "16
 [v _init init `(v  1 s 1 init ]
 {
-[s S1990 . 8 `*.39VEuc 1 port 2 0 `uc 1 pin 1 2 `E10875 1 state 1 3 `E10875 1 lastState 1 4 `us 1 lastHoldTime 2 5 `E10869 1 event 1 7 ]
-[v init@btn btn `*.5S1990  1 a 1 wreg ]
-[v init@btn btn `*.5S1990  1 a 1 wreg ]
+[s S1993 . 8 `*.39VEuc 1 port 2 0 `uc 1 pin 1 2 `E10875 1 state 1 3 `E10875 1 lastState 1 4 `us 1 lastHoldTime 2 5 `E10869 1 event 1 7 ]
+[v init@btn btn `*.5S1993  1 a 1 wreg ]
+[v init@btn btn `*.5S1993  1 a 1 wreg ]
 [v init@port port `*.39VEuc  1 p 2 0 ]
 [v init@pin pin `uc  1 p 1 2 ]
-[v init@btn btn `*.5S1990  1 a 1 4 ]
+[v init@btn btn `*.5S1993  1 a 1 4 ]
 "21
 } 0
 "38
@@ -1945,14 +1953,14 @@ CMODE_WHITE 3
 {
 "54
 } 0
-"65 /home/bbd/Documents/Github/lab_10/beat.c
+"65 /Users/student/Desktop/lab_10/beat.c
 [v _BEAT_task BEAT_task `(v  1 e 1 0 ]
 {
 "95
 [v BEAT_task@offset offset `us  1 a 2 10 ]
 "124
 } 0
-"5 /opt/microchip/xc8/v2.05/pic/sources/c99/common/lwdiv.c
+"5 /Applications/microchip/xc8/v2.05/pic/sources/c99/common/lwdiv.c
 [v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
 {
 "10
@@ -1964,17 +1972,17 @@ CMODE_WHITE 3
 [v ___lwdiv@dividend dividend `ui  1 p 2 2 ]
 "30
 } 0
-"16 /home/bbd/Documents/Github/lab_10/clock.c
+"16 /Users/student/Desktop/lab_10/clock.c
 [v _CLOCK_getTime CLOCK_getTime `(us  1 e 2 0 ]
 {
 "18
 } 0
-"39 /home/bbd/Documents/Github/lab_10/beat.c
+"39 /Users/student/Desktop/lab_10/beat.c
 [v _BEAT_init BEAT_init `(v  1 e 1 0 ]
 {
 "43
 } 0
-"121 /home/bbd/Documents/Github/lab_10/mcc_generated_files/adcc.c
+"121 /Users/student/Desktop/lab_10/mcc_generated_files/adcc.c
 [v _ADCC_StartConversion ADCC_StartConversion `(v  1 e 1 0 ]
 {
 [v ADCC_StartConversion@channel channel `E10867  1 a 1 wreg ]
@@ -1995,27 +2003,27 @@ CMODE_WHITE 3
 [v ADCC_SetADTIInterruptHandler@InterruptHandler InterruptHandler `*.37(v  1 p 2 0 ]
 "319
 } 0
-"52 /home/bbd/Documents/Github/lab_10/mcc_generated_files/interrupt_manager.c
+"52 /Users/student/Desktop/lab_10/mcc_generated_files/interrupt_manager.c
 [v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
 {
 "86
 } 0
-"121 /home/bbd/Documents/Github/lab_10/mcc_generated_files/tmr0.c
+"121 /Users/student/Desktop/lab_10/mcc_generated_files/tmr0.c
 [v _TMR0_ISR TMR0_ISR `(v  1 e 1 0 ]
 {
 "131
 } 0
-"20 /home/bbd/Documents/Github/lab_10/clock.c
+"20 /Users/student/Desktop/lab_10/clock.c
 [v _CLOCK_timerCallback CLOCK_timerCallback `(v  1 s 1 CLOCK_timerCallback ]
 {
 "22
 } 0
-"138 /home/bbd/Documents/Github/lab_10/mcc_generated_files/tmr0.c
+"138 /Users/student/Desktop/lab_10/mcc_generated_files/tmr0.c
 [v _TMR0_DefaultInterruptHandler TMR0_DefaultInterruptHandler `(v  1 e 1 0 ]
 {
 "141
 } 0
-"235 /home/bbd/Documents/Github/lab_10/mcc_generated_files/i2c1.c
+"235 /Users/student/Desktop/lab_10/mcc_generated_files/i2c1.c
 [v _I2C1_ISR I2C1_ISR `(v  1 e 1 0 ]
 {
 "238
@@ -2047,14 +2055,14 @@ CMODE_WHITE 3
 {
 "746
 } 0
-"54 /home/bbd/Documents/Github/lab_10/dmx.c
+"54 /Users/student/Desktop/lab_10/dmx.c
 [v _DMX_interrupt DMX_interrupt `(v  1 e 1 0 ]
 {
 "67
 [v DMX_interrupt@dummy dummy `VEuc  1 a 1 6 ]
 "71
 } 0
-"171 /home/bbd/Documents/Github/lab_10/mcc_generated_files/eusart1.c
+"171 /Users/student/Desktop/lab_10/mcc_generated_files/eusart1.c
 [v _EUSART1_Receive_ISR EUSART1_Receive_ISR `(v  1 e 1 0 ]
 {
 "193
@@ -2078,7 +2086,7 @@ CMODE_WHITE 3
 {
 "203
 } 0
-"308 /home/bbd/Documents/Github/lab_10/mcc_generated_files/adcc.c
+"308 /Users/student/Desktop/lab_10/mcc_generated_files/adcc.c
 [v _ADCC_ThresholdISR ADCC_ThresholdISR `(v  1 e 1 0 ]
 {
 "315
@@ -2088,7 +2096,7 @@ CMODE_WHITE 3
 {
 "323
 } 0
-"35 /home/bbd/Documents/Github/lab_10/beat.c
+"35 /Users/student/Desktop/lab_10/beat.c
 [v _adcThresholdHandler adcThresholdHandler `(v  1 s 1 adcThresholdHandler ]
 {
 "37

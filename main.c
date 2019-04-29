@@ -63,6 +63,7 @@ void main(void)
     CLOCK_init();
     BUTTONS_init();   
     BEAT_init();
+    LED_init();
  
     INTERRUPT_GlobalInterruptEnable();
     INTERRUPT_PeripheralInterruptEnable();

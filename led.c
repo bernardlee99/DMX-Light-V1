@@ -48,6 +48,7 @@ void LED_init(){
     manual.green = 0;
     manual.blue = 0;
     manual.white = 0;
+    TRISCbits.TRISC5 = 0;
 }
 
 void LED_task(){
@@ -63,22 +64,19 @@ void LED_task(){
             break;
 
         case MODE_BEAT_FADE:
-            if(getIsHold()) LED_setColor(beatColorCreator(0,0,0,0));
-            else LED_task_BEAT_FADE();
+            LED_task_BEAT_FADE();
             break;
 
         case MODE_BEAT_CONTINUOUS:
-            if(getIsHold()) LED_setColor(beatColorCreator(0,0,0,0));
             LED_task_BEAT_CONTINUOUS();
             break;
 
         case MODE_BEAT_MIXED:
-            if(getIsHold()) LED_setColor(beatColorCreator(0,0,0,0));
-            else LED_task_BEAT_MIXED();
+            LED_task_BEAT_MIXED();
             break;
 
         case MODE_ANIMATION:
-            if(!getIsHold())
+            //if(!getIsHold())
             LED_task_ANIMATION();
             break;
             
@@ -95,10 +93,18 @@ void static LED_task_BEAT_STROBE(){
     if(CLOCK_getTime() - lastLedActiveTime < 50){
         return;
     }
-        
+    
+    
     lastLedActiveTime = CLOCK_getTime();
     
-     if(!BEAT_detected()){
+    LATC5 = 0;
+    bool beatState = BEAT_detected();
+    
+    if (beatState) {
+        LATC5 = 1;
+    }
+    
+     if(!beatState){
          LED_setColor(beatColorCreator(0,0,0,0));
     } else if (currentState == 1){
         LED_setColor(beatColorCreator(0,0,0,1));
