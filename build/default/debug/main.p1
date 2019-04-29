@@ -40,8 +40,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "35 ./buttons.h
 [; ;./buttons.h: 35: void BUTTONS_task();
 [v _BUTTONS_task `(v ~T0 @X0 0 e? ]
-"26 ./controller.h
-[; ;./controller.h: 26: void CONTROLLER_task();
+"36 ./controller.h
+[; ;./controller.h: 36: void CONTROLLER_task();
 [v _CONTROLLER_task `(v ~T0 @X0 0 e? ]
 "14 ./beat.h
 [; ;./beat.h: 14: void BEAT_task();
@@ -1459,31 +1459,31 @@ Version 4.0 HI-TECH Software Intermediate Code
 "72
 [; ;main.c: 72:     startTime = CLOCK_getTime();
 [e = _startTime ( _CLOCK_getTime ..  ]
-"74
-[; ;main.c: 74:     while (1)
-[e :U 1520 ]
-"75
-[; ;main.c: 75:     {
-{
 "76
-[; ;main.c: 76:         BUTTONS_task();
-[e ( _BUTTONS_task ..  ]
+[; ;main.c: 76:     while (1)
+[e :U 1520 ]
 "77
-[; ;main.c: 77:         CONTROLLER_task();
-[e ( _CONTROLLER_task ..  ]
+[; ;main.c: 77:     {
+{
 "78
-[; ;main.c: 78:         BEAT_task();
-[e ( _BEAT_task ..  ]
+[; ;main.c: 78:         BUTTONS_task();
+[e ( _BUTTONS_task ..  ]
 "79
-[; ;main.c: 79:         LED_task();
-[e ( _LED_task ..  ]
+[; ;main.c: 79:         CONTROLLER_task();
+[e ( _CONTROLLER_task ..  ]
 "80
-[; ;main.c: 80:     }
+[; ;main.c: 80:         BEAT_task();
+[e ( _BEAT_task ..  ]
+"81
+[; ;main.c: 81:         LED_task();
+[e ( _LED_task ..  ]
+"82
+[; ;main.c: 82:     }
 }
 [e :U 1519 ]
 [e $U 1520  ]
 [e :U 1521 ]
-"81
-[; ;main.c: 81: }
+"83
+[; ;main.c: 83: }
 [e :UE 1518 ]
 }

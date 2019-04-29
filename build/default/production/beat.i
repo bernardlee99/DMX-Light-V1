@@ -18450,7 +18450,7 @@ void BEAT_task() {
     } else {
 
         thresholdCount = 0;
-        delay = 10;
+        delay = 30;
     }
 
 

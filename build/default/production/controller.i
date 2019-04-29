@@ -18155,13 +18155,23 @@ extern time_t startTime;
 # 1 "controller.c" 2
 
 # 1 "./controller.h" 1
-# 16 "./controller.h"
+# 17 "./controller.h"
 typedef enum {
-    MODE_ANIMATION,
-    MODE_BEAT_STROBE,
-    MODE_DMX,
-    MODE_BEAT_FADE
+    MODE_ANIMATION = 2,
+    MODE_BEAT_STROBE = 1,
+    MODE_DMX = 0,
+    MODE_MANUAL = 3,
+    MODE_BEAT_FADE,
+    MODE_BEAT_CONTINUOUS,
+    MODE_BEAT_MIXED
 }mode_t;
+
+typedef enum {
+    CMODE_RED,
+    CMODE_GREEN,
+    CMODE_BLUE,
+    CMODE_WHITE
+} colormode_t;
 
 void CONTROLLER_init();
 void address_inc();
@@ -18170,9 +18180,11 @@ void CONTROLLER_task();
 uint8_t getAddress();
 void menuSelection();
 mode_t getMode();
+_Bool getIsHold();
 
 _Bool static CONTROL_DMX();
 _Bool static CONTROL_BEAT();
+_Bool static CONTROL_MANUAL(colormode_t input);
 
 extern _Bool startup;
 # 2 "controller.c" 2
@@ -18255,6 +18267,13 @@ void static LED_task_ANIMATION();
 color_t static beatColorCreator(_Bool inRed, _Bool inGreen, _Bool inBlue, _Bool inWhite);
 color_t static colorCreator(uint8_t inRed, uint8_t inGreen, uint8_t inBlue, uint8_t inWhite);
 float static beatBrightnessCalculation();
+void static LED_task_BEAT_CONTINUOUS();
+void static LED_task_BEAT_MIXED();
+void static LED_task_MANUAL();
+
+void colorDec(colormode_t input);
+void colorInc(colormode_t input);
+uint8_t getManualColor(colormode_t input);
 
 extern uint8_t beatBrightness;
 # 6 "controller.c" 2
@@ -18272,6 +18291,10 @@ _Bool menuPressed = 0;
 _Bool enterPressed = 0;
 
 _Bool upState, downState, menuState, enterState;
+
+_Bool beatHold = 0;
+
+colormode_t colorModeSelected = CMODE_RED;
 
 void CONTROLLER_task() {
 
@@ -18302,8 +18325,10 @@ void CONTROLLER_task() {
         isActive = CONTROL_DMX();
     } else if (currentSelection == MODE_ANIMATION) {
         isActive = 1;
-    } else if (currentSelection == MODE_BEAT_STROBE || currentSelection == MODE_BEAT_FADE) {
+    } else if (currentSelection == MODE_BEAT_STROBE || currentSelection == MODE_BEAT_FADE || currentSelection == MODE_BEAT_CONTINUOUS || currentSelection == MODE_BEAT_MIXED) {
         isActive = CONTROL_BEAT();
+    } else if(currentSelection == MODE_MANUAL && !enterPressed){
+        isActive = CONTROL_MANUAL(colorModeSelected);
     } else {
         isActive = 0;
     }
@@ -18325,11 +18350,43 @@ void CONTROLLER_task() {
     } else if (currentSelection == MODE_ANIMATION && !menuPressed) {
         printf("SEL1\r");
         enterPressed = 0;
-    } else if (currentSelection == MODE_BEAT_STROBE && !menuPressed) {
-        printf("B-%u  \r", beatBrightness);
+    } else if(currentSelection == MODE_BEAT_STROBE && beatHold){
+        printf("HOLD");
+        enterPressed = 0;
+    }else if (currentSelection == MODE_BEAT_STROBE && !menuPressed) {
+        printf("B-%u  \r", (uint8_t)beatBrightness);
         enterPressed = 0;
     } else if (currentSelection == MODE_BEAT_FADE && !menuPressed) {
-        printf("F-%u  \r", beatBrightness);
+        printf("F-%d  \r", (uint8_t)beatBrightness);
+        enterPressed = 0;
+    } else if (currentSelection == MODE_BEAT_CONTINUOUS && !menuPressed) {
+        printf("C-%d  \r", (uint8_t)beatBrightness);
+        enterPressed = 0;
+    } else if (currentSelection == MODE_BEAT_MIXED && !menuPressed) {
+        printf("A-%d  \r", (uint8_t)beatBrightness);
+        enterPressed = 0;
+    } else if (currentSelection == MODE_MANUAL && !menuPressed){
+        switch(colorModeSelected){
+            case CMODE_RED:
+
+                TM1650_fastPrintNum(getManualColor(CMODE_RED));
+                break;
+
+            case CMODE_GREEN:
+                TM1650_fastPrintNum(getManualColor(CMODE_GREEN));
+
+                break;
+
+            case CMODE_BLUE:
+                TM1650_fastPrintNum(getManualColor(CMODE_BLUE));
+
+                break;
+
+            case CMODE_WHITE:
+                TM1650_fastPrintNum(getManualColor(CMODE_WHITE));
+
+                break;
+        }
         enterPressed = 0;
     }
 
@@ -18337,14 +18394,14 @@ void CONTROLLER_task() {
 
 void menuSelection(){
 
-    if(menuSelected == MODE_BEAT_FADE)
+    if(menuSelected == MODE_BEAT_FADE || menuSelected == MODE_BEAT_CONTINUOUS || menuSelected == MODE_BEAT_MIXED)
         menuSelected = MODE_BEAT_STROBE;
 
     if(upState){
-        if(menuSelected < 2){
+        if(menuSelected < 3){
             menuSelected++;
         } else {
-            menuSelected = 2;
+            menuSelected = 3;
         }
     } else if(downState){
         if(menuSelected > 0){
@@ -18376,6 +18433,10 @@ void menuSelection(){
 
         case MODE_DMX:
             printf("PC  \r");
+            break;
+
+        case MODE_MANUAL:
+            printf("LED \r");
             break;
     }
 }
@@ -18423,6 +18484,12 @@ _Bool static CONTROL_DMX(){
 }
 
 _Bool static CONTROL_BEAT(){
+
+    if(BUTTONS_isHeld(enter) && !enterPressed){
+        beatHold = !beatHold;
+        enterPressed = 1;
+    }
+
     if (upState) {
         if(beatBrightness < 9){
             beatBrightness++;
@@ -18440,8 +18507,71 @@ _Bool static CONTROL_BEAT(){
     }
 
     if(enterState && currentSelection == MODE_BEAT_FADE){
-        currentSelection = MODE_BEAT_STROBE;
+        currentSelection = MODE_BEAT_CONTINUOUS;
+        volatile uint8_t i = 0;
+
     } else if(enterState && currentSelection == MODE_BEAT_STROBE){
         currentSelection = MODE_BEAT_FADE;
+    } else if(enterState && currentSelection == MODE_BEAT_CONTINUOUS){
+        currentSelection = MODE_BEAT_MIXED;
+    } else if(enterState && currentSelection == MODE_BEAT_MIXED){
+        currentSelection = MODE_BEAT_STROBE;
     }
+
+}
+
+_Bool getIsHold(){
+    return beatHold;
+}
+
+_Bool static CONTROL_MANUAL(colormode_t input){
+
+     if(BUTTONS_isHeld(up) && (CLOCK_getTime() - lastIncTime > incInterval)){
+        colorInc(input);
+        lastIncTime = CLOCK_getTime();
+        if(incInterval > 10){
+            incInterval-=1;
+        }
+        return 1;
+    } else if(BUTTONS_isHeld(down) && (CLOCK_getTime() - lastIncTime > incInterval)){
+        colorDec(input);
+        lastIncTime = CLOCK_getTime();
+        if(incInterval > 10){
+            incInterval-=1;
+        }
+        return 1;
+    } else if (upState) {
+        colorInc(input);
+        return 1;
+        lastActiveTime = CLOCK_getTime();
+    } else if (downState) {
+        colorDec(input);
+        return 1;
+    } else if(enterState){
+        switch(input){
+            case CMODE_RED:
+                colorModeSelected = CMODE_GREEN;
+                break;
+
+            case CMODE_GREEN:
+                colorModeSelected = CMODE_BLUE;
+                break;
+
+            case CMODE_BLUE:
+                colorModeSelected = CMODE_WHITE;
+                break;
+
+            case CMODE_WHITE:
+                colorModeSelected = CMODE_RED;
+                break;
+        }
+        return 1;
+    } else if((!upState || !downState) && !(BUTTONS_isHeld(down) || BUTTONS_isHeld(up))){
+        incInterval = 100;
+    } else {
+        return 0;
+    }
+
+    return 0;
+
 }

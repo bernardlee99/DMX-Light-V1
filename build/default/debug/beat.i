@@ -18450,7 +18450,7 @@ void BEAT_task() {
     } else {
 
         thresholdCount = 0;
-        delay = 10;
+        delay = 30;
     }
 
 
@@ -18461,7 +18461,7 @@ void BEAT_task() {
         detected = 1;
 
 
-        delay = 25;
+        delay = 15;
 
 
         time_t offset = CLOCK_getTime() - lastBeat;

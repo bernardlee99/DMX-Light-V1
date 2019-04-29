@@ -15,11 +15,11 @@
 
 
 
-# 1 "./led.h" 1
+# 1 "./beat.h" 1
 
 
 # 1 "/opt/microchip/xc8/v2.05/pic/include/c99/stdbool.h" 1 3
-# 4 "./led.h" 2
+# 4 "./beat.h" 2
 # 1 "/opt/microchip/xc8/v2.05/pic/include/c99/stdint.h" 1 3
 
 
@@ -123,7 +123,7 @@ typedef int32_t int_fast32_t;
 typedef uint32_t uint_fast16_t;
 typedef uint32_t uint_fast32_t;
 # 156 "/opt/microchip/xc8/v2.05/pic/include/c99/stdint.h" 2 3
-# 5 "./led.h" 2
+# 5 "./beat.h" 2
 # 1 "/opt/microchip/xc8/v2.05/pic/include/xc.h" 1 3
 # 18 "/opt/microchip/xc8/v2.05/pic/include/xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -18144,12 +18144,63 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "/opt/microchip/xc8/v2.05/pic/include/xc.h" 2 3
-# 6 "./led.h" 2
+# 6 "./beat.h" 2
 
 
 
 
 
+static void adcThresholdHandler();
+void BEAT_init();
+_Bool BEAT_detected();
+void BEAT_task();
+
+extern uint8_t beatBrightness;
+# 10 "led.c" 2
+# 1 "./clock.h" 1
+# 13 "./clock.h"
+typedef uint16_t time_t;
+
+void CLOCK_init();
+time_t CLOCK_getTime();
+extern time_t startTime;
+# 11 "led.c" 2
+# 1 "./controller.h" 1
+# 17 "./controller.h"
+typedef enum {
+    MODE_ANIMATION = 2,
+    MODE_BEAT_STROBE = 1,
+    MODE_DMX = 0,
+    MODE_MANUAL = 3,
+    MODE_BEAT_FADE,
+    MODE_BEAT_CONTINUOUS,
+    MODE_BEAT_MIXED
+}mode_t;
+
+typedef enum {
+    CMODE_RED,
+    CMODE_GREEN,
+    CMODE_BLUE,
+    CMODE_WHITE
+} colormode_t;
+
+void CONTROLLER_init();
+void address_inc();
+void address_dec();
+void CONTROLLER_task();
+uint8_t getAddress();
+void menuSelection();
+mode_t getMode();
+_Bool getIsHold();
+
+_Bool static CONTROL_DMX();
+_Bool static CONTROL_BEAT();
+_Bool static CONTROL_MANUAL(colormode_t input);
+
+extern _Bool startup;
+# 12 "led.c" 2
+# 1 "./led.h" 1
+# 11 "./led.h"
 typedef struct {
     uint8_t white;
     uint8_t red;
@@ -18166,47 +18217,15 @@ void static LED_task_ANIMATION();
 color_t static beatColorCreator(_Bool inRed, _Bool inGreen, _Bool inBlue, _Bool inWhite);
 color_t static colorCreator(uint8_t inRed, uint8_t inGreen, uint8_t inBlue, uint8_t inWhite);
 float static beatBrightnessCalculation();
+void static LED_task_BEAT_CONTINUOUS();
+void static LED_task_BEAT_MIXED();
+void static LED_task_MANUAL();
+
+void colorDec(colormode_t input);
+void colorInc(colormode_t input);
+uint8_t getManualColor(colormode_t input);
 
 extern uint8_t beatBrightness;
-# 10 "led.c" 2
-# 1 "./beat.h" 1
-# 11 "./beat.h"
-static void adcThresholdHandler();
-void BEAT_init();
-_Bool BEAT_detected();
-void BEAT_task();
-
-extern uint8_t beatBrightness;
-# 11 "led.c" 2
-# 1 "./clock.h" 1
-# 13 "./clock.h"
-typedef uint16_t time_t;
-
-void CLOCK_init();
-time_t CLOCK_getTime();
-extern time_t startTime;
-# 12 "led.c" 2
-# 1 "./controller.h" 1
-# 16 "./controller.h"
-typedef enum {
-    MODE_ANIMATION,
-    MODE_BEAT_STROBE,
-    MODE_DMX,
-    MODE_BEAT_FADE
-}mode_t;
-
-void CONTROLLER_init();
-void address_inc();
-void address_dec();
-void CONTROLLER_task();
-uint8_t getAddress();
-void menuSelection();
-mode_t getMode();
-
-_Bool static CONTROL_DMX();
-_Bool static CONTROL_BEAT();
-
-extern _Bool startup;
 # 13 "led.c" 2
 # 1 "./mcc_generated_files/mcc.h" 1
 # 50 "./mcc_generated_files/mcc.h"
@@ -18687,6 +18706,8 @@ uint8_t beatBrightness = 1;
  int dmxArray[513];
  _Bool startup;
 
+ color_t manual;
+
 void LED_setColor(color_t input){
     if(!startup){
         PWM1_LoadDutyValue( ( ((int)input.red)/255.0 ) * 127 );
@@ -18709,23 +18730,48 @@ void static LED_task_DMX(){
 
 }
 
+void LED_init(){
+    manual.red = 0;
+    manual.green = 0;
+    manual.blue = 0;
+    manual.white = 0;
+}
+
 void LED_task(){
 
-    switch(getMode()){
+    switch(getMode()) {
         case MODE_DMX:
             LED_task_DMX();
             break;
 
         case MODE_BEAT_STROBE:
-            LED_task_BEAT_STROBE();
+            if(getIsHold()) LED_setColor(beatColorCreator(0,0,0,0));
+            else LED_task_BEAT_STROBE();
             break;
 
         case MODE_BEAT_FADE:
-            LED_task_BEAT_FADE();
+            if(getIsHold()) LED_setColor(beatColorCreator(0,0,0,0));
+            else LED_task_BEAT_FADE();
+            break;
+
+        case MODE_BEAT_CONTINUOUS:
+            if(getIsHold()) LED_setColor(beatColorCreator(0,0,0,0));
+            LED_task_BEAT_CONTINUOUS();
+            break;
+
+        case MODE_BEAT_MIXED:
+            if(getIsHold()) LED_setColor(beatColorCreator(0,0,0,0));
+            else LED_task_BEAT_MIXED();
             break;
 
         case MODE_ANIMATION:
+            if(!getIsHold())
             LED_task_ANIMATION();
+            break;
+
+        case MODE_MANUAL:
+            LED_task_MANUAL();
+            LED_setColor(manual);
             break;
     }
 
@@ -18831,8 +18877,101 @@ color_t static beatColorCreator(_Bool inRed, _Bool inGreen, _Bool inBlue, _Bool 
 void static LED_task_BEAT_FADE(){
 
 
+
 }
 
 void static LED_task_ANIMATION(){
+
+}
+
+void static LED_task_BEAT_CONTINUOUS(){
+
+}
+
+void static LED_task_BEAT_MIXED(){
+
+}
+
+void static LED_task_MANUAL(){
+
+}
+
+void colorInc(colormode_t input){
+
+    switch(input){
+
+        case CMODE_RED:
+            if(!(manual.red > 254))
+            manual.red++;
+            break;
+
+        case CMODE_GREEN:
+            if(!(manual.green > 254))
+            manual.green++;
+            break;
+
+        case CMODE_BLUE:
+            if(!(manual.blue > 254))
+            manual.blue++;
+            break;
+
+        case CMODE_WHITE:
+            if(!(manual.white > 254))
+            manual.white++;
+            break;
+
+    }
+
+}
+
+void colorDec(colormode_t input){
+
+    switch(input){
+
+        case CMODE_RED:
+            if(!(manual.red < 1))
+            manual.red--;
+            break;
+
+        case CMODE_GREEN:
+            if(!(manual.green < 1))
+            manual.green--;
+            break;
+
+        case CMODE_BLUE:
+            if(!(manual.blue < 1))
+            manual.blue--;
+            break;
+
+        case CMODE_WHITE:
+            if(!(manual.white < 1))
+            manual.white--;
+            break;
+
+    }
+
+}
+
+uint8_t getManualColor(colormode_t input){
+
+       switch(input){
+
+        case CMODE_RED:
+            return manual.red;
+            break;
+
+        case CMODE_GREEN:
+            return manual.green;
+            break;
+
+        case CMODE_BLUE:
+            return manual.blue;
+            break;
+
+        case CMODE_WHITE:
+            return manual.white;
+            break;
+
+    }
 
 }

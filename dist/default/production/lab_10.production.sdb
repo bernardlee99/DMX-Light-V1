@@ -87,11 +87,11 @@ EVENT_INTER_HOLD 2
 EVENT_HELD 3
 ]
 "8 /home/bbd/Documents/Github/lab_10/controller.c
-[e E10891 . `uc
+[e E10903 . `uc
 STATE_UNPRESSED 0
 STATE_PRESSED 1
 ]
-[e E10885 . `uc
+[e E10897 . `uc
 EVENT_IDLE 0
 EVENT_PRESSED 1
 EVENT_INTER_HOLD 2
@@ -99,10 +99,20 @@ EVENT_HELD 3
 ]
 "14
 [e E10869 . `uc
-MODE_ANIMATION 0
+MODE_ANIMATION 2
 MODE_BEAT_STROBE 1
-MODE_DMX 2
-MODE_BEAT_FADE 3
+MODE_DMX 0
+MODE_MANUAL 3
+MODE_BEAT_FADE 4
+MODE_BEAT_CONTINUOUS 5
+MODE_BEAT_MIXED 6
+]
+"23
+[e E10878 . `uc
+CMODE_RED 0
+CMODE_GREEN 1
+CMODE_BLUE 2
+CMODE_WHITE 3
 ]
 "33 /home/bbd/Documents/Github/lab_10/tm1650.c
 [e E11370 . `uc
@@ -122,12 +132,22 @@ channel_DAC1_Output 61
 channel_FVR_Buffer1 62
 channel_FVR_Buffer2 63
 ]
-"62 /home/bbd/Documents/Github/lab_10/led.c
-[e E10898 . `uc
-MODE_ANIMATION 0
+"89 /home/bbd/Documents/Github/lab_10/led.c
+[e E10874 . `uc
+MODE_ANIMATION 2
 MODE_BEAT_STROBE 1
-MODE_DMX 2
-MODE_BEAT_FADE 3
+MODE_DMX 0
+MODE_MANUAL 3
+MODE_BEAT_FADE 4
+MODE_BEAT_CONTINUOUS 5
+MODE_BEAT_MIXED 6
+]
+"212
+[e E10883 . `uc
+CMODE_RED 0
+CMODE_GREEN 1
+CMODE_BLUE 2
+CMODE_WHITE 3
 ]
 "72 /opt/microchip/xc8/v2.05/pic/sources/c99/common/doprnt.c
 [v _pad pad `(i  1 s 2 pad ]
@@ -191,16 +211,20 @@ MODE_BEAT_FADE 3
 [v _CLOCK_getTime CLOCK_getTime `(us  1 e 2 0 ]
 "20
 [v _CLOCK_timerCallback CLOCK_timerCallback `(v  1 s 1 CLOCK_timerCallback ]
-"21 /home/bbd/Documents/Github/lab_10/controller.c
+"25 /home/bbd/Documents/Github/lab_10/controller.c
 [v _CONTROLLER_task CONTROLLER_task `(v  1 e 1 0 ]
-"83
+"121
 [v _menuSelection menuSelection `(v  1 e 1 0 ]
-"128
-[v _getMode getMode `(E10869  1 e 1 0 ]
-"132
-[v _CONTROL_DMX CONTROL_DMX `(a  1 s 1 CONTROL_DMX ]
 "170
+[v _getMode getMode `(E10869  1 e 1 0 ]
+"174
+[v _CONTROL_DMX CONTROL_DMX `(a  1 s 1 CONTROL_DMX ]
+"212
 [v _CONTROL_BEAT CONTROL_BEAT `(a  1 s 1 CONTROL_BEAT ]
+"249
+[v _getIsHold getIsHold `(a  1 e 1 0 ]
+"253
+[v _CONTROL_MANUAL CONTROL_MANUAL `(a  1 s 1 CONTROL_MANUAL ]
 "21 /home/bbd/Documents/Github/lab_10/dmx.c
 [v _DMX_init DMX_init `(v  1 e 1 0 ]
 "29
@@ -211,24 +235,36 @@ MODE_BEAT_FADE 3
 [v _DMX_interrupt DMX_interrupt `(v  1 e 1 0 ]
 "73
 [v _DMX_getAddress DMX_getAddress `(uc  1 e 1 0 ]
-"22 /home/bbd/Documents/Github/lab_10/led.c
+"24 /home/bbd/Documents/Github/lab_10/led.c
 [v _LED_setColor LED_setColor `(v  1 e 1 0 ]
-"31
+"33
 [v _LED_task_DMX LED_task_DMX `(v  1 s 1 LED_task_DMX ]
-"44
+"53
 [v _LED_task LED_task `(v  1 e 1 0 ]
-"66
+"93
 [v _LED_task_BEAT_STROBE LED_task_BEAT_STROBE `(v  1 s 1 LED_task_BEAT_STROBE ]
-"122
+"149
 [v _beatBrightnessCalculation beatBrightnessCalculation `(f  1 s 4 beatBrightnessCalculation ]
 "11 /home/bbd/Documents/Github/lab_10/led.h
-[s S2439 . 4 `uc 1 white 1 0 `uc 1 red 1 1 `uc 1 green 1 2 `uc 1 blue 1 3 ]
-"137 /home/bbd/Documents/Github/lab_10/led.c
-[v _beatColorCreator beatColorCreator `(S2439  1 s 4 beatColorCreator ]
-"163
+[s S2477 . 4 `uc 1 white 1 0 `uc 1 red 1 1 `uc 1 green 1 2 `uc 1 blue 1 3 ]
+"164 /home/bbd/Documents/Github/lab_10/led.c
+[v _beatColorCreator beatColorCreator `(S2477  1 s 4 beatColorCreator ]
+"190
 [v _LED_task_BEAT_FADE LED_task_BEAT_FADE `(v  1 s 1 LED_task_BEAT_FADE ]
-"168
+"196
 [v _LED_task_ANIMATION LED_task_ANIMATION `(v  1 s 1 LED_task_ANIMATION ]
+"200
+[v _LED_task_BEAT_CONTINUOUS LED_task_BEAT_CONTINUOUS `(v  1 s 1 LED_task_BEAT_CONTINUOUS ]
+"204
+[v _LED_task_BEAT_MIXED LED_task_BEAT_MIXED `(v  1 s 1 LED_task_BEAT_MIXED ]
+"208
+[v _LED_task_MANUAL LED_task_MANUAL `(v  1 s 1 LED_task_MANUAL ]
+"212
+[v _colorInc colorInc `(v  1 e 1 0 ]
+"240
+[v _colorDec colorDec `(v  1 e 1 0 ]
+"268
+[v _getManualColor getManualColor `(uc  1 e 1 0 ]
 "58 /home/bbd/Documents/Github/lab_10/main.c
 [v _main main `(v  1 e 1 0 ]
 "64 /home/bbd/Documents/Github/lab_10/mcc_generated_files/adcc.c
@@ -1176,6 +1212,10 @@ MODE_BEAT_FADE 3
 [v _downState downState `a  1 e 1 0 ]
 [v _menuState menuState `a  1 e 1 0 ]
 [v _enterState enterState `a  1 e 1 0 ]
+"21
+[v _beatHold beatHold `a  1 e 1 0 ]
+"23
+[v _colorModeSelected colorModeSelected `E10878  1 e 1 0 ]
 "15 /home/bbd/Documents/Github/lab_10/dmx.c
 [v _initial initial `i  1 e 2 0 ]
 "16
@@ -1192,6 +1232,9 @@ MODE_BEAT_FADE 3
 [v _dmxArray dmxArray `[513]i  1 e 1026 @9198 ]
 "20
 [v _startup startup `a  1 e 1 0 ]
+[s S2477 . 4 `uc 1 white 1 0 `uc 1 red 1 1 `uc 1 green 1 2 `uc 1 blue 1 3 ]
+"22
+[v _manual manual `S2477  1 e 4 0 ]
 "56 /home/bbd/Documents/Github/lab_10/main.c
 [v _startTime startTime `us  1 e 2 0 ]
 "58 /home/bbd/Documents/Github/lab_10/mcc_generated_files/adcc.c
@@ -1251,7 +1294,7 @@ MODE_BEAT_FADE 3
 "58 /home/bbd/Documents/Github/lab_10/main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"81
+"83
 } 0
 "51 /home/bbd/Documents/Github/lab_10/tm1650.c
 [v _TM1650_init TM1650_init `(v  1 e 1 0 ]
@@ -1341,64 +1384,74 @@ MODE_BEAT_FADE 3
 {
 "119
 } 0
-"44 /home/bbd/Documents/Github/lab_10/led.c
+"53 /home/bbd/Documents/Github/lab_10/led.c
 [v _LED_task LED_task `(v  1 e 1 0 ]
 {
-"64
+"91
 } 0
-"128 /home/bbd/Documents/Github/lab_10/controller.c
+"170 /home/bbd/Documents/Github/lab_10/controller.c
 [v _getMode getMode `(E10869  1 e 1 0 ]
 {
-"130
+"172
 } 0
-"31 /home/bbd/Documents/Github/lab_10/led.c
+"249
+[v _getIsHold getIsHold `(a  1 e 1 0 ]
+{
+"251
+} 0
+"208 /home/bbd/Documents/Github/lab_10/led.c
+[v _LED_task_MANUAL LED_task_MANUAL `(v  1 s 1 LED_task_MANUAL ]
+{
+"210
+} 0
+"33
 [v _LED_task_DMX LED_task_DMX `(v  1 s 1 LED_task_DMX ]
 {
-[s S2439 . 4 `uc 1 white 1 0 `uc 1 red 1 1 `uc 1 green 1 2 `uc 1 blue 1 3 ]
-"33
-[v LED_task_DMX@dmx dmx `S2439  1 a 4 0 ]
-"42
+[s S2477 . 4 `uc 1 white 1 0 `uc 1 red 1 1 `uc 1 green 1 2 `uc 1 blue 1 3 ]
+"35
+[v LED_task_DMX@dmx dmx `S2477  1 a 4 0 ]
+"44
 } 0
 "73 /home/bbd/Documents/Github/lab_10/dmx.c
 [v _DMX_getAddress DMX_getAddress `(uc  1 e 1 0 ]
 {
 "75
 } 0
-"66 /home/bbd/Documents/Github/lab_10/led.c
+"93 /home/bbd/Documents/Github/lab_10/led.c
 [v _LED_task_BEAT_STROBE LED_task_BEAT_STROBE `(v  1 s 1 LED_task_BEAT_STROBE ]
 {
-"120
+"147
 } 0
 "11 /home/bbd/Documents/Github/lab_10/led.h
-[s S2439 . 4 `uc 1 white 1 0 `uc 1 red 1 1 `uc 1 green 1 2 `uc 1 blue 1 3 ]
-"137 /home/bbd/Documents/Github/lab_10/led.c
-[v _beatColorCreator beatColorCreator `(S2439  1 s 4 beatColorCreator ]
+[s S2477 . 4 `uc 1 white 1 0 `uc 1 red 1 1 `uc 1 green 1 2 `uc 1 blue 1 3 ]
+"164 /home/bbd/Documents/Github/lab_10/led.c
+[v _beatColorCreator beatColorCreator `(S2477  1 s 4 beatColorCreator ]
 {
 [v beatColorCreator@inRed inRed `a  1 a 1 wreg ]
-"138
-[v beatColorCreator@tempColor tempColor `S2439  1 a 4 18 ]
-"137
+"165
+[v beatColorCreator@tempColor tempColor `S2477  1 a 4 18 ]
+"164
 [v beatColorCreator@inRed inRed `a  1 a 1 wreg ]
 [v beatColorCreator@inGreen inGreen `a  1 p 1 9 ]
 [v beatColorCreator@inBlue inBlue `a  1 p 1 10 ]
 [v beatColorCreator@inWhite inWhite `a  1 p 1 11 ]
-"140
+"167
 [v beatColorCreator@inRed inRed `a  1 a 1 13 ]
-"161
+"188
 } 0
-"122
+"149
 [v _beatBrightnessCalculation beatBrightnessCalculation `(f  1 s 4 beatBrightnessCalculation ]
 {
-"123
+"150
 [v beatBrightnessCalculation@temp temp `uc  1 a 1 77 ]
-"125
+"152
 } 0
-"22
+"24
 [v _LED_setColor LED_setColor `(v  1 e 1 0 ]
 {
-[s S2439 . 4 `uc 1 white 1 0 `uc 1 red 1 1 `uc 1 green 1 2 `uc 1 blue 1 3 ]
-[v LED_setColor@input input `S2439  1 p 4 22 ]
-"29
+[s S2477 . 4 `uc 1 white 1 0 `uc 1 red 1 1 `uc 1 green 1 2 `uc 1 blue 1 3 ]
+[v LED_setColor@input input `S2477  1 p 4 22 ]
+"31
 } 0
 "10 /opt/microchip/xc8/v2.05/pic/sources/c99/common/xxtofl.c
 [v ___xxtofl __xxtofl `(d  1 e 4 0 ]
@@ -1428,17 +1481,17 @@ MODE_BEAT_FADE 3
 "8 /opt/microchip/xc8/v2.05/pic/sources/c99/common/sprcmul.c
 [v ___flmul __flmul `(d  1 e 4 0 ]
 {
-[s S2872 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
+[s S2947 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
 "13
-[s S2877 . 4 `i 1 wordA 2 0 `i 1 wordB 2 2 ]
-[u S2880 . 4 `l 1 i 4 0 `d 1 f 4 0 `S2872 1 fAsBytes 4 0 `S2877 1 fAsWords 4 0 ]
-[v ___flmul@prod prod `S2880  1 a 4 60 ]
+[s S2952 . 4 `i 1 wordA 2 0 `i 1 wordB 2 2 ]
+[u S2955 . 4 `l 1 i 4 0 `d 1 f 4 0 `S2947 1 fAsBytes 4 0 `S2952 1 fAsWords 4 0 ]
+[v ___flmul@prod prod `S2955  1 a 4 60 ]
 "12
 [v ___flmul@grs grs `ul  1 a 4 55 ]
-[s S2949 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
+[s S3024 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
 "14
-[u S2952 . 2 `i 1 i 2 0 `ui 1 n 2 0 `S2949 1 nAsBytes 2 0 ]
-[v ___flmul@temp temp `S2952  1 a 2 64 ]
+[u S3027 . 2 `i 1 i 2 0 `ui 1 n 2 0 `S3024 1 nAsBytes 2 0 ]
+[v ___flmul@temp temp `S3027  1 a 2 64 ]
 "10
 [v ___flmul@bexp bexp `uc  1 a 1 59 ]
 "11
@@ -1513,15 +1566,25 @@ MODE_BEAT_FADE 3
 {
 "56
 } 0
-"163 /home/bbd/Documents/Github/lab_10/led.c
+"204 /home/bbd/Documents/Github/lab_10/led.c
+[v _LED_task_BEAT_MIXED LED_task_BEAT_MIXED `(v  1 s 1 LED_task_BEAT_MIXED ]
+{
+"206
+} 0
+"190
 [v _LED_task_BEAT_FADE LED_task_BEAT_FADE `(v  1 s 1 LED_task_BEAT_FADE ]
 {
-"166
+"194
 } 0
-"168
+"200
+[v _LED_task_BEAT_CONTINUOUS LED_task_BEAT_CONTINUOUS `(v  1 s 1 LED_task_BEAT_CONTINUOUS ]
+{
+"202
+} 0
+"196
 [v _LED_task_ANIMATION LED_task_ANIMATION `(v  1 s 1 LED_task_ANIMATION ]
 {
-"170
+"198
 } 0
 "21 /home/bbd/Documents/Github/lab_10/dmx.c
 [v _DMX_init DMX_init `(v  1 e 1 0 ]
@@ -1534,17 +1597,17 @@ MODE_BEAT_FADE 3
 [v EUSART1_SetRxInterruptHandler@interruptHandler interruptHandler `*.37(v  1 p 2 0 ]
 "234
 } 0
-"21 /home/bbd/Documents/Github/lab_10/controller.c
+"25 /home/bbd/Documents/Github/lab_10/controller.c
 [v _CONTROLLER_task CONTROLLER_task `(v  1 e 1 0 ]
 {
-"23
+"27
 [v CONTROLLER_task@isActive isActive `a  1 a 1 79 ]
-"81
+"119
 } 0
-"83
+"121
 [v _menuSelection menuSelection `(v  1 e 1 0 ]
 {
-"126
+"168
 } 0
 "5 /opt/microchip/xc8/v2.05/pic/sources/c99/common/printf.c
 [v _printf printf `(i  1 e 2 0 ]
@@ -1558,65 +1621,65 @@ MODE_BEAT_FADE 3
 "1368 /opt/microchip/xc8/v2.05/pic/sources/c99/common/doprnt.c
 [v _vfprintf vfprintf `(i  1 e 2 0 ]
 {
-[s S2683 _IO_FILE 0 ]
-[v vfprintf@fp fp `*.1S2683  1 a 1 wreg ]
+[s S2758 _IO_FILE 0 ]
+[v vfprintf@fp fp `*.1S2758  1 a 1 wreg ]
 "1371
 [v vfprintf@cfmt cfmt `*.25uc  1 a 2 71 ]
 "1368
-[v vfprintf@fp fp `*.1S2683  1 a 1 wreg ]
+[v vfprintf@fp fp `*.1S2758  1 a 1 wreg ]
 [v vfprintf@fmt fmt `*.25DCuc  1 p 2 65 ]
 [v vfprintf@ap ap `*.4*.4v  1 p 1 67 ]
 "1373
 "1368
-[v vfprintf@fp fp `*.1S2683  1 a 1 70 ]
+[v vfprintf@fp fp `*.1S2758  1 a 1 70 ]
 "1382
 } 0
 "670
 [v _vfpfcnvrt vfpfcnvrt `(i  1 s 2 vfpfcnvrt ]
 {
-[s S2683 _IO_FILE 0 ]
-[v vfpfcnvrt@fp fp `*.1S2683  1 a 1 wreg ]
+[s S2758 _IO_FILE 0 ]
+[v vfpfcnvrt@fp fp `*.1S2758  1 a 1 wreg ]
 "672
 [v vfpfcnvrt@c c `uc  1 a 1 63 ]
 "670
-[v vfpfcnvrt@fp fp `*.1S2683  1 a 1 wreg ]
+[v vfpfcnvrt@fp fp `*.1S2758  1 a 1 wreg ]
 [v vfpfcnvrt@fmt fmt `*.4*.25uc  1 p 1 56 ]
 [v vfpfcnvrt@ap ap `*.4*.4v  1 p 1 57 ]
 "680
 "670
-[v vfpfcnvrt@fp fp `*.1S2683  1 a 1 64 ]
+[v vfpfcnvrt@fp fp `*.1S2758  1 a 1 64 ]
 "1365
 } 0
 "259
 [v _ctoa ctoa `(i  1 s 2 ctoa ]
 {
-[s S2683 _IO_FILE 0 ]
-[v ctoa@fp fp `*.1S2683  1 a 1 wreg ]
+[s S2758 _IO_FILE 0 ]
+[v ctoa@fp fp `*.1S2758  1 a 1 wreg ]
 "261
 [v ctoa@w w `i  1 a 2 53 ]
 "259
-[v ctoa@fp fp `*.1S2683  1 a 1 wreg ]
+[v ctoa@fp fp `*.1S2758  1 a 1 wreg ]
 [v ctoa@c c `uc  1 p 1 50 ]
 "264
 "259
-[v ctoa@fp fp `*.1S2683  1 a 1 55 ]
+[v ctoa@fp fp `*.1S2758  1 a 1 55 ]
 "270
 } 0
 "72
 [v _pad pad `(i  1 s 2 pad ]
 {
-[s S2683 _IO_FILE 0 ]
-[v pad@fp fp `*.1S2683  1 a 1 wreg ]
+[s S2758 _IO_FILE 0 ]
+[v pad@fp fp `*.1S2758  1 a 1 wreg ]
 "74
 [v pad@w w `i  1 a 2 47 ]
 [v pad@i i `i  1 a 2 45 ]
 "72
-[v pad@fp fp `*.1S2683  1 a 1 wreg ]
+[v pad@fp fp `*.1S2758  1 a 1 wreg ]
 [v pad@buf buf `*.5uc  1 p 1 41 ]
 [v pad@p p `i  1 p 2 42 ]
 "77
 "72
-[v pad@fp fp `*.1S2683  1 a 1 49 ]
+[v pad@fp fp `*.1S2758  1 a 1 49 ]
 "95
 } 0
 "12 /opt/microchip/xc8/v2.05/pic/sources/c99/common/strlen.c
@@ -1638,8 +1701,8 @@ MODE_BEAT_FADE 3
 [v fputs@c c `uc  1 a 1 37 ]
 "8
 [v fputs@s s `*.5DCuc  1 a 1 wreg ]
-[s S3014 _IO_FILE 5 `*.1uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
-[v fputs@fp fp `*.1S3014  1 p 1 33 ]
+[s S3089 _IO_FILE 5 `*.1uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
+[v fputs@fp fp `*.1S3089  1 p 1 33 ]
 "13
 [v fputs@s s `*.5DCuc  1 a 1 40 ]
 "19
@@ -1648,8 +1711,8 @@ MODE_BEAT_FADE 3
 [v _fputc fputc `(i  1 e 2 0 ]
 {
 [v fputc@c c `i  1 p 2 25 ]
-[s S3014 _IO_FILE 5 `*.1uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
-[v fputc@fp fp `*.1S3014  1 p 1 27 ]
+[s S3089 _IO_FILE 5 `*.1uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
+[v fputc@fp fp `*.1S3089  1 p 1 27 ]
 "21
 } 0
 "120 /home/bbd/Documents/Github/lab_10/tm1650.c
@@ -1671,7 +1734,15 @@ MODE_BEAT_FADE 3
 [v TM1650_setDigit@digit digit `uc  1 a 1 22 ]
 "99
 } 0
-"41
+"268 /home/bbd/Documents/Github/lab_10/led.c
+[v _getManualColor getManualColor `(uc  1 e 1 0 ]
+{
+[v getManualColor@input input `E10883  1 a 1 wreg ]
+[v getManualColor@input input `E10883  1 a 1 wreg ]
+[v getManualColor@input input `E10883  1 a 1 2 ]
+"290
+} 0
+"41 /home/bbd/Documents/Github/lab_10/tm1650.c
 [v _TM1650_enable TM1650_enable `(v  1 e 1 0 ]
 {
 [v TM1650_enable@enable enable `a  1 a 1 wreg ]
@@ -1679,10 +1750,35 @@ MODE_BEAT_FADE 3
 [v TM1650_enable@enable enable `a  1 a 1 20 ]
 "49
 } 0
-"132 /home/bbd/Documents/Github/lab_10/controller.c
+"253 /home/bbd/Documents/Github/lab_10/controller.c
+[v _CONTROL_MANUAL CONTROL_MANUAL `(a  1 s 1 CONTROL_MANUAL ]
+{
+[v CONTROL_MANUAL@input input `E10878  1 a 1 wreg ]
+[v CONTROL_MANUAL@input input `E10878  1 a 1 wreg ]
+"255
+[v CONTROL_MANUAL@input input `E10878  1 a 1 5 ]
+"303
+} 0
+"212 /home/bbd/Documents/Github/lab_10/led.c
+[v _colorInc colorInc `(v  1 e 1 0 ]
+{
+[v colorInc@input input `E10883  1 a 1 wreg ]
+[v colorInc@input input `E10883  1 a 1 wreg ]
+[v colorInc@input input `E10883  1 a 1 2 ]
+"238
+} 0
+"240
+[v _colorDec colorDec `(v  1 e 1 0 ]
+{
+[v colorDec@input input `E10883  1 a 1 wreg ]
+[v colorDec@input input `E10883  1 a 1 wreg ]
+[v colorDec@input input `E10883  1 a 1 2 ]
+"266
+} 0
+"174 /home/bbd/Documents/Github/lab_10/controller.c
 [v _CONTROL_DMX CONTROL_DMX `(a  1 s 1 CONTROL_DMX ]
 {
-"168
+"210
 } 0
 "29 /home/bbd/Documents/Github/lab_10/dmx.c
 [v _address_inc address_inc `(v  1 e 1 0 ]
@@ -1780,6 +1876,13 @@ MODE_BEAT_FADE 3
 [v ___lwmod@dividend dividend `ui  1 p 2 10 ]
 "25
 } 0
+"212 /home/bbd/Documents/Github/lab_10/controller.c
+[v _CONTROL_BEAT CONTROL_BEAT `(a  1 s 1 CONTROL_BEAT ]
+{
+"237
+[v CONTROL_BEAT@i i `VEuc  1 a 1 2 ]
+"247
+} 0
 "106 /home/bbd/Documents/Github/lab_10/buttons.c
 [v _BUTTONS_isHeld BUTTONS_isHeld `(a  1 e 1 0 ]
 {
@@ -1789,12 +1892,7 @@ MODE_BEAT_FADE 3
 [v BUTTONS_isHeld@button button `*.5S1990  1 a 1 0 ]
 "113
 } 0
-"170 /home/bbd/Documents/Github/lab_10/controller.c
-[v _CONTROL_BEAT CONTROL_BEAT `(a  1 s 1 CONTROL_BEAT ]
-{
-"192
-} 0
-"97 /home/bbd/Documents/Github/lab_10/buttons.c
+"97
 [v _BUTTONS_isClicked BUTTONS_isClicked `(a  1 e 1 0 ]
 {
 [s S1990 . 8 `*.39VEuc 1 port 2 0 `uc 1 pin 1 2 `E10875 1 state 1 3 `E10875 1 lastState 1 4 `us 1 lastHoldTime 2 5 `E10869 1 event 1 7 ]

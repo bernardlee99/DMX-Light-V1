@@ -1524,8 +1524,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;beat.c: 80:         thresholdCount = 0;
 [e = _thresholdCount -> 0 `i ]
 "81
-[; ;beat.c: 81:         delay = 10;
-[e = _delay -> -> 10 `i `us ]
+[; ;beat.c: 81:         delay = 30;
+[e = _delay -> -> 30 `i `us ]
 "82
 [; ;beat.c: 82:     }
 }

@@ -70,6 +70,8 @@ void main(void)
     TM1650_init();
     DMX_init(); 
     startTime = CLOCK_getTime();
+    
+    //TM1650_scrollPrint("HELLO");
 
     while (1)
     {   

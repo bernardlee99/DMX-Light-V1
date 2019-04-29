@@ -18650,13 +18650,23 @@ _Bool BUTTONS_isHeld(button_t* button);
 # 48 "main.c" 2
 
 # 1 "./controller.h" 1
-# 16 "./controller.h"
+# 17 "./controller.h"
 typedef enum {
-    MODE_ANIMATION,
-    MODE_BEAT_STROBE,
-    MODE_DMX,
-    MODE_BEAT_FADE
+    MODE_ANIMATION = 2,
+    MODE_BEAT_STROBE = 1,
+    MODE_DMX = 0,
+    MODE_MANUAL = 3,
+    MODE_BEAT_FADE,
+    MODE_BEAT_CONTINUOUS,
+    MODE_BEAT_MIXED
 }mode_t;
+
+typedef enum {
+    CMODE_RED,
+    CMODE_GREEN,
+    CMODE_BLUE,
+    CMODE_WHITE
+} colormode_t;
 
 void CONTROLLER_init();
 void address_inc();
@@ -18665,9 +18675,11 @@ void CONTROLLER_task();
 uint8_t getAddress();
 void menuSelection();
 mode_t getMode();
+_Bool getIsHold();
 
 _Bool static CONTROL_DMX();
 _Bool static CONTROL_BEAT();
+_Bool static CONTROL_MANUAL(colormode_t input);
 
 extern _Bool startup;
 # 49 "main.c" 2
@@ -18690,6 +18702,13 @@ void static LED_task_ANIMATION();
 color_t static beatColorCreator(_Bool inRed, _Bool inGreen, _Bool inBlue, _Bool inWhite);
 color_t static colorCreator(uint8_t inRed, uint8_t inGreen, uint8_t inBlue, uint8_t inWhite);
 float static beatBrightnessCalculation();
+void static LED_task_BEAT_CONTINUOUS();
+void static LED_task_BEAT_MIXED();
+void static LED_task_MANUAL();
+
+void colorDec(colormode_t input);
+void colorInc(colormode_t input);
+uint8_t getManualColor(colormode_t input);
 
 extern uint8_t beatBrightness;
 # 50 "main.c" 2
@@ -18737,6 +18756,8 @@ void main(void)
     TM1650_init();
     DMX_init();
     startTime = CLOCK_getTime();
+
+
 
     while (1)
     {

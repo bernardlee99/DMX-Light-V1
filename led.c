@@ -6,10 +6,10 @@
  */
 
 
-#include "led.h"
 #include "beat.h"
 #include "clock.h"
 #include "controller.h"
+#include "led.h"
 #include "mcc_generated_files/mcc.h"
 #include "dmx.h"
 
@@ -18,6 +18,8 @@ int currentState = 0;
 uint8_t beatBrightness = 1;
  int dmxArray[513];
  bool startup;
+ 
+ color_t manual;
 
 void LED_setColor(color_t input){
     if(!startup){
@@ -41,23 +43,48 @@ void static LED_task_DMX(){
 
 }
 
+void LED_init(){
+    manual.red = 0;
+    manual.green = 0;
+    manual.blue = 0;
+    manual.white = 0;
+}
+
 void LED_task(){
     
-    switch(getMode()){
+    switch(getMode()) {
         case MODE_DMX:
             LED_task_DMX();
             break;
-            
+
         case MODE_BEAT_STROBE:
-            LED_task_BEAT_STROBE();
+            if(getIsHold()) LED_setColor(beatColorCreator(0,0,0,0));
+            else LED_task_BEAT_STROBE();
             break;
-            
+
         case MODE_BEAT_FADE:
-            LED_task_BEAT_FADE();
+            if(getIsHold()) LED_setColor(beatColorCreator(0,0,0,0));
+            else LED_task_BEAT_FADE();
+            break;
+
+        case MODE_BEAT_CONTINUOUS:
+            if(getIsHold()) LED_setColor(beatColorCreator(0,0,0,0));
+            LED_task_BEAT_CONTINUOUS();
+            break;
+
+        case MODE_BEAT_MIXED:
+            if(getIsHold()) LED_setColor(beatColorCreator(0,0,0,0));
+            else LED_task_BEAT_MIXED();
+            break;
+
+        case MODE_ANIMATION:
+            if(!getIsHold())
+            LED_task_ANIMATION();
             break;
             
-        case MODE_ANIMATION:
-            LED_task_ANIMATION();
+        case MODE_MANUAL:
+            LED_task_MANUAL();
+            LED_setColor(manual);
             break;
     }
     
@@ -163,8 +190,101 @@ color_t static beatColorCreator(bool inRed, bool inGreen, bool inBlue, bool inWh
 void static LED_task_BEAT_FADE(){
     
     
+    
 }
 
 void static LED_task_ANIMATION(){
+    
+}
+
+void static LED_task_BEAT_CONTINUOUS(){
+    
+}
+
+void static LED_task_BEAT_MIXED(){
+    
+}
+
+void static LED_task_MANUAL(){
+    
+}
+
+void colorInc(colormode_t input){
+    
+    switch(input){
+        
+        case CMODE_RED:
+            if(!(manual.red > 254))
+            manual.red++;
+            break;
+            
+        case CMODE_GREEN:
+            if(!(manual.green > 254))
+            manual.green++;
+            break;
+            
+        case CMODE_BLUE:
+            if(!(manual.blue > 254))
+            manual.blue++;
+            break;
+            
+        case CMODE_WHITE:
+            if(!(manual.white > 254))
+            manual.white++;
+            break;
+              
+    }
+    
+}
+
+void colorDec(colormode_t input){
+    
+    switch(input){
+        
+        case CMODE_RED:
+            if(!(manual.red < 1))
+            manual.red--;
+            break;
+            
+        case CMODE_GREEN:
+            if(!(manual.green < 1))
+            manual.green--;
+            break;
+            
+        case CMODE_BLUE:
+            if(!(manual.blue < 1))
+            manual.blue--;
+            break;
+            
+        case CMODE_WHITE:
+            if(!(manual.white < 1))
+            manual.white--;
+            break;
+              
+    }
+    
+}
+
+uint8_t getManualColor(colormode_t input){
+    
+       switch(input){
+        
+        case CMODE_RED:
+            return manual.red;
+            break;
+            
+        case CMODE_GREEN:
+            return manual.green;
+            break;
+            
+        case CMODE_BLUE:
+            return manual.blue;
+            break;
+            
+        case CMODE_WHITE:
+            return manual.white;
+            break;
+              
+    }
     
 }

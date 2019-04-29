@@ -1524,8 +1524,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;beat.c: 80:         thresholdCount = 0;
 [e = _thresholdCount -> 0 `i ]
 "81
-[; ;beat.c: 81:         delay = 10;
-[e = _delay -> -> 10 `i `us ]
+[; ;beat.c: 81:         delay = 30;
+[e = _delay -> -> 30 `i `us ]
 "82
 [; ;beat.c: 82:     }
 }
@@ -1538,8 +1538,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;beat.c: 89:         detected = 1;
 [e = _detected -> -> 1 `i `a ]
 "92
-[; ;beat.c: 92:         delay = 25;
-[e = _delay -> -> 25 `i `us ]
+[; ;beat.c: 92:         delay = 15;
+[e = _delay -> -> 15 `i `us ]
 "95
 [; ;beat.c: 95:         time_t offset = CLOCK_getTime() - lastBeat;
 [v _offset `us ~T0 @X0 1 a ]
