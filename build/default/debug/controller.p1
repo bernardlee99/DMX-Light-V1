@@ -3,13 +3,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;controller.c: 24: menuItem_t dmx;
 [c E11188 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 .. ]
 [n E11188 . DMX BEAT ANIMATION MANUAL DMX_TASK B_STROBE B_FADE B_CONT B_MIXED B_STROBE_TASK B_FADE_TASK B_CONT_TASK B_MIXED_TASK MANUAL_RED MANUAL_GREEN MANUAL_BLUE MANUAL_WHITE A_BRIGHTNESS A_SELECTION  ]
-[v F11342 `(v ~T0 @X0 0 tf ]
+[v F11341 `(v ~T0 @X0 0 tf ]
 "13
 [; ;controller.c: 13:  typedef struct menuItem {
-[s S1518 `*S1518 1 `*S1518 1 `*S1518 1 `*S1518 1 `E11188 1 `*F11342 1 ]
+[s S1518 `*S1518 1 `*S1518 1 `*S1518 1 `*S1518 1 `E11188 1 `*F11341 1 ]
 [n S1518 menuItem nextItem prevItem config parent name task ]
+[v F11364 `(v ~T0 @X0 0 tf ]
 [v F11365 `(v ~T0 @X0 0 tf ]
-[v F11366 `(v ~T0 @X0 0 tf ]
 "57
 [; ;controller.c: 57: button_t *up, *down, *menu, *enter;
 [c E11244 0 1 .. ]
@@ -28,6 +28,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;controller.c: 73: colormode_t colorModeSelected = CMODE_RED;
 [c E11218 0 1 2 3 .. ]
 [n E11218 . CMODE_RED CMODE_GREEN CMODE_BLUE CMODE_WHITE  ]
+"11 ./led.h
+[; ;./led.h: 11: typedef struct {
+[s S1516 `uc 1 `uc 1 `uc 1 `uc 1 ]
+[n S1516 . white red green blue ]
 "68 ./controller.h
 [; ;./controller.h: 68: void static CONTROL_DMX();
 [v _CONTROL_DMX `(v ~T0 @X0 0 s? ]
@@ -37,16 +41,16 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _LED_task_ANIMATION `(v ~T0 @X0 0 e? ]
 [v F11394 `(v ~T0 @X0 0 tf ]
 [v F11398 `(v ~T0 @X0 0 tf ]
-"29
-[; ;./led.h: 29: void LED_task_MANUAL();
-[v _LED_task_MANUAL `(v ~T0 @X0 0 e? ]
+"70 ./controller.h
+[; ;./controller.h: 70: void static CONTROL_MANUAL();
+[v _CONTROL_MANUAL `(v ~T0 @X0 0 s? ]
 [v F11402 `(v ~T0 @X0 0 tf ]
 [v F11406 `(v ~T0 @X0 0 tf ]
 [v F11410 `(v ~T0 @X0 0 tf ]
 [v F11414 `(v ~T0 @X0 0 tf ]
-"21
-[; ;./led.h: 21: void LED_task_BEAT_STROBE();
-[v _LED_task_BEAT_STROBE `(v ~T0 @X0 0 e? ]
+"69
+[; ;./controller.h: 69: void static CONTROL_BEAT();
+[v _CONTROL_BEAT `(v ~T0 @X0 0 s? ]
 [v F11418 `(v ~T0 @X0 0 tf ]
 [v F11422 `(v ~T0 @X0 0 tf ]
 [v F11426 `(v ~T0 @X0 0 tf ]
@@ -77,12 +81,30 @@ Version 4.0 HI-TECH Software Intermediate Code
 "18
 [; ;./dmx.h: 18: extern uint16_t address;
 [v _address `us ~T0 @X0 0 e ]
-"32 ./led.h
-[; ;./led.h: 32: void colorInc(colormode_t input);
-[v _colorInc `(v ~T0 @X0 0 ef1`E11218 ]
+"21 ./led.h
+[; ;./led.h: 21: void LED_task_BEAT_STROBE();
+[v _LED_task_BEAT_STROBE `(v ~T0 @X0 0 e? ]
+"22
+[; ;./led.h: 22: void LED_task_BEAT_FADE();
+[v _LED_task_BEAT_FADE `(v ~T0 @X0 0 e? ]
+"28
+[; ;./led.h: 28: void LED_task_BEAT_MIXED();
+[v _LED_task_BEAT_MIXED `(v ~T0 @X0 0 e? ]
+"19 ./tm1650.h
+[; ;./tm1650.h: 19: void TM1650_fastPrintNum_2digit(uint8_t num);
+[v _TM1650_fastPrintNum_2digit `(v ~T0 @X0 0 ef1`uc ]
+"35 ./led.h
+[; ;./led.h: 35: extern uint8_t beatBrightness;
+[v _beatBrightness `uc ~T0 @X0 0 e ]
+"32
+[; ;./led.h: 32: void colorInc();
+[v _colorInc `(v ~T0 @X0 0 e? ]
 "31
-[; ;./led.h: 31: void colorDec(colormode_t input);
-[v _colorDec `(v ~T0 @X0 0 ef1`E11218 ]
+[; ;./led.h: 31: void colorDec();
+[v _colorDec `(v ~T0 @X0 0 e? ]
+"29
+[; ;./led.h: 29: void LED_task_MANUAL();
+[v _LED_task_MANUAL `(v ~T0 @X0 0 e? ]
 "110 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f18446.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f18446.h: 110: __asm("INDF0 equ 00h");
 [; <" INDF0 equ 00h ;# ">
@@ -1507,9 +1529,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _currentMenu `*S1518 ~T0 @X0 1 e ]
 "55
 [; ;controller.c: 55: fn_t previousTask = ((void*)0);
-[v _previousTask `*F11365 ~T0 @X0 1 e ]
+[v _previousTask `*F11364 ~T0 @X0 1 e ]
 [i _previousTask
--> -> -> 0 `i `*v `*F11366
+-> -> -> 0 `i `*v `*F11365
 ]
 "57
 [; ;controller.c: 57: button_t *up, *down, *menu, *enter;
@@ -1599,70 +1621,73 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;controller.c: 77: uint8_t animationBrightness;
 [v _animationBrightness `uc ~T0 @X0 1 e ]
 "79
-[; ;controller.c: 79: void CONTROLLER_init() {
+[; ;controller.c: 79: color_t manualColor;
+[v _manualColor `S1516 ~T0 @X0 1 e ]
+"81
+[; ;controller.c: 81: void CONTROLLER_init() {
 [v _CONTROLLER_init `(v ~T0 @X0 1 ef ]
 {
 [e :U _CONTROLLER_init ]
 [f ]
-"82
-[; ;controller.c: 82:     dmx.nextItem = &beat;
-[e = . _dmx 0 &U _beat ]
-"83
-[; ;controller.c: 83:     dmx.prevItem = &manual;
-[e = . _dmx 1 &U _manual ]
 "84
-[; ;controller.c: 84:     dmx.config = &dmx_task;
-[e = . _dmx 2 &U _dmx_task ]
+[; ;controller.c: 84:     dmx.nextItem = &beat;
+[e = . _dmx 0 &U _beat ]
+"85
+[; ;controller.c: 85:     dmx.prevItem = &manual;
+[e = . _dmx 1 &U _manual ]
 "86
-[; ;controller.c: 86:     dmx.name = DMX;
+[; ;controller.c: 86:     dmx.config = &dmx_task;
+[e = . _dmx 2 &U _dmx_task ]
+"88
+[; ;controller.c: 88:     dmx.name = DMX;
 [e = . _dmx 4 . `E11188 0 ]
-"87
-[; ;controller.c: 87:     dmx.parent = &dmx;
-[e = . _dmx 3 &U _dmx ]
 "89
-[; ;controller.c: 89:     beat.nextItem = &animation;
-[e = . _beat 0 &U _animation ]
-"90
-[; ;controller.c: 90:     beat.prevItem = &dmx;
-[e = . _beat 1 &U _dmx ]
+[; ;controller.c: 89:     dmx.parent = &dmx;
+[e = . _dmx 3 &U _dmx ]
 "91
-[; ;controller.c: 91:     beat.config = &beatStrobe;
-[e = . _beat 2 &U _beatStrobe ]
+[; ;controller.c: 91:     beat.nextItem = &animation;
+[e = . _beat 0 &U _animation ]
+"92
+[; ;controller.c: 92:     beat.prevItem = &dmx;
+[e = . _beat 1 &U _dmx ]
 "93
-[; ;controller.c: 93:     beat.name = BEAT;
+[; ;controller.c: 93:     beat.config = &beatStrobe;
+[e = . _beat 2 &U _beatStrobe ]
+"95
+[; ;controller.c: 95:     beat.name = BEAT;
 [e = . _beat 4 . `E11188 1 ]
-"94
-[; ;controller.c: 94:     beat.parent = &beat;
-[e = . _beat 3 &U _beat ]
 "96
-[; ;controller.c: 96:     animation.nextItem = &manual;
-[e = . _animation 0 &U _manual ]
-"97
-[; ;controller.c: 97:     animation.prevItem = &beat;
-[e = . _animation 1 &U _beat ]
+[; ;controller.c: 96:     beat.parent = &beat;
+[e = . _beat 3 &U _beat ]
 "98
-[; ;controller.c: 98:     animation.config = &animationBrightnessCtrl;
-[e = . _animation 2 &U _animationBrightnessCtrl ]
+[; ;controller.c: 98:     animation.nextItem = &manual;
+[e = . _animation 0 &U _manual ]
+"99
+[; ;controller.c: 99:     animation.prevItem = &beat;
+[e = . _animation 1 &U _beat ]
 "100
-[; ;controller.c: 100:     animation.name = ANIMATION;
+[; ;controller.c: 100:     animation.config = &animationBrightnessCtrl;
+[e = . _animation 2 &U _animationBrightnessCtrl ]
+"102
+[; ;controller.c: 102:     animation.name = ANIMATION;
 [e = . _animation 4 . `E11188 2 ]
-"101
-[; ;controller.c: 101:     animation.parent = &animation;
-[e = . _animation 3 &U _animation ]
 "103
-[; ;controller.c: 103:     manual.nextItem = &dmx;
-[e = . _manual 0 &U _dmx ]
-"104
-[; ;controller.c: 104:     manual.prevItem = &animation;
-[e = . _manual 1 &U _animation ]
+[; ;controller.c: 103:     animation.parent = &animation;
+[e = . _animation 3 &U _animation ]
 "105
-[; ;controller.c: 105:     manual.config = &manualRed;
-[e = . _manual 2 &U _manualRed ]
+[; ;controller.c: 105:     manual.nextItem = &dmx;
+[e = . _manual 0 &U _dmx ]
+"106
+[; ;controller.c: 106:     manual.prevItem = &animation;
+[e = . _manual 1 &U _animation ]
 "107
-[; ;controller.c: 107:     manual.name = MANUAL;
+[; ;controller.c: 107:     manual.config = &manualRed;
+[e = . _manual 2 &U _manualRed ]
+"109
+[; ;controller.c: 109:     manual.name = MANUAL;
 [e = . _manual 4 . `E11188 3 ]
-"108
-[; ;controller.c: 108:     manual.parent = &manual;
+"110
+[; ;controller.c: 110:     manual.parent = &manual;
 [e = . _manual 3 &U _manual ]
 "115
 [; ;controller.c: 115:     dmx_task.nextItem = ((void*)0);
@@ -1779,292 +1804,316 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;controller.c: 165:     animationBrightnessCtrl.parent = &animation;
 [e = . _animationBrightnessCtrl 3 &U _animation ]
 "169
-[; ;controller.c: 169:     manualRed.nextItem = &manualGreen;
-[e = . _manualRed 0 &U _manualGreen ]
+[; ;controller.c: 169:     manualRed.nextItem = ((void*)0);
+[e = . _manualRed 0 -> -> -> 0 `i `*v `*S1518 ]
 "170
-[; ;controller.c: 170:     manualRed.prevItem = &manualWhite;
-[e = . _manualRed 1 &U _manualWhite ]
+[; ;controller.c: 170:     manualRed.prevItem = ((void*)0);
+[e = . _manualRed 1 -> -> -> 0 `i `*v `*S1518 ]
 "171
-[; ;controller.c: 171:     manualRed.config = ((void*)0);
-[e = . _manualRed 2 -> -> -> 0 `i `*v `*S1518 ]
+[; ;controller.c: 171:     manualRed.config = &manualGreen;
+[e = . _manualRed 2 &U _manualGreen ]
 "172
-[; ;controller.c: 172:     manualRed.task = LED_task_MANUAL;
-[e = . _manualRed 5 -> &U _LED_task_MANUAL `*F11402 ]
+[; ;controller.c: 172:     manualRed.task = CONTROL_MANUAL;
+[e = . _manualRed 5 -> &U _CONTROL_MANUAL `*F11402 ]
 "173
 [; ;controller.c: 173:     manualRed.name = MANUAL_RED;
 [e = . _manualRed 4 . `E11188 13 ]
-"175
-[; ;controller.c: 175:     manualGreen.nextItem = &manualBlue;
-[e = . _manualGreen 0 &U _manualBlue ]
+"174
+[; ;controller.c: 174:     manualRed.parent = &manual;
+[e = . _manualRed 3 &U _manual ]
 "176
-[; ;controller.c: 176:     manualGreen.prevItem = &manualRed;
-[e = . _manualGreen 1 &U _manualRed ]
+[; ;controller.c: 176:     manualGreen.nextItem = ((void*)0);
+[e = . _manualGreen 0 -> -> -> 0 `i `*v `*S1518 ]
 "177
-[; ;controller.c: 177:     manualGreen.config = ((void*)0);
-[e = . _manualGreen 2 -> -> -> 0 `i `*v `*S1518 ]
+[; ;controller.c: 177:     manualGreen.prevItem = ((void*)0);
+[e = . _manualGreen 1 -> -> -> 0 `i `*v `*S1518 ]
 "178
-[; ;controller.c: 178:     manualGreen.task = LED_task_MANUAL;
-[e = . _manualGreen 5 -> &U _LED_task_MANUAL `*F11406 ]
+[; ;controller.c: 178:     manualGreen.config = &manualBlue;
+[e = . _manualGreen 2 &U _manualBlue ]
 "179
-[; ;controller.c: 179:     manualGreen.name = MANUAL_GREEN;
+[; ;controller.c: 179:     manualGreen.task = CONTROL_MANUAL;
+[e = . _manualGreen 5 -> &U _CONTROL_MANUAL `*F11406 ]
+"180
+[; ;controller.c: 180:     manualGreen.name = MANUAL_GREEN;
 [e = . _manualGreen 4 . `E11188 14 ]
 "181
-[; ;controller.c: 181:     manualBlue.nextItem = &manualWhite;
-[e = . _manualBlue 0 &U _manualWhite ]
-"182
-[; ;controller.c: 182:     manualBlue.prevItem = &manualGreen;
-[e = . _manualBlue 1 &U _manualGreen ]
+[; ;controller.c: 181:     manualGreen.parent = &manual;
+[e = . _manualGreen 3 &U _manual ]
 "183
-[; ;controller.c: 183:     manualBlue.config = ((void*)0);
-[e = . _manualBlue 2 -> -> -> 0 `i `*v `*S1518 ]
+[; ;controller.c: 183:     manualBlue.nextItem = ((void*)0);
+[e = . _manualBlue 0 -> -> -> 0 `i `*v `*S1518 ]
 "184
-[; ;controller.c: 184:     manualBlue.task = LED_task_MANUAL;
-[e = . _manualBlue 5 -> &U _LED_task_MANUAL `*F11410 ]
+[; ;controller.c: 184:     manualBlue.prevItem = ((void*)0);
+[e = . _manualBlue 1 -> -> -> 0 `i `*v `*S1518 ]
 "185
-[; ;controller.c: 185:     manualBlue.name = MANUAL_BLUE;
-[e = . _manualBlue 4 . `E11188 15 ]
+[; ;controller.c: 185:     manualBlue.config = &manualWhite;
+[e = . _manualBlue 2 &U _manualWhite ]
+"186
+[; ;controller.c: 186:     manualBlue.task = CONTROL_MANUAL;
+[e = . _manualBlue 5 -> &U _CONTROL_MANUAL `*F11410 ]
 "187
-[; ;controller.c: 187:     manualWhite.nextItem = &manualRed;
-[e = . _manualWhite 0 &U _manualRed ]
+[; ;controller.c: 187:     manualBlue.name = MANUAL_BLUE;
+[e = . _manualBlue 4 . `E11188 15 ]
 "188
-[; ;controller.c: 188:     manualWhite.prevItem = &manualBlue;
-[e = . _manualWhite 1 &U _manualBlue ]
-"189
-[; ;controller.c: 189:     manualWhite.config = ((void*)0);
-[e = . _manualWhite 2 -> -> -> 0 `i `*v `*S1518 ]
+[; ;controller.c: 188:     manualBlue.parent = &manual;
+[e = . _manualBlue 3 &U _manual ]
 "190
-[; ;controller.c: 190:     manualWhite.task = LED_task_MANUAL;
-[e = . _manualWhite 5 -> &U _LED_task_MANUAL `*F11414 ]
+[; ;controller.c: 190:     manualWhite.nextItem = ((void*)0);
+[e = . _manualWhite 0 -> -> -> 0 `i `*v `*S1518 ]
 "191
-[; ;controller.c: 191:     manualWhite.name = MANUAL_WHITE;
-[e = . _manualWhite 4 . `E11188 16 ]
+[; ;controller.c: 191:     manualWhite.prevItem = ((void*)0);
+[e = . _manualWhite 1 -> -> -> 0 `i `*v `*S1518 ]
+"192
+[; ;controller.c: 192:     manualWhite.config = &manualRed;
+[e = . _manualWhite 2 &U _manualRed ]
+"193
+[; ;controller.c: 193:     manualWhite.task = CONTROL_MANUAL;
+[e = . _manualWhite 5 -> &U _CONTROL_MANUAL `*F11414 ]
 "194
-[; ;controller.c: 194:     beatStrobeTask.nextItem = ((void*)0);
-[e = . _beatStrobeTask 0 -> -> -> 0 `i `*v `*S1518 ]
+[; ;controller.c: 194:     manualWhite.name = MANUAL_WHITE;
+[e = . _manualWhite 4 . `E11188 16 ]
 "195
-[; ;controller.c: 195:     beatStrobeTask.prevItem = ((void*)0);
-[e = . _beatStrobeTask 1 -> -> -> 0 `i `*v `*S1518 ]
-"196
-[; ;controller.c: 196:     beatStrobeTask.config = ((void*)0);
-[e = . _beatStrobeTask 2 -> -> -> 0 `i `*v `*S1518 ]
-"197
-[; ;controller.c: 197:     beatStrobeTask.task = LED_task_BEAT_STROBE;
-[e = . _beatStrobeTask 5 -> &U _LED_task_BEAT_STROBE `*F11418 ]
+[; ;controller.c: 195:     manualWhite.parent = &manual;
+[e = . _manualWhite 3 &U _manual ]
 "198
-[; ;controller.c: 198:     beatStrobeTask.name = B_STROBE_TASK;
-[e = . _beatStrobeTask 4 . `E11188 9 ]
+[; ;controller.c: 198:     beatStrobeTask.nextItem = ((void*)0);
+[e = . _beatStrobeTask 0 -> -> -> 0 `i `*v `*S1518 ]
+"199
+[; ;controller.c: 199:     beatStrobeTask.prevItem = ((void*)0);
+[e = . _beatStrobeTask 1 -> -> -> 0 `i `*v `*S1518 ]
 "200
-[; ;controller.c: 200:     beatFadeTask.nextItem = ((void*)0);
-[e = . _beatFadeTask 0 -> -> -> 0 `i `*v `*S1518 ]
+[; ;controller.c: 200:     beatStrobeTask.config = ((void*)0);
+[e = . _beatStrobeTask 2 -> -> -> 0 `i `*v `*S1518 ]
 "201
-[; ;controller.c: 201:     beatFadeTask.prevItem = ((void*)0);
-[e = . _beatFadeTask 1 -> -> -> 0 `i `*v `*S1518 ]
+[; ;controller.c: 201:     beatStrobeTask.task = CONTROL_BEAT;
+[e = . _beatStrobeTask 5 -> &U _CONTROL_BEAT `*F11418 ]
 "202
-[; ;controller.c: 202:     beatFadeTask.config = ((void*)0);
-[e = . _beatFadeTask 2 -> -> -> 0 `i `*v `*S1518 ]
+[; ;controller.c: 202:     beatStrobeTask.name = B_STROBE_TASK;
+[e = . _beatStrobeTask 4 . `E11188 9 ]
 "203
-[; ;controller.c: 203:     beatFadeTask.task = LED_task_BEAT_STROBE;
-[e = . _beatFadeTask 5 -> &U _LED_task_BEAT_STROBE `*F11422 ]
-"204
-[; ;controller.c: 204:     beatFadeTask.name = B_FADE_TASK;
-[e = . _beatFadeTask 4 . `E11188 10 ]
+[; ;controller.c: 203:     beatStrobeTask.parent = &beat;
+[e = . _beatStrobeTask 3 &U _beat ]
+"205
+[; ;controller.c: 205:     beatFadeTask.nextItem = ((void*)0);
+[e = . _beatFadeTask 0 -> -> -> 0 `i `*v `*S1518 ]
 "206
-[; ;controller.c: 206:     beatContTask.nextItem = ((void*)0);
-[e = . _beatContTask 0 -> -> -> 0 `i `*v `*S1518 ]
+[; ;controller.c: 206:     beatFadeTask.prevItem = ((void*)0);
+[e = . _beatFadeTask 1 -> -> -> 0 `i `*v `*S1518 ]
 "207
-[; ;controller.c: 207:     beatContTask.prevItem = ((void*)0);
-[e = . _beatContTask 1 -> -> -> 0 `i `*v `*S1518 ]
+[; ;controller.c: 207:     beatFadeTask.config = ((void*)0);
+[e = . _beatFadeTask 2 -> -> -> 0 `i `*v `*S1518 ]
 "208
-[; ;controller.c: 208:     beatContTask.config = ((void*)0);
-[e = . _beatContTask 2 -> -> -> 0 `i `*v `*S1518 ]
+[; ;controller.c: 208:     beatFadeTask.task = CONTROL_BEAT;
+[e = . _beatFadeTask 5 -> &U _CONTROL_BEAT `*F11422 ]
 "209
-[; ;controller.c: 209:     beatContTask.task = LED_task_BEAT_STROBE;
-[e = . _beatContTask 5 -> &U _LED_task_BEAT_STROBE `*F11426 ]
+[; ;controller.c: 209:     beatFadeTask.name = B_FADE_TASK;
+[e = . _beatFadeTask 4 . `E11188 10 ]
 "210
-[; ;controller.c: 210:     beatContTask.name = B_CONT_TASK;
-[e = . _beatContTask 4 . `E11188 11 ]
+[; ;controller.c: 210:     beatFadeTask.parent = &beat;
+[e = . _beatFadeTask 3 &U _beat ]
 "212
-[; ;controller.c: 212:     beatMixedTask.nextItem = ((void*)0);
-[e = . _beatMixedTask 0 -> -> -> 0 `i `*v `*S1518 ]
+[; ;controller.c: 212:     beatContTask.nextItem = ((void*)0);
+[e = . _beatContTask 0 -> -> -> 0 `i `*v `*S1518 ]
 "213
-[; ;controller.c: 213:     beatMixedTask.prevItem = ((void*)0);
-[e = . _beatMixedTask 1 -> -> -> 0 `i `*v `*S1518 ]
+[; ;controller.c: 213:     beatContTask.prevItem = ((void*)0);
+[e = . _beatContTask 1 -> -> -> 0 `i `*v `*S1518 ]
 "214
-[; ;controller.c: 214:     beatMixedTask.config = ((void*)0);
-[e = . _beatMixedTask 2 -> -> -> 0 `i `*v `*S1518 ]
+[; ;controller.c: 214:     beatContTask.config = ((void*)0);
+[e = . _beatContTask 2 -> -> -> 0 `i `*v `*S1518 ]
 "215
-[; ;controller.c: 215:     beatMixedTask.task = LED_task_BEAT_STROBE;
-[e = . _beatMixedTask 5 -> &U _LED_task_BEAT_STROBE `*F11430 ]
+[; ;controller.c: 215:     beatContTask.task = CONTROL_BEAT;
+[e = . _beatContTask 5 -> &U _CONTROL_BEAT `*F11426 ]
 "216
-[; ;controller.c: 216:     beatMixedTask.name = B_MIXED_TASK;
+[; ;controller.c: 216:     beatContTask.name = B_CONT_TASK;
+[e = . _beatContTask 4 . `E11188 11 ]
+"217
+[; ;controller.c: 217:     beatContTask.parent = &beat;
+[e = . _beatContTask 3 &U _beat ]
+"219
+[; ;controller.c: 219:     beatMixedTask.nextItem = ((void*)0);
+[e = . _beatMixedTask 0 -> -> -> 0 `i `*v `*S1518 ]
+"220
+[; ;controller.c: 220:     beatMixedTask.prevItem = ((void*)0);
+[e = . _beatMixedTask 1 -> -> -> 0 `i `*v `*S1518 ]
+"221
+[; ;controller.c: 221:     beatMixedTask.config = ((void*)0);
+[e = . _beatMixedTask 2 -> -> -> 0 `i `*v `*S1518 ]
+"222
+[; ;controller.c: 222:     beatMixedTask.task = CONTROL_BEAT;
+[e = . _beatMixedTask 5 -> &U _CONTROL_BEAT `*F11430 ]
+"223
+[; ;controller.c: 223:     beatMixedTask.name = B_MIXED_TASK;
 [e = . _beatMixedTask 4 . `E11188 12 ]
-"218
-[; ;controller.c: 218: }
+"224
+[; ;controller.c: 224:     beatMixedTask.parent = &beat;
+[e = . _beatMixedTask 3 &U _beat ]
+"226
+[; ;controller.c: 226: }
 [e :UE 1519 ]
 }
-"220
-[; ;controller.c: 220: void CONTROLLER_task(){
+"228
+[; ;controller.c: 228: void CONTROLLER_task(){
 [v _CONTROLLER_task `(v ~T0 @X0 1 ef ]
 {
 [e :U _CONTROLLER_task ]
 [f ]
-"222
-[; ;controller.c: 222:     if(startup == 1){
+"230
+[; ;controller.c: 230:     if(startup == 1){
 [e $ ! == -> _startup `i -> 1 `i 1521  ]
 {
-"223
-[; ;controller.c: 223:         currentMenu = &dmx;
+"231
+[; ;controller.c: 231:         currentMenu = &dmx;
 [e = _currentMenu &U _dmx ]
-"224
-[; ;controller.c: 224:         startup = 0;
+"232
+[; ;controller.c: 232:         startup = 0;
 [e = _startup -> -> 0 `i `a ]
-"225
-[; ;controller.c: 225:     }
+"233
+[; ;controller.c: 233:     }
 }
 [e :U 1521 ]
-"227
-[; ;controller.c: 227:     upState = BUTTONS_isClicked(up);
+"235
+[; ;controller.c: 235:     upState = BUTTONS_isClicked(up);
 [e = _upState ( _BUTTONS_isClicked (1 _up ]
-"228
-[; ;controller.c: 228:     downState = BUTTONS_isClicked(down);
+"236
+[; ;controller.c: 236:     downState = BUTTONS_isClicked(down);
 [e = _downState ( _BUTTONS_isClicked (1 _down ]
-"229
-[; ;controller.c: 229:     menuState = BUTTONS_isClicked(menu);
+"237
+[; ;controller.c: 237:     menuState = BUTTONS_isClicked(menu);
 [e = _menuState ( _BUTTONS_isClicked (1 _menu ]
-"230
-[; ;controller.c: 230:     enterState = BUTTONS_isClicked(enter);
+"238
+[; ;controller.c: 238:     enterState = BUTTONS_isClicked(enter);
 [e = _enterState ( _BUTTONS_isClicked (1 _enter ]
-"232
-[; ;controller.c: 232:     if(menuState){
+"240
+[; ;controller.c: 240:     if(menuState){
 [e $ ! != -> _menuState `i -> 0 `i 1522  ]
 {
-"233
-[; ;controller.c: 233:         currentMenu = currentMenu->parent;
+"241
+[; ;controller.c: 241:         currentMenu = currentMenu->parent;
 [e = _currentMenu . *U _currentMenu 3 ]
-"234
-[; ;controller.c: 234:     } else if(upState && currentMenu->nextItem != ((void*)0)){
+"242
+[; ;controller.c: 242:     } else if(upState && currentMenu->nextItem != ((void*)0)){
 }
 [e $U 1523  ]
 [e :U 1522 ]
 [e $ ! && != -> _upState `i -> 0 `i != . *U _currentMenu 0 -> -> -> 0 `i `*v `*S1518 1524  ]
 {
-"235
-[; ;controller.c: 235:         currentMenu = currentMenu->nextItem;
+"243
+[; ;controller.c: 243:         currentMenu = currentMenu->nextItem;
 [e = _currentMenu . *U _currentMenu 0 ]
-"236
-[; ;controller.c: 236:     } else if(downState && currentMenu->prevItem != ((void*)0)){
+"244
+[; ;controller.c: 244:     } else if(downState && currentMenu->prevItem != ((void*)0)){
 }
 [e $U 1525  ]
 [e :U 1524 ]
 [e $ ! && != -> _downState `i -> 0 `i != . *U _currentMenu 1 -> -> -> 0 `i `*v `*S1518 1526  ]
 {
-"237
-[; ;controller.c: 237:         currentMenu = currentMenu->prevItem;
+"245
+[; ;controller.c: 245:         currentMenu = currentMenu->prevItem;
 [e = _currentMenu . *U _currentMenu 1 ]
-"238
-[; ;controller.c: 238:     } else if(enterState && currentMenu->config != ((void*)0)){
+"246
+[; ;controller.c: 246:     } else if(enterState && currentMenu->config != ((void*)0)){
 }
 [e $U 1527  ]
 [e :U 1526 ]
 [e $ ! && != -> _enterState `i -> 0 `i != . *U _currentMenu 2 -> -> -> 0 `i `*v `*S1518 1528  ]
 {
-"239
-[; ;controller.c: 239:         currentMenu = currentMenu->config;
+"247
+[; ;controller.c: 247:         currentMenu = currentMenu->config;
 [e = _currentMenu . *U _currentMenu 2 ]
-"240
-[; ;controller.c: 240:     }
+"248
+[; ;controller.c: 248:     }
 }
 [e :U 1528 ]
 [e :U 1527 ]
 [e :U 1525 ]
 [e :U 1523 ]
-"242
-[; ;controller.c: 242:     switch(currentMenu->name){
+"250
+[; ;controller.c: 250:     switch(currentMenu->name){
 [e $U 1530  ]
 {
-"243
-[; ;controller.c: 243:         case DMX:
-[e :U 1531 ]
-"244
-[; ;controller.c: 244:             printf("PC  \r");
-[e ( _printf :s 1C ]
-"245
-[; ;controller.c: 245:             break;
-[e $U 1529  ]
-"247
-[; ;controller.c: 247:         case BEAT:
-[e :U 1532 ]
-"248
-[; ;controller.c: 248:             printf("BEAT\r");
-[e ( _printf :s 2C ]
-"249
-[; ;controller.c: 249:             break;
-[e $U 1529  ]
 "251
-[; ;controller.c: 251:         case ANIMATION:
-[e :U 1533 ]
+[; ;controller.c: 251:         case DMX:
+[e :U 1531 ]
 "252
-[; ;controller.c: 252:             printf("ANI \r");
-[e ( _printf :s 3C ]
+[; ;controller.c: 252:             printf("PC  \r");
+[e ( _printf :s 1C ]
 "253
 [; ;controller.c: 253:             break;
 [e $U 1529  ]
 "255
-[; ;controller.c: 255:         case MANUAL:
-[e :U 1534 ]
+[; ;controller.c: 255:         case BEAT:
+[e :U 1532 ]
 "256
-[; ;controller.c: 256:             printf("LED \r");
-[e ( _printf :s 4C ]
+[; ;controller.c: 256:             printf("BEAT\r");
+[e ( _printf :s 2C ]
 "257
 [; ;controller.c: 257:             break;
 [e $U 1529  ]
 "259
-[; ;controller.c: 259:         case B_STROBE:
-[e :U 1535 ]
+[; ;controller.c: 259:         case ANIMATION:
+[e :U 1533 ]
 "260
-[; ;controller.c: 260:             printf("B   \r");
-[e ( _printf :s 5C ]
+[; ;controller.c: 260:             printf("ANI \r");
+[e ( _printf :s 3C ]
 "261
 [; ;controller.c: 261:             break;
 [e $U 1529  ]
 "263
-[; ;controller.c: 263:         case B_FADE:
-[e :U 1536 ]
+[; ;controller.c: 263:         case MANUAL:
+[e :U 1534 ]
 "264
-[; ;controller.c: 264:             printf("FADE\r");
-[e ( _printf :s 6C ]
+[; ;controller.c: 264:             printf("LED \r");
+[e ( _printf :s 4C ]
 "265
 [; ;controller.c: 265:             break;
 [e $U 1529  ]
 "267
-[; ;controller.c: 267:         case B_CONT:
-[e :U 1537 ]
+[; ;controller.c: 267:         case B_STROBE:
+[e :U 1535 ]
 "268
-[; ;controller.c: 268:             printf("C   \r");
-[e ( _printf :s 7C ]
+[; ;controller.c: 268:             printf("B   \r");
+[e ( _printf :s 5C ]
 "269
 [; ;controller.c: 269:             break;
 [e $U 1529  ]
 "271
-[; ;controller.c: 271:         case B_MIXED:
-[e :U 1538 ]
+[; ;controller.c: 271:         case B_FADE:
+[e :U 1536 ]
 "272
-[; ;controller.c: 272:             printf("ALL \r");
-[e ( _printf :s 8C ]
+[; ;controller.c: 272:             printf("FADE\r");
+[e ( _printf :s 6C ]
 "273
 [; ;controller.c: 273:             break;
 [e $U 1529  ]
 "275
-[; ;controller.c: 275:         default:
-[e :U 1539 ]
+[; ;controller.c: 275:         case B_CONT:
+[e :U 1537 ]
 "276
-[; ;controller.c: 276:             currentMenu->task();
-[e ( *U . *U _currentMenu 5 ..  ]
+[; ;controller.c: 276:             printf("C   \r");
+[e ( _printf :s 7C ]
 "277
 [; ;controller.c: 277:             break;
 [e $U 1529  ]
-"278
-[; ;controller.c: 278:     }
+"279
+[; ;controller.c: 279:         case B_MIXED:
+[e :U 1538 ]
+"280
+[; ;controller.c: 280:             printf("ALL \r");
+[e ( _printf :s 8C ]
+"281
+[; ;controller.c: 281:             break;
+[e $U 1529  ]
+"283
+[; ;controller.c: 283:         default:
+[e :U 1539 ]
+"284
+[; ;controller.c: 284:             currentMenu->task();
+[e ( *U . *U _currentMenu 5 ..  ]
+"285
+[; ;controller.c: 285:             break;
+[e $U 1529  ]
+"286
+[; ;controller.c: 286:     }
 }
 [e $U 1529  ]
 [e :U 1530 ]
@@ -2078,132 +2127,132 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> . `E11188 8 `ui 1538
  1539 ]
 [e :U 1529 ]
-"280
-[; ;controller.c: 280: }
+"288
+[; ;controller.c: 288: }
 [e :UE 1520 ]
 }
-"448
-[; ;controller.c: 448: mode_t getMode(){
+"291
+[; ;controller.c: 291: mode_t getMode(){
 [v _getMode `(E11209 ~T0 @X0 1 ef ]
 {
 [e :U _getMode ]
 [f ]
-"449
-[; ;controller.c: 449:     return currentSelection;
+"292
+[; ;controller.c: 292:     return currentSelection;
 [e ) _currentSelection ]
 [e $UE 1540  ]
-"450
-[; ;controller.c: 450: }
+"293
+[; ;controller.c: 293: }
 [e :UE 1540 ]
 }
-"452
-[; ;controller.c: 452: void static CONTROL_DMX(){
+"295
+[; ;controller.c: 295: void static CONTROL_DMX(){
 [v _CONTROL_DMX `(v ~T0 @X0 1 sf ]
 {
 [e :U _CONTROL_DMX ]
 [f ]
-"454
-[; ;controller.c: 454:     printf("d\r");
+"297
+[; ;controller.c: 297:     printf("d\r");
 [e ( _printf :s 9C ]
-"455
-[; ;controller.c: 455:     TM1650_fastPrintNum_3digit(DMX_getAddress());
+"298
+[; ;controller.c: 298:     TM1650_fastPrintNum_3digit(DMX_getAddress());
 [e ( _TM1650_fastPrintNum_3digit (1 -> ( _DMX_getAddress ..  `us ]
-"457
-[; ;controller.c: 457:     if(BUTTONS_isHeld(up) && (CLOCK_getTime() - lastIncTime > incInterval)){
+"300
+[; ;controller.c: 300:     if(BUTTONS_isHeld(up) && (CLOCK_getTime() - lastIncTime > incInterval)){
 [e $ ! && != -> ( _BUTTONS_isHeld (1 _up `i -> 0 `i > - -> ( _CLOCK_getTime ..  `ui -> _lastIncTime `ui -> _incInterval `ui 1542  ]
 {
-"458
-[; ;controller.c: 458:         address_inc();
+"301
+[; ;controller.c: 301:         address_inc();
 [e ( _address_inc ..  ]
-"459
-[; ;controller.c: 459:         lastIncTime = CLOCK_getTime();
+"302
+[; ;controller.c: 302:         lastIncTime = CLOCK_getTime();
 [e = _lastIncTime ( _CLOCK_getTime ..  ]
-"460
-[; ;controller.c: 460:         if(incInterval > 20){
+"303
+[; ;controller.c: 303:         if(incInterval > 20){
 [e $ ! > _incInterval -> 20 `i 1543  ]
 {
-"461
-[; ;controller.c: 461:             incInterval-=1;
+"304
+[; ;controller.c: 304:             incInterval-=1;
 [e =- _incInterval -> 1 `i ]
-"462
-[; ;controller.c: 462:         }
+"305
+[; ;controller.c: 305:         }
 }
 [e :U 1543 ]
-"463
-[; ;controller.c: 463:     } else if(BUTTONS_isHeld(down) && (CLOCK_getTime() - lastIncTime > incInterval)){
+"306
+[; ;controller.c: 306:     } else if(BUTTONS_isHeld(down) && (CLOCK_getTime() - lastIncTime > incInterval)){
 }
 [e $U 1544  ]
 [e :U 1542 ]
 [e $ ! && != -> ( _BUTTONS_isHeld (1 _down `i -> 0 `i > - -> ( _CLOCK_getTime ..  `ui -> _lastIncTime `ui -> _incInterval `ui 1545  ]
 {
-"464
-[; ;controller.c: 464:         address_dec();
+"307
+[; ;controller.c: 307:         address_dec();
 [e ( _address_dec ..  ]
-"465
-[; ;controller.c: 465:         lastIncTime = CLOCK_getTime();
+"308
+[; ;controller.c: 308:         lastIncTime = CLOCK_getTime();
 [e = _lastIncTime ( _CLOCK_getTime ..  ]
-"466
-[; ;controller.c: 466:         if(incInterval > 20){
+"309
+[; ;controller.c: 309:         if(incInterval > 20){
 [e $ ! > _incInterval -> 20 `i 1546  ]
 {
-"467
-[; ;controller.c: 467:             incInterval-=1;
+"310
+[; ;controller.c: 310:             incInterval-=1;
 [e =- _incInterval -> 1 `i ]
-"468
-[; ;controller.c: 468:         }
+"311
+[; ;controller.c: 311:         }
 }
 [e :U 1546 ]
-"469
-[; ;controller.c: 469:     } else if(BUTTONS_isHeld(enter)){
+"312
+[; ;controller.c: 312:     } else if(BUTTONS_isHeld(enter)){
 }
 [e $U 1547  ]
 [e :U 1545 ]
 [e $ ! != -> ( _BUTTONS_isHeld (1 _enter `i -> 0 `i 1548  ]
 {
-"470
-[; ;controller.c: 470:         address = 1;
+"313
+[; ;controller.c: 313:         address = 1;
 [e = _address -> -> 1 `i `us ]
-"471
-[; ;controller.c: 471:     } else if (upState) {
+"314
+[; ;controller.c: 314:     } else if (upState) {
 }
 [e $U 1549  ]
 [e :U 1548 ]
 [e $ ! != -> _upState `i -> 0 `i 1550  ]
 {
-"472
-[; ;controller.c: 472:         address_inc();
+"315
+[; ;controller.c: 315:         address_inc();
 [e ( _address_inc ..  ]
-"473
-[; ;controller.c: 473:         lastActiveTime = CLOCK_getTime();
+"316
+[; ;controller.c: 316:         lastActiveTime = CLOCK_getTime();
 [e = _lastActiveTime ( _CLOCK_getTime ..  ]
-"474
-[; ;controller.c: 474:     } else if (downState) {
+"317
+[; ;controller.c: 317:     } else if (downState) {
 }
 [e $U 1551  ]
 [e :U 1550 ]
 [e $ ! != -> _downState `i -> 0 `i 1552  ]
 {
-"475
-[; ;controller.c: 475:         address_dec();
+"318
+[; ;controller.c: 318:         address_dec();
 [e ( _address_dec ..  ]
-"476
-[; ;controller.c: 476:     } else if((!upState || !downState) && !(BUTTONS_isHeld(down) || BUTTONS_isHeld(up))){
+"319
+[; ;controller.c: 319:     } else if((!upState || !downState) && !(BUTTONS_isHeld(down) || BUTTONS_isHeld(up))){
 }
 [e $U 1553  ]
 [e :U 1552 ]
 [e $ ! && || ! != -> _upState `i -> 0 `i ! != -> _downState `i -> 0 `i ! || != -> ( _BUTTONS_isHeld (1 _down `i -> 0 `i != -> ( _BUTTONS_isHeld (1 _up `i -> 0 `i 1554  ]
 {
-"477
-[; ;controller.c: 477:         incInterval = 100;
+"320
+[; ;controller.c: 320:         incInterval = 100;
 [e = _incInterval -> 100 `i ]
-"478
-[; ;controller.c: 478:     } else {
+"321
+[; ;controller.c: 321:     } else {
 }
 [e $U 1555  ]
 [e :U 1554 ]
 {
-"479
-[; ;controller.c: 479:     }
+"322
+[; ;controller.c: 322:     }
 }
 [e :U 1555 ]
 [e :U 1553 ]
@@ -2211,327 +2260,477 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 1549 ]
 [e :U 1547 ]
 [e :U 1544 ]
-"482
-[; ;controller.c: 482: }
+"325
+[; ;controller.c: 325: }
 [e :UE 1541 ]
 }
-"484
-[; ;controller.c: 484: void static CONTROL_BEAT(){
+"327
+[; ;controller.c: 327: void static CONTROL_BEAT(){
 [v _CONTROL_BEAT `(v ~T0 @X0 1 sf ]
 {
 [e :U _CONTROL_BEAT ]
 [f ]
-"540
-[; ;controller.c: 540: }
+"329
+[; ;controller.c: 329:     switch(currentMenu->name){
+[e $U 1558  ]
+{
+"331
+[; ;controller.c: 331:         case B_STROBE_TASK:
+[e :U 1559 ]
+"332
+[; ;controller.c: 332:             printf("B-\r");
+[e ( _printf :s 10C ]
+"333
+[; ;controller.c: 333:             LED_task_BEAT_STROBE();
+[e ( _LED_task_BEAT_STROBE ..  ]
+"334
+[; ;controller.c: 334:             break;
+[e $U 1557  ]
+"336
+[; ;controller.c: 336:         case B_FADE_TASK:
+[e :U 1560 ]
+"337
+[; ;controller.c: 337:             printf("F-\r");
+[e ( _printf :s 11C ]
+"338
+[; ;controller.c: 338:             LED_task_BEAT_FADE();
+[e ( _LED_task_BEAT_FADE ..  ]
+"339
+[; ;controller.c: 339:             break;
+[e $U 1557  ]
+"341
+[; ;controller.c: 341:         case B_CONT_TASK:
+[e :U 1561 ]
+"342
+[; ;controller.c: 342:             printf("C-\r");
+[e ( _printf :s 12C ]
+"343
+[; ;controller.c: 343:             LED_task_BEAT_FADE();
+[e ( _LED_task_BEAT_FADE ..  ]
+"344
+[; ;controller.c: 344:             break;
+[e $U 1557  ]
+"346
+[; ;controller.c: 346:         case B_MIXED_TASK:
+[e :U 1562 ]
+"347
+[; ;controller.c: 347:             printf("A-\r");
+[e ( _printf :s 13C ]
+"348
+[; ;controller.c: 348:             LED_task_BEAT_MIXED();
+[e ( _LED_task_BEAT_MIXED ..  ]
+"349
+[; ;controller.c: 349:             break;
+[e $U 1557  ]
+"351
+[; ;controller.c: 351:     }
+}
+[e $U 1557  ]
+[e :U 1558 ]
+[e [\ -> . *U _currentMenu 4 `ui , $ -> . `E11188 9 `ui 1559
+ , $ -> . `E11188 10 `ui 1560
+ , $ -> . `E11188 11 `ui 1561
+ , $ -> . `E11188 12 `ui 1562
+ 1557 ]
+[e :U 1557 ]
+"353
+[; ;controller.c: 353:     TM1650_fastPrintNum_2digit(beatBrightness);
+[e ( _TM1650_fastPrintNum_2digit (1 _beatBrightness ]
+"355
+[; ;controller.c: 355:     if (upState) {
+[e $ ! != -> _upState `i -> 0 `i 1563  ]
+{
+"356
+[; ;controller.c: 356:         if(beatBrightness < 9){
+[e $ ! < -> _beatBrightness `i -> 9 `i 1564  ]
+{
+"357
+[; ;controller.c: 357:             beatBrightness++;
+[e ++ _beatBrightness -> -> 1 `i `uc ]
+"358
+[; ;controller.c: 358:         } else {
+}
+[e $U 1565  ]
+[e :U 1564 ]
+{
+"359
+[; ;controller.c: 359:             beatBrightness = 9;
+[e = _beatBrightness -> -> 9 `i `uc ]
+"360
+[; ;controller.c: 360:         }
+}
+[e :U 1565 ]
+"361
+[; ;controller.c: 361:     } else if (downState) {
+}
+[e $U 1566  ]
+[e :U 1563 ]
+[e $ ! != -> _downState `i -> 0 `i 1567  ]
+{
+"362
+[; ;controller.c: 362:         if(beatBrightness > 0){
+[e $ ! > -> _beatBrightness `i -> 0 `i 1568  ]
+{
+"363
+[; ;controller.c: 363:             beatBrightness--;
+[e -- _beatBrightness -> -> 1 `i `uc ]
+"364
+[; ;controller.c: 364:         } else {
+}
+[e $U 1569  ]
+[e :U 1568 ]
+{
+"365
+[; ;controller.c: 365:             beatBrightness = 0;
+[e = _beatBrightness -> -> 0 `i `uc ]
+"366
+[; ;controller.c: 366:         }
+}
+[e :U 1569 ]
+"367
+[; ;controller.c: 367:     }
+}
+[e :U 1567 ]
+[e :U 1566 ]
+"378
+[; ;controller.c: 378: }
 [e :UE 1556 ]
 }
-"542
-[; ;controller.c: 542: _Bool getIsHold(){
+"380
+[; ;controller.c: 380: _Bool getIsHold(){
 [v _getIsHold `(a ~T0 @X0 1 ef ]
 {
 [e :U _getIsHold ]
 [f ]
-"543
-[; ;controller.c: 543:     return 0;
-[e ) -> -> 0 `i `a ]
-[e $UE 1557  ]
-"544
-[; ;controller.c: 544: }
-[e :UE 1557 ]
+"381
+[; ;controller.c: 381:     return beatHold;
+[e ) _beatHold ]
+[e $UE 1570  ]
+"382
+[; ;controller.c: 382: }
+[e :UE 1570 ]
 }
-"546
-[; ;controller.c: 546: void static CONTROL_MANUAL(colormode_t input){
-[v _CONTROL_MANUAL `(v ~T0 @X0 1 sf1`E11218 ]
+"384
+[; ;controller.c: 384: void static CONTROL_MANUAL(){
+[v _CONTROL_MANUAL `(v ~T0 @X0 1 sf ]
 {
 [e :U _CONTROL_MANUAL ]
-[v _input `E11218 ~T0 @X0 1 r1 ]
 [f ]
-"548
-[; ;controller.c: 548:      if(BUTTONS_isHeld(up) && (CLOCK_getTime() - lastIncTime > incInterval)){
-[e $ ! && != -> ( _BUTTONS_isHeld (1 _up `i -> 0 `i > - -> ( _CLOCK_getTime ..  `ui -> _lastIncTime `ui -> _incInterval `ui 1559  ]
+"386
+[; ;controller.c: 386:        switch(currentMenu->name){
+[e $U 1573  ]
 {
-"549
-[; ;controller.c: 549:         colorInc(input);
-[e ( _colorInc (1 _input ]
-"550
-[; ;controller.c: 550:         lastIncTime = CLOCK_getTime();
-[e = _lastIncTime ( _CLOCK_getTime ..  ]
-"551
-[; ;controller.c: 551:         if(incInterval > 10){
-[e $ ! > _incInterval -> 10 `i 1560  ]
-{
-"552
-[; ;controller.c: 552:             incInterval-=1;
-[e =- _incInterval -> 1 `i ]
-"553
-[; ;controller.c: 553:         }
-}
-[e :U 1560 ]
-"554
-[; ;controller.c: 554:     } else if(BUTTONS_isHeld(down) && (CLOCK_getTime() - lastIncTime > incInterval)){
-}
-[e $U 1561  ]
-[e :U 1559 ]
-[e $ ! && != -> ( _BUTTONS_isHeld (1 _down `i -> 0 `i > - -> ( _CLOCK_getTime ..  `ui -> _lastIncTime `ui -> _incInterval `ui 1562  ]
-{
-"555
-[; ;controller.c: 555:         colorDec(input);
-[e ( _colorDec (1 _input ]
-"556
-[; ;controller.c: 556:         lastIncTime = CLOCK_getTime();
-[e = _lastIncTime ( _CLOCK_getTime ..  ]
-"557
-[; ;controller.c: 557:         if(incInterval > 10){
-[e $ ! > _incInterval -> 10 `i 1563  ]
-{
-"558
-[; ;controller.c: 558:             incInterval-=1;
-[e =- _incInterval -> 1 `i ]
-"559
-[; ;controller.c: 559:         }
-}
-[e :U 1563 ]
-"560
-[; ;controller.c: 560:     } else if (upState) {
-}
-[e $U 1564  ]
-[e :U 1562 ]
-[e $ ! != -> _upState `i -> 0 `i 1565  ]
-{
-"561
-[; ;controller.c: 561:         colorInc(input);
-[e ( _colorInc (1 _input ]
-"562
-[; ;controller.c: 562:         lastActiveTime = CLOCK_getTime();
-[e = _lastActiveTime ( _CLOCK_getTime ..  ]
-"563
-[; ;controller.c: 563:     } else if (downState) {
-}
-[e $U 1566  ]
-[e :U 1565 ]
-[e $ ! != -> _downState `i -> 0 `i 1567  ]
-{
-"564
-[; ;controller.c: 564:         colorDec(input);
-[e ( _colorDec (1 _input ]
-"565
-[; ;controller.c: 565:     } else if(enterState){
-}
-[e $U 1568  ]
-[e :U 1567 ]
-[e $ ! != -> _enterState `i -> 0 `i 1569  ]
-{
-"566
-[; ;controller.c: 566:         switch(input){
-[e $U 1571  ]
-{
-"567
-[; ;controller.c: 567:             case CMODE_RED:
-[e :U 1572 ]
-"568
-[; ;controller.c: 568:                 colorModeSelected = CMODE_GREEN;
-[e = _colorModeSelected . `E11218 1 ]
-"569
-[; ;controller.c: 569:                 break;
-[e $U 1570  ]
-"571
-[; ;controller.c: 571:             case CMODE_GREEN:
-[e :U 1573 ]
-"572
-[; ;controller.c: 572:                 colorModeSelected = CMODE_BLUE;
-[e = _colorModeSelected . `E11218 2 ]
-"573
-[; ;controller.c: 573:                 break;
-[e $U 1570  ]
-"575
-[; ;controller.c: 575:             case CMODE_BLUE:
+"388
+[; ;controller.c: 388:         case MANUAL_RED:
 [e :U 1574 ]
-"576
-[; ;controller.c: 576:                 colorModeSelected = CMODE_WHITE;
-[e = _colorModeSelected . `E11218 3 ]
-"577
-[; ;controller.c: 577:                 break;
-[e $U 1570  ]
-"579
-[; ;controller.c: 579:             case CMODE_WHITE:
+"389
+[; ;controller.c: 389:             printf("r\r");
+[e ( _printf :s 14C ]
+"390
+[; ;controller.c: 390:             TM1650_fastPrintNum_3digit(manualColor.red);
+[e ( _TM1650_fastPrintNum_3digit (1 -> . _manualColor 1 `us ]
+"391
+[; ;controller.c: 391:             break;
+[e $U 1572  ]
+"393
+[; ;controller.c: 393:         case MANUAL_GREEN:
 [e :U 1575 ]
-"580
-[; ;controller.c: 580:                 colorModeSelected = CMODE_RED;
-[e = _colorModeSelected . `E11218 0 ]
-"581
-[; ;controller.c: 581:                 break;
-[e $U 1570  ]
-"582
-[; ;controller.c: 582:         }
-}
-[e $U 1570  ]
-[e :U 1571 ]
-[e [\ -> _input `ui , $ -> . `E11218 0 `ui 1572
- , $ -> . `E11218 1 `ui 1573
- , $ -> . `E11218 2 `ui 1574
- , $ -> . `E11218 3 `ui 1575
- 1570 ]
-[e :U 1570 ]
-"583
-[; ;controller.c: 583:     } else if((!upState || !downState) && !(BUTTONS_isHeld(down) || BUTTONS_isHeld(up))){
-}
-[e $U 1576  ]
-[e :U 1569 ]
-[e $ ! && || ! != -> _upState `i -> 0 `i ! != -> _downState `i -> 0 `i ! || != -> ( _BUTTONS_isHeld (1 _down `i -> 0 `i != -> ( _BUTTONS_isHeld (1 _up `i -> 0 `i 1577  ]
-{
-"584
-[; ;controller.c: 584:         incInterval = 100;
-[e = _incInterval -> 100 `i ]
-"585
-[; ;controller.c: 585:     }
-}
-[e :U 1577 ]
+"394
+[; ;controller.c: 394:             printf("g\r");
+[e ( _printf :s 15C ]
+"395
+[; ;controller.c: 395:             TM1650_fastPrintNum_3digit(manualColor.green);
+[e ( _TM1650_fastPrintNum_3digit (1 -> . _manualColor 2 `us ]
+"396
+[; ;controller.c: 396:             break;
+[e $U 1572  ]
+"398
+[; ;controller.c: 398:         case MANUAL_BLUE:
 [e :U 1576 ]
-[e :U 1568 ]
-[e :U 1566 ]
-[e :U 1564 ]
-[e :U 1561 ]
-"587
-[; ;controller.c: 587: }
-[e :UE 1558 ]
+"399
+[; ;controller.c: 399:             printf("b\r");
+[e ( _printf :s 16C ]
+"400
+[; ;controller.c: 400:             TM1650_fastPrintNum_3digit(manualColor.blue);
+[e ( _TM1650_fastPrintNum_3digit (1 -> . _manualColor 3 `us ]
+"401
+[; ;controller.c: 401:             break;
+[e $U 1572  ]
+"403
+[; ;controller.c: 403:         case MANUAL_WHITE:
+[e :U 1577 ]
+"404
+[; ;controller.c: 404:             printf("h\r");
+[e ( _printf :s 17C ]
+"405
+[; ;controller.c: 405:             TM1650_fastPrintNum_3digit(manualColor.white);
+[e ( _TM1650_fastPrintNum_3digit (1 -> . _manualColor 0 `us ]
+"406
+[; ;controller.c: 406:             break;
+[e $U 1572  ]
+"408
+[; ;controller.c: 408:     }
 }
-"589
-[; ;controller.c: 589: void static CONTROL_ANIMATION(){
+[e $U 1572  ]
+[e :U 1573 ]
+[e [\ -> . *U _currentMenu 4 `ui , $ -> . `E11188 13 `ui 1574
+ , $ -> . `E11188 14 `ui 1575
+ , $ -> . `E11188 15 `ui 1576
+ , $ -> . `E11188 16 `ui 1577
+ 1572 ]
+[e :U 1572 ]
+"410
+[; ;controller.c: 410:      if(BUTTONS_isHeld(up) && (CLOCK_getTime() - lastIncTime > incInterval)){
+[e $ ! && != -> ( _BUTTONS_isHeld (1 _up `i -> 0 `i > - -> ( _CLOCK_getTime ..  `ui -> _lastIncTime `ui -> _incInterval `ui 1578  ]
+{
+"411
+[; ;controller.c: 411:         colorInc();
+[e ( _colorInc ..  ]
+"412
+[; ;controller.c: 412:         lastIncTime = CLOCK_getTime();
+[e = _lastIncTime ( _CLOCK_getTime ..  ]
+"413
+[; ;controller.c: 413:         if(incInterval > 10){
+[e $ ! > _incInterval -> 10 `i 1579  ]
+{
+"414
+[; ;controller.c: 414:             incInterval-=1;
+[e =- _incInterval -> 1 `i ]
+"415
+[; ;controller.c: 415:         }
+}
+[e :U 1579 ]
+"416
+[; ;controller.c: 416:     } else if(BUTTONS_isHeld(down) && (CLOCK_getTime() - lastIncTime > incInterval)){
+}
+[e $U 1580  ]
+[e :U 1578 ]
+[e $ ! && != -> ( _BUTTONS_isHeld (1 _down `i -> 0 `i > - -> ( _CLOCK_getTime ..  `ui -> _lastIncTime `ui -> _incInterval `ui 1581  ]
+{
+"417
+[; ;controller.c: 417:         colorDec();
+[e ( _colorDec ..  ]
+"418
+[; ;controller.c: 418:         lastIncTime = CLOCK_getTime();
+[e = _lastIncTime ( _CLOCK_getTime ..  ]
+"419
+[; ;controller.c: 419:         if(incInterval > 10){
+[e $ ! > _incInterval -> 10 `i 1582  ]
+{
+"420
+[; ;controller.c: 420:             incInterval-=1;
+[e =- _incInterval -> 1 `i ]
+"421
+[; ;controller.c: 421:         }
+}
+[e :U 1582 ]
+"422
+[; ;controller.c: 422:     } else if (upState) {
+}
+[e $U 1583  ]
+[e :U 1581 ]
+[e $ ! != -> _upState `i -> 0 `i 1584  ]
+{
+"423
+[; ;controller.c: 423:         colorInc();
+[e ( _colorInc ..  ]
+"424
+[; ;controller.c: 424:         lastActiveTime = CLOCK_getTime();
+[e = _lastActiveTime ( _CLOCK_getTime ..  ]
+"425
+[; ;controller.c: 425:     } else if (downState) {
+}
+[e $U 1585  ]
+[e :U 1584 ]
+[e $ ! != -> _downState `i -> 0 `i 1586  ]
+{
+"426
+[; ;controller.c: 426:         colorDec();
+[e ( _colorDec ..  ]
+"427
+[; ;controller.c: 427:     } else if((!upState || !downState) && !(BUTTONS_isHeld(down) || BUTTONS_isHeld(up))){
+}
+[e $U 1587  ]
+[e :U 1586 ]
+[e $ ! && || ! != -> _upState `i -> 0 `i ! != -> _downState `i -> 0 `i ! || != -> ( _BUTTONS_isHeld (1 _down `i -> 0 `i != -> ( _BUTTONS_isHeld (1 _up `i -> 0 `i 1588  ]
+{
+"428
+[; ;controller.c: 428:         incInterval = 100;
+[e = _incInterval -> 100 `i ]
+"429
+[; ;controller.c: 429:     }
+}
+[e :U 1588 ]
+[e :U 1587 ]
+[e :U 1585 ]
+[e :U 1583 ]
+[e :U 1580 ]
+"431
+[; ;controller.c: 431:     LED_task_MANUAL();
+[e ( _LED_task_MANUAL ..  ]
+"433
+[; ;controller.c: 433: }
+[e :UE 1571 ]
+}
+"435
+[; ;controller.c: 435: void static CONTROL_ANIMATION(){
 [v _CONTROL_ANIMATION `(v ~T0 @X0 1 sf ]
 {
 [e :U _CONTROL_ANIMATION ]
 [f ]
-"591
-[; ;controller.c: 591:     if(enterState){
-[e $ ! != -> _enterState `i -> 0 `i 1579  ]
+"437
+[; ;controller.c: 437:     if(enterState){
+[e $ ! != -> _enterState `i -> 0 `i 1590  ]
 {
-"592
-[; ;controller.c: 592:         animationBrightnessControl = !animationBrightnessControl;
+"438
+[; ;controller.c: 438:         animationBrightnessControl = !animationBrightnessControl;
 [e = _animationBrightnessControl -> -> ! != -> _animationBrightnessControl `i -> 0 `i `i `a ]
-"593
-[; ;controller.c: 593:     }
-}
-[e :U 1579 ]
-"595
-[; ;controller.c: 595:     if (upState && !animationBrightnessControl) {
-[e $ ! && != -> _upState `i -> 0 `i ! != -> _animationBrightnessControl `i -> 0 `i 1580  ]
-{
-"596
-[; ;controller.c: 596:         if (animationModeSelected < 10) {
-[e $ ! < -> _animationModeSelected `i -> 10 `i 1581  ]
-{
-"597
-[; ;controller.c: 597:             animationModeSelected++;
-[e ++ _animationModeSelected -> -> 1 `i `uc ]
-"598
-[; ;controller.c: 598:         } else {
-}
-[e $U 1582  ]
-[e :U 1581 ]
-{
-"599
-[; ;controller.c: 599:             animationModeSelected = 10;
-[e = _animationModeSelected -> -> 10 `i `uc ]
-"600
-[; ;controller.c: 600:         }
-}
-[e :U 1582 ]
-"601
-[; ;controller.c: 601:     } else if (downState && !animationBrightnessControl) {
-}
-[e $U 1583  ]
-[e :U 1580 ]
-[e $ ! && != -> _downState `i -> 0 `i ! != -> _animationBrightnessControl `i -> 0 `i 1584  ]
-{
-"602
-[; ;controller.c: 602:         if (animationModeSelected > 1) {
-[e $ ! > -> _animationModeSelected `i -> 1 `i 1585  ]
-{
-"603
-[; ;controller.c: 603:             animationModeSelected--;
-[e -- _animationModeSelected -> -> 1 `i `uc ]
-"604
-[; ;controller.c: 604:         } else {
-}
-[e $U 1586  ]
-[e :U 1585 ]
-{
-"605
-[; ;controller.c: 605:             animationModeSelected = 1;
-[e = _animationModeSelected -> -> 1 `i `uc ]
-"606
-[; ;controller.c: 606:         }
-}
-[e :U 1586 ]
-"607
-[; ;controller.c: 607:     } else if (upState && animationBrightnessControl) {
-}
-[e $U 1587  ]
-[e :U 1584 ]
-[e $ ! && != -> _upState `i -> 0 `i != -> _animationBrightnessControl `i -> 0 `i 1588  ]
-{
-"608
-[; ;controller.c: 608:         if (animationBrightness < 10) {
-[e $ ! < -> _animationBrightness `i -> 10 `i 1589  ]
-{
-"609
-[; ;controller.c: 609:             animationBrightness++;
-[e ++ _animationBrightness -> -> 1 `i `uc ]
-"610
-[; ;controller.c: 610:         } else {
-}
-[e $U 1590  ]
-[e :U 1589 ]
-{
-"611
-[; ;controller.c: 611:             animationBrightness = 10;
-[e = _animationBrightness -> -> 10 `i `uc ]
-"612
-[; ;controller.c: 612:         }
+"439
+[; ;controller.c: 439:     }
 }
 [e :U 1590 ]
-"613
-[; ;controller.c: 613:     } else if (downState && animationBrightnessControl) {
+"441
+[; ;controller.c: 441:     if (upState && !animationBrightnessControl) {
+[e $ ! && != -> _upState `i -> 0 `i ! != -> _animationBrightnessControl `i -> 0 `i 1591  ]
+{
+"442
+[; ;controller.c: 442:         if (animationModeSelected < 10) {
+[e $ ! < -> _animationModeSelected `i -> 10 `i 1592  ]
+{
+"443
+[; ;controller.c: 443:             animationModeSelected++;
+[e ++ _animationModeSelected -> -> 1 `i `uc ]
+"444
+[; ;controller.c: 444:         } else {
 }
-[e $U 1591  ]
-[e :U 1588 ]
-[e $ ! && != -> _downState `i -> 0 `i != -> _animationBrightnessControl `i -> 0 `i 1592  ]
+[e $U 1593  ]
+[e :U 1592 ]
 {
-"614
-[; ;controller.c: 614:         if (animationBrightness > 0) {
-[e $ ! > -> _animationBrightness `i -> 0 `i 1593  ]
-{
-"615
-[; ;controller.c: 615:             animationBrightness--;
-[e -- _animationBrightness -> -> 1 `i `uc ]
-"616
-[; ;controller.c: 616:         } else {
+"445
+[; ;controller.c: 445:             animationModeSelected = 10;
+[e = _animationModeSelected -> -> 10 `i `uc ]
+"446
+[; ;controller.c: 446:         }
+}
+[e :U 1593 ]
+"447
+[; ;controller.c: 447:     } else if (downState && !animationBrightnessControl) {
 }
 [e $U 1594  ]
-[e :U 1593 ]
-{
-"617
-[; ;controller.c: 617:             animationBrightness = 0;
-[e = _animationBrightness -> -> 0 `i `uc ]
-"618
-[; ;controller.c: 618:         }
-}
-[e :U 1594 ]
-"619
-[; ;controller.c: 619:     }
-}
-[e :U 1592 ]
 [e :U 1591 ]
-[e :U 1587 ]
-[e :U 1583 ]
-"621
-[; ;controller.c: 621: }
-[e :UE 1578 ]
+[e $ ! && != -> _downState `i -> 0 `i ! != -> _animationBrightnessControl `i -> 0 `i 1595  ]
+{
+"448
+[; ;controller.c: 448:         if (animationModeSelected > 1) {
+[e $ ! > -> _animationModeSelected `i -> 1 `i 1596  ]
+{
+"449
+[; ;controller.c: 449:             animationModeSelected--;
+[e -- _animationModeSelected -> -> 1 `i `uc ]
+"450
+[; ;controller.c: 450:         } else {
+}
+[e $U 1597  ]
+[e :U 1596 ]
+{
+"451
+[; ;controller.c: 451:             animationModeSelected = 1;
+[e = _animationModeSelected -> -> 1 `i `uc ]
+"452
+[; ;controller.c: 452:         }
+}
+[e :U 1597 ]
+"453
+[; ;controller.c: 453:     } else if (upState && animationBrightnessControl) {
+}
+[e $U 1598  ]
+[e :U 1595 ]
+[e $ ! && != -> _upState `i -> 0 `i != -> _animationBrightnessControl `i -> 0 `i 1599  ]
+{
+"454
+[; ;controller.c: 454:         if (animationBrightness < 10) {
+[e $ ! < -> _animationBrightness `i -> 10 `i 1600  ]
+{
+"455
+[; ;controller.c: 455:             animationBrightness++;
+[e ++ _animationBrightness -> -> 1 `i `uc ]
+"456
+[; ;controller.c: 456:         } else {
+}
+[e $U 1601  ]
+[e :U 1600 ]
+{
+"457
+[; ;controller.c: 457:             animationBrightness = 10;
+[e = _animationBrightness -> -> 10 `i `uc ]
+"458
+[; ;controller.c: 458:         }
+}
+[e :U 1601 ]
+"459
+[; ;controller.c: 459:     } else if (downState && animationBrightnessControl) {
+}
+[e $U 1602  ]
+[e :U 1599 ]
+[e $ ! && != -> _downState `i -> 0 `i != -> _animationBrightnessControl `i -> 0 `i 1603  ]
+{
+"460
+[; ;controller.c: 460:         if (animationBrightness > 0) {
+[e $ ! > -> _animationBrightness `i -> 0 `i 1604  ]
+{
+"461
+[; ;controller.c: 461:             animationBrightness--;
+[e -- _animationBrightness -> -> 1 `i `uc ]
+"462
+[; ;controller.c: 462:         } else {
+}
+[e $U 1605  ]
+[e :U 1604 ]
+{
+"463
+[; ;controller.c: 463:             animationBrightness = 0;
+[e = _animationBrightness -> -> 0 `i `uc ]
+"464
+[; ;controller.c: 464:         }
+}
+[e :U 1605 ]
+"465
+[; ;controller.c: 465:     }
+}
+[e :U 1603 ]
+[e :U 1602 ]
+[e :U 1598 ]
+[e :U 1594 ]
+"467
+[; ;controller.c: 467: }
+[e :UE 1589 ]
+}
+"469
+[; ;controller.c: 469: menu_t getCurrentMenu(){
+[v _getCurrentMenu `(E11188 ~T0 @X0 1 ef ]
+{
+[e :U _getCurrentMenu ]
+[f ]
+"470
+[; ;controller.c: 470:     return currentMenu->name;
+[e ) . *U _currentMenu 4 ]
+[e $UE 1606  ]
+"471
+[; ;controller.c: 471: }
+[e :UE 1606 ]
 }
 [p f _printf 8388608 ]
+[a 14C 114 13 0 ]
+[a 17C 104 13 0 ]
+[a 15C 103 13 0 ]
 [a 9C 100 13 0 ]
+[a 16C 98 13 0 ]
 [a 2C 66 69 65 84 13 0 ]
 [a 6C 70 65 68 69 13 0 ]
+[a 11C 70 45 13 0 ]
+[a 12C 67 45 13 0 ]
+[a 10C 66 45 13 0 ]
+[a 13C 65 45 13 0 ]
 [a 8C 65 76 76 32 13 0 ]
 [a 3C 65 78 73 32 13 0 ]
 [a 4C 76 69 68 32 13 0 ]

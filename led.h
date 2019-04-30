@@ -28,11 +28,13 @@ void LED_task_BEAT_CONTINUOUS();
 void LED_task_BEAT_MIXED();
 void LED_task_MANUAL();
 
-void colorDec(colormode_t input);
-void colorInc(colormode_t input);
+void colorDec();
+void colorInc();
 uint8_t getManualColor(colormode_t input);
 
 extern uint8_t beatBrightness;
 extern uint8_t animationBrightness;
+
+extern color_t manualColor;
 
 #endif

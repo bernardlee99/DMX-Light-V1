@@ -18557,8 +18557,6 @@ void CONTROLLER_init() {
 
 
 
-
-
     dmx_task.nextItem = ((void*)0);
     dmx_task.prevItem = ((void*)0);
     dmx_task.config = ((void*)0);
@@ -18618,49 +18616,57 @@ void CONTROLLER_init() {
     manualRed.config = ((void*)0);
     manualRed.task = LED_task_MANUAL;
     manualRed.name = MANUAL_RED;
+    manualRed.parent = &manual;
 
     manualGreen.nextItem = &manualBlue;
     manualGreen.prevItem = &manualRed;
     manualGreen.config = ((void*)0);
     manualGreen.task = LED_task_MANUAL;
     manualGreen.name = MANUAL_GREEN;
+    manualGreen.parent = &manual;
 
     manualBlue.nextItem = &manualWhite;
     manualBlue.prevItem = &manualGreen;
     manualBlue.config = ((void*)0);
     manualBlue.task = LED_task_MANUAL;
     manualBlue.name = MANUAL_BLUE;
+    manualBlue.parent = &manual;
 
     manualWhite.nextItem = &manualRed;
     manualWhite.prevItem = &manualBlue;
     manualWhite.config = ((void*)0);
     manualWhite.task = LED_task_MANUAL;
     manualWhite.name = MANUAL_WHITE;
+    manualWhite.parent = &manual;
 
 
     beatStrobeTask.nextItem = ((void*)0);
     beatStrobeTask.prevItem = ((void*)0);
     beatStrobeTask.config = ((void*)0);
-    beatStrobeTask.task = LED_task_BEAT_STROBE;
+    beatStrobeTask.task = CONTROL_BEAT;
     beatStrobeTask.name = B_STROBE_TASK;
+    beatStrobeTask.parent = &beat;
 
     beatFadeTask.nextItem = ((void*)0);
     beatFadeTask.prevItem = ((void*)0);
     beatFadeTask.config = ((void*)0);
-    beatFadeTask.task = LED_task_BEAT_STROBE;
+    beatFadeTask.task = CONTROL_BEAT;
     beatFadeTask.name = B_FADE_TASK;
+    beatFadeTask.parent = &beat;
 
     beatContTask.nextItem = ((void*)0);
     beatContTask.prevItem = ((void*)0);
     beatContTask.config = ((void*)0);
-    beatContTask.task = LED_task_BEAT_STROBE;
+    beatContTask.task = CONTROL_BEAT;
     beatContTask.name = B_CONT_TASK;
+    beatContTask.parent = &beat;
 
     beatMixedTask.nextItem = ((void*)0);
     beatMixedTask.prevItem = ((void*)0);
     beatMixedTask.config = ((void*)0);
-    beatMixedTask.task = LED_task_BEAT_STROBE;
+    beatMixedTask.task = CONTROL_BEAT;
     beatMixedTask.name = B_MIXED_TASK;
+    beatMixedTask.parent = &beat;
 
 }
 
@@ -18725,7 +18731,7 @@ void CONTROLLER_task(){
     }
 
 }
-# 448 "controller.c"
+# 454 "controller.c"
 mode_t getMode(){
     return currentSelection;
 }
@@ -18763,7 +18769,47 @@ void static CONTROL_DMX(){
 }
 
 void static CONTROL_BEAT(){
-# 540 "controller.c"
+
+    switch(currentMenu->name){
+
+        case B_STROBE_TASK:
+            printf("B-\r");
+            LED_task_BEAT_STROBE();
+            break;
+
+        case B_FADE_TASK:
+            printf("F-\r");
+            LED_task_BEAT_FADE();
+            break;
+
+        case B_CONT_TASK:
+            printf("C-\r");
+            LED_task_BEAT_FADE();
+            break;
+
+        case B_MIXED_TASK:
+            printf("A-\r");
+            LED_task_BEAT_MIXED();
+            break;
+
+    }
+
+    TM1650_fastPrintNum_2digit(beatBrightness);
+
+    if (upState) {
+        if(beatBrightness < 9){
+            beatBrightness++;
+        } else {
+            beatBrightness = 9;
+        }
+    } else if (downState) {
+        if(beatBrightness > 0){
+            beatBrightness--;
+        } else {
+            beatBrightness = 0;
+        }
+    }
+# 541 "controller.c"
 }
 
 _Bool getIsHold(){

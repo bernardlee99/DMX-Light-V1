@@ -67,8 +67,10 @@ bool getIsHold();
 
 void static CONTROL_DMX();
 void static CONTROL_BEAT();
-void static CONTROL_MANUAL(colormode_t input);
+void static CONTROL_MANUAL();
 void static CONTROL_ANIMATION();
+
+menu_t getCurrentMenu();
 
 extern bool startup;
 

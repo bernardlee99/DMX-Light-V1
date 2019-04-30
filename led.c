@@ -21,8 +21,8 @@ uint8_t animationBrightness = 5;
  int dmxArray[513];
  bool startup;
  
-color_t manualColor;
-
+ color_t manualColor;
+ 
 void LED_setColor(color_t input){
     if(!startup){
         PWM1_LoadDutyValue( ( ((int)input.red)/255.0 ) * 127 );
@@ -93,13 +93,11 @@ void LED_task(){
 }
 
 void LED_task_MANUAL(){
+
     LED_setColor(manualColor);
 }
 
 void LED_task_BEAT_STROBE(){
-    
-    printf("b-\r");
-    TM1650_fastPrintNum_2digit(beatBrightness);
     
     if(CLOCK_getTime() - lastLedActiveTime < 50){
         return;
@@ -219,26 +217,26 @@ void LED_task_BEAT_MIXED(){
     
 }
 
-void colorInc(colormode_t input){
+void colorInc(){
     
-    switch(input){
+    switch(getCurrentMenu()){
         
-        case CMODE_RED:
+        case MANUAL_RED:
             if(!(manualColor.red > 254))
             manualColor.red++;
             break;
             
-        case CMODE_GREEN:
+        case MANUAL_GREEN:
             if(!(manualColor.green > 254))
             manualColor.green++;
             break;
             
-        case CMODE_BLUE:
+        case MANUAL_BLUE:
             if(!(manualColor.blue > 254))
             manualColor.blue++;
             break;
             
-        case CMODE_WHITE:
+        case MANUAL_WHITE:
             if(!(manualColor.white > 254))
             manualColor.white++;
             break;
@@ -247,26 +245,26 @@ void colorInc(colormode_t input){
     
 }
 
-void colorDec(colormode_t input){
+void colorDec(){
     
-    switch(input){
+    switch(getCurrentMenu()){
         
-        case CMODE_RED:
+        case MANUAL_RED:
             if(!(manualColor.red < 1))
             manualColor.red--;
             break;
             
-        case CMODE_GREEN:
+        case MANUAL_GREEN:
             if(!(manualColor.green < 1))
             manualColor.green--;
             break;
             
-        case CMODE_BLUE:
+        case MANUAL_BLUE:
             if(!(manualColor.blue < 1))
             manualColor.blue--;
             break;
             
-        case CMODE_WHITE:
+        case MANUAL_WHITE:
             if(!(manualColor.white < 1))
             manualColor.white--;
             break;

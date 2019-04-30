@@ -18164,7 +18164,8 @@ uint8_t DMX_getAddress();
 void DMX_task();
 
 extern uint16_t address;
-# 10 "dmx.c" 2
+# 9 "dmx.c" 2
+
 # 1 "./tm1650.h" 1
 # 11 "./tm1650.h"
 void TM1650_init();
@@ -18180,7 +18181,8 @@ void TM1650_fastPrintNum_1digit(uint8_t num);
 void TM1650_enable(_Bool enable);
 _Bool TM1650_isEnabled();
 void static welcomeMessage();
-# 11 "dmx.c" 2
+# 10 "dmx.c" 2
+
 # 1 "./mcc_generated_files/eusart1.h" 1
 # 75 "./mcc_generated_files/eusart1.h"
 typedef union {
@@ -18230,7 +18232,8 @@ void EUSART1_SetOverrunErrorHandler(void (* interruptHandler)(void));
 void EUSART1_SetErrorHandler(void (* interruptHandler)(void));
 # 470 "./mcc_generated_files/eusart1.h"
 void EUSART1_SetRxInterruptHandler(void (* interruptHandler)(void));
-# 12 "dmx.c" 2
+# 11 "dmx.c" 2
+
 
 void DMX_interrupt();
 

@@ -18714,8 +18714,10 @@ _Bool getIsHold();
 
 void static CONTROL_DMX();
 void static CONTROL_BEAT();
-void static CONTROL_MANUAL(colormode_t input);
+void static CONTROL_MANUAL();
 void static CONTROL_ANIMATION();
+
+menu_t getCurrentMenu();
 
 extern _Bool startup;
 # 49 "main.c" 2
@@ -18742,12 +18744,14 @@ void LED_task_BEAT_CONTINUOUS();
 void LED_task_BEAT_MIXED();
 void LED_task_MANUAL();
 
-void colorDec(colormode_t input);
-void colorInc(colormode_t input);
+void colorDec();
+void colorInc();
 uint8_t getManualColor(colormode_t input);
 
 extern uint8_t beatBrightness;
 extern uint8_t animationBrightness;
+
+extern color_t manualColor;
 # 50 "main.c" 2
 
 # 1 "./beat.h" 1

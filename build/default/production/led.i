@@ -18163,7 +18163,8 @@ void BEAT_task();
 
 extern uint8_t beatBrightness;
 extern uint8_t animationBrightness;
-# 10 "led.c" 2
+# 9 "led.c" 2
+
 # 1 "./clock.h" 1
 # 13 "./clock.h"
 typedef uint16_t time_t;
@@ -18171,7 +18172,8 @@ typedef uint16_t time_t;
 void CLOCK_init();
 time_t CLOCK_getTime();
 extern time_t startTime;
-# 11 "led.c" 2
+# 10 "led.c" 2
+
 # 1 "./controller.h" 1
 # 17 "./controller.h"
 void CONTROLLER_init();
@@ -18231,7 +18233,8 @@ void static CONTROL_MANUAL(colormode_t input);
 void static CONTROL_ANIMATION();
 
 extern _Bool startup;
-# 12 "led.c" 2
+# 11 "led.c" 2
+
 # 1 "./led.h" 1
 # 11 "./led.h"
 typedef struct {
@@ -18260,7 +18263,8 @@ uint8_t getManualColor(colormode_t input);
 
 extern uint8_t beatBrightness;
 extern uint8_t animationBrightness;
-# 13 "led.c" 2
+# 12 "led.c" 2
+
 # 1 "./mcc_generated_files/mcc.h" 1
 # 50 "./mcc_generated_files/mcc.h"
 # 1 "./mcc_generated_files/device_config.h" 1
@@ -18722,7 +18726,8 @@ void SYSTEM_Initialize(void);
 void OSCILLATOR_Initialize(void);
 # 104 "./mcc_generated_files/mcc.h"
 void PMD_Initialize(void);
-# 14 "led.c" 2
+# 13 "led.c" 2
+
 # 1 "./dmx.h" 1
 # 12 "./dmx.h"
 void DMX_init();
@@ -18732,7 +18737,8 @@ uint8_t DMX_getAddress();
 void DMX_task();
 
 extern uint16_t address;
-# 15 "led.c" 2
+# 14 "led.c" 2
+
 # 1 "./tm1650.h" 1
 # 11 "./tm1650.h"
 void TM1650_init();
@@ -18748,7 +18754,8 @@ void TM1650_fastPrintNum_1digit(uint8_t num);
 void TM1650_enable(_Bool enable);
 _Bool TM1650_isEnabled();
 void static welcomeMessage();
-# 16 "led.c" 2
+# 15 "led.c" 2
+
 
 time_t lastLedActiveTime = 0;
 int currentState = 0;
@@ -18829,13 +18836,11 @@ void LED_task(){
 }
 
 void LED_task_MANUAL(){
+
     LED_setColor(manualColor);
 }
 
 void LED_task_BEAT_STROBE(){
-
-    printf("b-\r");
-    TM1650_fastPrintNum_2digit(beatBrightness);
 
     if(CLOCK_getTime() - lastLedActiveTime < 50){
         return;

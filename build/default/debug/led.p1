@@ -1,5 +1,5 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[v F11157 `(v ~T0 @X0 0 tf ]
+[v F11156 `(v ~T0 @X0 0 tf ]
 "11 ./led.h
 [; ;./led.h: 11: typedef struct {
 [s S1513 `uc 1 `uc 1 `uc 1 `uc 1 ]
@@ -61,12 +61,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "65 ./controller.h
 [; ;./controller.h: 65: mode_t getMode();
 [v _getMode `(E10897 ~T0 @X0 0 e? ]
-"101 led.c
-[; ;led.c: 101:     printf("b-\r");
-[v _printf `(i ~T0 @X0 0 e? ]
-"19 ./tm1650.h
-[; ;./tm1650.h: 19: void TM1650_fastPrintNum_2digit(uint8_t num);
-[v _TM1650_fastPrintNum_2digit `(v ~T0 @X0 0 ef1`uc ]
 "16 ./clock.h
 [; ;./clock.h: 16: time_t CLOCK_getTime();
 [v _CLOCK_getTime `(us ~T0 @X0 0 e? ]
@@ -76,8 +70,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 "13 ./beat.h
 [; ;./beat.h: 13: _Bool BEAT_detected();
 [v _BEAT_detected `(a ~T0 @X0 0 e? ]
-"222 led.c
-[; ;led.c: 222: void colorInc(colormode_t input){
+"244 led.c
+[; ;led.c: 244:     }
+[c E10876 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 .. ]
+[n E10876 . DMX BEAT ANIMATION MANUAL DMX_TASK B_STROBE B_FADE B_CONT B_MIXED B_STROBE_TASK B_FADE_TASK B_CONT_TASK B_MIXED_TASK MANUAL_RED MANUAL_GREEN MANUAL_BLUE MANUAL_WHITE A_BRIGHTNESS A_SELECTION  ]
+"73 ./controller.h
+[; ;./controller.h: 73: menu_t getCurrentMenu();
+[v _getCurrentMenu `(E10876 ~T0 @X0 0 e? ]
+"276 led.c
+[; ;led.c: 276: uint8_t getManualColor(colormode_t input){
 [c E10906 0 1 2 3 .. ]
 [n E10906 . CMODE_RED CMODE_GREEN CMODE_BLUE CMODE_WHITE  ]
 "110 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f18446.h
@@ -1444,7 +1445,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; <" TOSH equ 01FEFh ;# ">
 "95 ./mcc_generated_files/eusart1.h
 [; ;./mcc_generated_files/eusart1.h: 95: void (*EUSART1_RxDefaultInterruptHandler)(void);
-[v _EUSART1_RxDefaultInterruptHandler `*F11157 ~T0 @X0 1 e ]
+[v _EUSART1_RxDefaultInterruptHandler `*F11156 ~T0 @X0 1 e ]
 "17 led.c
 [; ;led.c: 17: time_t lastLedActiveTime = 0;
 [v _lastLedActiveTime `us ~T0 @X0 1 e ]
@@ -1476,7 +1477,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;led.c: 22:  _Bool startup;
 [v _startup `a ~T0 @X0 1 e ]
 "24
-[; ;led.c: 24: color_t manualColor;
+[; ;led.c: 24:  color_t manualColor;
 [v _manualColor `S1513 ~T0 @X0 1 e ]
 "26
 [; ;led.c: 26: void LED_setColor(color_t input){
@@ -1694,247 +1695,241 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [e :U _LED_task_MANUAL ]
 [f ]
-"96
-[; ;led.c: 96:     LED_setColor(manualColor);
-[e ( _LED_setColor (1 _manualColor ]
 "97
-[; ;led.c: 97: }
+[; ;led.c: 97:     LED_setColor(manualColor);
+[e ( _LED_setColor (1 _manualColor ]
+"98
+[; ;led.c: 98: }
 [e :UE 1541 ]
 }
-"99
-[; ;led.c: 99: void LED_task_BEAT_STROBE(){
+"100
+[; ;led.c: 100: void LED_task_BEAT_STROBE(){
 [v _LED_task_BEAT_STROBE `(v ~T0 @X0 1 ef ]
 {
 [e :U _LED_task_BEAT_STROBE ]
 [f ]
-"101
-[; ;led.c: 101:     printf("b-\r");
-[e ( _printf :s 1C ]
 "102
-[; ;led.c: 102:     TM1650_fastPrintNum_2digit(beatBrightness);
-[e ( _TM1650_fastPrintNum_2digit (1 _beatBrightness ]
-"104
-[; ;led.c: 104:     if(CLOCK_getTime() - lastLedActiveTime < 50){
+[; ;led.c: 102:     if(CLOCK_getTime() - lastLedActiveTime < 50){
 [e $ ! < - -> ( _CLOCK_getTime ..  `ui -> _lastLedActiveTime `ui -> -> 50 `i `ui 1543  ]
 {
-"105
-[; ;led.c: 105:         return;
+"103
+[; ;led.c: 103:         return;
 [e $UE 1542  ]
-"106
-[; ;led.c: 106:     }
+"104
+[; ;led.c: 104:     }
 }
 [e :U 1543 ]
-"108
-[; ;led.c: 108:     lastLedActiveTime = CLOCK_getTime();
+"106
+[; ;led.c: 106:     lastLedActiveTime = CLOCK_getTime();
 [e = _lastLedActiveTime ( _CLOCK_getTime ..  ]
-"110
-[; ;led.c: 110:     LATC5 = 0;
+"108
+[; ;led.c: 108:     LATC5 = 0;
 [e = _LATC5 -> -> 0 `i `b ]
-"111
-[; ;led.c: 111:     _Bool beatState = BEAT_detected();
+"109
+[; ;led.c: 109:     _Bool beatState = BEAT_detected();
 [v _beatState `a ~T0 @X0 1 a ]
 [e = _beatState ( _BEAT_detected ..  ]
-"113
-[; ;led.c: 113:     if (beatState) {
+"111
+[; ;led.c: 111:     if (beatState) {
 [e $ ! != -> _beatState `i -> 0 `i 1544  ]
 {
-"114
-[; ;led.c: 114:         LATC5 = 1;
+"112
+[; ;led.c: 112:         LATC5 = 1;
 [e = _LATC5 -> -> 1 `i `b ]
-"115
-[; ;led.c: 115:     }
+"113
+[; ;led.c: 113:     }
 }
 [e :U 1544 ]
-"117
-[; ;led.c: 117:      if(!beatState){
+"115
+[; ;led.c: 115:      if(!beatState){
 [e $ ! ! != -> _beatState `i -> 0 `i 1545  ]
 {
-"118
-[; ;led.c: 118:          LED_setColor(beatColorCreator(0,0,0,0));
+"116
+[; ;led.c: 116:          LED_setColor(beatColorCreator(0,0,0,0));
 [e ( _LED_setColor (1 ( _beatColorCreator (4 , , , -> -> 0 `i `a -> -> 0 `i `a -> -> 0 `i `a -> -> 0 `i `a ]
-"119
-[; ;led.c: 119:     } else if (currentState == 1){
+"117
+[; ;led.c: 117:     } else if (currentState == 1){
 }
 [e $U 1546  ]
 [e :U 1545 ]
 [e $ ! == _currentState -> 1 `i 1547  ]
 {
-"120
-[; ;led.c: 120:         LED_setColor(beatColorCreator(0,0,0,1));
+"118
+[; ;led.c: 118:         LED_setColor(beatColorCreator(0,0,0,1));
 [e ( _LED_setColor (1 ( _beatColorCreator (4 , , , -> -> 0 `i `a -> -> 0 `i `a -> -> 0 `i `a -> -> 1 `i `a ]
-"121
-[; ;led.c: 121:         currentState++;
+"119
+[; ;led.c: 119:         currentState++;
 [e ++ _currentState -> 1 `i ]
-"122
-[; ;led.c: 122:     } else if(currentState == 2){
+"120
+[; ;led.c: 120:     } else if(currentState == 2){
 }
 [e $U 1548  ]
 [e :U 1547 ]
 [e $ ! == _currentState -> 2 `i 1549  ]
 {
-"123
-[; ;led.c: 123:          LED_setColor(beatColorCreator(0,1,0,1));
+"121
+[; ;led.c: 121:          LED_setColor(beatColorCreator(0,1,0,1));
 [e ( _LED_setColor (1 ( _beatColorCreator (4 , , , -> -> 0 `i `a -> -> 1 `i `a -> -> 0 `i `a -> -> 1 `i `a ]
-"124
-[; ;led.c: 124:         currentState++;
+"122
+[; ;led.c: 122:         currentState++;
 [e ++ _currentState -> 1 `i ]
-"125
-[; ;led.c: 125:     } else if(currentState == 3){
+"123
+[; ;led.c: 123:     } else if(currentState == 3){
 }
 [e $U 1550  ]
 [e :U 1549 ]
 [e $ ! == _currentState -> 3 `i 1551  ]
 {
-"126
-[; ;led.c: 126:          LED_setColor(beatColorCreator(0,1,1,0));
+"124
+[; ;led.c: 124:          LED_setColor(beatColorCreator(0,1,1,0));
 [e ( _LED_setColor (1 ( _beatColorCreator (4 , , , -> -> 0 `i `a -> -> 1 `i `a -> -> 1 `i `a -> -> 0 `i `a ]
-"127
-[; ;led.c: 127:         currentState++;
+"125
+[; ;led.c: 125:         currentState++;
 [e ++ _currentState -> 1 `i ]
-"128
-[; ;led.c: 128:     } else if(currentState == 4){
+"126
+[; ;led.c: 126:     } else if(currentState == 4){
 }
 [e $U 1552  ]
 [e :U 1551 ]
 [e $ ! == _currentState -> 4 `i 1553  ]
 {
-"129
-[; ;led.c: 129:          LED_setColor(beatColorCreator(1,0,1,1));
+"127
+[; ;led.c: 127:          LED_setColor(beatColorCreator(1,0,1,1));
 [e ( _LED_setColor (1 ( _beatColorCreator (4 , , , -> -> 1 `i `a -> -> 0 `i `a -> -> 1 `i `a -> -> 1 `i `a ]
-"130
-[; ;led.c: 130:         currentState++;
+"128
+[; ;led.c: 128:         currentState++;
 [e ++ _currentState -> 1 `i ]
-"131
-[; ;led.c: 131:     }else if(currentState == 5){
+"129
+[; ;led.c: 129:     }else if(currentState == 5){
 }
 [e $U 1554  ]
 [e :U 1553 ]
 [e $ ! == _currentState -> 5 `i 1555  ]
 {
-"132
-[; ;led.c: 132:         LED_setColor(beatColorCreator(0,1,1,0));
+"130
+[; ;led.c: 130:         LED_setColor(beatColorCreator(0,1,1,0));
 [e ( _LED_setColor (1 ( _beatColorCreator (4 , , , -> -> 0 `i `a -> -> 1 `i `a -> -> 1 `i `a -> -> 0 `i `a ]
-"133
-[; ;led.c: 133:         currentState++;
+"131
+[; ;led.c: 131:         currentState++;
 [e ++ _currentState -> 1 `i ]
-"134
-[; ;led.c: 134:     } else if(currentState == 6){
+"132
+[; ;led.c: 132:     } else if(currentState == 6){
 }
 [e $U 1556  ]
 [e :U 1555 ]
 [e $ ! == _currentState -> 6 `i 1557  ]
 {
-"135
-[; ;led.c: 135:         LED_setColor(beatColorCreator(1,1,1,0));
+"133
+[; ;led.c: 133:         LED_setColor(beatColorCreator(1,1,1,0));
 [e ( _LED_setColor (1 ( _beatColorCreator (4 , , , -> -> 1 `i `a -> -> 1 `i `a -> -> 1 `i `a -> -> 0 `i `a ]
-"136
-[; ;led.c: 136:         currentState++;
+"134
+[; ;led.c: 134:         currentState++;
 [e ++ _currentState -> 1 `i ]
-"137
-[; ;led.c: 137:     } else if(currentState == 8){
+"135
+[; ;led.c: 135:     } else if(currentState == 8){
 }
 [e $U 1558  ]
 [e :U 1557 ]
 [e $ ! == _currentState -> 8 `i 1559  ]
 {
-"138
-[; ;led.c: 138:         LED_setColor(beatColorCreator(1,1,0,1));
+"136
+[; ;led.c: 136:         LED_setColor(beatColorCreator(1,1,0,1));
 [e ( _LED_setColor (1 ( _beatColorCreator (4 , , , -> -> 1 `i `a -> -> 1 `i `a -> -> 0 `i `a -> -> 1 `i `a ]
-"139
-[; ;led.c: 139:         currentState++;
+"137
+[; ;led.c: 137:         currentState++;
 [e ++ _currentState -> 1 `i ]
-"140
-[; ;led.c: 140:     } else if(currentState == 9){
+"138
+[; ;led.c: 138:     } else if(currentState == 9){
 }
 [e $U 1560  ]
 [e :U 1559 ]
 [e $ ! == _currentState -> 9 `i 1561  ]
 {
-"141
-[; ;led.c: 141:          LED_setColor(beatColorCreator(0,1,0,1));
+"139
+[; ;led.c: 139:          LED_setColor(beatColorCreator(0,1,0,1));
 [e ( _LED_setColor (1 ( _beatColorCreator (4 , , , -> -> 0 `i `a -> -> 1 `i `a -> -> 0 `i `a -> -> 1 `i `a ]
-"142
-[; ;led.c: 142:         currentState++;
+"140
+[; ;led.c: 140:         currentState++;
 [e ++ _currentState -> 1 `i ]
-"143
-[; ;led.c: 143:     } else if(currentState == 10){
+"141
+[; ;led.c: 141:     } else if(currentState == 10){
 }
 [e $U 1562  ]
 [e :U 1561 ]
 [e $ ! == _currentState -> 10 `i 1563  ]
 {
-"144
-[; ;led.c: 144:          LED_setColor(beatColorCreator(0,0,1,1));
+"142
+[; ;led.c: 142:          LED_setColor(beatColorCreator(0,0,1,1));
 [e ( _LED_setColor (1 ( _beatColorCreator (4 , , , -> -> 0 `i `a -> -> 0 `i `a -> -> 1 `i `a -> -> 1 `i `a ]
-"145
-[; ;led.c: 145:         currentState++;
+"143
+[; ;led.c: 143:         currentState++;
 [e ++ _currentState -> 1 `i ]
-"146
-[; ;led.c: 146:     } else if(currentState == 11){
+"144
+[; ;led.c: 144:     } else if(currentState == 11){
 }
 [e $U 1564  ]
 [e :U 1563 ]
 [e $ ! == _currentState -> 11 `i 1565  ]
 {
-"147
-[; ;led.c: 147:          LED_setColor(beatColorCreator(1,0,1,0));
+"145
+[; ;led.c: 145:          LED_setColor(beatColorCreator(1,0,1,0));
 [e ( _LED_setColor (1 ( _beatColorCreator (4 , , , -> -> 1 `i `a -> -> 0 `i `a -> -> 1 `i `a -> -> 0 `i `a ]
-"148
-[; ;led.c: 148:         currentState++;
+"146
+[; ;led.c: 146:         currentState++;
 [e ++ _currentState -> 1 `i ]
-"149
-[; ;led.c: 149:     }else if(currentState == 12){
+"147
+[; ;led.c: 147:     }else if(currentState == 12){
 }
 [e $U 1566  ]
 [e :U 1565 ]
 [e $ ! == _currentState -> 12 `i 1567  ]
 {
-"150
-[; ;led.c: 150:         LED_setColor(beatColorCreator(1,0,0,1));
+"148
+[; ;led.c: 148:         LED_setColor(beatColorCreator(1,0,0,1));
 [e ( _LED_setColor (1 ( _beatColorCreator (4 , , , -> -> 1 `i `a -> -> 0 `i `a -> -> 0 `i `a -> -> 1 `i `a ]
-"151
-[; ;led.c: 151:         currentState++;
+"149
+[; ;led.c: 149:         currentState++;
 [e ++ _currentState -> 1 `i ]
-"152
-[; ;led.c: 152:     } else if(currentState == 13){
+"150
+[; ;led.c: 150:     } else if(currentState == 13){
 }
 [e $U 1568  ]
 [e :U 1567 ]
 [e $ ! == _currentState -> 13 `i 1569  ]
 {
-"153
-[; ;led.c: 153:         LED_setColor(beatColorCreator(1,1,1,1));
+"151
+[; ;led.c: 151:         LED_setColor(beatColorCreator(1,1,1,1));
 [e ( _LED_setColor (1 ( _beatColorCreator (4 , , , -> -> 1 `i `a -> -> 1 `i `a -> -> 1 `i `a -> -> 1 `i `a ]
-"154
-[; ;led.c: 154:         currentState++;
+"152
+[; ;led.c: 152:         currentState++;
 [e ++ _currentState -> 1 `i ]
-"155
-[; ;led.c: 155:     } else if(currentState == 14){
+"153
+[; ;led.c: 153:     } else if(currentState == 14){
 }
 [e $U 1570  ]
 [e :U 1569 ]
 [e $ ! == _currentState -> 14 `i 1571  ]
 {
-"156
-[; ;led.c: 156:         LED_setColor(beatColorCreator(0,1,0,1));
+"154
+[; ;led.c: 154:         LED_setColor(beatColorCreator(0,1,0,1));
 [e ( _LED_setColor (1 ( _beatColorCreator (4 , , , -> -> 0 `i `a -> -> 1 `i `a -> -> 0 `i `a -> -> 1 `i `a ]
-"157
-[; ;led.c: 157:         currentState++;
+"155
+[; ;led.c: 155:         currentState++;
 [e ++ _currentState -> 1 `i ]
-"158
-[; ;led.c: 158:     } else {
+"156
+[; ;led.c: 156:     } else {
 }
 [e $U 1572  ]
 [e :U 1571 ]
 {
-"159
-[; ;led.c: 159:         LED_setColor(beatColorCreator(0,1,1,1));
+"157
+[; ;led.c: 157:         LED_setColor(beatColorCreator(0,1,1,1));
 [e ( _LED_setColor (1 ( _beatColorCreator (4 , , , -> -> 0 `i `a -> -> 1 `i `a -> -> 1 `i `a -> -> 1 `i `a ]
-"160
-[; ;led.c: 160:         currentState = 1;
+"158
+[; ;led.c: 158:         currentState = 1;
 [e = _currentState -> 1 `i ]
-"161
-[; ;led.c: 161:     }
+"159
+[; ;led.c: 159:     }
 }
 [e :U 1572 ]
 [e :U 1570 ]
@@ -1950,30 +1945,30 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 1550 ]
 [e :U 1548 ]
 [e :U 1546 ]
-"163
-[; ;led.c: 163: }
+"161
+[; ;led.c: 161: }
 [e :UE 1542 ]
 }
-"165
-[; ;led.c: 165: float static beatBrightnessCalculation(){
+"163
+[; ;led.c: 163: float static beatBrightnessCalculation(){
 [v _beatBrightnessCalculation `(f ~T0 @X0 1 sf ]
 {
 [e :U _beatBrightnessCalculation ]
 [f ]
-"166
-[; ;led.c: 166:     uint8_t temp = (float)(beatBrightness/9.0) * 255;
+"164
+[; ;led.c: 164:     uint8_t temp = (float)(beatBrightness/9.0) * 255;
 [v _temp `uc ~T0 @X0 1 a ]
 [e = _temp -> * -> / -> -> _beatBrightness `i `d .9.0 `f -> -> 255 `i `f `uc ]
-"167
-[; ;led.c: 167:     return temp;
+"165
+[; ;led.c: 165:     return temp;
 [e ) -> _temp `f ]
 [e $UE 1573  ]
-"168
-[; ;led.c: 168: }
+"166
+[; ;led.c: 166: }
 [e :UE 1573 ]
 }
-"170
-[; ;led.c: 170: color_t static colorCreator(uint8_t inRed, uint8_t inGreen, uint8_t inBlue, uint8_t inWhite){
+"168
+[; ;led.c: 168: color_t static colorCreator(uint8_t inRed, uint8_t inGreen, uint8_t inBlue, uint8_t inWhite){
 [v _colorCreator `(S1513 ~T0 @X0 1 sf4`uc`uc`uc`uc ]
 {
 [e :U _colorCreator ]
@@ -1982,31 +1977,31 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _inBlue `uc ~T0 @X0 1 r3 ]
 [v _inWhite `uc ~T0 @X0 1 r4 ]
 [f ]
-"171
-[; ;led.c: 171:     color_t tempColor;
+"169
+[; ;led.c: 169:     color_t tempColor;
 [v _tempColor `S1513 ~T0 @X0 1 a ]
-"172
-[; ;led.c: 172:     tempColor.red = inRed;
+"170
+[; ;led.c: 170:     tempColor.red = inRed;
 [e = . _tempColor 1 _inRed ]
-"173
-[; ;led.c: 173:     tempColor.blue = inBlue;
+"171
+[; ;led.c: 171:     tempColor.blue = inBlue;
 [e = . _tempColor 3 _inBlue ]
-"174
-[; ;led.c: 174:     tempColor.green = inGreen;
+"172
+[; ;led.c: 172:     tempColor.green = inGreen;
 [e = . _tempColor 2 _inGreen ]
-"175
-[; ;led.c: 175:     tempColor.white = inWhite;
+"173
+[; ;led.c: 173:     tempColor.white = inWhite;
 [e = . _tempColor 0 _inWhite ]
-"177
-[; ;led.c: 177:     return tempColor;
+"175
+[; ;led.c: 175:     return tempColor;
 [e ) _tempColor ]
 [e $UE 1574  ]
-"178
-[; ;led.c: 178: }
+"176
+[; ;led.c: 176: }
 [e :UE 1574 ]
 }
-"180
-[; ;led.c: 180: color_t static beatColorCreator(_Bool inRed, _Bool inGreen, _Bool inBlue, _Bool inWhite){
+"178
+[; ;led.c: 178: color_t static beatColorCreator(_Bool inRed, _Bool inGreen, _Bool inBlue, _Bool inWhite){
 [v _beatColorCreator `(S1513 ~T0 @X0 1 sf4`a`a`a`a ]
 {
 [e :U _beatColorCreator ]
@@ -2015,322 +2010,320 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _inBlue `a ~T0 @X0 1 r3 ]
 [v _inWhite `a ~T0 @X0 1 r4 ]
 [f ]
-"181
-[; ;led.c: 181:     color_t tempColor;
+"179
+[; ;led.c: 179:     color_t tempColor;
 [v _tempColor `S1513 ~T0 @X0 1 a ]
-"183
-[; ;led.c: 183:     if(inRed)
+"181
+[; ;led.c: 181:     if(inRed)
 [e $ ! != -> _inRed `i -> 0 `i 1576  ]
-"184
-[; ;led.c: 184:         tempColor.red = beatBrightnessCalculation();
+"182
+[; ;led.c: 182:         tempColor.red = beatBrightnessCalculation();
 [e = . _tempColor 1 -> ( _beatBrightnessCalculation ..  `uc ]
 [e $U 1577  ]
-"185
-[; ;led.c: 185:     else
+"183
+[; ;led.c: 183:     else
 [e :U 1576 ]
-"186
-[; ;led.c: 186:         tempColor.red = 0;
+"184
+[; ;led.c: 184:         tempColor.red = 0;
 [e = . _tempColor 1 -> -> 0 `i `uc ]
 [e :U 1577 ]
-"188
-[; ;led.c: 188:     if(inBlue)
+"186
+[; ;led.c: 186:     if(inBlue)
 [e $ ! != -> _inBlue `i -> 0 `i 1578  ]
-"189
-[; ;led.c: 189:         tempColor.blue = beatBrightnessCalculation();
+"187
+[; ;led.c: 187:         tempColor.blue = beatBrightnessCalculation();
 [e = . _tempColor 3 -> ( _beatBrightnessCalculation ..  `uc ]
 [e $U 1579  ]
-"190
-[; ;led.c: 190:     else
+"188
+[; ;led.c: 188:     else
 [e :U 1578 ]
-"191
-[; ;led.c: 191:         tempColor.blue = 0;
+"189
+[; ;led.c: 189:         tempColor.blue = 0;
 [e = . _tempColor 3 -> -> 0 `i `uc ]
 [e :U 1579 ]
-"193
-[; ;led.c: 193:     if(inGreen)
+"191
+[; ;led.c: 191:     if(inGreen)
 [e $ ! != -> _inGreen `i -> 0 `i 1580  ]
-"194
-[; ;led.c: 194:         tempColor.green = beatBrightnessCalculation();
+"192
+[; ;led.c: 192:         tempColor.green = beatBrightnessCalculation();
 [e = . _tempColor 2 -> ( _beatBrightnessCalculation ..  `uc ]
 [e $U 1581  ]
-"195
-[; ;led.c: 195:     else
+"193
+[; ;led.c: 193:     else
 [e :U 1580 ]
-"196
-[; ;led.c: 196:         tempColor.green = 0;
+"194
+[; ;led.c: 194:         tempColor.green = 0;
 [e = . _tempColor 2 -> -> 0 `i `uc ]
 [e :U 1581 ]
-"198
-[; ;led.c: 198:     if(inWhite)
+"196
+[; ;led.c: 196:     if(inWhite)
 [e $ ! != -> _inWhite `i -> 0 `i 1582  ]
-"199
-[; ;led.c: 199:         tempColor.white = beatBrightnessCalculation();
+"197
+[; ;led.c: 197:         tempColor.white = beatBrightnessCalculation();
 [e = . _tempColor 0 -> ( _beatBrightnessCalculation ..  `uc ]
 [e $U 1583  ]
-"200
-[; ;led.c: 200:     else
+"198
+[; ;led.c: 198:     else
 [e :U 1582 ]
-"201
-[; ;led.c: 201:         tempColor.white = 0;
+"199
+[; ;led.c: 199:         tempColor.white = 0;
 [e = . _tempColor 0 -> -> 0 `i `uc ]
 [e :U 1583 ]
-"203
-[; ;led.c: 203:     return tempColor;
+"201
+[; ;led.c: 201:     return tempColor;
 [e ) _tempColor ]
 [e $UE 1575  ]
-"204
-[; ;led.c: 204: }
+"202
+[; ;led.c: 202: }
 [e :UE 1575 ]
 }
-"206
-[; ;led.c: 206: void LED_task_BEAT_FADE(){
+"204
+[; ;led.c: 204: void LED_task_BEAT_FADE(){
 [v _LED_task_BEAT_FADE `(v ~T0 @X0 1 ef ]
 {
 [e :U _LED_task_BEAT_FADE ]
 [f ]
-"208
-[; ;led.c: 208: }
+"206
+[; ;led.c: 206: }
 [e :UE 1584 ]
 }
-"210
-[; ;led.c: 210: void LED_task_ANIMATION(){
+"208
+[; ;led.c: 208: void LED_task_ANIMATION(){
 [v _LED_task_ANIMATION `(v ~T0 @X0 1 ef ]
 {
 [e :U _LED_task_ANIMATION ]
 [f ]
-"212
-[; ;led.c: 212: }
+"210
+[; ;led.c: 210: }
 [e :UE 1585 ]
 }
-"214
-[; ;led.c: 214: void LED_task_BEAT_CONTINUOUS(){
+"212
+[; ;led.c: 212: void LED_task_BEAT_CONTINUOUS(){
 [v _LED_task_BEAT_CONTINUOUS `(v ~T0 @X0 1 ef ]
 {
 [e :U _LED_task_BEAT_CONTINUOUS ]
 [f ]
-"216
-[; ;led.c: 216: }
+"214
+[; ;led.c: 214: }
 [e :UE 1586 ]
 }
-"218
-[; ;led.c: 218: void LED_task_BEAT_MIXED(){
+"216
+[; ;led.c: 216: void LED_task_BEAT_MIXED(){
 [v _LED_task_BEAT_MIXED `(v ~T0 @X0 1 ef ]
 {
 [e :U _LED_task_BEAT_MIXED ]
 [f ]
-"220
-[; ;led.c: 220: }
+"218
+[; ;led.c: 218: }
 [e :UE 1587 ]
 }
-"222
-[; ;led.c: 222: void colorInc(colormode_t input){
-[v _colorInc `(v ~T0 @X0 1 ef1`E10906 ]
+"220
+[; ;led.c: 220: void colorInc(){
+[v _colorInc `(v ~T0 @X0 1 ef ]
 {
 [e :U _colorInc ]
-[v _input `E10906 ~T0 @X0 1 r1 ]
 [f ]
-"224
-[; ;led.c: 224:     switch(input){
+"222
+[; ;led.c: 222:     switch(getCurrentMenu()){
 [e $U 1590  ]
 {
-"226
-[; ;led.c: 226:         case CMODE_RED:
+"224
+[; ;led.c: 224:         case MANUAL_RED:
 [e :U 1591 ]
-"227
-[; ;led.c: 227:             if(!(manualColor.red > 254))
+"225
+[; ;led.c: 225:             if(!(manualColor.red > 254))
 [e $ ! ! > -> . _manualColor 1 `i -> 254 `i 1592  ]
-"228
-[; ;led.c: 228:             manualColor.red++;
+"226
+[; ;led.c: 226:             manualColor.red++;
 [e ++ . _manualColor 1 -> -> 1 `i `uc ]
 [e :U 1592 ]
-"229
-[; ;led.c: 229:             break;
+"227
+[; ;led.c: 227:             break;
 [e $U 1589  ]
-"231
-[; ;led.c: 231:         case CMODE_GREEN:
+"229
+[; ;led.c: 229:         case MANUAL_GREEN:
 [e :U 1593 ]
-"232
-[; ;led.c: 232:             if(!(manualColor.green > 254))
+"230
+[; ;led.c: 230:             if(!(manualColor.green > 254))
 [e $ ! ! > -> . _manualColor 2 `i -> 254 `i 1594  ]
-"233
-[; ;led.c: 233:             manualColor.green++;
+"231
+[; ;led.c: 231:             manualColor.green++;
 [e ++ . _manualColor 2 -> -> 1 `i `uc ]
 [e :U 1594 ]
-"234
-[; ;led.c: 234:             break;
+"232
+[; ;led.c: 232:             break;
 [e $U 1589  ]
-"236
-[; ;led.c: 236:         case CMODE_BLUE:
+"234
+[; ;led.c: 234:         case MANUAL_BLUE:
 [e :U 1595 ]
-"237
-[; ;led.c: 237:             if(!(manualColor.blue > 254))
+"235
+[; ;led.c: 235:             if(!(manualColor.blue > 254))
 [e $ ! ! > -> . _manualColor 3 `i -> 254 `i 1596  ]
-"238
-[; ;led.c: 238:             manualColor.blue++;
+"236
+[; ;led.c: 236:             manualColor.blue++;
 [e ++ . _manualColor 3 -> -> 1 `i `uc ]
 [e :U 1596 ]
-"239
-[; ;led.c: 239:             break;
+"237
+[; ;led.c: 237:             break;
 [e $U 1589  ]
-"241
-[; ;led.c: 241:         case CMODE_WHITE:
+"239
+[; ;led.c: 239:         case MANUAL_WHITE:
 [e :U 1597 ]
-"242
-[; ;led.c: 242:             if(!(manualColor.white > 254))
+"240
+[; ;led.c: 240:             if(!(manualColor.white > 254))
 [e $ ! ! > -> . _manualColor 0 `i -> 254 `i 1598  ]
-"243
-[; ;led.c: 243:             manualColor.white++;
+"241
+[; ;led.c: 241:             manualColor.white++;
 [e ++ . _manualColor 0 -> -> 1 `i `uc ]
 [e :U 1598 ]
-"244
-[; ;led.c: 244:             break;
+"242
+[; ;led.c: 242:             break;
 [e $U 1589  ]
-"246
-[; ;led.c: 246:     }
+"244
+[; ;led.c: 244:     }
 }
 [e $U 1589  ]
 [e :U 1590 ]
-[e [\ -> _input `ui , $ -> . `E10906 0 `ui 1591
- , $ -> . `E10906 1 `ui 1593
- , $ -> . `E10906 2 `ui 1595
- , $ -> . `E10906 3 `ui 1597
+[e [\ -> ( _getCurrentMenu ..  `ui , $ -> . `E10876 13 `ui 1591
+ , $ -> . `E10876 14 `ui 1593
+ , $ -> . `E10876 15 `ui 1595
+ , $ -> . `E10876 16 `ui 1597
  1589 ]
 [e :U 1589 ]
-"248
-[; ;led.c: 248: }
+"246
+[; ;led.c: 246: }
 [e :UE 1588 ]
 }
-"250
-[; ;led.c: 250: void colorDec(colormode_t input){
-[v _colorDec `(v ~T0 @X0 1 ef1`E10906 ]
+"248
+[; ;led.c: 248: void colorDec(){
+[v _colorDec `(v ~T0 @X0 1 ef ]
 {
 [e :U _colorDec ]
-[v _input `E10906 ~T0 @X0 1 r1 ]
 [f ]
-"252
-[; ;led.c: 252:     switch(input){
+"250
+[; ;led.c: 250:     switch(getCurrentMenu()){
 [e $U 1601  ]
 {
-"254
-[; ;led.c: 254:         case CMODE_RED:
+"252
+[; ;led.c: 252:         case MANUAL_RED:
 [e :U 1602 ]
-"255
-[; ;led.c: 255:             if(!(manualColor.red < 1))
+"253
+[; ;led.c: 253:             if(!(manualColor.red < 1))
 [e $ ! ! < -> . _manualColor 1 `i -> 1 `i 1603  ]
-"256
-[; ;led.c: 256:             manualColor.red--;
+"254
+[; ;led.c: 254:             manualColor.red--;
 [e -- . _manualColor 1 -> -> 1 `i `uc ]
 [e :U 1603 ]
-"257
-[; ;led.c: 257:             break;
+"255
+[; ;led.c: 255:             break;
 [e $U 1600  ]
-"259
-[; ;led.c: 259:         case CMODE_GREEN:
+"257
+[; ;led.c: 257:         case MANUAL_GREEN:
 [e :U 1604 ]
-"260
-[; ;led.c: 260:             if(!(manualColor.green < 1))
+"258
+[; ;led.c: 258:             if(!(manualColor.green < 1))
 [e $ ! ! < -> . _manualColor 2 `i -> 1 `i 1605  ]
-"261
-[; ;led.c: 261:             manualColor.green--;
+"259
+[; ;led.c: 259:             manualColor.green--;
 [e -- . _manualColor 2 -> -> 1 `i `uc ]
 [e :U 1605 ]
-"262
-[; ;led.c: 262:             break;
+"260
+[; ;led.c: 260:             break;
 [e $U 1600  ]
-"264
-[; ;led.c: 264:         case CMODE_BLUE:
+"262
+[; ;led.c: 262:         case MANUAL_BLUE:
 [e :U 1606 ]
-"265
-[; ;led.c: 265:             if(!(manualColor.blue < 1))
+"263
+[; ;led.c: 263:             if(!(manualColor.blue < 1))
 [e $ ! ! < -> . _manualColor 3 `i -> 1 `i 1607  ]
-"266
-[; ;led.c: 266:             manualColor.blue--;
+"264
+[; ;led.c: 264:             manualColor.blue--;
 [e -- . _manualColor 3 -> -> 1 `i `uc ]
 [e :U 1607 ]
-"267
-[; ;led.c: 267:             break;
+"265
+[; ;led.c: 265:             break;
 [e $U 1600  ]
-"269
-[; ;led.c: 269:         case CMODE_WHITE:
+"267
+[; ;led.c: 267:         case MANUAL_WHITE:
 [e :U 1608 ]
-"270
-[; ;led.c: 270:             if(!(manualColor.white < 1))
+"268
+[; ;led.c: 268:             if(!(manualColor.white < 1))
 [e $ ! ! < -> . _manualColor 0 `i -> 1 `i 1609  ]
-"271
-[; ;led.c: 271:             manualColor.white--;
+"269
+[; ;led.c: 269:             manualColor.white--;
 [e -- . _manualColor 0 -> -> 1 `i `uc ]
 [e :U 1609 ]
-"272
-[; ;led.c: 272:             break;
+"270
+[; ;led.c: 270:             break;
 [e $U 1600  ]
-"274
-[; ;led.c: 274:     }
+"272
+[; ;led.c: 272:     }
 }
 [e $U 1600  ]
 [e :U 1601 ]
-[e [\ -> _input `ui , $ -> . `E10906 0 `ui 1602
- , $ -> . `E10906 1 `ui 1604
- , $ -> . `E10906 2 `ui 1606
- , $ -> . `E10906 3 `ui 1608
+[e [\ -> ( _getCurrentMenu ..  `ui , $ -> . `E10876 13 `ui 1602
+ , $ -> . `E10876 14 `ui 1604
+ , $ -> . `E10876 15 `ui 1606
+ , $ -> . `E10876 16 `ui 1608
  1600 ]
 [e :U 1600 ]
-"276
-[; ;led.c: 276: }
+"274
+[; ;led.c: 274: }
 [e :UE 1599 ]
 }
-"278
-[; ;led.c: 278: uint8_t getManualColor(colormode_t input){
+"276
+[; ;led.c: 276: uint8_t getManualColor(colormode_t input){
 [v _getManualColor `(uc ~T0 @X0 1 ef1`E10906 ]
 {
 [e :U _getManualColor ]
 [v _input `E10906 ~T0 @X0 1 r1 ]
 [f ]
-"280
-[; ;led.c: 280:        switch(input){
+"278
+[; ;led.c: 278:        switch(input){
 [e $U 1612  ]
 {
-"282
-[; ;led.c: 282:         case CMODE_RED:
+"280
+[; ;led.c: 280:         case CMODE_RED:
 [e :U 1613 ]
-"283
-[; ;led.c: 283:             return manualColor.red;
+"281
+[; ;led.c: 281:             return manualColor.red;
 [e ) . _manualColor 1 ]
 [e $UE 1610  ]
-"284
-[; ;led.c: 284:             break;
+"282
+[; ;led.c: 282:             break;
 [e $U 1611  ]
-"286
-[; ;led.c: 286:         case CMODE_GREEN:
+"284
+[; ;led.c: 284:         case CMODE_GREEN:
 [e :U 1614 ]
-"287
-[; ;led.c: 287:             return manualColor.green;
+"285
+[; ;led.c: 285:             return manualColor.green;
 [e ) . _manualColor 2 ]
 [e $UE 1610  ]
-"288
-[; ;led.c: 288:             break;
+"286
+[; ;led.c: 286:             break;
 [e $U 1611  ]
-"290
-[; ;led.c: 290:         case CMODE_BLUE:
+"288
+[; ;led.c: 288:         case CMODE_BLUE:
 [e :U 1615 ]
-"291
-[; ;led.c: 291:             return manualColor.blue;
+"289
+[; ;led.c: 289:             return manualColor.blue;
 [e ) . _manualColor 3 ]
 [e $UE 1610  ]
-"292
-[; ;led.c: 292:             break;
+"290
+[; ;led.c: 290:             break;
 [e $U 1611  ]
-"294
-[; ;led.c: 294:         case CMODE_WHITE:
+"292
+[; ;led.c: 292:         case CMODE_WHITE:
 [e :U 1616 ]
-"295
-[; ;led.c: 295:             return manualColor.white;
+"293
+[; ;led.c: 293:             return manualColor.white;
 [e ) . _manualColor 0 ]
 [e $UE 1610  ]
-"296
-[; ;led.c: 296:             break;
+"294
+[; ;led.c: 294:             break;
 [e $U 1611  ]
-"298
-[; ;led.c: 298:     }
+"296
+[; ;led.c: 296:     }
 }
 [e $U 1611  ]
 [e :U 1612 ]
@@ -2340,8 +2333,7 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> . `E10906 3 `ui 1616
  1611 ]
 [e :U 1611 ]
-"300
-[; ;led.c: 300: }
+"298
+[; ;led.c: 298: }
 [e :UE 1610 ]
 }
-[a 1C 98 45 13 0 ]

@@ -164,7 +164,29 @@ MODE_BEAT_FADE 4
 MODE_BEAT_CONTINUOUS 5
 MODE_BEAT_MIXED 6
 ]
-"222
+"244
+[e E10876 . `uc
+DMX 0
+BEAT 1
+ANIMATION 2
+MANUAL 3
+DMX_TASK 4
+B_STROBE 5
+B_FADE 6
+B_CONT 7
+B_MIXED 8
+B_STROBE_TASK 9
+B_FADE_TASK 10
+B_CONT_TASK 11
+B_MIXED_TASK 12
+MANUAL_RED 13
+MANUAL_GREEN 14
+MANUAL_BLUE 15
+MANUAL_WHITE 16
+A_BRIGHTNESS 17
+A_SELECTION 18
+]
+"276
 [e E10906 . `uc
 CMODE_RED 0
 CMODE_GREEN 1
@@ -237,16 +259,22 @@ CMODE_WHITE 3
 [v _CLOCK_getTime CLOCK_getTime `(us  1 e 2 0 ]
 "20
 [v _CLOCK_timerCallback CLOCK_timerCallback `(v  1 s 1 CLOCK_timerCallback ]
-"79 C:\Users\berna\Documents\Github\lab_10\controller.c
+"81 C:\Users\berna\Documents\Github\lab_10\controller.c
 [v _CONTROLLER_init CONTROLLER_init `(v  1 e 1 0 ]
-"220
+"228
 [v _CONTROLLER_task CONTROLLER_task `(v  1 e 1 0 ]
-"448
+"291
 [v _getMode getMode `(E11209  1 e 1 0 ]
-"452
+"295
 [v _CONTROL_DMX CONTROL_DMX `(v  1 s 1 CONTROL_DMX ]
-"542
+"327
+[v _CONTROL_BEAT CONTROL_BEAT `(v  1 s 1 CONTROL_BEAT ]
+"380
 [v _getIsHold getIsHold `(a  1 e 1 0 ]
+"384
+[v _CONTROL_MANUAL CONTROL_MANUAL `(v  1 s 1 CONTROL_MANUAL ]
+"469
+[v _getCurrentMenu getCurrentMenu `(E11188  1 e 1 0 ]
 "21 C:\Users\berna\Documents\Github\lab_10\dmx.c
 [v _DMX_init DMX_init `(v  1 e 1 0 ]
 "29
@@ -267,25 +295,25 @@ CMODE_WHITE 3
 [v _LED_task LED_task `(v  1 e 1 0 ]
 "95
 [v _LED_task_MANUAL LED_task_MANUAL `(v  1 e 1 0 ]
-"99
+"100
 [v _LED_task_BEAT_STROBE LED_task_BEAT_STROBE `(v  1 e 1 0 ]
-"165
+"163
 [v _beatBrightnessCalculation beatBrightnessCalculation `(f  1 s 4 beatBrightnessCalculation ]
 "11 C:\Users\berna\Documents\Github\lab_10/led.h
-[s S2949 . 4 `uc 1 white 1 0 `uc 1 red 1 1 `uc 1 green 1 2 `uc 1 blue 1 3 ]
-"180 C:\Users\berna\Documents\Github\lab_10\led.c
-[v _beatColorCreator beatColorCreator `(S2949  1 s 4 beatColorCreator ]
-"206
+[s S2281 . 4 `uc 1 white 1 0 `uc 1 red 1 1 `uc 1 green 1 2 `uc 1 blue 1 3 ]
+"178 C:\Users\berna\Documents\Github\lab_10\led.c
+[v _beatColorCreator beatColorCreator `(S2281  1 s 4 beatColorCreator ]
+"204
 [v _LED_task_BEAT_FADE LED_task_BEAT_FADE `(v  1 e 1 0 ]
-"210
+"208
 [v _LED_task_ANIMATION LED_task_ANIMATION `(v  1 e 1 0 ]
-"214
+"212
 [v _LED_task_BEAT_CONTINUOUS LED_task_BEAT_CONTINUOUS `(v  1 e 1 0 ]
-"218
+"216
 [v _LED_task_BEAT_MIXED LED_task_BEAT_MIXED `(v  1 e 1 0 ]
-"222
+"220
 [v _colorInc colorInc `(v  1 e 1 0 ]
-"250
+"248
 [v _colorDec colorDec `(v  1 e 1 0 ]
 "58 C:\Users\berna\Documents\Github\lab_10\main.c
 [v _main main `(v  1 e 1 0 ]
@@ -1257,10 +1285,10 @@ CMODE_WHITE 3
 "53
 [v _currentMenu currentMenu `*.39S2244  1 e 2 0 ]
 "57
-[v _menu menu `*.6S1997  1 e 1 0 ]
-[v _up up `*.6S1997  1 e 1 0 ]
-[v _down down `*.6S1997  1 e 1 0 ]
-[v _enter enter `*.6S1997  1 e 1 0 ]
+[v _menu menu `*.7S1997  1 e 1 0 ]
+[v _up up `*.7S1997  1 e 1 0 ]
+[v _down down `*.7S1997  1 e 1 0 ]
+[v _enter enter `*.7S1997  1 e 1 0 ]
 "58
 [v _upState upState `a  1 e 1 0 ]
 [v _downState downState `a  1 e 1 0 ]
@@ -1274,8 +1302,8 @@ CMODE_WHITE 3
 [v _lastActiveTime lastActiveTime `us  1 e 2 0 ]
 "67
 [v _currentSelection currentSelection `E11209  1 e 1 0 ]
-"73
-[v _colorModeSelected colorModeSelected `E11218  1 e 1 0 ]
+"71
+[v _beatHold beatHold `a  1 e 1 0 ]
 "75
 [v _animationModeSelected animationModeSelected `uc  1 e 1 0 ]
 "76
@@ -1290,15 +1318,17 @@ CMODE_WHITE 3
 [v _lastLedActiveTime lastLedActiveTime `us  1 e 2 0 ]
 "18
 [v _currentState currentState `i  1 e 2 0 ]
+"19
+[v _beatBrightness beatBrightness `uc  1 e 1 0 ]
 "20
 [v _animationBrightness animationBrightness `uc  1 e 1 0 ]
 "21
 [v _dmxArray dmxArray `[513]i  1 e 1026 @9198 ]
 "22
 [v _startup startup `a  1 e 1 0 ]
-[s S2949 . 4 `uc 1 white 1 0 `uc 1 red 1 1 `uc 1 green 1 2 `uc 1 blue 1 3 ]
+[s S2281 . 4 `uc 1 white 1 0 `uc 1 red 1 1 `uc 1 green 1 2 `uc 1 blue 1 3 ]
 "24
-[v _manualColor manualColor `S2949  1 e 4 0 ]
+[v _manualColor manualColor `S2281  1 e 4 0 ]
 "56 C:\Users\berna\Documents\Github\lab_10\main.c
 [v _startTime startTime `us  1 e 2 0 ]
 "58 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/adcc.c
@@ -1461,38 +1491,28 @@ CMODE_WHITE 3
 {
 "93
 } 0
-"448 C:\Users\berna\Documents\Github\lab_10\controller.c
+"291 C:\Users\berna\Documents\Github\lab_10\controller.c
 [v _getMode getMode `(E11209  1 e 1 0 ]
 {
-"450
+"293
 } 0
-"542
+"380
 [v _getIsHold getIsHold `(a  1 e 1 0 ]
 {
-"544
+"382
 } 0
 "35 C:\Users\berna\Documents\Github\lab_10\led.c
 [v _LED_task_DMX LED_task_DMX `(v  1 e 1 0 ]
 {
-[s S2949 . 4 `uc 1 white 1 0 `uc 1 red 1 1 `uc 1 green 1 2 `uc 1 blue 1 3 ]
+[s S2281 . 4 `uc 1 white 1 0 `uc 1 red 1 1 `uc 1 green 1 2 `uc 1 blue 1 3 ]
 "37
-[v LED_task_DMX@dmx dmx `S2949  1 a 4 22 ]
+[v LED_task_DMX@dmx dmx `S2281  1 a 4 0 ]
 "46
 } 0
-"218
-[v _LED_task_BEAT_MIXED LED_task_BEAT_MIXED `(v  1 e 1 0 ]
-{
-"220
-} 0
-"206
-[v _LED_task_BEAT_FADE LED_task_BEAT_FADE `(v  1 e 1 0 ]
-{
-"208
-} 0
-"214
+"212
 [v _LED_task_BEAT_CONTINUOUS LED_task_BEAT_CONTINUOUS `(v  1 e 1 0 ]
 {
-"216
+"214
 } 0
 "48
 [v _LED_init LED_init `(v  1 e 1 0 ]
@@ -1516,207 +1536,90 @@ CMODE_WHITE 3
 [v EUSART1_SetRxInterruptHandler@interruptHandler interruptHandler `*.37(v  1 p 2 0 ]
 "234
 } 0
-"220 C:\Users\berna\Documents\Github\lab_10\controller.c
+"228 C:\Users\berna\Documents\Github\lab_10\controller.c
 [v _CONTROLLER_task CONTROLLER_task `(v  1 e 1 0 ]
 {
-"280
+"288
 } 0
-"99 C:\Users\berna\Documents\Github\lab_10\led.c
-[v _LED_task_BEAT_STROBE LED_task_BEAT_STROBE `(v  1 e 1 0 ]
+"327
+[v _CONTROL_BEAT CONTROL_BEAT `(v  1 s 1 CONTROL_BEAT ]
 {
-"111
-[v LED_task_BEAT_STROBE@beatState beatState `a  1 a 1 79 ]
-"163
+"378
 } 0
-"210
-[v _LED_task_ANIMATION LED_task_ANIMATION `(v  1 e 1 0 ]
+"384
+[v _CONTROL_MANUAL CONTROL_MANUAL `(v  1 s 1 CONTROL_MANUAL ]
 {
-"212
+"433
 } 0
-"452 C:\Users\berna\Documents\Github\lab_10\controller.c
+"295
 [v _CONTROL_DMX CONTROL_DMX `(v  1 s 1 CONTROL_DMX ]
 {
-"482
+"325
+} 0
+"208 C:\Users\berna\Documents\Github\lab_10\led.c
+[v _LED_task_ANIMATION LED_task_ANIMATION `(v  1 e 1 0 ]
+{
+"210
+} 0
+"220
+[v _colorInc colorInc `(v  1 e 1 0 ]
+{
+"246
+} 0
+"248
+[v _colorDec colorDec `(v  1 e 1 0 ]
+{
+"274
+} 0
+"469 C:\Users\berna\Documents\Github\lab_10\controller.c
+[v _getCurrentMenu getCurrentMenu `(E11188  1 e 1 0 ]
+{
+"471
 } 0
 "95 C:\Users\berna\Documents\Github\lab_10\led.c
 [v _LED_task_MANUAL LED_task_MANUAL `(v  1 e 1 0 ]
 {
-"97
+"98
 } 0
-"11 C:\Users\berna\Documents\Github\lab_10/led.h
-[s S2949 . 4 `uc 1 white 1 0 `uc 1 red 1 1 `uc 1 green 1 2 `uc 1 blue 1 3 ]
-"180 C:\Users\berna\Documents\Github\lab_10\led.c
-[v _beatColorCreator beatColorCreator `(S2949  1 s 4 beatColorCreator ]
+"29 C:\Users\berna\Documents\Github\lab_10\dmx.c
+[v _address_inc address_inc `(v  1 e 1 0 ]
 {
-[v beatColorCreator@inRed inRed `a  1 a 1 wreg ]
-"181
-[v beatColorCreator@tempColor tempColor `S2949  1 a 4 5 ]
-"180
-[v beatColorCreator@inRed inRed `a  1 a 1 wreg ]
-[v beatColorCreator@inGreen inGreen `a  1 p 1 0 ]
-[v beatColorCreator@inBlue inBlue `a  1 p 1 1 ]
-[v beatColorCreator@inWhite inWhite `a  1 p 1 2 ]
-"183
-[v beatColorCreator@inRed inRed `a  1 a 1 4 ]
-"204
+"38
 } 0
-"165
-[v _beatBrightnessCalculation beatBrightnessCalculation `(f  1 s 4 beatBrightnessCalculation ]
-{
-"168
-} 0
-"136 C:\Users\berna\Documents\Github\lab_10\tm1650.c
-[v _TM1650_fastPrintNum_2digit TM1650_fastPrintNum_2digit `(v  1 e 1 0 ]
-{
-[v TM1650_fastPrintNum_2digit@num num `uc  1 a 1 wreg ]
-[v TM1650_fastPrintNum_2digit@num num `uc  1 a 1 wreg ]
-"138
-[v TM1650_fastPrintNum_2digit@num num `uc  1 a 1 25 ]
-"149
-} 0
-"5 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\awmod.c
-[v ___awmod __awmod `(i  1 e 2 0 ]
-{
-"10
-[v ___awmod@sign sign `uc  1 a 1 15 ]
-[v ___awmod@counter counter `uc  1 a 1 14 ]
-"5
-[v ___awmod@divisor divisor `i  1 p 2 9 ]
-[v ___awmod@dividend dividend `i  1 p 2 11 ]
-"34
-} 0
-"5 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\awdiv.c
-[v ___awdiv __awdiv `(i  1 e 2 0 ]
-{
-"10
-[v ___awdiv@quotient quotient `i  1 a 2 7 ]
-"11
-[v ___awdiv@sign sign `uc  1 a 1 6 ]
-[v ___awdiv@counter counter `uc  1 a 1 5 ]
-"5
-[v ___awdiv@divisor divisor `i  1 p 2 0 ]
-[v ___awdiv@dividend dividend `i  1 p 2 2 ]
-"41
-} 0
-"26 C:\Users\berna\Documents\Github\lab_10\led.c
-[v _LED_setColor LED_setColor `(v  1 e 1 0 ]
-{
-[s S2949 . 4 `uc 1 white 1 0 `uc 1 red 1 1 `uc 1 green 1 2 `uc 1 blue 1 3 ]
-[v LED_setColor@input input `S2949  1 p 4 9 ]
-"33
-} 0
-"10 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\xxtofl.c
-[v ___xxtofl __xxtofl `(d  1 e 4 0 ]
-{
-[v ___xxtofl@sign sign `uc  1 a 1 wreg ]
-"13
-[v ___xxtofl@arg arg `ul  1 a 4 10 ]
-"12
-[v ___xxtofl@exp exp `uc  1 a 1 9 ]
-"10
-[v ___xxtofl@sign sign `uc  1 a 1 wreg ]
-[v ___xxtofl@val val `l  1 p 4 0 ]
-"15
-[v ___xxtofl@sign sign `uc  1 a 1 8 ]
-"44
-} 0
-"43 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\fltol.c
-[v ___fltol __fltol `(l  1 e 4 0 ]
-{
-"45
-[v ___fltol@exp1 exp1 `uc  1 a 1 76 ]
-[v ___fltol@sign1 sign1 `uc  1 a 1 75 ]
 "43
-[v ___fltol@f1 f1 `d  1 p 4 66 ]
-"70
-} 0
-"8 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\sprcmul.c
-[v ___flmul __flmul `(d  1 e 4 0 ]
+[v _address_dec address_dec `(v  1 e 1 0 ]
 {
-[s S3428 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
-"13
-[s S3433 . 4 `i 1 wordA 2 0 `i 1 wordB 2 2 ]
-[u S3436 . 4 `l 1 i 4 0 `d 1 f 4 0 `S3428 1 fAsBytes 4 0 `S3433 1 fAsWords 4 0 ]
-[v ___flmul@prod prod `S3436  1 a 4 60 ]
-"12
-[v ___flmul@grs grs `ul  1 a 4 55 ]
-[s S3505 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
-"14
-[u S3508 . 2 `i 1 i 2 0 `ui 1 n 2 0 `S3505 1 nAsBytes 2 0 ]
-[v ___flmul@temp temp `S3508  1 a 2 64 ]
+"52
+} 0
+"120 C:\Users\berna\Documents\Github\lab_10\tm1650.c
+[v _TM1650_fastPrintNum_3digit TM1650_fastPrintNum_3digit `(v  1 e 1 0 ]
+{
+[v TM1650_fastPrintNum_3digit@num num `us  1 p 2 22 ]
+"134
+} 0
+"5 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\lwmod.c
+[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+{
 "10
-[v ___flmul@bexp bexp `uc  1 a 1 59 ]
-"11
-[v ___flmul@aexp aexp `uc  1 a 1 54 ]
-"9
-[v ___flmul@sign sign `uc  1 a 1 53 ]
-"8
-[v ___flmul@b b `d  1 p 4 40 ]
-[v ___flmul@a a `d  1 p 4 44 ]
-"205
-} 0
-"4 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\Umul8_16.c
-[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
-{
-[v __Umul8_16@multiplier multiplier `uc  1 a 1 wreg ]
-"6
-[v __Umul8_16@word_mpld word_mpld `ui  1 a 2 6 ]
+[v ___lwmod@counter counter `uc  1 a 1 13 ]
 "5
-[v __Umul8_16@product product `ui  1 a 2 4 ]
-"4
-[v __Umul8_16@multiplier multiplier `uc  1 a 1 wreg ]
-[v __Umul8_16@multiplicand multiplicand `uc  1 p 1 0 ]
-[v __Umul8_16@multiplier multiplier `uc  1 a 1 8 ]
-"60
+[v ___lwmod@divisor divisor `ui  1 p 2 8 ]
+[v ___lwmod@dividend dividend `ui  1 p 2 10 ]
+"25
 } 0
-"8 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\sprcdiv.c
-[v ___fldiv __fldiv `(d  1 e 4 0 ]
+"73 C:\Users\berna\Documents\Github\lab_10\dmx.c
+[v _DMX_getAddress DMX_getAddress `(uc  1 e 1 0 ]
 {
-"21
-[v ___fldiv@grs grs `ul  1 a 4 34 ]
-"22
-[v ___fldiv@rem rem `ul  1 a 4 27 ]
-"20
-[v ___fldiv@new_exp new_exp `i  1 a 2 32 ]
-"19
-[v ___fldiv@aexp aexp `uc  1 a 1 39 ]
-"18
-[v ___fldiv@bexp bexp `uc  1 a 1 38 ]
-"16
-[v ___fldiv@sign sign `uc  1 a 1 31 ]
-"8
-[v ___fldiv@a a `d  1 p 4 14 ]
-[v ___fldiv@b b `d  1 p 4 18 ]
-"185
+"75
 } 0
-"82 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/pwm4.c
-[v _PWM4_LoadDutyValue PWM4_LoadDutyValue `(v  1 e 1 0 ]
+"106 C:\Users\berna\Documents\Github\lab_10\buttons.c
+[v _BUTTONS_isHeld BUTTONS_isHeld `(a  1 e 1 0 ]
 {
-[v PWM4_LoadDutyValue@dutyValue dutyValue `us  1 p 2 77 ]
-"100
-} 0
-"82 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/pwm3.c
-[v _PWM3_LoadDutyValue PWM3_LoadDutyValue `(v  1 e 1 0 ]
-{
-[v PWM3_LoadDutyValue@dutyValue dutyValue `us  1 p 2 77 ]
-"100
-} 0
-"82 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/pwm2.c
-[v _PWM2_LoadDutyValue PWM2_LoadDutyValue `(v  1 e 1 0 ]
-{
-[v PWM2_LoadDutyValue@dutyValue dutyValue `us  1 p 2 77 ]
-"100
-} 0
-"82 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/pwm1.c
-[v _PWM1_LoadDutyValue PWM1_LoadDutyValue `(v  1 e 1 0 ]
-{
-[v PWM1_LoadDutyValue@dutyValue dutyValue `us  1 p 2 77 ]
-"100
-} 0
-"49 C:\Users\berna\Documents\Github\lab_10\beat.c
-[v _BEAT_detected BEAT_detected `(a  1 e 1 0 ]
-{
-"56
+[s S1997 . 8 `*.39VEuc 1 port 2 0 `uc 1 pin 1 2 `E10875 1 state 1 3 `E10875 1 lastState 1 4 `us 1 lastHoldTime 2 5 `E10869 1 event 1 7 ]
+[v BUTTONS_isHeld@button button `*.7S1997  1 a 1 wreg ]
+[v BUTTONS_isHeld@button button `*.7S1997  1 a 1 wreg ]
+[v BUTTONS_isHeld@button button `*.7S1997  1 a 1 0 ]
+"113
 } 0
 "5 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\printf.c
 [v _printf printf `(i  1 e 2 0 ]
@@ -1730,65 +1633,65 @@ CMODE_WHITE 3
 "1368 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\doprnt.c
 [v _vfprintf vfprintf `(i  1 e 2 0 ]
 {
-[s S3239 _IO_FILE 0 ]
-[v vfprintf@fp fp `*.1S3239  1 a 1 wreg ]
+[s S3307 _IO_FILE 0 ]
+[v vfprintf@fp fp `*.1S3307  1 a 1 wreg ]
 "1371
 [v vfprintf@cfmt cfmt `*.25uc  1 a 2 73 ]
 "1368
-[v vfprintf@fp fp `*.1S3239  1 a 1 wreg ]
+[v vfprintf@fp fp `*.1S3307  1 a 1 wreg ]
 [v vfprintf@fmt fmt `*.25DCuc  1 p 2 67 ]
 [v vfprintf@ap ap `*.4*.4v  1 p 1 69 ]
 "1373
 "1368
-[v vfprintf@fp fp `*.1S3239  1 a 1 72 ]
+[v vfprintf@fp fp `*.1S3307  1 a 1 72 ]
 "1382
 } 0
 "670
 [v _vfpfcnvrt vfpfcnvrt `(i  1 s 2 vfpfcnvrt ]
 {
-[s S3239 _IO_FILE 0 ]
-[v vfpfcnvrt@fp fp `*.1S3239  1 a 1 wreg ]
+[s S3307 _IO_FILE 0 ]
+[v vfpfcnvrt@fp fp `*.1S3307  1 a 1 wreg ]
 "672
 [v vfpfcnvrt@c c `uc  1 a 1 65 ]
 "670
-[v vfpfcnvrt@fp fp `*.1S3239  1 a 1 wreg ]
+[v vfpfcnvrt@fp fp `*.1S3307  1 a 1 wreg ]
 [v vfpfcnvrt@fmt fmt `*.4*.25uc  1 p 1 58 ]
 [v vfpfcnvrt@ap ap `*.4*.4v  1 p 1 59 ]
 "680
 "670
-[v vfpfcnvrt@fp fp `*.1S3239  1 a 1 66 ]
+[v vfpfcnvrt@fp fp `*.1S3307  1 a 1 66 ]
 "1365
 } 0
 "259
 [v _ctoa ctoa `(i  1 s 2 ctoa ]
 {
-[s S3239 _IO_FILE 0 ]
-[v ctoa@fp fp `*.1S3239  1 a 1 wreg ]
+[s S3307 _IO_FILE 0 ]
+[v ctoa@fp fp `*.1S3307  1 a 1 wreg ]
 "261
-[v ctoa@w w `i  1 a 2 55 ]
+[v ctoa@w w `i  1 a 2 56 ]
 "259
-[v ctoa@fp fp `*.1S3239  1 a 1 wreg ]
+[v ctoa@fp fp `*.1S3307  1 a 1 wreg ]
 [v ctoa@c c `uc  1 p 1 52 ]
 "264
 "259
-[v ctoa@fp fp `*.1S3239  1 a 1 57 ]
+[v ctoa@fp fp `*.1S3307  1 a 1 55 ]
 "270
 } 0
 "72
 [v _pad pad `(i  1 s 2 pad ]
 {
-[s S3239 _IO_FILE 0 ]
-[v pad@fp fp `*.1S3239  1 a 1 wreg ]
+[s S3307 _IO_FILE 0 ]
+[v pad@fp fp `*.1S3307  1 a 1 wreg ]
 "74
 [v pad@w w `i  1 a 2 49 ]
 [v pad@i i `i  1 a 2 47 ]
 "72
-[v pad@fp fp `*.1S3239  1 a 1 wreg ]
+[v pad@fp fp `*.1S3307  1 a 1 wreg ]
 [v pad@buf buf `*.7uc  1 p 1 43 ]
 [v pad@p p `i  1 p 2 44 ]
 "77
 "72
-[v pad@fp fp `*.1S3239  1 a 1 51 ]
+[v pad@fp fp `*.1S3307  1 a 1 51 ]
 "95
 } 0
 "12 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\strlen.c
@@ -1805,23 +1708,23 @@ CMODE_WHITE 3
 {
 [v fputs@s s `*.7DCuc  1 a 1 wreg ]
 "11
-[v fputs@i i `i  1 a 2 40 ]
+[v fputs@i i `i  1 a 2 41 ]
 "10
 [v fputs@c c `uc  1 a 1 39 ]
 "8
 [v fputs@s s `*.7DCuc  1 a 1 wreg ]
-[s S3570 _IO_FILE 5 `*.1uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
-[v fputs@fp fp `*.1S3570  1 p 1 35 ]
+[s S3638 _IO_FILE 5 `*.1uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
+[v fputs@fp fp `*.1S3638  1 p 1 35 ]
 "13
-[v fputs@s s `*.7DCuc  1 a 1 42 ]
+[v fputs@s s `*.7DCuc  1 a 1 40 ]
 "19
 } 0
 "8 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\nf_fputc.c
 [v _fputc fputc `(i  1 e 2 0 ]
 {
 [v fputc@c c `i  1 p 2 27 ]
-[s S3570 _IO_FILE 5 `*.1uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
-[v fputc@fp fp `*.1S3570  1 p 1 29 ]
+[s S3638 _IO_FILE 5 `*.1uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
+[v fputc@fp fp `*.1S3638  1 p 1 29 ]
 "21
 } 0
 "166 C:\Users\berna\Documents\Github\lab_10\tm1650.c
@@ -1843,21 +1746,14 @@ CMODE_WHITE 3
 [v TM1650_setDigit@digit digit `uc  1 a 1 24 ]
 "99
 } 0
-"29 C:\Users\berna\Documents\Github\lab_10\dmx.c
-[v _address_inc address_inc `(v  1 e 1 0 ]
+"136
+[v _TM1650_fastPrintNum_2digit TM1650_fastPrintNum_2digit `(v  1 e 1 0 ]
 {
-"38
-} 0
-"43
-[v _address_dec address_dec `(v  1 e 1 0 ]
-{
-"52
-} 0
-"120 C:\Users\berna\Documents\Github\lab_10\tm1650.c
-[v _TM1650_fastPrintNum_3digit TM1650_fastPrintNum_3digit `(v  1 e 1 0 ]
-{
-[v TM1650_fastPrintNum_3digit@num num `us  1 p 2 22 ]
-"134
+[v TM1650_fastPrintNum_2digit@num num `uc  1 a 1 wreg ]
+[v TM1650_fastPrintNum_2digit@num num `uc  1 a 1 wreg ]
+"138
+[v TM1650_fastPrintNum_2digit@num num `uc  1 a 1 25 ]
+"149
 } 0
 "31
 [v _writeData writeData `(v  1 s 1 writeData ]
@@ -1929,43 +1825,204 @@ CMODE_WHITE 3
 {
 "652
 } 0
-"5 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\lwmod.c
-[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+"5 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
 {
 "10
-[v ___lwmod@counter counter `uc  1 a 1 13 ]
+[v ___awmod@sign sign `uc  1 a 1 15 ]
+[v ___awmod@counter counter `uc  1 a 1 14 ]
 "5
-[v ___lwmod@divisor divisor `ui  1 p 2 8 ]
-[v ___lwmod@dividend dividend `ui  1 p 2 10 ]
-"25
+[v ___awmod@divisor divisor `i  1 p 2 9 ]
+[v ___awmod@dividend dividend `i  1 p 2 11 ]
+"34
 } 0
-"73 C:\Users\berna\Documents\Github\lab_10\dmx.c
-[v _DMX_getAddress DMX_getAddress `(uc  1 e 1 0 ]
+"5 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
 {
-"75
+"10
+[v ___awdiv@quotient quotient `i  1 a 2 7 ]
+"11
+[v ___awdiv@sign sign `uc  1 a 1 6 ]
+[v ___awdiv@counter counter `uc  1 a 1 5 ]
+"5
+[v ___awdiv@divisor divisor `i  1 p 2 0 ]
+[v ___awdiv@dividend dividend `i  1 p 2 2 ]
+"41
 } 0
-"106 C:\Users\berna\Documents\Github\lab_10\buttons.c
-[v _BUTTONS_isHeld BUTTONS_isHeld `(a  1 e 1 0 ]
+"100 C:\Users\berna\Documents\Github\lab_10\led.c
+[v _LED_task_BEAT_STROBE LED_task_BEAT_STROBE `(v  1 e 1 0 ]
 {
-[s S1997 . 8 `*.39VEuc 1 port 2 0 `uc 1 pin 1 2 `E10875 1 state 1 3 `E10875 1 lastState 1 4 `us 1 lastHoldTime 2 5 `E10869 1 event 1 7 ]
-[v BUTTONS_isHeld@button button `*.6S1997  1 a 1 wreg ]
-[v BUTTONS_isHeld@button button `*.6S1997  1 a 1 wreg ]
-[v BUTTONS_isHeld@button button `*.6S1997  1 a 1 0 ]
-"113
+"109
+[v LED_task_BEAT_STROBE@beatState beatState `a  1 a 1 79 ]
+"161
 } 0
-"97
+"11 C:\Users\berna\Documents\Github\lab_10/led.h
+[s S2281 . 4 `uc 1 white 1 0 `uc 1 red 1 1 `uc 1 green 1 2 `uc 1 blue 1 3 ]
+"178 C:\Users\berna\Documents\Github\lab_10\led.c
+[v _beatColorCreator beatColorCreator `(S2281  1 s 4 beatColorCreator ]
+{
+[v beatColorCreator@inRed inRed `a  1 a 1 wreg ]
+"179
+[v beatColorCreator@tempColor tempColor `S2281  1 a 4 18 ]
+"178
+[v beatColorCreator@inRed inRed `a  1 a 1 wreg ]
+[v beatColorCreator@inGreen inGreen `a  1 p 1 9 ]
+[v beatColorCreator@inBlue inBlue `a  1 p 1 10 ]
+[v beatColorCreator@inWhite inWhite `a  1 p 1 11 ]
+"181
+[v beatColorCreator@inRed inRed `a  1 a 1 13 ]
+"202
+} 0
+"163
+[v _beatBrightnessCalculation beatBrightnessCalculation `(f  1 s 4 beatBrightnessCalculation ]
+{
+"164
+[v beatBrightnessCalculation@temp temp `uc  1 a 1 77 ]
+"166
+} 0
+"26
+[v _LED_setColor LED_setColor `(v  1 e 1 0 ]
+{
+[s S2281 . 4 `uc 1 white 1 0 `uc 1 red 1 1 `uc 1 green 1 2 `uc 1 blue 1 3 ]
+[v LED_setColor@input input `S2281  1 p 4 22 ]
+"33
+} 0
+"10 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\xxtofl.c
+[v ___xxtofl __xxtofl `(d  1 e 4 0 ]
+{
+[v ___xxtofl@sign sign `uc  1 a 1 wreg ]
+"13
+[v ___xxtofl@arg arg `ul  1 a 4 10 ]
+"12
+[v ___xxtofl@exp exp `uc  1 a 1 9 ]
+"10
+[v ___xxtofl@sign sign `uc  1 a 1 wreg ]
+[v ___xxtofl@val val `l  1 p 4 0 ]
+"15
+[v ___xxtofl@sign sign `uc  1 a 1 8 ]
+"44
+} 0
+"43 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\fltol.c
+[v ___fltol __fltol `(l  1 e 4 0 ]
+{
+"45
+[v ___fltol@exp1 exp1 `uc  1 a 1 76 ]
+[v ___fltol@sign1 sign1 `uc  1 a 1 75 ]
+"43
+[v ___fltol@f1 f1 `d  1 p 4 66 ]
+"70
+} 0
+"8 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\sprcmul.c
+[v ___flmul __flmul `(d  1 e 4 0 ]
+{
+[s S3496 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
+"13
+[s S3501 . 4 `i 1 wordA 2 0 `i 1 wordB 2 2 ]
+[u S3504 . 4 `l 1 i 4 0 `d 1 f 4 0 `S3496 1 fAsBytes 4 0 `S3501 1 fAsWords 4 0 ]
+[v ___flmul@prod prod `S3504  1 a 4 60 ]
+"12
+[v ___flmul@grs grs `ul  1 a 4 56 ]
+[s S3573 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
+"14
+[u S3576 . 2 `i 1 i 2 0 `ui 1 n 2 0 `S3573 1 nAsBytes 2 0 ]
+[v ___flmul@temp temp `S3576  1 a 2 64 ]
+"10
+[v ___flmul@bexp bexp `uc  1 a 1 55 ]
+"11
+[v ___flmul@aexp aexp `uc  1 a 1 54 ]
+"9
+[v ___flmul@sign sign `uc  1 a 1 53 ]
+"8
+[v ___flmul@b b `d  1 p 4 40 ]
+[v ___flmul@a a `d  1 p 4 44 ]
+"205
+} 0
+"4 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+{
+[v __Umul8_16@multiplier multiplier `uc  1 a 1 wreg ]
+"6
+[v __Umul8_16@word_mpld word_mpld `ui  1 a 2 6 ]
+"5
+[v __Umul8_16@product product `ui  1 a 2 4 ]
+"4
+[v __Umul8_16@multiplier multiplier `uc  1 a 1 wreg ]
+[v __Umul8_16@multiplicand multiplicand `uc  1 p 1 0 ]
+[v __Umul8_16@multiplier multiplier `uc  1 a 1 8 ]
+"60
+} 0
+"8 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\sprcdiv.c
+[v ___fldiv __fldiv `(d  1 e 4 0 ]
+{
+"21
+[v ___fldiv@grs grs `ul  1 a 4 34 ]
+"22
+[v ___fldiv@rem rem `ul  1 a 4 27 ]
+"20
+[v ___fldiv@new_exp new_exp `i  1 a 2 32 ]
+"19
+[v ___fldiv@aexp aexp `uc  1 a 1 39 ]
+"18
+[v ___fldiv@bexp bexp `uc  1 a 1 38 ]
+"16
+[v ___fldiv@sign sign `uc  1 a 1 31 ]
+"8
+[v ___fldiv@a a `d  1 p 4 14 ]
+[v ___fldiv@b b `d  1 p 4 18 ]
+"185
+} 0
+"82 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/pwm4.c
+[v _PWM4_LoadDutyValue PWM4_LoadDutyValue `(v  1 e 1 0 ]
+{
+[v PWM4_LoadDutyValue@dutyValue dutyValue `us  1 p 2 0 ]
+"100
+} 0
+"82 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/pwm3.c
+[v _PWM3_LoadDutyValue PWM3_LoadDutyValue `(v  1 e 1 0 ]
+{
+[v PWM3_LoadDutyValue@dutyValue dutyValue `us  1 p 2 0 ]
+"100
+} 0
+"82 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/pwm2.c
+[v _PWM2_LoadDutyValue PWM2_LoadDutyValue `(v  1 e 1 0 ]
+{
+[v PWM2_LoadDutyValue@dutyValue dutyValue `us  1 p 2 0 ]
+"100
+} 0
+"82 C:\Users\berna\Documents\Github\lab_10\mcc_generated_files/pwm1.c
+[v _PWM1_LoadDutyValue PWM1_LoadDutyValue `(v  1 e 1 0 ]
+{
+[v PWM1_LoadDutyValue@dutyValue dutyValue `us  1 p 2 0 ]
+"100
+} 0
+"49 C:\Users\berna\Documents\Github\lab_10\beat.c
+[v _BEAT_detected BEAT_detected `(a  1 e 1 0 ]
+{
+"56
+} 0
+"216 C:\Users\berna\Documents\Github\lab_10\led.c
+[v _LED_task_BEAT_MIXED LED_task_BEAT_MIXED `(v  1 e 1 0 ]
+{
+"218
+} 0
+"204
+[v _LED_task_BEAT_FADE LED_task_BEAT_FADE `(v  1 e 1 0 ]
+{
+"206
+} 0
+"97 C:\Users\berna\Documents\Github\lab_10\buttons.c
 [v _BUTTONS_isClicked BUTTONS_isClicked `(a  1 e 1 0 ]
 {
 [s S1997 . 8 `*.39VEuc 1 port 2 0 `uc 1 pin 1 2 `E10875 1 state 1 3 `E10875 1 lastState 1 4 `us 1 lastHoldTime 2 5 `E10869 1 event 1 7 ]
-[v BUTTONS_isClicked@button button `*.6S1997  1 a 1 wreg ]
-[v BUTTONS_isClicked@button button `*.6S1997  1 a 1 wreg ]
-[v BUTTONS_isClicked@button button `*.6S1997  1 a 1 0 ]
+[v BUTTONS_isClicked@button button `*.7S1997  1 a 1 wreg ]
+[v BUTTONS_isClicked@button button `*.7S1997  1 a 1 wreg ]
+[v BUTTONS_isClicked@button button `*.7S1997  1 a 1 0 ]
 "104
 } 0
-"79 C:\Users\berna\Documents\Github\lab_10\controller.c
+"81 C:\Users\berna\Documents\Github\lab_10\controller.c
 [v _CONTROLLER_init CONTROLLER_init `(v  1 e 1 0 ]
 {
-"218
+"226
 } 0
 "8 C:\Users\berna\Documents\Github\lab_10\clock.c
 [v _CLOCK_init CLOCK_init `(v  1 e 1 0 ]
@@ -1983,7 +2040,7 @@ CMODE_WHITE 3
 {
 [s S1997 . 8 `*.39VEuc 1 port 2 0 `uc 1 pin 1 2 `E10875 1 state 1 3 `E10875 1 lastState 1 4 `us 1 lastHoldTime 2 5 `E10869 1 event 1 7 ]
 "68
-[v BUTTONS_task@btn btn `*.6S1997  1 a 1 8 ]
+[v BUTTONS_task@btn btn `*.7S1997  1 a 1 8 ]
 "67
 [v BUTTONS_task@i i `uc  1 a 1 5 ]
 "58
@@ -1999,11 +2056,11 @@ CMODE_WHITE 3
 [v _init init `(v  1 s 1 init ]
 {
 [s S1997 . 8 `*.39VEuc 1 port 2 0 `uc 1 pin 1 2 `E10875 1 state 1 3 `E10875 1 lastState 1 4 `us 1 lastHoldTime 2 5 `E10869 1 event 1 7 ]
-[v init@btn btn `*.6S1997  1 a 1 wreg ]
-[v init@btn btn `*.6S1997  1 a 1 wreg ]
+[v init@btn btn `*.7S1997  1 a 1 wreg ]
+[v init@btn btn `*.7S1997  1 a 1 wreg ]
 [v init@port port `*.39VEuc  1 p 2 0 ]
 [v init@pin pin `uc  1 p 1 2 ]
-[v init@btn btn `*.6S1997  1 a 1 4 ]
+[v init@btn btn `*.7S1997  1 a 1 4 ]
 "21
 } 0
 "38
