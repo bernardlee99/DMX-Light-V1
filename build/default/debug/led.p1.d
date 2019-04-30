@@ -17,4 +17,5 @@ mcc_generated_files/pwm1.h  \
 mcc_generated_files/pwm2.h  \
 mcc_generated_files/pwm3.h  \
 mcc_generated_files/eusart1.h  \
-dmx.h 
+dmx.h  \
+tm1650.h 

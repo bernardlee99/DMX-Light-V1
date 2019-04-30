@@ -17,20 +17,22 @@ typedef struct {
 
 void LED_init();
 void LED_task();
-void static LED_task_DMX();
-void static LED_task_BEAT_STROBE();
-void static LED_task_BEAT_FADE();
-void static LED_task_ANIMATION();
+void LED_task_DMX();
+void LED_task_BEAT_STROBE();
+void LED_task_BEAT_FADE();
+void LED_task_ANIMATION();
 color_t static beatColorCreator(bool inRed, bool inGreen, bool inBlue, bool inWhite);
 color_t static colorCreator(uint8_t inRed, uint8_t inGreen, uint8_t inBlue, uint8_t inWhite);
 float static beatBrightnessCalculation();
-void static LED_task_BEAT_CONTINUOUS();
-void static LED_task_BEAT_MIXED();
+void LED_task_BEAT_CONTINUOUS();
+void LED_task_BEAT_MIXED();
+void LED_task_MANUAL();
 
 void colorDec(colormode_t input);
 void colorInc(colormode_t input);
 uint8_t getManualColor(colormode_t input);
 
 extern uint8_t beatBrightness;
+extern uint8_t animationBrightness;
 
 #endif

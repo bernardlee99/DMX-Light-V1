@@ -12,6 +12,7 @@
 #include "led.h"
 #include "mcc_generated_files/mcc.h"
 #include "dmx.h"
+#include "tm1650.h"
 
 time_t lastLedActiveTime = 0;
 int currentState = 0;
@@ -20,7 +21,7 @@ uint8_t animationBrightness = 5;
  int dmxArray[513];
  bool startup;
  
- color_t manual;
+color_t manualColor;
 
 void LED_setColor(color_t input){
     if(!startup){
@@ -31,7 +32,7 @@ void LED_setColor(color_t input){
     }
 }
 
-void static LED_task_DMX(){
+void LED_task_DMX(){
     
     color_t dmx;
 
@@ -45,10 +46,10 @@ void static LED_task_DMX(){
 }
 
 void LED_init(){
-    manual.red = 0;
-    manual.green = 0;
-    manual.blue = 0;
-    manual.white = 0;
+    manualColor.red = 0;
+    manualColor.green = 0;
+    manualColor.blue = 0;
+    manualColor.white = 0;
     TRISCbits.TRISC5 = 0;
 }
 
@@ -85,18 +86,24 @@ void LED_task(){
             break;
             
         case MODE_MANUAL:
-            LED_setColor(manual);
+            LED_task_MANUAL();
             break;
     }
     
 }
 
-void static LED_task_BEAT_STROBE(){
+void LED_task_MANUAL(){
+    LED_setColor(manualColor);
+}
+
+void LED_task_BEAT_STROBE(){
+    
+    printf("b-\r");
+    TM1650_fastPrintNum_2digit(beatBrightness);
     
     if(CLOCK_getTime() - lastLedActiveTime < 50){
         return;
     }
-    
     
     lastLedActiveTime = CLOCK_getTime();
     
@@ -196,21 +203,19 @@ color_t static beatColorCreator(bool inRed, bool inGreen, bool inBlue, bool inWh
     return tempColor;
 }
 
-void static LED_task_BEAT_FADE(){
-    
-    
+void LED_task_BEAT_FADE(){
+        
+}
+
+void LED_task_ANIMATION(){
     
 }
 
-void static LED_task_ANIMATION(){
+void LED_task_BEAT_CONTINUOUS(){
     
 }
 
-void static LED_task_BEAT_CONTINUOUS(){
-    
-}
-
-void static LED_task_BEAT_MIXED(){
+void LED_task_BEAT_MIXED(){
     
 }
 
@@ -219,23 +224,23 @@ void colorInc(colormode_t input){
     switch(input){
         
         case CMODE_RED:
-            if(!(manual.red > 254))
-            manual.red++;
+            if(!(manualColor.red > 254))
+            manualColor.red++;
             break;
             
         case CMODE_GREEN:
-            if(!(manual.green > 254))
-            manual.green++;
+            if(!(manualColor.green > 254))
+            manualColor.green++;
             break;
             
         case CMODE_BLUE:
-            if(!(manual.blue > 254))
-            manual.blue++;
+            if(!(manualColor.blue > 254))
+            manualColor.blue++;
             break;
             
         case CMODE_WHITE:
-            if(!(manual.white > 254))
-            manual.white++;
+            if(!(manualColor.white > 254))
+            manualColor.white++;
             break;
               
     }
@@ -247,23 +252,23 @@ void colorDec(colormode_t input){
     switch(input){
         
         case CMODE_RED:
-            if(!(manual.red < 1))
-            manual.red--;
+            if(!(manualColor.red < 1))
+            manualColor.red--;
             break;
             
         case CMODE_GREEN:
-            if(!(manual.green < 1))
-            manual.green--;
+            if(!(manualColor.green < 1))
+            manualColor.green--;
             break;
             
         case CMODE_BLUE:
-            if(!(manual.blue < 1))
-            manual.blue--;
+            if(!(manualColor.blue < 1))
+            manualColor.blue--;
             break;
             
         case CMODE_WHITE:
-            if(!(manual.white < 1))
-            manual.white--;
+            if(!(manualColor.white < 1))
+            manualColor.white--;
             break;
               
     }
@@ -275,19 +280,19 @@ uint8_t getManualColor(colormode_t input){
        switch(input){
         
         case CMODE_RED:
-            return manual.red;
+            return manualColor.red;
             break;
             
         case CMODE_GREEN:
-            return manual.green;
+            return manualColor.green;
             break;
             
         case CMODE_BLUE:
-            return manual.blue;
+            return manualColor.blue;
             break;
             
         case CMODE_WHITE:
-            return manual.white;
+            return manualColor.white;
             break;
               
     }

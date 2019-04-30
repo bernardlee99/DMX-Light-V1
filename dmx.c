@@ -34,7 +34,7 @@ void address_inc()
         address++;
     
     // update the display
-    TM1650_fastPrintNum(address);
+    //TM1650_fastPrintNum(address);
 }
 
 /**
@@ -48,7 +48,7 @@ void address_dec()
         address--;  
     
     // update the display
-    TM1650_fastPrintNum(address);
+    //TM1650_fastPrintNum(address);
 }
 
 void DMX_interrupt(){
