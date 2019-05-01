@@ -80,6 +80,5 @@ void main(void)
         BUTTONS_task();
         CONTROLLER_task();
         BEAT_task();
-        LED_task();
     }
 }

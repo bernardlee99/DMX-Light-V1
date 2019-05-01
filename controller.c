@@ -84,28 +84,28 @@ void CONTROLLER_init() {
     dmx.nextItem = &beat;
     dmx.prevItem = &manual;
     dmx.config = &dmx_task;
-    //dmx.task = previousTask;
+    dmx.task = previousTask;
     dmx.name = DMX;
     dmx.parent = &dmx;
     
     beat.nextItem = &animation;
     beat.prevItem = &dmx;
     beat.config = &beatStrobe;
-    //beat.task = previousTask;
+    beat.task = previousTask;
     beat.name = BEAT;
     beat.parent = &beat;
     
     animation.nextItem = &manual;
     animation.prevItem = &beat;
     animation.config = &animationBrightnessCtrl;
-    //animation.task = previousTask;
+    animation.task = previousTask;
     animation.name = ANIMATION;
     animation.parent = &animation;
     
     manual.nextItem = &dmx;
     manual.prevItem = &animation;
     manual.config = &manualRed;
-    //manual.task = previousTask;
+    manual.task = previousTask;
     manual.name = MANUAL;
     manual.parent = &manual; 
     
@@ -123,44 +123,44 @@ void CONTROLLER_init() {
     beatStrobe.nextItem = &beatFade;
     beatStrobe.prevItem = &beatMixed;
     beatStrobe.config = &beatStrobeTask;
-    //beatStrobe.task = previousTask;
+    beatStrobe.task = previousTask;
     beatStrobe.name = B_STROBE;
     beatStrobe.parent = &beat;
     
     beatFade.nextItem = &beatCont;
     beatFade.prevItem = &beatStrobe;
     beatFade.config = &beatFadeTask;
-    //beatFade.task = previousTask;
+    beatFade.task = previousTask;
     beatFade.name = B_FADE;
     beatFade.parent = &beat;
     
     beatCont.nextItem = &beatMixed;
     beatCont.prevItem = &beatFade;
     beatCont.config = &beatContTask;
-    //beatCont.task = previousTask;
+    beatCont.task = previousTask;
     beatCont.name = B_CONT;
     beatCont.parent = &beat;
     
     beatMixed.nextItem = &beatStrobe;
     beatMixed.prevItem = &beatCont;
     beatMixed.config = &beatMixedTask;
-    //beatMixed.task = previousTask;
+    beatMixed.task = previousTask;
     beatMixed.name = B_MIXED;
     beatMixed.parent = &beat;
     
 
     //Animation
-    animationType.nextItem = &animationBrightnessCtrl;
-    animationType.prevItem = &animationBrightnessCtrl;
-    animationType.config = NULL;
-    animationType.task = LED_task_ANIMATION;
+    animationType.nextItem = NULL;
+    animationType.prevItem = NULL;
+    animationType.config = &animationBrightnessCtrl;
+    animationType.task = CONTROL_ANIMATION;
     animationType.name = A_SELECTION;
     animationType.parent = &animation;
 
-    animationBrightnessCtrl.nextItem = &animationType;
-    animationBrightnessCtrl.prevItem = &animationType;
-    animationBrightnessCtrl.config = NULL;
-    animationBrightnessCtrl.task = LED_task_ANIMATION;
+    animationBrightnessCtrl.nextItem = NULL;
+    animationBrightnessCtrl.prevItem = NULL;
+    animationBrightnessCtrl.config = &animationType;
+    animationBrightnessCtrl.task = CONTROL_ANIMATION;
     animationBrightnessCtrl.name = A_BRIGHTNESS;
     animationBrightnessCtrl.parent = &animation;
 
@@ -236,7 +236,7 @@ void CONTROLLER_task(){
     downState = BUTTONS_isClicked(down);
     menuState = BUTTONS_isClicked(menu);
     enterState = BUTTONS_isClicked(enter);
-    
+        
     if(menuState){
         currentMenu = currentMenu->parent;
     } else if(upState && currentMenu->nextItem != NULL){
@@ -245,6 +245,7 @@ void CONTROLLER_task(){
         currentMenu = currentMenu->prevItem;
     } else if(enterState &&  currentMenu->config != NULL){
         currentMenu = currentMenu->config;
+        previousTask = currentMenu->task;
     } 
     
     switch(currentMenu->name){
@@ -281,6 +282,7 @@ void CONTROLLER_task(){
             break;
             
         default:
+            if(currentMenu->task != NULL)
             currentMenu->task();
             break;
     }
@@ -293,10 +295,9 @@ mode_t getMode(){
 }
 
 void static CONTROL_DMX(){
-
-    printf("d\r");
-    TM1650_fastPrintNum_3digit(DMX_getAddress());
     
+    LED_task_DMX();
+       
     if(BUTTONS_isHeld(up) && (CLOCK_getTime() - lastIncTime > incInterval)){
         address_inc();
         lastIncTime = CLOCK_getTime();
@@ -318,7 +319,6 @@ void static CONTROL_DMX(){
         address_dec();
     } else if((!upState || !downState) && !(BUTTONS_isHeld(down) || BUTTONS_isHeld(up))){
         incInterval = MAX_INTERVAL_TIME;
-    } else {
     }
     
     
@@ -382,7 +382,9 @@ bool getIsHold(){
 }
 
 void static CONTROL_MANUAL(){
-    
+        
+       LED_task_MANUAL();
+       
        switch(currentMenu->name){
         
         case MANUAL_RED:
@@ -420,49 +422,56 @@ void static CONTROL_MANUAL(){
             incInterval-=INTERVAL_CONST;
         }
     } else if (upState) {
-        colorInc();
-        lastActiveTime = CLOCK_getTime();        
+        colorInc();    
     } else if (downState) {
         colorDec();
     } else if((!upState || !downState) && !(BUTTONS_isHeld(down) || BUTTONS_isHeld(up))){
         incInterval = MAX_INTERVAL_TIME;
     }
        
-    LED_task_MANUAL();
+    
     
 }
 
 void static CONTROL_ANIMATION(){
-
-    if(enterState){
-        animationBrightnessControl = !animationBrightnessControl;
-    }
     
-    if (upState && !animationBrightnessControl) {
+    LED_task_ANIMATION();
+    
+    if (upState && currentMenu->name == A_SELECTION) {
         if (animationModeSelected < 10) {
             animationModeSelected++;
         } else {
             animationModeSelected = 10;
         }
-    } else if (downState && !animationBrightnessControl) {
+    } else if (downState && currentMenu->name == A_SELECTION) {
         if (animationModeSelected > 1) {
             animationModeSelected--;
         } else {
             animationModeSelected = 1;
         }
-    } else if (upState && animationBrightnessControl) {
+    } else if (upState && currentMenu->name == A_BRIGHTNESS) {
         if (animationBrightness < 10) {
             animationBrightness++;
         } else {
             animationBrightness = 10;
         }
-    } else if (downState && animationBrightnessControl) {
+    } else if (downState && currentMenu->name == A_BRIGHTNESS) {
         if (animationBrightness > 0) {
             animationBrightness--;
         } else {
             animationBrightness = 0;
         }
     }
+    
+    if(currentMenu->name == A_SELECTION){
+        printf("An\r");
+        TM1650_fastPrintNum_2digit(animationModeSelected);
+    } else{
+        printf("Br\r");
+        TM1650_fastPrintNum_2digit(animationBrightness);
+    }
+    
+    LED_task_ANIMATION();
     
 }
 

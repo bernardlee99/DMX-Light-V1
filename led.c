@@ -24,12 +24,12 @@ uint8_t animationBrightness = 5;
  color_t manualColor;
  
 void LED_setColor(color_t input){
-    if(!startup){
+
         PWM1_LoadDutyValue( ( ((int)input.red)/255.0 ) * 127 );
         PWM2_LoadDutyValue( ( ((int)input.green)/255.0 ) * 127 );
         PWM3_LoadDutyValue( ( ((int)input.blue)/255.0 ) * 127 );
         PWM4_LoadDutyValue( ( ((int)input.white)/255.0 ) * 127 );
-    }
+
 }
 
 void LED_task_DMX(){
@@ -53,48 +53,10 @@ void LED_init(){
     TRISCbits.TRISC5 = 0;
 }
 
-void LED_task(){
-    
-    switch(getMode()) {
-        case MODE_DMX:
-            LED_task_DMX();
-            break;
-
-        case MODE_BEAT_STROBE:
-            if(getIsHold()) LED_setColor(beatColorCreator(0,0,0,0));
-            else LED_task_BEAT_STROBE();
-            break;
-
-        case MODE_BEAT_FADE:
-            if(getIsHold()) LED_setColor(beatColorCreator(0,0,0,0));
-            else LED_task_BEAT_FADE();
-            break;
-
-        case MODE_BEAT_CONTINUOUS:
-            if(getIsHold()) LED_setColor(beatColorCreator(0,0,0,0));
-            else LED_task_BEAT_CONTINUOUS();
-            break;
-
-        case MODE_BEAT_MIXED:
-            if(getIsHold()) LED_setColor(beatColorCreator(0,0,0,0));
-            else LED_task_BEAT_MIXED();
-            break;
-
-        case MODE_ANIMATION:
-            if(getIsHold()) LED_setColor(beatColorCreator(0,0,0,0));
-            else LED_task_ANIMATION();
-            break;
-            
-        case MODE_MANUAL:
-            LED_task_MANUAL();
-            break;
-    }
-    
-}
-
 void LED_task_MANUAL(){
 
     LED_setColor(manualColor);
+    
 }
 
 void LED_task_BEAT_STROBE(){
@@ -173,6 +135,10 @@ color_t static colorCreator(uint8_t inRed, uint8_t inGreen, uint8_t inBlue, uint
     tempColor.white = inWhite;
     
     return tempColor;
+}
+
+void resetColor(){
+    beatColorCreator(0,0,0,0);
 }
 
 color_t static beatColorCreator(bool inRed, bool inGreen, bool inBlue, bool inWhite){
