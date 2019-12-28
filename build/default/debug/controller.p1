@@ -1,2779 +1,2895 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"8 controller.c
-[; ;controller.c: 8: button_t *up, *down, *menu, *enter;
-[c E10904 0 1 .. ]
-[n E10904 . STATE_UNPRESSED STATE_PRESSED  ]
-[c E10898 0 1 2 3 .. ]
-[n E10898 . EVENT_IDLE EVENT_PRESSED EVENT_INTER_HOLD EVENT_HELD  ]
+"11 ./led.h
+[; ;./led.h: 11: typedef struct {
+[s S1520 `uc 1 `uc 1 `uc 1 `uc 1 ]
+[n S1520 . white red green blue ]
+"18
+[; ;./led.h: 18: typedef struct {
+[s S1521 `us 1 `f 1 `f 1 ]
+[n S1521 . hue saturation light ]
+"24 controller.c
+[; ;controller.c: 24: menuItem_t dmx;
+[c E11217 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 .. ]
+[n E11217 . DMX BEAT ANIMATION MANUAL DMX_TASK B_STROBE B_FADE B_CONT B_MIXED B_STROBE_TASK B_FADE_TASK B_CONT_TASK B_MIXED_TASK MANUAL_RED MANUAL_GREEN MANUAL_BLUE MANUAL_WHITE A_BRIGHTNESS A_SELECTION A_SPEED  ]
+[v F11387 `(v ~T0 @X0 0 tf ]
+"13
+[; ;controller.c: 13:  typedef struct menuItem {
+[s S1523 `*S1523 1 `*S1523 1 `*S1523 1 `*S1523 1 `E11217 1 `*F11387 1 ]
+[n S1523 menuItem nextItem prevItem config parent name task ]
+[v F11411 `(v ~T0 @X0 0 tf ]
+[v F11412 `(v ~T0 @X0 0 tf ]
+"58
+[; ;controller.c: 58: button_t *up, *down, *menu, *enter;
+[c E11274 0 1 .. ]
+[n E11274 . STATE_UNPRESSED STATE_PRESSED  ]
+[c E11268 0 1 2 3 .. ]
+[n E11268 . EVENT_IDLE EVENT_PRESSED EVENT_INTER_HOLD EVENT_HELD  ]
 "22 ./buttons.h
 [; ;./buttons.h: 22: typedef struct {
-[s S1513 `*Vuc 1 `uc 1 `E10904 1 `E10904 1 `us 1 `E10898 1 ]
-[n S1513 . port pin state lastState lastHoldTime event ]
-"14 controller.c
-[; ;controller.c: 14: mode_t menuSelected = MODE_DMX;
-[c E10869 2 1 0 3 4 5 6 .. ]
-[n E10869 . MODE_ANIMATION MODE_BEAT_STROBE MODE_DMX MODE_MANUAL MODE_BEAT_FADE MODE_BEAT_CONTINUOUS MODE_BEAT_MIXED  ]
-"23
-[; ;controller.c: 23: colormode_t colorModeSelected = CMODE_RED;
-[c E10878 0 1 2 3 .. ]
-[n E10878 . CMODE_RED CMODE_GREEN CMODE_BLUE CMODE_WHITE  ]
+[s S1519 `*Vuc 1 `uc 1 `E11274 1 `E11274 1 `us 1 `E11268 1 ]
+[n S1519 . port pin state lastState lastHoldTime event ]
+"67 controller.c
+[; ;controller.c: 67: mode_t menuSelected = MODE_DMX;
+[c E11239 2 1 0 3 4 5 6 .. ]
+[n E11239 . MODE_ANIMATION MODE_BEAT_STROBE MODE_DMX MODE_MANUAL MODE_BEAT_FADE MODE_BEAT_CONTINUOUS MODE_BEAT_MIXED  ]
+"74
+[; ;controller.c: 74: colormode_t colorModeSelected = CMODE_RED;
+[c E11248 0 1 2 3 .. ]
+[n E11248 . CMODE_RED CMODE_GREEN CMODE_BLUE CMODE_WHITE  ]
+"69 ./controller.h
+[; ;./controller.h: 69: void static CONTROL_DMX();
+[v _CONTROL_DMX `(v ~T0 @X0 0 s? ]
+[v F11446 `(v ~T0 @X0 0 tf ]
+"72
+[; ;./controller.h: 72: void static CONTROL_ANIMATION();
+[v _CONTROL_ANIMATION `(v ~T0 @X0 0 s? ]
+[v F11458 `(v ~T0 @X0 0 tf ]
+[v F11462 `(v ~T0 @X0 0 tf ]
+[v F11466 `(v ~T0 @X0 0 tf ]
+"71
+[; ;./controller.h: 71: void static CONTROL_MANUAL();
+[v _CONTROL_MANUAL `(v ~T0 @X0 0 s? ]
+[v F11470 `(v ~T0 @X0 0 tf ]
+[v F11474 `(v ~T0 @X0 0 tf ]
+[v F11478 `(v ~T0 @X0 0 tf ]
+[v F11482 `(v ~T0 @X0 0 tf ]
+"70
+[; ;./controller.h: 70: void static CONTROL_BEAT();
+[v _CONTROL_BEAT `(v ~T0 @X0 0 s? ]
+[v F11486 `(v ~T0 @X0 0 tf ]
+[v F11490 `(v ~T0 @X0 0 tf ]
+[v F11494 `(v ~T0 @X0 0 tf ]
+[v F11498 `(v ~T0 @X0 0 tf ]
 "39 ./buttons.h
 [; ;./buttons.h: 39: _Bool BUTTONS_isClicked(button_t* button);
-[v _BUTTONS_isClicked `(a ~T0 @X0 0 ef1`*S1513 ]
+[v _BUTTONS_isClicked `(a ~T0 @X0 0 ef1`*S1519 ]
+"111 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\c99\stdio.h
+[v _printf `(i ~T0 @X0 0 ev`*Cuc ]
+[v F11505 `(v ~T0 @X0 0 tf ]
+"26 ./led.h
+[; ;./led.h: 26: void LED_task_DMX();
+[v _LED_task_DMX `(v ~T0 @X0 0 e? ]
+"40 ./buttons.h
+[; ;./buttons.h: 40: _Bool BUTTONS_isHeld(button_t* button);
+[v _BUTTONS_isHeld `(a ~T0 @X0 0 ef1`*S1519 ]
 "16 ./clock.h
 [; ;./clock.h: 16: time_t CLOCK_getTime();
 [v _CLOCK_getTime `(us ~T0 @X0 0 e? ]
-"17
-[; ;./clock.h: 17: extern time_t startTime;
-[v _startTime `us ~T0 @X0 0 e ]
-"39 ./controller.h
-[; ;./controller.h: 39: void menuSelection();
-[v _menuSelection `(v ~T0 @X0 0 e? ]
-"43
-[; ;./controller.h: 43: _Bool static CONTROL_DMX();
-[v _CONTROL_DMX `(a ~T0 @X0 0 s? ]
-"46
-[; ;./controller.h: 46: _Bool static CONTROL_ANIMATION();
-[v _CONTROL_ANIMATION `(a ~T0 @X0 0 s? ]
-"44
-[; ;./controller.h: 44: _Bool static CONTROL_BEAT();
-[v _CONTROL_BEAT `(a ~T0 @X0 0 s? ]
-"45
-[; ;./controller.h: 45: _Bool static CONTROL_MANUAL(colormode_t input);
-[v _CONTROL_MANUAL `(a ~T0 @X0 0 sf1`E10878 ]
-"21 ./tm1650.h
-[; ;./tm1650.h: 21: void TM1650_enable(_Bool enable);
-[v _TM1650_enable `(v ~T0 @X0 0 ef1`a ]
-"17
-[; ;./tm1650.h: 17: void TM1650_fastPrintNum(uint16_t num);
-[v _TM1650_fastPrintNum `(v ~T0 @X0 0 ef1`us ]
-"18 ./dmx.h
-[; ;./dmx.h: 18: extern uint16_t address;
-[v _address `us ~T0 @X0 0 e ]
-"81 controller.c
-[; ;controller.c: 81:         printf("HOLD\r");
-[v _printf `(i ~T0 @X0 0 e? ]
-"19 ./tm1650.h
-[; ;./tm1650.h: 19: void TM1650_fastPrintNum_2digit(uint8_t num);
-[v _TM1650_fastPrintNum_2digit `(v ~T0 @X0 0 ef1`uc ]
-"34 ./led.h
-[; ;./led.h: 34: extern uint8_t beatBrightness;
-[v _beatBrightness `uc ~T0 @X0 0 e ]
-"18 ./tm1650.h
-[; ;./tm1650.h: 18: void TM1650_fastPrintNum_3digit(uint16_t num);
-[v _TM1650_fastPrintNum_3digit `(v ~T0 @X0 0 ef1`us ]
-"32 ./led.h
-[; ;./led.h: 32: uint8_t getManualColor(colormode_t input);
-[v _getManualColor `(uc ~T0 @X0 0 ef1`E10878 ]
-"40 ./buttons.h
-[; ;./buttons.h: 40: _Bool BUTTONS_isHeld(button_t* button);
-[v _BUTTONS_isHeld `(a ~T0 @X0 0 ef1`*S1513 ]
 "13 ./dmx.h
 [; ;./dmx.h: 13: void address_inc();
 [v _address_inc `(v ~T0 @X0 0 e? ]
 "14
 [; ;./dmx.h: 14: void address_dec();
 [v _address_dec `(v ~T0 @X0 0 e? ]
-"31 ./led.h
-[; ;./led.h: 31: void colorInc(colormode_t input);
-[v _colorInc `(v ~T0 @X0 0 ef1`E10878 ]
-"30
-[; ;./led.h: 30: void colorDec(colormode_t input);
-[v _colorDec `(v ~T0 @X0 0 ef1`E10878 ]
-"110 /Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 110: __asm("INDF0 equ 00h");
+"18
+[; ;./dmx.h: 18: extern uint16_t address;
+[v _address `us ~T0 @X0 0 e ]
+"27 ./led.h
+[; ;./led.h: 27: void LED_task_BEAT_STROBE();
+[v _LED_task_BEAT_STROBE `(v ~T0 @X0 0 e? ]
+"28
+[; ;./led.h: 28: void LED_task_BEAT_FADE();
+[v _LED_task_BEAT_FADE `(v ~T0 @X0 0 e? ]
+"33
+[; ;./led.h: 33: void LED_task_BEAT_CONTINUOUS();
+[v _LED_task_BEAT_CONTINUOUS `(v ~T0 @X0 0 e? ]
+"34
+[; ;./led.h: 34: void LED_task_BEAT_MIXED();
+[v _LED_task_BEAT_MIXED `(v ~T0 @X0 0 e? ]
+"19 ./tm1650.h
+[; ;./tm1650.h: 19: void TM1650_fastPrintNum_2digit(uint8_t num);
+[v _TM1650_fastPrintNum_2digit `(v ~T0 @X0 0 ef1`uc ]
+"42 ./led.h
+[; ;./led.h: 42: extern uint8_t beatBrightness;
+[v _beatBrightness `uc ~T0 @X0 0 e ]
+"35
+[; ;./led.h: 35: void LED_task_MANUAL();
+[v _LED_task_MANUAL `(v ~T0 @X0 0 e? ]
+"18 ./tm1650.h
+[; ;./tm1650.h: 18: void TM1650_fastPrintNum_3digit(uint16_t num);
+[v _TM1650_fastPrintNum_3digit `(v ~T0 @X0 0 ef1`us ]
+"39 ./led.h
+[; ;./led.h: 39: void colorInc();
+[v _colorInc `(v ~T0 @X0 0 e? ]
+"38
+[; ;./led.h: 38: void colorDec();
+[v _colorDec `(v ~T0 @X0 0 e? ]
+"29
+[; ;./led.h: 29: void LED_task_ANIMATION(uint8_t mode, uint8_t brightness, uint8_t speed);
+[v _LED_task_ANIMATION `(v ~T0 @X0 0 ef3`uc`uc`uc ]
+"110 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 110: __asm("INDF0 equ 00h");
 [; <" INDF0 equ 00h ;# ">
 "130
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 130: __asm("INDF1 equ 01h");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 130: __asm("INDF1 equ 01h");
 [; <" INDF1 equ 01h ;# ">
 "150
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 150: __asm("PCL equ 02h");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 150: __asm("PCL equ 02h");
 [; <" PCL equ 02h ;# ">
 "170
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 170: __asm("STATUS equ 03h");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 170: __asm("STATUS equ 03h");
 [; <" STATUS equ 03h ;# ">
 "233
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 233: __asm("FSR0L equ 04h");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 233: __asm("FSR0L equ 04h");
 [; <" FSR0L equ 04h ;# ">
 "253
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 253: __asm("FSR0H equ 05h");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 253: __asm("FSR0H equ 05h");
 [; <" FSR0H equ 05h ;# ">
 "277
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 277: __asm("FSR1L equ 06h");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 277: __asm("FSR1L equ 06h");
 [; <" FSR1L equ 06h ;# ">
 "297
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 297: __asm("FSR1H equ 07h");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 297: __asm("FSR1H equ 07h");
 [; <" FSR1H equ 07h ;# ">
 "317
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 317: __asm("BSR equ 08h");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 317: __asm("BSR equ 08h");
 [; <" BSR equ 08h ;# ">
 "375
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 375: __asm("WREG equ 09h");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 375: __asm("WREG equ 09h");
 [; <" WREG equ 09h ;# ">
 "395
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 395: __asm("PCLATH equ 0Ah");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 395: __asm("PCLATH equ 0Ah");
 [; <" PCLATH equ 0Ah ;# ">
 "415
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 415: __asm("INTCON equ 0Bh");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 415: __asm("INTCON equ 0Bh");
 [; <" INTCON equ 0Bh ;# ">
 "448
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 448: __asm("PORTA equ 0Ch");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 448: __asm("PORTA equ 0Ch");
 [; <" PORTA equ 0Ch ;# ">
 "498
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 498: __asm("PORTB equ 0Dh");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 498: __asm("PORTB equ 0Dh");
 [; <" PORTB equ 0Dh ;# ">
 "537
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 537: __asm("PORTC equ 0Eh");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 537: __asm("PORTC equ 0Eh");
 [; <" PORTC equ 0Eh ;# ">
 "599
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 599: __asm("TRISA equ 012h");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 599: __asm("TRISA equ 012h");
 [; <" TRISA equ 012h ;# ">
 "649
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 649: __asm("TRISB equ 013h");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 649: __asm("TRISB equ 013h");
 [; <" TRISB equ 013h ;# ">
 "688
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 688: __asm("TRISC equ 014h");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 688: __asm("TRISC equ 014h");
 [; <" TRISC equ 014h ;# ">
 "750
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 750: __asm("LATA equ 018h");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 750: __asm("LATA equ 018h");
 [; <" LATA equ 018h ;# ">
 "800
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 800: __asm("LATB equ 019h");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 800: __asm("LATB equ 019h");
 [; <" LATB equ 019h ;# ">
 "839
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 839: __asm("LATC equ 01Ah");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 839: __asm("LATC equ 01Ah");
 [; <" LATC equ 01Ah ;# ">
 "901
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 901: __asm("ADLTH equ 08Ch");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 901: __asm("ADLTH equ 08Ch");
 [; <" ADLTH equ 08Ch ;# ">
 "908
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 908: __asm("ADLTHL equ 08Ch");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 908: __asm("ADLTHL equ 08Ch");
 [; <" ADLTHL equ 08Ch ;# ">
 "1036
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 1036: __asm("ADLTHH equ 08Dh");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 1036: __asm("ADLTHH equ 08Dh");
 [; <" ADLTHH equ 08Dh ;# ">
 "1164
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 1164: __asm("ADUTH equ 08Eh");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 1164: __asm("ADUTH equ 08Eh");
 [; <" ADUTH equ 08Eh ;# ">
 "1171
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 1171: __asm("ADUTHL equ 08Eh");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 1171: __asm("ADUTHL equ 08Eh");
 [; <" ADUTHL equ 08Eh ;# ">
 "1299
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 1299: __asm("ADUTHH equ 08Fh");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 1299: __asm("ADUTHH equ 08Fh");
 [; <" ADUTHH equ 08Fh ;# ">
 "1427
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 1427: __asm("ADERR equ 090h");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 1427: __asm("ADERR equ 090h");
 [; <" ADERR equ 090h ;# ">
 "1434
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 1434: __asm("ADERRL equ 090h");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 1434: __asm("ADERRL equ 090h");
 [; <" ADERRL equ 090h ;# ">
 "1562
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 1562: __asm("ADERRH equ 091h");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 1562: __asm("ADERRH equ 091h");
 [; <" ADERRH equ 091h ;# ">
 "1690
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 1690: __asm("ADSTPT equ 092h");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 1690: __asm("ADSTPT equ 092h");
 [; <" ADSTPT equ 092h ;# ">
 "1697
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 1697: __asm("ADSTPTL equ 092h");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 1697: __asm("ADSTPTL equ 092h");
 [; <" ADSTPTL equ 092h ;# ">
 "1825
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 1825: __asm("ADSTPTH equ 093h");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 1825: __asm("ADSTPTH equ 093h");
 [; <" ADSTPTH equ 093h ;# ">
 "1953
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 1953: __asm("ADFLTR equ 094h");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 1953: __asm("ADFLTR equ 094h");
 [; <" ADFLTR equ 094h ;# ">
 "1960
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 1960: __asm("ADFLTRL equ 094h");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 1960: __asm("ADFLTRL equ 094h");
 [; <" ADFLTRL equ 094h ;# ">
 "2088
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 2088: __asm("ADFLTRH equ 095h");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 2088: __asm("ADFLTRH equ 095h");
 [; <" ADFLTRH equ 095h ;# ">
 "2218
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 2218: __asm("ADACC equ 096h");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 2218: __asm("ADACC equ 096h");
 [; <" ADACC equ 096h ;# ">
 "2225
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 2225: __asm("ADACCL equ 096h");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 2225: __asm("ADACCL equ 096h");
 [; <" ADACCL equ 096h ;# ">
 "2353
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 2353: __asm("ADACCH equ 097h");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 2353: __asm("ADACCH equ 097h");
 [; <" ADACCH equ 097h ;# ">
 "2481
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 2481: __asm("ADACCU equ 098h");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 2481: __asm("ADACCU equ 098h");
 [; <" ADACCU equ 098h ;# ">
 "2609
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 2609: __asm("ADCNT equ 099h");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 2609: __asm("ADCNT equ 099h");
 [; <" ADCNT equ 099h ;# ">
 "2737
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 2737: __asm("ADRPT equ 09Ah");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 2737: __asm("ADRPT equ 09Ah");
 [; <" ADRPT equ 09Ah ;# ">
 "2865
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 2865: __asm("ADPREV equ 09Bh");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 2865: __asm("ADPREV equ 09Bh");
 [; <" ADPREV equ 09Bh ;# ">
 "2872
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 2872: __asm("ADPREVL equ 09Bh");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 2872: __asm("ADPREVL equ 09Bh");
 [; <" ADPREVL equ 09Bh ;# ">
 "3000
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 3000: __asm("ADPREVH equ 09Ch");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 3000: __asm("ADPREVH equ 09Ch");
 [; <" ADPREVH equ 09Ch ;# ">
 "3128
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 3128: __asm("ADRES equ 09Dh");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 3128: __asm("ADRES equ 09Dh");
 [; <" ADRES equ 09Dh ;# ">
 "3135
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 3135: __asm("ADRESL equ 09Dh");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 3135: __asm("ADRESL equ 09Dh");
 [; <" ADRESL equ 09Dh ;# ">
 "3263
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 3263: __asm("ADRESH equ 09Eh");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 3263: __asm("ADRESH equ 09Eh");
 [; <" ADRESH equ 09Eh ;# ">
 "3383
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 3383: __asm("ADPCH equ 09Fh");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 3383: __asm("ADPCH equ 09Fh");
 [; <" ADPCH equ 09Fh ;# ">
-"3441
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 3441: __asm("ADACQ equ 010Ch");
+"3487
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 3487: __asm("ADACQ equ 010Ch");
 [; <" ADACQ equ 010Ch ;# ">
-"3448
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 3448: __asm("ADACQL equ 010Ch");
+"3494
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 3494: __asm("ADACQL equ 010Ch");
 [; <" ADACQL equ 010Ch ;# ">
-"3576
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 3576: __asm("ADACQH equ 010Dh");
+"3622
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 3622: __asm("ADACQH equ 010Dh");
 [; <" ADACQH equ 010Dh ;# ">
-"3668
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 3668: __asm("ADCAP equ 010Eh");
+"3714
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 3714: __asm("ADCAP equ 010Eh");
 [; <" ADCAP equ 010Eh ;# ">
-"3720
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 3720: __asm("ADPRE equ 010Fh");
+"3806
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 3806: __asm("ADPRE equ 010Fh");
 [; <" ADPRE equ 010Fh ;# ">
-"3727
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 3727: __asm("ADPREL equ 010Fh");
+"3813
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 3813: __asm("ADPREL equ 010Fh");
 [; <" ADPREL equ 010Fh ;# ">
-"3855
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 3855: __asm("ADPREH equ 0110h");
+"3941
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 3941: __asm("ADPREH equ 0110h");
 [; <" ADPREH equ 0110h ;# ">
-"3947
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 3947: __asm("ADCON0 equ 0111h");
+"4033
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 4033: __asm("ADCON0 equ 0111h");
 [; <" ADCON0 equ 0111h ;# ">
-"4078
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 4078: __asm("ADCON1 equ 0112h");
+"4164
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 4164: __asm("ADCON1 equ 0112h");
 [; <" ADCON1 equ 0112h ;# ">
-"4189
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 4189: __asm("ADCON2 equ 0113h");
+"4275
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 4275: __asm("ADCON2 equ 0113h");
 [; <" ADCON2 equ 0113h ;# ">
-"4367
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 4367: __asm("ADCON3 equ 0114h");
+"4453
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 4453: __asm("ADCON3 equ 0114h");
 [; <" ADCON3 equ 0114h ;# ">
-"4497
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 4497: __asm("ADSTAT equ 0115h");
+"4583
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 4583: __asm("ADSTAT equ 0115h");
 [; <" ADSTAT equ 0115h ;# ">
-"4622
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 4622: __asm("ADREF equ 0116h");
+"4708
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 4708: __asm("ADREF equ 0116h");
 [; <" ADREF equ 0116h ;# ">
-"4762
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 4762: __asm("ADACT equ 0117h");
+"4848
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 4848: __asm("ADACT equ 0117h");
 [; <" ADACT equ 0117h ;# ">
-"4854
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 4854: __asm("ADCLK equ 0118h");
+"4940
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 4940: __asm("ADCLK equ 0118h");
 [; <" ADCLK equ 0118h ;# ">
-"4958
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 4958: __asm("RC1REG equ 0119h");
+"5044
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 5044: __asm("RC1REG equ 0119h");
 [; <" RC1REG equ 0119h ;# ">
-"4963
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 4963: __asm("RCREG equ 0119h");
+"5049
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 5049: __asm("RCREG equ 0119h");
 [; <" RCREG equ 0119h ;# ">
-"4967
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 4967: __asm("RCREG1 equ 0119h");
+"5053
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 5053: __asm("RCREG1 equ 0119h");
 [; <" RCREG1 equ 0119h ;# ">
-"5012
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 5012: __asm("TX1REG equ 011Ah");
+"5098
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 5098: __asm("TX1REG equ 011Ah");
 [; <" TX1REG equ 011Ah ;# ">
-"5017
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 5017: __asm("TXREG1 equ 011Ah");
+"5103
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 5103: __asm("TXREG1 equ 011Ah");
 [; <" TXREG1 equ 011Ah ;# ">
-"5021
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 5021: __asm("TXREG equ 011Ah");
+"5107
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 5107: __asm("TXREG equ 011Ah");
 [; <" TXREG equ 011Ah ;# ">
-"5066
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 5066: __asm("SP1BRG equ 011Bh");
-[; <" SP1BRG equ 011Bh ;# ">
-"5073
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 5073: __asm("SP1BRGL equ 011Bh");
-[; <" SP1BRGL equ 011Bh ;# ">
-"5078
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 5078: __asm("SPBRG equ 011Bh");
-[; <" SPBRG equ 011Bh ;# ">
-"5082
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 5082: __asm("SPBRG1 equ 011Bh");
-[; <" SPBRG1 equ 011Bh ;# ">
-"5086
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 5086: __asm("SPBRGL equ 011Bh");
-[; <" SPBRGL equ 011Bh ;# ">
-"5143
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 5143: __asm("SP1BRGH equ 011Ch");
-[; <" SP1BRGH equ 011Ch ;# ">
-"5148
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 5148: __asm("SPBRGH equ 011Ch");
-[; <" SPBRGH equ 011Ch ;# ">
 "5152
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 5152: __asm("SPBRGH1 equ 011Ch");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 5152: __asm("SP1BRG equ 011Bh");
+[; <" SP1BRG equ 011Bh ;# ">
+"5159
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 5159: __asm("SP1BRGL equ 011Bh");
+[; <" SP1BRGL equ 011Bh ;# ">
+"5164
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 5164: __asm("SPBRG equ 011Bh");
+[; <" SPBRG equ 011Bh ;# ">
+"5168
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 5168: __asm("SPBRG1 equ 011Bh");
+[; <" SPBRG1 equ 011Bh ;# ">
+"5172
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 5172: __asm("SPBRGL equ 011Bh");
+[; <" SPBRGL equ 011Bh ;# ">
+"5229
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 5229: __asm("SP1BRGH equ 011Ch");
+[; <" SP1BRGH equ 011Ch ;# ">
+"5234
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 5234: __asm("SPBRGH equ 011Ch");
+[; <" SPBRGH equ 011Ch ;# ">
+"5238
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 5238: __asm("SPBRGH1 equ 011Ch");
 [; <" SPBRGH1 equ 011Ch ;# ">
-"5197
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 5197: __asm("RC1STA equ 011Dh");
+"5283
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 5283: __asm("RC1STA equ 011Dh");
 [; <" RC1STA equ 011Dh ;# ">
-"5202
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 5202: __asm("RCSTA1 equ 011Dh");
+"5288
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 5288: __asm("RCSTA1 equ 011Dh");
 [; <" RCSTA1 equ 011Dh ;# ">
-"5206
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 5206: __asm("RCSTA equ 011Dh");
+"5292
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 5292: __asm("RCSTA equ 011Dh");
 [; <" RCSTA equ 011Dh ;# ">
-"5377
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 5377: __asm("TX1STA equ 011Eh");
+"5463
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 5463: __asm("TX1STA equ 011Eh");
 [; <" TX1STA equ 011Eh ;# ">
-"5382
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 5382: __asm("TXSTA1 equ 011Eh");
+"5468
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 5468: __asm("TXSTA1 equ 011Eh");
 [; <" TXSTA1 equ 011Eh ;# ">
-"5386
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 5386: __asm("TXSTA equ 011Eh");
+"5472
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 5472: __asm("TXSTA equ 011Eh");
 [; <" TXSTA equ 011Eh ;# ">
-"5557
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 5557: __asm("BAUD1CON equ 011Fh");
+"5643
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 5643: __asm("BAUD1CON equ 011Fh");
 [; <" BAUD1CON equ 011Fh ;# ">
-"5562
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 5562: __asm("BAUDCON1 equ 011Fh");
+"5648
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 5648: __asm("BAUDCON1 equ 011Fh");
 [; <" BAUDCON1 equ 011Fh ;# ">
-"5566
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 5566: __asm("BAUDCTL1 equ 011Fh");
+"5652
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 5652: __asm("BAUDCTL1 equ 011Fh");
 [; <" BAUDCTL1 equ 011Fh ;# ">
-"5570
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 5570: __asm("BAUDCON equ 011Fh");
+"5656
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 5656: __asm("BAUDCON equ 011Fh");
 [; <" BAUDCON equ 011Fh ;# ">
-"5574
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 5574: __asm("BAUDCTL equ 011Fh");
+"5660
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 5660: __asm("BAUDCTL equ 011Fh");
 [; <" BAUDCTL equ 011Fh ;# ">
-"5803
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 5803: __asm("SSP1BUF equ 018Ch");
+"5889
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 5889: __asm("SSP1BUF equ 018Ch");
 [; <" SSP1BUF equ 018Ch ;# ">
-"5823
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 5823: __asm("SSP1ADD equ 018Dh");
+"5909
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 5909: __asm("SSP1ADD equ 018Dh");
 [; <" SSP1ADD equ 018Dh ;# ">
-"5943
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 5943: __asm("SSP1MSK equ 018Eh");
+"6029
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 6029: __asm("SSP1MSK equ 018Eh");
 [; <" SSP1MSK equ 018Eh ;# ">
-"6013
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 6013: __asm("SSP1STAT equ 018Fh");
+"6099
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 6099: __asm("SSP1STAT equ 018Fh");
 [; <" SSP1STAT equ 018Fh ;# ">
-"6377
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 6377: __asm("SSP1CON1 equ 0190h");
+"6463
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 6463: __asm("SSP1CON1 equ 0190h");
 [; <" SSP1CON1 equ 0190h ;# ">
-"6497
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 6497: __asm("SSP1CON2 equ 0191h");
+"6583
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 6583: __asm("SSP1CON2 equ 0191h");
 [; <" SSP1CON2 equ 0191h ;# ">
-"6684
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 6684: __asm("SSP1CON3 equ 0192h");
+"6770
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 6770: __asm("SSP1CON3 equ 0192h");
 [; <" SSP1CON3 equ 0192h ;# ">
-"6746
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 6746: __asm("SSP2BUF equ 0196h");
+"6832
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 6832: __asm("SSP2BUF equ 0196h");
 [; <" SSP2BUF equ 0196h ;# ">
-"6766
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 6766: __asm("SSP2ADD equ 0197h");
+"6852
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 6852: __asm("SSP2ADD equ 0197h");
 [; <" SSP2ADD equ 0197h ;# ">
-"6886
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 6886: __asm("SSP2MSK equ 0198h");
+"6972
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 6972: __asm("SSP2MSK equ 0198h");
 [; <" SSP2MSK equ 0198h ;# ">
-"6956
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 6956: __asm("SSP2STAT equ 0199h");
+"7042
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 7042: __asm("SSP2STAT equ 0199h");
 [; <" SSP2STAT equ 0199h ;# ">
-"7320
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 7320: __asm("SSP2CON1 equ 019Ah");
+"7406
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 7406: __asm("SSP2CON1 equ 019Ah");
 [; <" SSP2CON1 equ 019Ah ;# ">
-"7440
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 7440: __asm("SSP2CON2 equ 019Bh");
+"7526
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 7526: __asm("SSP2CON2 equ 019Bh");
 [; <" SSP2CON2 equ 019Bh ;# ">
-"7627
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 7627: __asm("SSP2CON3 equ 019Ch");
+"7713
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 7713: __asm("SSP2CON3 equ 019Ch");
 [; <" SSP2CON3 equ 019Ch ;# ">
-"7689
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 7689: __asm("TMR1L equ 020Ch");
+"7775
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 7775: __asm("TMR1L equ 020Ch");
 [; <" TMR1L equ 020Ch ;# ">
-"7759
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 7759: __asm("TMR1H equ 020Dh");
+"7845
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 7845: __asm("TMR1H equ 020Dh");
 [; <" TMR1H equ 020Dh ;# ">
-"7829
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 7829: __asm("T1CON equ 020Eh");
+"7915
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 7915: __asm("T1CON equ 020Eh");
 [; <" T1CON equ 020Eh ;# ">
-"7834
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 7834: __asm("TMR1CON equ 020Eh");
+"7920
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 7920: __asm("TMR1CON equ 020Eh");
 [; <" TMR1CON equ 020Eh ;# ">
-"8019
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 8019: __asm("T1GCON equ 020Fh");
+"8105
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 8105: __asm("T1GCON equ 020Fh");
 [; <" T1GCON equ 020Fh ;# ">
-"8024
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 8024: __asm("TMR1GCON equ 020Fh");
+"8110
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 8110: __asm("TMR1GCON equ 020Fh");
 [; <" TMR1GCON equ 020Fh ;# ">
-"8233
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 8233: __asm("T1GATE equ 0210h");
+"8319
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 8319: __asm("T1GATE equ 0210h");
 [; <" T1GATE equ 0210h ;# ">
-"8238
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 8238: __asm("TMR1GATE equ 0210h");
+"8324
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 8324: __asm("TMR1GATE equ 0210h");
 [; <" TMR1GATE equ 0210h ;# ">
-"8399
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 8399: __asm("T1CLK equ 0211h");
+"8485
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 8485: __asm("T1CLK equ 0211h");
 [; <" T1CLK equ 0211h ;# ">
-"8404
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 8404: __asm("TMR1CLK equ 0211h");
+"8490
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 8490: __asm("TMR1CLK equ 0211h");
 [; <" TMR1CLK equ 0211h ;# ">
-"8565
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 8565: __asm("TMR3L equ 0212h");
+"8651
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 8651: __asm("TMR3L equ 0212h");
 [; <" TMR3L equ 0212h ;# ">
-"8635
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 8635: __asm("TMR3H equ 0213h");
+"8721
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 8721: __asm("TMR3H equ 0213h");
 [; <" TMR3H equ 0213h ;# ">
-"8705
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 8705: __asm("T3CON equ 0214h");
+"8791
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 8791: __asm("T3CON equ 0214h");
 [; <" T3CON equ 0214h ;# ">
-"8710
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 8710: __asm("TMR3CON equ 0214h");
+"8796
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 8796: __asm("TMR3CON equ 0214h");
 [; <" TMR3CON equ 0214h ;# ">
-"8895
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 8895: __asm("T3GCON equ 0215h");
+"8981
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 8981: __asm("T3GCON equ 0215h");
 [; <" T3GCON equ 0215h ;# ">
-"8900
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 8900: __asm("TMR3GCON equ 0215h");
+"8986
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 8986: __asm("TMR3GCON equ 0215h");
 [; <" TMR3GCON equ 0215h ;# ">
-"9109
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 9109: __asm("T3GATE equ 0216h");
+"9195
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 9195: __asm("T3GATE equ 0216h");
 [; <" T3GATE equ 0216h ;# ">
-"9114
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 9114: __asm("TMR3GATE equ 0216h");
+"9200
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 9200: __asm("TMR3GATE equ 0216h");
 [; <" TMR3GATE equ 0216h ;# ">
-"9275
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 9275: __asm("T3CLK equ 0217h");
+"9361
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 9361: __asm("T3CLK equ 0217h");
 [; <" T3CLK equ 0217h ;# ">
-"9280
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 9280: __asm("TMR3CLK equ 0217h");
+"9366
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 9366: __asm("TMR3CLK equ 0217h");
 [; <" TMR3CLK equ 0217h ;# ">
-"9441
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 9441: __asm("TMR5L equ 0218h");
+"9527
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 9527: __asm("TMR5L equ 0218h");
 [; <" TMR5L equ 0218h ;# ">
-"9511
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 9511: __asm("TMR5H equ 0219h");
+"9597
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 9597: __asm("TMR5H equ 0219h");
 [; <" TMR5H equ 0219h ;# ">
-"9581
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 9581: __asm("T5CON equ 021Ah");
+"9667
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 9667: __asm("T5CON equ 021Ah");
 [; <" T5CON equ 021Ah ;# ">
-"9586
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 9586: __asm("TMR5CON equ 021Ah");
+"9672
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 9672: __asm("TMR5CON equ 021Ah");
 [; <" TMR5CON equ 021Ah ;# ">
-"9771
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 9771: __asm("T5GCON equ 021Bh");
+"9857
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 9857: __asm("T5GCON equ 021Bh");
 [; <" T5GCON equ 021Bh ;# ">
-"9776
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 9776: __asm("TMR5GCON equ 021Bh");
+"9862
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 9862: __asm("TMR5GCON equ 021Bh");
 [; <" TMR5GCON equ 021Bh ;# ">
-"9985
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 9985: __asm("T5GATE equ 021Ch");
+"10071
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 10071: __asm("T5GATE equ 021Ch");
 [; <" T5GATE equ 021Ch ;# ">
-"9990
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 9990: __asm("TMR5GATE equ 021Ch");
+"10076
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 10076: __asm("TMR5GATE equ 021Ch");
 [; <" TMR5GATE equ 021Ch ;# ">
-"10151
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 10151: __asm("T5CLK equ 021Dh");
+"10237
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 10237: __asm("T5CLK equ 021Dh");
 [; <" T5CLK equ 021Dh ;# ">
-"10156
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 10156: __asm("TMR5CLK equ 021Dh");
+"10242
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 10242: __asm("TMR5CLK equ 021Dh");
 [; <" TMR5CLK equ 021Dh ;# ">
-"10317
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 10317: __asm("CCPTMRS0 equ 021Eh");
+"10403
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 10403: __asm("CCPTMRS0 equ 021Eh");
 [; <" CCPTMRS0 equ 021Eh ;# ">
-"10355
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 10355: __asm("CCPTMRS1 equ 021Fh");
-[; <" CCPTMRS1 equ 021Fh ;# ">
-"10387
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 10387: __asm("T2TMR equ 028Ch");
-[; <" T2TMR equ 028Ch ;# ">
-"10392
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 10392: __asm("TMR2 equ 028Ch");
-[; <" TMR2 equ 028Ch ;# ">
 "10441
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 10441: __asm("T2PR equ 028Dh");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 10441: __asm("CCPTMRS1 equ 021Fh");
+[; <" CCPTMRS1 equ 021Fh ;# ">
+"10473
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 10473: __asm("T2TMR equ 028Ch");
+[; <" T2TMR equ 028Ch ;# ">
+"10478
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 10478: __asm("TMR2 equ 028Ch");
+[; <" TMR2 equ 028Ch ;# ">
+"10527
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 10527: __asm("T2PR equ 028Dh");
 [; <" T2PR equ 028Dh ;# ">
-"10446
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 10446: __asm("PR2 equ 028Dh");
+"10532
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 10532: __asm("PR2 equ 028Dh");
 [; <" PR2 equ 028Dh ;# ">
-"10495
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 10495: __asm("T2CON equ 028Eh");
+"10581
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 10581: __asm("T2CON equ 028Eh");
 [; <" T2CON equ 028Eh ;# ">
-"10641
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 10641: __asm("T2HLT equ 028Fh");
+"10727
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 10727: __asm("T2HLT equ 028Fh");
 [; <" T2HLT equ 028Fh ;# ">
-"10769
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 10769: __asm("T2CLKCON equ 0290h");
+"10855
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 10855: __asm("T2CLKCON equ 0290h");
 [; <" T2CLKCON equ 0290h ;# ">
-"10849
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 10849: __asm("T2RST equ 0291h");
+"10935
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 10935: __asm("T2RST equ 0291h");
 [; <" T2RST equ 0291h ;# ">
-"10941
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 10941: __asm("T4TMR equ 0292h");
+"11027
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 11027: __asm("T4TMR equ 0292h");
 [; <" T4TMR equ 0292h ;# ">
-"10946
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 10946: __asm("TMR4 equ 0292h");
+"11032
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 11032: __asm("TMR4 equ 0292h");
 [; <" TMR4 equ 0292h ;# ">
-"10995
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 10995: __asm("T4PR equ 0293h");
+"11081
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 11081: __asm("T4PR equ 0293h");
 [; <" T4PR equ 0293h ;# ">
-"11000
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 11000: __asm("PR4 equ 0293h");
+"11086
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 11086: __asm("PR4 equ 0293h");
 [; <" PR4 equ 0293h ;# ">
-"11049
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 11049: __asm("T4CON equ 0294h");
+"11135
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 11135: __asm("T4CON equ 0294h");
 [; <" T4CON equ 0294h ;# ">
-"11195
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 11195: __asm("T4HLT equ 0295h");
+"11281
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 11281: __asm("T4HLT equ 0295h");
 [; <" T4HLT equ 0295h ;# ">
-"11323
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 11323: __asm("T4CLKCON equ 0296h");
+"11409
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 11409: __asm("T4CLKCON equ 0296h");
 [; <" T4CLKCON equ 0296h ;# ">
-"11403
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 11403: __asm("T4RST equ 0297h");
+"11489
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 11489: __asm("T4RST equ 0297h");
 [; <" T4RST equ 0297h ;# ">
-"11495
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 11495: __asm("T6TMR equ 0298h");
+"11581
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 11581: __asm("T6TMR equ 0298h");
 [; <" T6TMR equ 0298h ;# ">
-"11500
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 11500: __asm("TMR6 equ 0298h");
+"11586
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 11586: __asm("TMR6 equ 0298h");
 [; <" TMR6 equ 0298h ;# ">
-"11549
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 11549: __asm("T6PR equ 0299h");
+"11635
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 11635: __asm("T6PR equ 0299h");
 [; <" T6PR equ 0299h ;# ">
-"11554
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 11554: __asm("PR6 equ 0299h");
+"11640
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 11640: __asm("PR6 equ 0299h");
 [; <" PR6 equ 0299h ;# ">
-"11603
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 11603: __asm("T6CON equ 029Ah");
+"11689
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 11689: __asm("T6CON equ 029Ah");
 [; <" T6CON equ 029Ah ;# ">
-"11749
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 11749: __asm("T6HLT equ 029Bh");
+"11835
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 11835: __asm("T6HLT equ 029Bh");
 [; <" T6HLT equ 029Bh ;# ">
-"11877
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 11877: __asm("T6CLKCON equ 029Ch");
+"11963
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 11963: __asm("T6CLKCON equ 029Ch");
 [; <" T6CLKCON equ 029Ch ;# ">
-"11957
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 11957: __asm("T6RST equ 029Dh");
+"12043
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 12043: __asm("T6RST equ 029Dh");
 [; <" T6RST equ 029Dh ;# ">
-"12049
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 12049: __asm("ADCPCON0 equ 029Fh");
+"12135
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 12135: __asm("ADCPCON0 equ 029Fh");
 [; <" ADCPCON0 equ 029Fh ;# ">
-"12076
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 12076: __asm("CCPR1 equ 030Ch");
+"12162
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 12162: __asm("CCPR1 equ 030Ch");
 [; <" CCPR1 equ 030Ch ;# ">
-"12083
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 12083: __asm("CCPR1L equ 030Ch");
+"12169
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 12169: __asm("CCPR1L equ 030Ch");
 [; <" CCPR1L equ 030Ch ;# ">
-"12103
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 12103: __asm("CCPR1H equ 030Dh");
+"12189
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 12189: __asm("CCPR1H equ 030Dh");
 [; <" CCPR1H equ 030Dh ;# ">
-"12123
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 12123: __asm("CCP1CON equ 030Eh");
+"12209
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 12209: __asm("CCP1CON equ 030Eh");
 [; <" CCP1CON equ 030Eh ;# ">
-"12250
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 12250: __asm("CCP1CAP equ 030Fh");
+"12336
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 12336: __asm("CCP1CAP equ 030Fh");
 [; <" CCP1CAP equ 030Fh ;# ">
-"12318
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 12318: __asm("CCPR2 equ 0310h");
+"12404
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 12404: __asm("CCPR2 equ 0310h");
 [; <" CCPR2 equ 0310h ;# ">
-"12325
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 12325: __asm("CCPR2L equ 0310h");
+"12411
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 12411: __asm("CCPR2L equ 0310h");
 [; <" CCPR2L equ 0310h ;# ">
-"12345
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 12345: __asm("CCPR2H equ 0311h");
+"12431
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 12431: __asm("CCPR2H equ 0311h");
 [; <" CCPR2H equ 0311h ;# ">
-"12365
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 12365: __asm("CCP2CON equ 0312h");
+"12451
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 12451: __asm("CCP2CON equ 0312h");
 [; <" CCP2CON equ 0312h ;# ">
-"12492
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 12492: __asm("CCP2CAP equ 0313h");
+"12578
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 12578: __asm("CCP2CAP equ 0313h");
 [; <" CCP2CAP equ 0313h ;# ">
-"12560
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 12560: __asm("CCPR3 equ 0314h");
+"12646
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 12646: __asm("CCPR3 equ 0314h");
 [; <" CCPR3 equ 0314h ;# ">
-"12567
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 12567: __asm("CCPR3L equ 0314h");
+"12653
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 12653: __asm("CCPR3L equ 0314h");
 [; <" CCPR3L equ 0314h ;# ">
-"12587
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 12587: __asm("CCPR3H equ 0315h");
+"12673
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 12673: __asm("CCPR3H equ 0315h");
 [; <" CCPR3H equ 0315h ;# ">
-"12607
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 12607: __asm("CCP3CON equ 0316h");
+"12693
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 12693: __asm("CCP3CON equ 0316h");
 [; <" CCP3CON equ 0316h ;# ">
-"12734
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 12734: __asm("CCP3CAP equ 0317h");
+"12820
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 12820: __asm("CCP3CAP equ 0317h");
 [; <" CCP3CAP equ 0317h ;# ">
-"12802
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 12802: __asm("CCPR4 equ 0318h");
+"12888
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 12888: __asm("CCPR4 equ 0318h");
 [; <" CCPR4 equ 0318h ;# ">
-"12809
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 12809: __asm("CCPR4L equ 0318h");
+"12895
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 12895: __asm("CCPR4L equ 0318h");
 [; <" CCPR4L equ 0318h ;# ">
-"12829
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 12829: __asm("CCPR4H equ 0319h");
+"12915
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 12915: __asm("CCPR4H equ 0319h");
 [; <" CCPR4H equ 0319h ;# ">
-"12849
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 12849: __asm("CCP4CON equ 031Ah");
+"12935
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 12935: __asm("CCP4CON equ 031Ah");
 [; <" CCP4CON equ 031Ah ;# ">
-"12976
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 12976: __asm("CCP4CAP equ 031Bh");
+"13062
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 13062: __asm("CCP4CAP equ 031Bh");
 [; <" CCP4CAP equ 031Bh ;# ">
-"13044
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 13044: __asm("PWM6DC equ 038Ch");
+"13130
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 13130: __asm("PWM6DC equ 038Ch");
 [; <" PWM6DC equ 038Ch ;# ">
-"13051
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 13051: __asm("PWM6DCL equ 038Ch");
+"13137
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 13137: __asm("PWM6DCL equ 038Ch");
 [; <" PWM6DCL equ 038Ch ;# ">
-"13117
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 13117: __asm("PWM6DCH equ 038Dh");
+"13203
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 13203: __asm("PWM6DCH equ 038Dh");
 [; <" PWM6DCH equ 038Dh ;# ">
-"13287
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 13287: __asm("PWM6CON equ 038Eh");
+"13373
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 13373: __asm("PWM6CON equ 038Eh");
 [; <" PWM6CON equ 038Eh ;# ">
-"13343
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 13343: __asm("PWM7DC equ 0390h");
+"13429
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 13429: __asm("PWM7DC equ 0390h");
 [; <" PWM7DC equ 0390h ;# ">
-"13350
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 13350: __asm("PWM7DCL equ 0390h");
+"13436
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 13436: __asm("PWM7DCL equ 0390h");
 [; <" PWM7DCL equ 0390h ;# ">
-"13416
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 13416: __asm("PWM7DCH equ 0391h");
+"13502
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 13502: __asm("PWM7DCH equ 0391h");
 [; <" PWM7DCH equ 0391h ;# ">
-"13586
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 13586: __asm("PWM7CON equ 0392h");
+"13672
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 13672: __asm("PWM7CON equ 0392h");
 [; <" PWM7CON equ 0392h ;# ">
-"13644
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 13644: __asm("SMT1TMR equ 048Ch");
+"13730
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 13730: __asm("SMT1TMR equ 048Ch");
 [; <" SMT1TMR equ 048Ch ;# ">
-"13651
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 13651: __asm("SMT1TMRL equ 048Ch");
+"13737
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 13737: __asm("SMT1TMRL equ 048Ch");
 [; <" SMT1TMRL equ 048Ch ;# ">
-"13779
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 13779: __asm("SMT1TMRH equ 048Dh");
+"13865
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 13865: __asm("SMT1TMRH equ 048Dh");
 [; <" SMT1TMRH equ 048Dh ;# ">
-"13907
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 13907: __asm("SMT1TMRU equ 048Eh");
+"13993
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 13993: __asm("SMT1TMRU equ 048Eh");
 [; <" SMT1TMRU equ 048Eh ;# ">
-"14037
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 14037: __asm("SMT1CPR equ 048Fh");
+"14123
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 14123: __asm("SMT1CPR equ 048Fh");
 [; <" SMT1CPR equ 048Fh ;# ">
-"14044
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 14044: __asm("SMT1CPRL equ 048Fh");
+"14130
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 14130: __asm("SMT1CPRL equ 048Fh");
 [; <" SMT1CPRL equ 048Fh ;# ">
-"14172
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 14172: __asm("SMT1CPRH equ 0490h");
+"14258
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 14258: __asm("SMT1CPRH equ 0490h");
 [; <" SMT1CPRH equ 0490h ;# ">
-"14300
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 14300: __asm("SMT1CPRU equ 0491h");
+"14386
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 14386: __asm("SMT1CPRU equ 0491h");
 [; <" SMT1CPRU equ 0491h ;# ">
-"14430
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 14430: __asm("SMT1CPW equ 0492h");
+"14516
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 14516: __asm("SMT1CPW equ 0492h");
 [; <" SMT1CPW equ 0492h ;# ">
-"14437
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 14437: __asm("SMT1CPWL equ 0492h");
+"14523
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 14523: __asm("SMT1CPWL equ 0492h");
 [; <" SMT1CPWL equ 0492h ;# ">
-"14565
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 14565: __asm("SMT1CPWH equ 0493h");
+"14651
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 14651: __asm("SMT1CPWH equ 0493h");
 [; <" SMT1CPWH equ 0493h ;# ">
-"14693
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 14693: __asm("SMT1CPWU equ 0494h");
+"14779
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 14779: __asm("SMT1CPWU equ 0494h");
 [; <" SMT1CPWU equ 0494h ;# ">
-"14823
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 14823: __asm("SMT1PR equ 0495h");
+"14909
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 14909: __asm("SMT1PR equ 0495h");
 [; <" SMT1PR equ 0495h ;# ">
-"14830
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 14830: __asm("SMT1PRL equ 0495h");
+"14916
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 14916: __asm("SMT1PRL equ 0495h");
 [; <" SMT1PRL equ 0495h ;# ">
-"14958
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 14958: __asm("SMT1PRH equ 0496h");
+"15044
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 15044: __asm("SMT1PRH equ 0496h");
 [; <" SMT1PRH equ 0496h ;# ">
-"15086
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 15086: __asm("SMT1PRU equ 0497h");
+"15172
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 15172: __asm("SMT1PRU equ 0497h");
 [; <" SMT1PRU equ 0497h ;# ">
-"15214
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 15214: __asm("SMT1CON0 equ 0498h");
+"15300
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 15300: __asm("SMT1CON0 equ 0498h");
 [; <" SMT1CON0 equ 0498h ;# ">
-"15332
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 15332: __asm("SMT1CON1 equ 0499h");
+"15418
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 15418: __asm("SMT1CON1 equ 0499h");
 [; <" SMT1CON1 equ 0499h ;# ">
-"15412
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 15412: __asm("SMT1STAT equ 049Ah");
+"15498
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 15498: __asm("SMT1STAT equ 049Ah");
 [; <" SMT1STAT equ 049Ah ;# ">
-"15511
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 15511: __asm("SMT1CLK equ 049Bh");
+"15597
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 15597: __asm("SMT1CLK equ 049Bh");
 [; <" SMT1CLK equ 049Bh ;# ">
-"15579
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 15579: __asm("SMT1SIG equ 049Ch");
+"15665
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 15665: __asm("SMT1SIG equ 049Ch");
 [; <" SMT1SIG equ 049Ch ;# ">
-"15671
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 15671: __asm("SMT1WIN equ 049Dh");
+"15757
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 15757: __asm("SMT1WIN equ 049Dh");
 [; <" SMT1WIN equ 049Dh ;# ">
-"15765
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 15765: __asm("NCO1ACC equ 058Ch");
+"15851
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 15851: __asm("NCO1ACC equ 058Ch");
 [; <" NCO1ACC equ 058Ch ;# ">
-"15772
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 15772: __asm("NCO1ACCL equ 058Ch");
+"15858
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 15858: __asm("NCO1ACCL equ 058Ch");
 [; <" NCO1ACCL equ 058Ch ;# ">
-"15900
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 15900: __asm("NCO1ACCH equ 058Dh");
+"15986
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 15986: __asm("NCO1ACCH equ 058Dh");
 [; <" NCO1ACCH equ 058Dh ;# ">
-"16028
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 16028: __asm("NCO1ACCU equ 058Eh");
+"16114
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 16114: __asm("NCO1ACCU equ 058Eh");
 [; <" NCO1ACCU equ 058Eh ;# ">
-"16110
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 16110: __asm("NCO1INC equ 058Fh");
+"16196
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 16196: __asm("NCO1INC equ 058Fh");
 [; <" NCO1INC equ 058Fh ;# ">
-"16117
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 16117: __asm("NCO1INCL equ 058Fh");
+"16203
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 16203: __asm("NCO1INCL equ 058Fh");
 [; <" NCO1INCL equ 058Fh ;# ">
-"16245
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 16245: __asm("NCO1INCH equ 0590h");
+"16331
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 16331: __asm("NCO1INCH equ 0590h");
 [; <" NCO1INCH equ 0590h ;# ">
-"16373
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 16373: __asm("NCO1INCU equ 0591h");
+"16459
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 16459: __asm("NCO1INCU equ 0591h");
 [; <" NCO1INCU equ 0591h ;# ">
-"16453
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 16453: __asm("NCO1CON equ 0592h");
+"16539
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 16539: __asm("NCO1CON equ 0592h");
 [; <" NCO1CON equ 0592h ;# ">
-"16521
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 16521: __asm("NCO1CLK equ 0593h");
+"16607
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 16607: __asm("NCO1CLK equ 0593h");
 [; <" NCO1CLK equ 0593h ;# ">
-"16653
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 16653: __asm("TMR0L equ 059Ch");
+"16739
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 16739: __asm("TMR0L equ 059Ch");
 [; <" TMR0L equ 059Ch ;# ">
-"16658
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 16658: __asm("TMR0 equ 059Ch");
+"16744
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 16744: __asm("TMR0 equ 059Ch");
 [; <" TMR0 equ 059Ch ;# ">
-"16791
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 16791: __asm("TMR0H equ 059Dh");
+"16877
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 16877: __asm("TMR0H equ 059Dh");
 [; <" TMR0H equ 059Dh ;# ">
-"16796
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 16796: __asm("PR0 equ 059Dh");
+"16882
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 16882: __asm("PR0 equ 059Dh");
 [; <" PR0 equ 059Dh ;# ">
-"17045
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 17045: __asm("T0CON0 equ 059Eh");
+"17131
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 17131: __asm("T0CON0 equ 059Eh");
 [; <" T0CON0 equ 059Eh ;# ">
-"17143
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 17143: __asm("T0CON1 equ 059Fh");
+"17229
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 17229: __asm("T0CON1 equ 059Fh");
 [; <" T0CON1 equ 059Fh ;# ">
-"17285
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 17285: __asm("CWG1CLK equ 060Ch");
+"17371
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 17371: __asm("CWG1CLK equ 060Ch");
 [; <" CWG1CLK equ 060Ch ;# ">
-"17290
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 17290: __asm("CWG1CLKCON equ 060Ch");
+"17376
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 17376: __asm("CWG1CLKCON equ 060Ch");
 [; <" CWG1CLKCON equ 060Ch ;# ">
-"17339
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 17339: __asm("CWG1ISM equ 060Dh");
+"17425
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 17425: __asm("CWG1ISM equ 060Dh");
 [; <" CWG1ISM equ 060Dh ;# ">
-"17344
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 17344: __asm("CWG1DAT equ 060Dh");
+"17430
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 17430: __asm("CWG1DAT equ 060Dh");
 [; <" CWG1DAT equ 060Dh ;# ">
-"17429
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 17429: __asm("CWG1DBR equ 060Eh");
+"17515
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 17515: __asm("CWG1DBR equ 060Eh");
 [; <" CWG1DBR equ 060Eh ;# ">
-"17533
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 17533: __asm("CWG1DBF equ 060Fh");
+"17619
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 17619: __asm("CWG1DBF equ 060Fh");
 [; <" CWG1DBF equ 060Fh ;# ">
-"17637
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 17637: __asm("CWG1CON0 equ 0610h");
+"17723
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 17723: __asm("CWG1CON0 equ 0610h");
 [; <" CWG1CON0 equ 0610h ;# ">
-"17738
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 17738: __asm("CWG1CON1 equ 0611h");
+"17824
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 17824: __asm("CWG1CON1 equ 0611h");
 [; <" CWG1CON1 equ 0611h ;# ">
-"17816
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 17816: __asm("CWG1AS0 equ 0612h");
+"17902
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 17902: __asm("CWG1AS0 equ 0612h");
 [; <" CWG1AS0 equ 0612h ;# ">
-"17936
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 17936: __asm("CWG1AS1 equ 0613h");
+"18022
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 18022: __asm("CWG1AS1 equ 0613h");
 [; <" CWG1AS1 equ 0613h ;# ">
-"17992
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 17992: __asm("CWG1STR equ 0614h");
+"18078
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 18078: __asm("CWG1STR equ 0614h");
 [; <" CWG1STR equ 0614h ;# ">
-"18104
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 18104: __asm("CWG2CLK equ 0616h");
+"18190
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 18190: __asm("CWG2CLK equ 0616h");
 [; <" CWG2CLK equ 0616h ;# ">
-"18109
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 18109: __asm("CWG2CLKCON equ 0616h");
+"18195
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 18195: __asm("CWG2CLKCON equ 0616h");
 [; <" CWG2CLKCON equ 0616h ;# ">
-"18158
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 18158: __asm("CWG2ISM equ 0617h");
+"18244
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 18244: __asm("CWG2ISM equ 0617h");
 [; <" CWG2ISM equ 0617h ;# ">
-"18163
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 18163: __asm("CWG2DAT equ 0617h");
+"18249
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 18249: __asm("CWG2DAT equ 0617h");
 [; <" CWG2DAT equ 0617h ;# ">
-"18248
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 18248: __asm("CWG2DBR equ 0618h");
+"18334
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 18334: __asm("CWG2DBR equ 0618h");
 [; <" CWG2DBR equ 0618h ;# ">
-"18352
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 18352: __asm("CWG2DBF equ 0619h");
+"18438
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 18438: __asm("CWG2DBF equ 0619h");
 [; <" CWG2DBF equ 0619h ;# ">
-"18456
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 18456: __asm("CWG2CON0 equ 061Ah");
+"18542
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 18542: __asm("CWG2CON0 equ 061Ah");
 [; <" CWG2CON0 equ 061Ah ;# ">
-"18557
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 18557: __asm("CWG2CON1 equ 061Bh");
+"18643
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 18643: __asm("CWG2CON1 equ 061Bh");
 [; <" CWG2CON1 equ 061Bh ;# ">
-"18635
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 18635: __asm("CWG2AS0 equ 061Ch");
+"18721
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 18721: __asm("CWG2AS0 equ 061Ch");
 [; <" CWG2AS0 equ 061Ch ;# ">
-"18755
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 18755: __asm("CWG2AS1 equ 061Dh");
+"18841
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 18841: __asm("CWG2AS1 equ 061Dh");
 [; <" CWG2AS1 equ 061Dh ;# ">
-"18811
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 18811: __asm("CWG2STR equ 061Eh");
+"18897
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 18897: __asm("CWG2STR equ 061Eh");
 [; <" CWG2STR equ 061Eh ;# ">
-"18923
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 18923: __asm("PIR0 equ 070Ch");
+"19009
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 19009: __asm("PIR0 equ 070Ch");
 [; <" PIR0 equ 070Ch ;# ">
-"18956
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 18956: __asm("PIR1 equ 070Dh");
+"19042
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 19042: __asm("PIR1 equ 070Dh");
 [; <" PIR1 equ 070Dh ;# ">
-"18995
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 18995: __asm("PIR2 equ 070Eh");
+"19081
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 19081: __asm("PIR2 equ 070Eh");
 [; <" PIR2 equ 070Eh ;# ">
-"19028
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 19028: __asm("PIR3 equ 070Fh");
+"19114
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 19114: __asm("PIR3 equ 070Fh");
 [; <" PIR3 equ 070Fh ;# ">
-"19078
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 19078: __asm("PIR4 equ 0710h");
+"19164
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 19164: __asm("PIR4 equ 0710h");
 [; <" PIR4 equ 0710h ;# ">
-"19128
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 19128: __asm("PIR5 equ 0711h");
+"19214
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 19214: __asm("PIR5 equ 0711h");
 [; <" PIR5 equ 0711h ;# ">
-"19185
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 19185: __asm("PIR6 equ 0712h");
+"19271
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 19271: __asm("PIR6 equ 0712h");
 [; <" PIR6 equ 0712h ;# ">
-"19223
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 19223: __asm("PIR7 equ 0713h");
+"19309
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 19309: __asm("PIR7 equ 0713h");
 [; <" PIR7 equ 0713h ;# ">
-"19262
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 19262: __asm("PIR8 equ 0714h");
+"19348
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 19348: __asm("PIR8 equ 0714h");
 [; <" PIR8 equ 0714h ;# ">
-"19294
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 19294: __asm("PIE0 equ 0716h");
+"19380
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 19380: __asm("PIE0 equ 0716h");
 [; <" PIE0 equ 0716h ;# ">
-"19327
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 19327: __asm("PIE1 equ 0717h");
+"19413
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 19413: __asm("PIE1 equ 0717h");
 [; <" PIE1 equ 0717h ;# ">
-"19366
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 19366: __asm("PIE2 equ 0718h");
+"19452
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 19452: __asm("PIE2 equ 0718h");
 [; <" PIE2 equ 0718h ;# ">
-"19399
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 19399: __asm("PIE3 equ 0719h");
+"19485
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 19485: __asm("PIE3 equ 0719h");
 [; <" PIE3 equ 0719h ;# ">
-"19449
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 19449: __asm("PIE4 equ 071Ah");
+"19535
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 19535: __asm("PIE4 equ 071Ah");
 [; <" PIE4 equ 071Ah ;# ">
-"19499
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 19499: __asm("PIE5 equ 071Bh");
+"19585
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 19585: __asm("PIE5 equ 071Bh");
 [; <" PIE5 equ 071Bh ;# ">
-"19556
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 19556: __asm("PIE6 equ 071Ch");
-[; <" PIE6 equ 071Ch ;# ">
-"19594
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 19594: __asm("PIE7 equ 071Dh");
-[; <" PIE7 equ 071Dh ;# ">
 "19642
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 19642: __asm("PIE8 equ 071Eh");
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 19642: __asm("PIE6 equ 071Ch");
+[; <" PIE6 equ 071Ch ;# ">
+"19680
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 19680: __asm("PIE7 equ 071Dh");
+[; <" PIE7 equ 071Dh ;# ">
+"19728
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 19728: __asm("PIE8 equ 071Eh");
 [; <" PIE8 equ 071Eh ;# ">
-"19674
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 19674: __asm("PMD0 equ 0796h");
+"19760
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 19760: __asm("PMD0 equ 0796h");
 [; <" PMD0 equ 0796h ;# ">
-"19719
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 19719: __asm("PMD1 equ 0797h");
+"19805
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 19805: __asm("PMD1 equ 0797h");
 [; <" PMD1 equ 0797h ;# ">
-"19775
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 19775: __asm("PMD2 equ 0798h");
+"19861
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 19861: __asm("PMD2 equ 0798h");
 [; <" PMD2 equ 0798h ;# ">
-"19796
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 19796: __asm("PMD3 equ 0799h");
+"19882
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 19882: __asm("PMD3 equ 0799h");
 [; <" PMD3 equ 0799h ;# ">
-"19841
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 19841: __asm("PMD4 equ 079Ah");
+"19927
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 19927: __asm("PMD4 equ 079Ah");
 [; <" PMD4 equ 079Ah ;# ">
-"19892
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 19892: __asm("PMD5 equ 079Bh");
+"19978
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 19978: __asm("PMD5 equ 079Bh");
 [; <" PMD5 equ 079Bh ;# ">
-"19919
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 19919: __asm("PMD6 equ 079Ch");
+"20005
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 20005: __asm("PMD6 equ 079Ch");
 [; <" PMD6 equ 079Ch ;# ">
-"19952
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 19952: __asm("PMD7 equ 079Dh");
+"20038
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 20038: __asm("PMD7 equ 079Dh");
 [; <" PMD7 equ 079Dh ;# ">
-"20002
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 20002: __asm("WDTCON0 equ 080Ch");
+"20088
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 20088: __asm("WDTCON0 equ 080Ch");
 [; <" WDTCON0 equ 080Ch ;# ">
-"20077
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 20077: __asm("WDTCON1 equ 080Dh");
+"20163
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 20163: __asm("WDTCON1 equ 080Dh");
 [; <" WDTCON1 equ 080Dh ;# ">
-"20171
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 20171: __asm("WDTPSL equ 080Eh");
+"20257
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 20257: __asm("WDTPSL equ 080Eh");
 [; <" WDTPSL equ 080Eh ;# ">
-"20299
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 20299: __asm("WDTPSH equ 080Fh");
+"20385
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 20385: __asm("WDTPSH equ 080Fh");
 [; <" WDTPSH equ 080Fh ;# ">
-"20427
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 20427: __asm("WDTTMR equ 0810h");
+"20513
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 20513: __asm("WDTTMR equ 0810h");
 [; <" WDTTMR equ 0810h ;# ">
-"20509
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 20509: __asm("BORCON equ 0811h");
+"20595
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 20595: __asm("BORCON equ 0811h");
 [; <" BORCON equ 0811h ;# ">
-"20536
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 20536: __asm("VREGCON equ 0812h");
+"20622
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 20622: __asm("VREGCON equ 0812h");
 [; <" VREGCON equ 0812h ;# ">
-"20557
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 20557: __asm("PCON0 equ 0813h");
+"20643
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 20643: __asm("PCON0 equ 0813h");
 [; <" PCON0 equ 0813h ;# ">
-"20619
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 20619: __asm("PCON1 equ 0814h");
+"20705
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 20705: __asm("PCON1 equ 0814h");
 [; <" PCON1 equ 0814h ;# ">
-"20640
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 20640: __asm("NVMADR equ 081Ah");
+"20726
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 20726: __asm("NVMADR equ 081Ah");
 [; <" NVMADR equ 081Ah ;# ">
-"20647
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 20647: __asm("NVMADRL equ 081Ah");
+"20733
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 20733: __asm("NVMADRL equ 081Ah");
 [; <" NVMADRL equ 081Ah ;# ">
-"20709
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 20709: __asm("NVMADRH equ 081Bh");
+"20795
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 20795: __asm("NVMADRH equ 081Bh");
 [; <" NVMADRH equ 081Bh ;# ">
-"20765
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 20765: __asm("NVMDAT equ 081Ch");
+"20851
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 20851: __asm("NVMDAT equ 081Ch");
 [; <" NVMDAT equ 081Ch ;# ">
-"20772
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 20772: __asm("NVMDATL equ 081Ch");
+"20858
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 20858: __asm("NVMDATL equ 081Ch");
 [; <" NVMDATL equ 081Ch ;# ">
-"20834
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 20834: __asm("NVMDATH equ 081Dh");
+"20920
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 20920: __asm("NVMDATH equ 081Dh");
 [; <" NVMDATH equ 081Dh ;# ">
-"20884
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 20884: __asm("NVMCON1 equ 081Eh");
+"20970
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 20970: __asm("NVMCON1 equ 081Eh");
 [; <" NVMCON1 equ 081Eh ;# ">
-"20940
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 20940: __asm("NVMCON2 equ 081Fh");
+"21026
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 21026: __asm("NVMCON2 equ 081Fh");
 [; <" NVMCON2 equ 081Fh ;# ">
-"20960
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 20960: __asm("CPUDOZE equ 088Ch");
+"21046
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 21046: __asm("CPUDOZE equ 088Ch");
 [; <" CPUDOZE equ 088Ch ;# ">
-"21025
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 21025: __asm("OSCCON1 equ 088Dh");
+"21111
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 21111: __asm("OSCCON1 equ 088Dh");
 [; <" OSCCON1 equ 088Dh ;# ">
-"21095
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 21095: __asm("OSCCON2 equ 088Eh");
+"21181
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 21181: __asm("OSCCON2 equ 088Eh");
 [; <" OSCCON2 equ 088Eh ;# ">
-"21165
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 21165: __asm("OSCCON3 equ 088Fh");
+"21251
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 21251: __asm("OSCCON3 equ 088Fh");
 [; <" OSCCON3 equ 088Fh ;# ">
-"21205
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 21205: __asm("OSCSTAT equ 0890h");
+"21291
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 21291: __asm("OSCSTAT equ 0890h");
 [; <" OSCSTAT equ 0890h ;# ">
-"21262
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 21262: __asm("OSCEN equ 0891h");
+"21348
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 21348: __asm("OSCEN equ 0891h");
 [; <" OSCEN equ 0891h ;# ">
-"21313
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 21313: __asm("OSCTUNE equ 0892h");
+"21399
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 21399: __asm("OSCTUNE equ 0892h");
 [; <" OSCTUNE equ 0892h ;# ">
-"21371
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 21371: __asm("OSCFRQ equ 0893h");
+"21457
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 21457: __asm("OSCFRQ equ 0893h");
 [; <" OSCFRQ equ 0893h ;# ">
-"21411
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 21411: __asm("CLKRCON equ 0895h");
+"21497
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 21497: __asm("CLKRCON equ 0895h");
 [; <" CLKRCON equ 0895h ;# ">
-"21476
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 21476: __asm("CLKRCLK equ 0896h");
+"21562
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 21562: __asm("CLKRCLK equ 0896h");
 [; <" CLKRCLK equ 0896h ;# ">
-"21522
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 21522: __asm("MD1CON0 equ 0897h");
+"21608
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 21608: __asm("MD1CON0 equ 0897h");
 [; <" MD1CON0 equ 0897h ;# ">
-"21590
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 21590: __asm("MD1CON1 equ 0898h");
+"21676
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 21676: __asm("MD1CON1 equ 0898h");
 [; <" MD1CON1 equ 0898h ;# ">
-"21656
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 21656: __asm("MD1SRC equ 0899h");
+"21742
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 21742: __asm("MD1SRC equ 0899h");
 [; <" MD1SRC equ 0899h ;# ">
-"21748
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 21748: __asm("MD1CARL equ 089Ah");
+"21834
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 21834: __asm("MD1CARL equ 089Ah");
 [; <" MD1CARL equ 089Ah ;# ">
-"21828
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 21828: __asm("MD1CARH equ 089Bh");
+"21914
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 21914: __asm("MD1CARH equ 089Bh");
 [; <" MD1CARH equ 089Bh ;# ">
-"21908
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 21908: __asm("FVRCON equ 090Ch");
+"21994
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 21994: __asm("FVRCON equ 090Ch");
 [; <" FVRCON equ 090Ch ;# ">
-"21984
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 21984: __asm("DAC1CON0 equ 090Eh");
+"22070
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 22070: __asm("DAC1CON0 equ 090Eh");
 [; <" DAC1CON0 equ 090Eh ;# ">
-"22075
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 22075: __asm("DAC1CON1 equ 090Fh");
+"22161
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 22161: __asm("DAC1CON1 equ 090Fh");
 [; <" DAC1CON1 equ 090Fh ;# ">
-"22127
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 22127: __asm("ZCDCON equ 091Fh");
+"22213
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 22213: __asm("ZCDCON equ 091Fh");
 [; <" ZCDCON equ 091Fh ;# ">
-"22173
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 22173: __asm("CMOUT equ 098Fh");
+"22259
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 22259: __asm("CMOUT equ 098Fh");
 [; <" CMOUT equ 098Fh ;# ">
-"22178
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 22178: __asm("CMSTAT equ 098Fh");
+"22264
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 22264: __asm("CMSTAT equ 098Fh");
 [; <" CMSTAT equ 098Fh ;# ">
-"22251
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 22251: __asm("CM1CON0 equ 0990h");
+"22337
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 22337: __asm("CM1CON0 equ 0990h");
 [; <" CM1CON0 equ 0990h ;# ">
-"22331
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 22331: __asm("CM1CON1 equ 0991h");
+"22417
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 22417: __asm("CM1CON1 equ 0991h");
 [; <" CM1CON1 equ 0991h ;# ">
-"22371
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 22371: __asm("CM1NCH equ 0992h");
+"22457
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 22457: __asm("CM1NCH equ 0992h");
 [; <" CM1NCH equ 0992h ;# ">
-"22431
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 22431: __asm("CM1PCH equ 0993h");
+"22517
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 22517: __asm("CM1PCH equ 0993h");
 [; <" CM1PCH equ 0993h ;# ">
-"22491
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 22491: __asm("CM2CON0 equ 0994h");
+"22577
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 22577: __asm("CM2CON0 equ 0994h");
 [; <" CM2CON0 equ 0994h ;# ">
-"22571
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 22571: __asm("CM2CON1 equ 0995h");
+"22657
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 22657: __asm("CM2CON1 equ 0995h");
 [; <" CM2CON1 equ 0995h ;# ">
-"22611
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 22611: __asm("CM2NCH equ 0996h");
+"22697
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 22697: __asm("CM2NCH equ 0996h");
 [; <" CM2NCH equ 0996h ;# ">
-"22671
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 22671: __asm("CM2PCH equ 0997h");
+"22757
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 22757: __asm("CM2PCH equ 0997h");
 [; <" CM2PCH equ 0997h ;# ">
-"22731
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 22731: __asm("CLCDATA equ 01E0Fh");
+"22817
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 22817: __asm("CLCDATA equ 01E0Fh");
 [; <" CLCDATA equ 01E0Fh ;# ">
-"22769
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 22769: __asm("CLC1CON equ 01E10h");
+"22855
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 22855: __asm("CLC1CON equ 01E10h");
 [; <" CLC1CON equ 01E10h ;# ">
-"22887
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 22887: __asm("CLC1POL equ 01E11h");
+"22973
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 22973: __asm("CLC1POL equ 01E11h");
 [; <" CLC1POL equ 01E11h ;# ">
-"22965
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 22965: __asm("CLC1SEL0 equ 01E12h");
+"23051
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 23051: __asm("CLC1SEL0 equ 01E12h");
 [; <" CLC1SEL0 equ 01E12h ;# ">
-"23069
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 23069: __asm("CLC1SEL1 equ 01E13h");
+"23155
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 23155: __asm("CLC1SEL1 equ 01E13h");
 [; <" CLC1SEL1 equ 01E13h ;# ">
-"23173
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 23173: __asm("CLC1SEL2 equ 01E14h");
+"23259
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 23259: __asm("CLC1SEL2 equ 01E14h");
 [; <" CLC1SEL2 equ 01E14h ;# ">
-"23277
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 23277: __asm("CLC1SEL3 equ 01E15h");
+"23363
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 23363: __asm("CLC1SEL3 equ 01E15h");
 [; <" CLC1SEL3 equ 01E15h ;# ">
-"23381
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 23381: __asm("CLC1GLS0 equ 01E16h");
+"23467
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 23467: __asm("CLC1GLS0 equ 01E16h");
 [; <" CLC1GLS0 equ 01E16h ;# ">
-"23493
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 23493: __asm("CLC1GLS1 equ 01E17h");
+"23579
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 23579: __asm("CLC1GLS1 equ 01E17h");
 [; <" CLC1GLS1 equ 01E17h ;# ">
-"23605
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 23605: __asm("CLC1GLS2 equ 01E18h");
+"23691
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 23691: __asm("CLC1GLS2 equ 01E18h");
 [; <" CLC1GLS2 equ 01E18h ;# ">
-"23717
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 23717: __asm("CLC1GLS3 equ 01E19h");
+"23803
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 23803: __asm("CLC1GLS3 equ 01E19h");
 [; <" CLC1GLS3 equ 01E19h ;# ">
-"23829
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 23829: __asm("CLC2CON equ 01E1Ah");
+"23915
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 23915: __asm("CLC2CON equ 01E1Ah");
 [; <" CLC2CON equ 01E1Ah ;# ">
-"23947
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 23947: __asm("CLC2POL equ 01E1Bh");
+"24033
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 24033: __asm("CLC2POL equ 01E1Bh");
 [; <" CLC2POL equ 01E1Bh ;# ">
-"24025
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 24025: __asm("CLC2SEL0 equ 01E1Ch");
+"24111
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 24111: __asm("CLC2SEL0 equ 01E1Ch");
 [; <" CLC2SEL0 equ 01E1Ch ;# ">
-"24129
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 24129: __asm("CLC2SEL1 equ 01E1Dh");
+"24215
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 24215: __asm("CLC2SEL1 equ 01E1Dh");
 [; <" CLC2SEL1 equ 01E1Dh ;# ">
-"24233
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 24233: __asm("CLC2SEL2 equ 01E1Eh");
+"24319
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 24319: __asm("CLC2SEL2 equ 01E1Eh");
 [; <" CLC2SEL2 equ 01E1Eh ;# ">
-"24337
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 24337: __asm("CLC2SEL3 equ 01E1Fh");
+"24423
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 24423: __asm("CLC2SEL3 equ 01E1Fh");
 [; <" CLC2SEL3 equ 01E1Fh ;# ">
-"24441
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 24441: __asm("CLC2GLS0 equ 01E20h");
+"24527
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 24527: __asm("CLC2GLS0 equ 01E20h");
 [; <" CLC2GLS0 equ 01E20h ;# ">
-"24553
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 24553: __asm("CLC2GLS1 equ 01E21h");
+"24639
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 24639: __asm("CLC2GLS1 equ 01E21h");
 [; <" CLC2GLS1 equ 01E21h ;# ">
-"24665
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 24665: __asm("CLC2GLS2 equ 01E22h");
+"24751
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 24751: __asm("CLC2GLS2 equ 01E22h");
 [; <" CLC2GLS2 equ 01E22h ;# ">
-"24777
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 24777: __asm("CLC2GLS3 equ 01E23h");
+"24863
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 24863: __asm("CLC2GLS3 equ 01E23h");
 [; <" CLC2GLS3 equ 01E23h ;# ">
-"24889
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 24889: __asm("CLC3CON equ 01E24h");
+"24975
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 24975: __asm("CLC3CON equ 01E24h");
 [; <" CLC3CON equ 01E24h ;# ">
-"25007
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 25007: __asm("CLC3POL equ 01E25h");
+"25093
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 25093: __asm("CLC3POL equ 01E25h");
 [; <" CLC3POL equ 01E25h ;# ">
-"25085
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 25085: __asm("CLC3SEL0 equ 01E26h");
+"25171
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 25171: __asm("CLC3SEL0 equ 01E26h");
 [; <" CLC3SEL0 equ 01E26h ;# ">
-"25189
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 25189: __asm("CLC3SEL1 equ 01E27h");
+"25275
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 25275: __asm("CLC3SEL1 equ 01E27h");
 [; <" CLC3SEL1 equ 01E27h ;# ">
-"25293
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 25293: __asm("CLC3SEL2 equ 01E28h");
+"25379
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 25379: __asm("CLC3SEL2 equ 01E28h");
 [; <" CLC3SEL2 equ 01E28h ;# ">
-"25397
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 25397: __asm("CLC3SEL3 equ 01E29h");
+"25483
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 25483: __asm("CLC3SEL3 equ 01E29h");
 [; <" CLC3SEL3 equ 01E29h ;# ">
-"25501
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 25501: __asm("CLC3GLS0 equ 01E2Ah");
+"25587
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 25587: __asm("CLC3GLS0 equ 01E2Ah");
 [; <" CLC3GLS0 equ 01E2Ah ;# ">
-"25613
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 25613: __asm("CLC3GLS1 equ 01E2Bh");
+"25699
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 25699: __asm("CLC3GLS1 equ 01E2Bh");
 [; <" CLC3GLS1 equ 01E2Bh ;# ">
-"25725
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 25725: __asm("CLC3GLS2 equ 01E2Ch");
+"25811
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 25811: __asm("CLC3GLS2 equ 01E2Ch");
 [; <" CLC3GLS2 equ 01E2Ch ;# ">
-"25837
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 25837: __asm("CLC3GLS3 equ 01E2Dh");
+"25923
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 25923: __asm("CLC3GLS3 equ 01E2Dh");
 [; <" CLC3GLS3 equ 01E2Dh ;# ">
-"25949
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 25949: __asm("CLC4CON equ 01E2Eh");
+"26035
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 26035: __asm("CLC4CON equ 01E2Eh");
 [; <" CLC4CON equ 01E2Eh ;# ">
-"26067
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 26067: __asm("CLC4POL equ 01E2Fh");
+"26153
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 26153: __asm("CLC4POL equ 01E2Fh");
 [; <" CLC4POL equ 01E2Fh ;# ">
-"26145
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 26145: __asm("CLC4SEL0 equ 01E30h");
+"26231
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 26231: __asm("CLC4SEL0 equ 01E30h");
 [; <" CLC4SEL0 equ 01E30h ;# ">
-"26249
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 26249: __asm("CLC4SEL1 equ 01E31h");
+"26335
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 26335: __asm("CLC4SEL1 equ 01E31h");
 [; <" CLC4SEL1 equ 01E31h ;# ">
-"26353
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 26353: __asm("CLC4SEL2 equ 01E32h");
+"26439
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 26439: __asm("CLC4SEL2 equ 01E32h");
 [; <" CLC4SEL2 equ 01E32h ;# ">
-"26457
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 26457: __asm("CLC4SEL3 equ 01E33h");
+"26543
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 26543: __asm("CLC4SEL3 equ 01E33h");
 [; <" CLC4SEL3 equ 01E33h ;# ">
-"26561
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 26561: __asm("CLC4GLS0 equ 01E34h");
+"26647
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 26647: __asm("CLC4GLS0 equ 01E34h");
 [; <" CLC4GLS0 equ 01E34h ;# ">
-"26673
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 26673: __asm("CLC4GLS1 equ 01E35h");
+"26759
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 26759: __asm("CLC4GLS1 equ 01E35h");
 [; <" CLC4GLS1 equ 01E35h ;# ">
-"26785
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 26785: __asm("CLC4GLS2 equ 01E36h");
+"26871
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 26871: __asm("CLC4GLS2 equ 01E36h");
 [; <" CLC4GLS2 equ 01E36h ;# ">
-"26897
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 26897: __asm("CLC4GLS3 equ 01E37h");
+"26983
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 26983: __asm("CLC4GLS3 equ 01E37h");
 [; <" CLC4GLS3 equ 01E37h ;# ">
-"27009
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 27009: __asm("PPSLOCK equ 01E8Fh");
+"27095
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 27095: __asm("PPSLOCK equ 01E8Fh");
 [; <" PPSLOCK equ 01E8Fh ;# ">
-"27029
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 27029: __asm("INTPPS equ 01E90h");
+"27115
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 27115: __asm("INTPPS equ 01E90h");
 [; <" INTPPS equ 01E90h ;# ">
-"27089
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 27089: __asm("T0CKIPPS equ 01E91h");
+"27175
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 27175: __asm("T0CKIPPS equ 01E91h");
 [; <" T0CKIPPS equ 01E91h ;# ">
-"27149
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 27149: __asm("T1CKIPPS equ 01E92h");
+"27235
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 27235: __asm("T1CKIPPS equ 01E92h");
 [; <" T1CKIPPS equ 01E92h ;# ">
-"27215
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 27215: __asm("T1GPPS equ 01E93h");
+"27301
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 27301: __asm("T1GPPS equ 01E93h");
 [; <" T1GPPS equ 01E93h ;# ">
-"27281
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 27281: __asm("T3CKIPPS equ 01E94h");
+"27367
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 27367: __asm("T3CKIPPS equ 01E94h");
 [; <" T3CKIPPS equ 01E94h ;# ">
-"27347
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 27347: __asm("T3GPPS equ 01E95h");
+"27433
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 27433: __asm("T3GPPS equ 01E95h");
 [; <" T3GPPS equ 01E95h ;# ">
-"27413
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 27413: __asm("T5CKIPPS equ 01E96h");
+"27499
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 27499: __asm("T5CKIPPS equ 01E96h");
 [; <" T5CKIPPS equ 01E96h ;# ">
-"27479
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 27479: __asm("T5GPPS equ 01E97h");
+"27565
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 27565: __asm("T5GPPS equ 01E97h");
 [; <" T5GPPS equ 01E97h ;# ">
-"27545
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 27545: __asm("T2INPPS equ 01E9Ch");
+"27631
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 27631: __asm("T2INPPS equ 01E9Ch");
 [; <" T2INPPS equ 01E9Ch ;# ">
-"27611
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 27611: __asm("T4INPPS equ 01E9Dh");
+"27697
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 27697: __asm("T4INPPS equ 01E9Dh");
 [; <" T4INPPS equ 01E9Dh ;# ">
-"27677
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 27677: __asm("T6INPPS equ 01E9Eh");
+"27763
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 27763: __asm("T6INPPS equ 01E9Eh");
 [; <" T6INPPS equ 01E9Eh ;# ">
-"27743
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 27743: __asm("CCP1PPS equ 01EA1h");
+"27829
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 27829: __asm("CCP1PPS equ 01EA1h");
 [; <" CCP1PPS equ 01EA1h ;# ">
-"27809
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 27809: __asm("CCP2PPS equ 01EA2h");
+"27895
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 27895: __asm("CCP2PPS equ 01EA2h");
 [; <" CCP2PPS equ 01EA2h ;# ">
-"27875
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 27875: __asm("CCP3PPS equ 01EA3h");
+"27961
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 27961: __asm("CCP3PPS equ 01EA3h");
 [; <" CCP3PPS equ 01EA3h ;# ">
-"27941
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 27941: __asm("CCP4PPS equ 01EA4h");
+"28027
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 28027: __asm("CCP4PPS equ 01EA4h");
 [; <" CCP4PPS equ 01EA4h ;# ">
-"28007
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 28007: __asm("SMT1WINPPS equ 01EA9h");
+"28093
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 28093: __asm("SMT1WINPPS equ 01EA9h");
 [; <" SMT1WINPPS equ 01EA9h ;# ">
-"28073
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 28073: __asm("SMT1SIGPPS equ 01EAAh");
+"28159
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 28159: __asm("SMT1SIGPPS equ 01EAAh");
 [; <" SMT1SIGPPS equ 01EAAh ;# ">
-"28139
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 28139: __asm("CWG1PPS equ 01EB1h");
+"28225
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 28225: __asm("CWG1PPS equ 01EB1h");
 [; <" CWG1PPS equ 01EB1h ;# ">
-"28205
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 28205: __asm("CWG2PPS equ 01EB2h");
+"28291
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 28291: __asm("CWG2PPS equ 01EB2h");
 [; <" CWG2PPS equ 01EB2h ;# ">
-"28271
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 28271: __asm("MDCARLPPS equ 01EB8h");
+"28357
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 28357: __asm("MDCARLPPS equ 01EB8h");
 [; <" MDCARLPPS equ 01EB8h ;# ">
-"28337
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 28337: __asm("MDCARHPPS equ 01EB9h");
+"28423
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 28423: __asm("MDCARHPPS equ 01EB9h");
 [; <" MDCARHPPS equ 01EB9h ;# ">
-"28403
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 28403: __asm("MDSRCPPS equ 01EBAh");
+"28489
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 28489: __asm("MDSRCPPS equ 01EBAh");
 [; <" MDSRCPPS equ 01EBAh ;# ">
-"28469
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 28469: __asm("CLCIN0PPS equ 01EBBh");
+"28555
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 28555: __asm("CLCIN0PPS equ 01EBBh");
 [; <" CLCIN0PPS equ 01EBBh ;# ">
-"28535
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 28535: __asm("CLCIN1PPS equ 01EBCh");
+"28621
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 28621: __asm("CLCIN1PPS equ 01EBCh");
 [; <" CLCIN1PPS equ 01EBCh ;# ">
-"28601
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 28601: __asm("CLCIN2PPS equ 01EBDh");
+"28687
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 28687: __asm("CLCIN2PPS equ 01EBDh");
 [; <" CLCIN2PPS equ 01EBDh ;# ">
-"28667
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 28667: __asm("CLCIN3PPS equ 01EBEh");
+"28753
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 28753: __asm("CLCIN3PPS equ 01EBEh");
 [; <" CLCIN3PPS equ 01EBEh ;# ">
-"28733
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 28733: __asm("ADACTPPS equ 01EC3h");
+"28819
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 28819: __asm("ADACTPPS equ 01EC3h");
 [; <" ADACTPPS equ 01EC3h ;# ">
-"28799
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 28799: __asm("SSP1CLKPPS equ 01EC5h");
+"28885
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 28885: __asm("SSP1CLKPPS equ 01EC5h");
 [; <" SSP1CLKPPS equ 01EC5h ;# ">
-"28865
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 28865: __asm("SSP1DATPPS equ 01EC6h");
+"28951
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 28951: __asm("SSP1DATPPS equ 01EC6h");
 [; <" SSP1DATPPS equ 01EC6h ;# ">
-"28931
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 28931: __asm("SSP1SSPPS equ 01EC7h");
+"29017
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 29017: __asm("SSP1SSPPS equ 01EC7h");
 [; <" SSP1SSPPS equ 01EC7h ;# ">
-"28997
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 28997: __asm("SSP2CLKPPS equ 01EC8h");
+"29083
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 29083: __asm("SSP2CLKPPS equ 01EC8h");
 [; <" SSP2CLKPPS equ 01EC8h ;# ">
-"29063
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 29063: __asm("SSP2DATPPS equ 01EC9h");
+"29149
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 29149: __asm("SSP2DATPPS equ 01EC9h");
 [; <" SSP2DATPPS equ 01EC9h ;# ">
-"29129
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 29129: __asm("SSP2SSPPS equ 01ECAh");
+"29215
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 29215: __asm("SSP2SSPPS equ 01ECAh");
 [; <" SSP2SSPPS equ 01ECAh ;# ">
-"29195
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 29195: __asm("RX1PPS equ 01ECBh");
+"29281
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 29281: __asm("RX1PPS equ 01ECBh");
 [; <" RX1PPS equ 01ECBh ;# ">
-"29200
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 29200: __asm("RX1DTPPS equ 01ECBh");
+"29286
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 29286: __asm("RX1DTPPS equ 01ECBh");
 [; <" RX1DTPPS equ 01ECBh ;# ">
-"29204
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 29204: __asm("RXPPS equ 01ECBh");
+"29290
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 29290: __asm("RXPPS equ 01ECBh");
 [; <" RXPPS equ 01ECBh ;# ">
-"29387
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 29387: __asm("CK1PPS equ 01ECCh");
+"29473
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 29473: __asm("CK1PPS equ 01ECCh");
 [; <" CK1PPS equ 01ECCh ;# ">
-"29392
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 29392: __asm("TX1CKPPS equ 01ECCh");
+"29478
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 29478: __asm("TX1CKPPS equ 01ECCh");
 [; <" TX1CKPPS equ 01ECCh ;# ">
-"29396
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 29396: __asm("CKPPS equ 01ECCh");
+"29482
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 29482: __asm("CKPPS equ 01ECCh");
 [; <" CKPPS equ 01ECCh ;# ">
-"29579
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 29579: __asm("RA0PPS equ 01F10h");
+"29665
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 29665: __asm("RA0PPS equ 01F10h");
 [; <" RA0PPS equ 01F10h ;# ">
-"29637
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 29637: __asm("RA1PPS equ 01F11h");
+"29723
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 29723: __asm("RA1PPS equ 01F11h");
 [; <" RA1PPS equ 01F11h ;# ">
-"29695
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 29695: __asm("RA2PPS equ 01F12h");
+"29781
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 29781: __asm("RA2PPS equ 01F12h");
 [; <" RA2PPS equ 01F12h ;# ">
-"29753
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 29753: __asm("RA4PPS equ 01F14h");
+"29839
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 29839: __asm("RA4PPS equ 01F14h");
 [; <" RA4PPS equ 01F14h ;# ">
-"29811
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 29811: __asm("RA5PPS equ 01F15h");
+"29897
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 29897: __asm("RA5PPS equ 01F15h");
 [; <" RA5PPS equ 01F15h ;# ">
-"29869
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 29869: __asm("RB4PPS equ 01F1Ch");
+"29955
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 29955: __asm("RB4PPS equ 01F1Ch");
 [; <" RB4PPS equ 01F1Ch ;# ">
-"29927
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 29927: __asm("RB5PPS equ 01F1Dh");
+"30013
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 30013: __asm("RB5PPS equ 01F1Dh");
 [; <" RB5PPS equ 01F1Dh ;# ">
-"29985
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 29985: __asm("RB6PPS equ 01F1Eh");
+"30071
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 30071: __asm("RB6PPS equ 01F1Eh");
 [; <" RB6PPS equ 01F1Eh ;# ">
-"30043
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 30043: __asm("RB7PPS equ 01F1Fh");
+"30129
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 30129: __asm("RB7PPS equ 01F1Fh");
 [; <" RB7PPS equ 01F1Fh ;# ">
-"30101
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 30101: __asm("RC0PPS equ 01F20h");
+"30187
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 30187: __asm("RC0PPS equ 01F20h");
 [; <" RC0PPS equ 01F20h ;# ">
-"30159
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 30159: __asm("RC1PPS equ 01F21h");
+"30245
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 30245: __asm("RC1PPS equ 01F21h");
 [; <" RC1PPS equ 01F21h ;# ">
-"30217
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 30217: __asm("RC2PPS equ 01F22h");
+"30303
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 30303: __asm("RC2PPS equ 01F22h");
 [; <" RC2PPS equ 01F22h ;# ">
-"30275
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 30275: __asm("RC3PPS equ 01F23h");
+"30361
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 30361: __asm("RC3PPS equ 01F23h");
 [; <" RC3PPS equ 01F23h ;# ">
-"30333
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 30333: __asm("RC4PPS equ 01F24h");
+"30419
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 30419: __asm("RC4PPS equ 01F24h");
 [; <" RC4PPS equ 01F24h ;# ">
-"30391
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 30391: __asm("RC5PPS equ 01F25h");
+"30477
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 30477: __asm("RC5PPS equ 01F25h");
 [; <" RC5PPS equ 01F25h ;# ">
-"30449
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 30449: __asm("RC6PPS equ 01F26h");
+"30535
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 30535: __asm("RC6PPS equ 01F26h");
 [; <" RC6PPS equ 01F26h ;# ">
-"30507
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 30507: __asm("RC7PPS equ 01F27h");
+"30593
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 30593: __asm("RC7PPS equ 01F27h");
 [; <" RC7PPS equ 01F27h ;# ">
-"30565
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 30565: __asm("ANSELA equ 01F38h");
+"30651
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 30651: __asm("ANSELA equ 01F38h");
 [; <" ANSELA equ 01F38h ;# ">
-"30610
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 30610: __asm("WPUA equ 01F39h");
+"30696
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 30696: __asm("WPUA equ 01F39h");
 [; <" WPUA equ 01F39h ;# ">
-"30660
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 30660: __asm("ODCONA equ 01F3Ah");
+"30746
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 30746: __asm("ODCONA equ 01F3Ah");
 [; <" ODCONA equ 01F3Ah ;# ">
-"30705
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 30705: __asm("SLRCONA equ 01F3Bh");
+"30791
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 30791: __asm("SLRCONA equ 01F3Bh");
 [; <" SLRCONA equ 01F3Bh ;# ">
-"30750
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 30750: __asm("INLVLA equ 01F3Ch");
+"30836
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 30836: __asm("INLVLA equ 01F3Ch");
 [; <" INLVLA equ 01F3Ch ;# ">
-"30800
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 30800: __asm("IOCAP equ 01F3Dh");
+"30886
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 30886: __asm("IOCAP equ 01F3Dh");
 [; <" IOCAP equ 01F3Dh ;# ">
-"30850
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 30850: __asm("IOCAN equ 01F3Eh");
+"30936
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 30936: __asm("IOCAN equ 01F3Eh");
 [; <" IOCAN equ 01F3Eh ;# ">
-"30900
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 30900: __asm("IOCAF equ 01F3Fh");
+"30986
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 30986: __asm("IOCAF equ 01F3Fh");
 [; <" IOCAF equ 01F3Fh ;# ">
-"30950
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 30950: __asm("ANSELB equ 01F43h");
+"31036
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 31036: __asm("ANSELB equ 01F43h");
 [; <" ANSELB equ 01F43h ;# ">
-"30989
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 30989: __asm("WPUB equ 01F44h");
+"31075
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 31075: __asm("WPUB equ 01F44h");
 [; <" WPUB equ 01F44h ;# ">
-"31028
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 31028: __asm("ODCONB equ 01F45h");
+"31114
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 31114: __asm("ODCONB equ 01F45h");
 [; <" ODCONB equ 01F45h ;# ">
-"31067
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 31067: __asm("SLRCONB equ 01F46h");
+"31153
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 31153: __asm("SLRCONB equ 01F46h");
 [; <" SLRCONB equ 01F46h ;# ">
-"31106
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 31106: __asm("INLVLB equ 01F47h");
+"31192
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 31192: __asm("INLVLB equ 01F47h");
 [; <" INLVLB equ 01F47h ;# ">
-"31145
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 31145: __asm("IOCBP equ 01F48h");
+"31231
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 31231: __asm("IOCBP equ 01F48h");
 [; <" IOCBP equ 01F48h ;# ">
-"31184
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 31184: __asm("IOCBN equ 01F49h");
+"31270
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 31270: __asm("IOCBN equ 01F49h");
 [; <" IOCBN equ 01F49h ;# ">
-"31223
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 31223: __asm("IOCBF equ 01F4Ah");
+"31309
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 31309: __asm("IOCBF equ 01F4Ah");
 [; <" IOCBF equ 01F4Ah ;# ">
-"31262
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 31262: __asm("ANSELC equ 01F4Eh");
+"31348
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 31348: __asm("ANSELC equ 01F4Eh");
 [; <" ANSELC equ 01F4Eh ;# ">
-"31324
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 31324: __asm("WPUC equ 01F4Fh");
+"31410
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 31410: __asm("WPUC equ 01F4Fh");
 [; <" WPUC equ 01F4Fh ;# ">
-"31386
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 31386: __asm("ODCONC equ 01F50h");
+"31472
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 31472: __asm("ODCONC equ 01F50h");
 [; <" ODCONC equ 01F50h ;# ">
-"31448
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 31448: __asm("SLRCONC equ 01F51h");
+"31534
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 31534: __asm("SLRCONC equ 01F51h");
 [; <" SLRCONC equ 01F51h ;# ">
-"31510
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 31510: __asm("INLVLC equ 01F52h");
+"31596
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 31596: __asm("INLVLC equ 01F52h");
 [; <" INLVLC equ 01F52h ;# ">
-"31572
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 31572: __asm("IOCCP equ 01F53h");
+"31658
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 31658: __asm("IOCCP equ 01F53h");
 [; <" IOCCP equ 01F53h ;# ">
-"31634
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 31634: __asm("IOCCN equ 01F54h");
+"31720
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 31720: __asm("IOCCN equ 01F54h");
 [; <" IOCCN equ 01F54h ;# ">
-"31696
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 31696: __asm("IOCCF equ 01F55h");
+"31782
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 31782: __asm("IOCCF equ 01F55h");
 [; <" IOCCF equ 01F55h ;# ">
-"31758
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 31758: __asm("STATUS_SHAD equ 01FE4h");
+"31844
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 31844: __asm("STATUS_SHAD equ 01FE4h");
 [; <" STATUS_SHAD equ 01FE4h ;# ">
-"31778
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 31778: __asm("WREG_SHAD equ 01FE5h");
+"31864
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 31864: __asm("WREG_SHAD equ 01FE5h");
 [; <" WREG_SHAD equ 01FE5h ;# ">
-"31798
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 31798: __asm("BSR_SHAD equ 01FE6h");
+"31884
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 31884: __asm("BSR_SHAD equ 01FE6h");
 [; <" BSR_SHAD equ 01FE6h ;# ">
-"31818
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 31818: __asm("PCLATH_SHAD equ 01FE7h");
+"31904
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 31904: __asm("PCLATH_SHAD equ 01FE7h");
 [; <" PCLATH_SHAD equ 01FE7h ;# ">
-"31838
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 31838: __asm("FSR0_SHAD equ 01FE8h");
+"31924
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 31924: __asm("FSR0_SHAD equ 01FE8h");
 [; <" FSR0_SHAD equ 01FE8h ;# ">
-"31845
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 31845: __asm("FSR0L_SHAD equ 01FE8h");
+"31931
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 31931: __asm("FSR0L_SHAD equ 01FE8h");
 [; <" FSR0L_SHAD equ 01FE8h ;# ">
-"31865
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 31865: __asm("FSR0H_SHAD equ 01FE9h");
+"31951
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 31951: __asm("FSR0H_SHAD equ 01FE9h");
 [; <" FSR0H_SHAD equ 01FE9h ;# ">
-"31885
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 31885: __asm("FSR1L_SHAD equ 01FEAh");
+"31971
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 31971: __asm("FSR1L_SHAD equ 01FEAh");
 [; <" FSR1L_SHAD equ 01FEAh ;# ">
-"31905
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 31905: __asm("FSR1H_SHAD equ 01FEBh");
+"31991
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 31991: __asm("FSR1H_SHAD equ 01FEBh");
 [; <" FSR1H_SHAD equ 01FEBh ;# ">
-"31925
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 31925: __asm("STKPTR equ 01FEDh");
+"32011
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 32011: __asm("STKPTR equ 01FEDh");
 [; <" STKPTR equ 01FEDh ;# ">
-"31969
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 31969: __asm("TOSL equ 01FEEh");
+"32055
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 32055: __asm("TOSL equ 01FEEh");
 [; <" TOSL equ 01FEEh ;# ">
-"32039
-[; ;/Applications/microchip/xc8/v2.05/pic/include/pic16f18446.h: 32039: __asm("TOSH equ 01FEFh");
+"32125
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18446.h: 32125: __asm("TOSH equ 01FEFh");
 [; <" TOSH equ 01FEFh ;# ">
-"8 controller.c
-[; ;controller.c: 8: button_t *up, *down, *menu, *enter;
-[v _up `*S1513 ~T0 @X0 1 e ]
-[v _down `*S1513 ~T0 @X0 1 e ]
-[v _menu `*S1513 ~T0 @X0 1 e ]
-[v _enter `*S1513 ~T0 @X0 1 e ]
-"9
-[; ;controller.c: 9: int incInterval = 100;
-[v _incInterval `i ~T0 @X0 1 e ]
-[i _incInterval
--> 100 `i
+"49 ./led.h
+[; ;./led.h: 49: color_t animationColor;
+[v _animationColor `S1520 ~T0 @X0 1 e ]
+"50
+[; ;./led.h: 50: hsl_t animationHue;
+[v _animationHue `S1521 ~T0 @X0 1 e ]
+"24 controller.c
+[; ;controller.c: 24: menuItem_t dmx;
+[v _dmx `S1523 ~T0 @X0 1 e ]
+"25
+[; ;controller.c: 25: menuItem_t beat;
+[v _beat `S1523 ~T0 @X0 1 e ]
+"26
+[; ;controller.c: 26: menuItem_t animation;
+[v _animation `S1523 ~T0 @X0 1 e ]
+"27
+[; ;controller.c: 27: menuItem_t manual;
+[v _manual `S1523 ~T0 @X0 1 e ]
+"30
+[; ;controller.c: 30: menuItem_t dmx_task;
+[v _dmx_task `S1523 ~T0 @X0 1 e ]
+"33
+[; ;controller.c: 33: menuItem_t beatStrobe;
+[v _beatStrobe `S1523 ~T0 @X0 1 e ]
+"34
+[; ;controller.c: 34: menuItem_t beatFade;
+[v _beatFade `S1523 ~T0 @X0 1 e ]
+"35
+[; ;controller.c: 35: menuItem_t beatCont;
+[v _beatCont `S1523 ~T0 @X0 1 e ]
+"36
+[; ;controller.c: 36: menuItem_t beatMixed;
+[v _beatMixed `S1523 ~T0 @X0 1 e ]
+"38
+[; ;controller.c: 38: menuItem_t beatStrobeTask;
+[v _beatStrobeTask `S1523 ~T0 @X0 1 e ]
+"39
+[; ;controller.c: 39: menuItem_t beatFadeTask;
+[v _beatFadeTask `S1523 ~T0 @X0 1 e ]
+"40
+[; ;controller.c: 40: menuItem_t beatContTask;
+[v _beatContTask `S1523 ~T0 @X0 1 e ]
+"41
+[; ;controller.c: 41: menuItem_t beatMixedTask;
+[v _beatMixedTask `S1523 ~T0 @X0 1 e ]
+"44
+[; ;controller.c: 44: menuItem_t animationType;
+[v _animationType `S1523 ~T0 @X0 1 e ]
+"45
+[; ;controller.c: 45: menuItem_t animationBrightnessCtrl;
+[v _animationBrightnessCtrl `S1523 ~T0 @X0 1 e ]
+"46
+[; ;controller.c: 46: menuItem_t animationSpeedCtrl;
+[v _animationSpeedCtrl `S1523 ~T0 @X0 1 e ]
+"49
+[; ;controller.c: 49: menuItem_t manualRed;
+[v _manualRed `S1523 ~T0 @X0 1 e ]
+"50
+[; ;controller.c: 50: menuItem_t manualGreen;
+[v _manualGreen `S1523 ~T0 @X0 1 e ]
+"51
+[; ;controller.c: 51: menuItem_t manualBlue;
+[v _manualBlue `S1523 ~T0 @X0 1 e ]
+"52
+[; ;controller.c: 52: menuItem_t manualWhite;
+[v _manualWhite `S1523 ~T0 @X0 1 e ]
+"54
+[; ;controller.c: 54: menuItem_t* currentMenu;
+[v _currentMenu `*S1523 ~T0 @X0 1 e ]
+"56
+[; ;controller.c: 56: fn_t previousTask = ((void*)0);
+[v _previousTask `*F11411 ~T0 @X0 1 e ]
+[i _previousTask
+-> -> -> 0 `i `*v `*F11412
 ]
-"10
-[; ;controller.c: 10: time_t lastIncTime = 0;
-[v _lastIncTime `us ~T0 @X0 1 e ]
-[i _lastIncTime
--> -> 0 `i `us
-]
-"11
-[; ;controller.c: 11: time_t lastActiveTime = 0;
-[v _lastActiveTime `us ~T0 @X0 1 e ]
-[i _lastActiveTime
--> -> 0 `i `us
-]
-"12
-[; ;controller.c: 12: _Bool startup = 1;
-[v _startup `a ~T0 @X0 1 e ]
-[i _startup
--> -> 1 `i `a
-]
-"14
-[; ;controller.c: 14: mode_t menuSelected = MODE_DMX;
-[v _menuSelected `E10869 ~T0 @X0 1 e ]
-[i _menuSelected
-. `E10869 2
-]
-"15
-[; ;controller.c: 15: mode_t currentSelection = MODE_DMX;
-[v _currentSelection `E10869 ~T0 @X0 1 e ]
-[i _currentSelection
-. `E10869 2
-]
-"16
-[; ;controller.c: 16: _Bool menuPressed = 0;
-[v _menuPressed `a ~T0 @X0 1 e ]
-[i _menuPressed
--> -> 0 `i `a
-]
-"17
-[; ;controller.c: 17: _Bool enterPressed = 0;
-[v _enterPressed `a ~T0 @X0 1 e ]
-[i _enterPressed
--> -> 0 `i `a
-]
-"19
-[; ;controller.c: 19: _Bool upState, downState, menuState, enterState;
+"58
+[; ;controller.c: 58: button_t *up, *down, *menu, *enter;
+[v _up `*S1519 ~T0 @X0 1 e ]
+[v _down `*S1519 ~T0 @X0 1 e ]
+[v _menu `*S1519 ~T0 @X0 1 e ]
+[v _enter `*S1519 ~T0 @X0 1 e ]
+"59
+[; ;controller.c: 59: _Bool upState, downState, menuState, enterState;
 [v _upState `a ~T0 @X0 1 e ]
 [v _downState `a ~T0 @X0 1 e ]
 [v _menuState `a ~T0 @X0 1 e ]
 [v _enterState `a ~T0 @X0 1 e ]
-"21
-[; ;controller.c: 21: _Bool beatHold = 0;
+"62
+[; ;controller.c: 62: int incInterval = 100;
+[v _incInterval `i ~T0 @X0 1 e ]
+[i _incInterval
+-> 100 `i
+]
+"63
+[; ;controller.c: 63: time_t lastIncTime = 0;
+[v _lastIncTime `us ~T0 @X0 1 e ]
+[i _lastIncTime
+-> -> 0 `i `us
+]
+"64
+[; ;controller.c: 64: time_t lastActiveTime = 0;
+[v _lastActiveTime `us ~T0 @X0 1 e ]
+[i _lastActiveTime
+-> -> 0 `i `us
+]
+"65
+[; ;controller.c: 65: _Bool startup = 1;
+[v _startup `a ~T0 @X0 1 e ]
+[i _startup
+-> -> 1 `i `a
+]
+"67
+[; ;controller.c: 67: mode_t menuSelected = MODE_DMX;
+[v _menuSelected `E11239 ~T0 @X0 1 e ]
+[i _menuSelected
+. `E11239 2
+]
+"68
+[; ;controller.c: 68: mode_t currentSelection = MODE_DMX;
+[v _currentSelection `E11239 ~T0 @X0 1 e ]
+[i _currentSelection
+. `E11239 2
+]
+"69
+[; ;controller.c: 69: _Bool menuPressed = 0;
+[v _menuPressed `a ~T0 @X0 1 e ]
+[i _menuPressed
+-> -> 0 `i `a
+]
+"70
+[; ;controller.c: 70: _Bool enterPressed = 0;
+[v _enterPressed `a ~T0 @X0 1 e ]
+[i _enterPressed
+-> -> 0 `i `a
+]
+"72
+[; ;controller.c: 72: _Bool beatHold = 0;
 [v _beatHold `a ~T0 @X0 1 e ]
 [i _beatHold
 -> -> 0 `i `a
 ]
-"23
-[; ;controller.c: 23: colormode_t colorModeSelected = CMODE_RED;
-[v _colorModeSelected `E10878 ~T0 @X0 1 e ]
+"74
+[; ;controller.c: 74: colormode_t colorModeSelected = CMODE_RED;
+[v _colorModeSelected `E11248 ~T0 @X0 1 e ]
 [i _colorModeSelected
-. `E10878 0
+. `E11248 0
 ]
-"25
-[; ;controller.c: 25: uint8_t animationModeSelected = 1;
+"76
+[; ;controller.c: 76: uint8_t animationModeSelected = 1;
 [v _animationModeSelected `uc ~T0 @X0 1 e ]
 [i _animationModeSelected
 -> -> 1 `i `uc
 ]
-"26
-[; ;controller.c: 26: _Bool animationBrightnessControl = 0;
+"77
+[; ;controller.c: 77: _Bool animationBrightnessControl = 0;
 [v _animationBrightnessControl `a ~T0 @X0 1 e ]
 [i _animationBrightnessControl
 -> -> 0 `i `a
 ]
-"27
-[; ;controller.c: 27: uint8_t animationBrightness;
+"78
+[; ;controller.c: 78: uint8_t animationBrightness;
 [v _animationBrightness `uc ~T0 @X0 1 e ]
-"29
-[; ;controller.c: 29: void CONTROLLER_task() {
+"79
+[; ;controller.c: 79: uint8_t animationSpeed = 5;
+[v _animationSpeed `uc ~T0 @X0 1 e ]
+[i _animationSpeed
+-> -> 5 `i `uc
+]
+"81
+[; ;controller.c: 81: color_t manualColor;
+[v _manualColor `S1520 ~T0 @X0 1 e ]
+"83
+[; ;controller.c: 83: void CONTROLLER_init() {
+[v _CONTROLLER_init `(v ~T0 @X0 1 ef ]
+{
+[e :U _CONTROLLER_init ]
+[f ]
+"86
+[; ;controller.c: 86:     dmx.nextItem = &beat;
+[e = . _dmx 0 &U _beat ]
+"87
+[; ;controller.c: 87:     dmx.prevItem = &manual;
+[e = . _dmx 1 &U _manual ]
+"88
+[; ;controller.c: 88:     dmx.config = &dmx_task;
+[e = . _dmx 2 &U _dmx_task ]
+"89
+[; ;controller.c: 89:     dmx.task = previousTask;
+[e = . _dmx 5 _previousTask ]
+"90
+[; ;controller.c: 90:     dmx.name = DMX;
+[e = . _dmx 4 . `E11217 0 ]
+"91
+[; ;controller.c: 91:     dmx.parent = &dmx;
+[e = . _dmx 3 &U _dmx ]
+"93
+[; ;controller.c: 93:     beat.nextItem = &animation;
+[e = . _beat 0 &U _animation ]
+"94
+[; ;controller.c: 94:     beat.prevItem = &dmx;
+[e = . _beat 1 &U _dmx ]
+"95
+[; ;controller.c: 95:     beat.config = &beatStrobe;
+[e = . _beat 2 &U _beatStrobe ]
+"96
+[; ;controller.c: 96:     beat.task = previousTask;
+[e = . _beat 5 _previousTask ]
+"97
+[; ;controller.c: 97:     beat.name = BEAT;
+[e = . _beat 4 . `E11217 1 ]
+"98
+[; ;controller.c: 98:     beat.parent = &beat;
+[e = . _beat 3 &U _beat ]
+"100
+[; ;controller.c: 100:     animation.nextItem = &manual;
+[e = . _animation 0 &U _manual ]
+"101
+[; ;controller.c: 101:     animation.prevItem = &beat;
+[e = . _animation 1 &U _beat ]
+"102
+[; ;controller.c: 102:     animation.config = &animationBrightnessCtrl;
+[e = . _animation 2 &U _animationBrightnessCtrl ]
+"103
+[; ;controller.c: 103:     animation.task = previousTask;
+[e = . _animation 5 _previousTask ]
+"104
+[; ;controller.c: 104:     animation.name = ANIMATION;
+[e = . _animation 4 . `E11217 2 ]
+"105
+[; ;controller.c: 105:     animation.parent = &animation;
+[e = . _animation 3 &U _animation ]
+"107
+[; ;controller.c: 107:     manual.nextItem = &dmx;
+[e = . _manual 0 &U _dmx ]
+"108
+[; ;controller.c: 108:     manual.prevItem = &animation;
+[e = . _manual 1 &U _animation ]
+"109
+[; ;controller.c: 109:     manual.config = &manualRed;
+[e = . _manual 2 &U _manualRed ]
+"110
+[; ;controller.c: 110:     manual.task = previousTask;
+[e = . _manual 5 _previousTask ]
+"111
+[; ;controller.c: 111:     manual.name = MANUAL;
+[e = . _manual 4 . `E11217 3 ]
+"112
+[; ;controller.c: 112:     manual.parent = &manual;
+[e = . _manual 3 &U _manual ]
+"117
+[; ;controller.c: 117:     dmx_task.nextItem = ((void*)0);
+[e = . _dmx_task 0 -> -> -> 0 `i `*v `*S1523 ]
+"118
+[; ;controller.c: 118:     dmx_task.prevItem = ((void*)0);
+[e = . _dmx_task 1 -> -> -> 0 `i `*v `*S1523 ]
+"119
+[; ;controller.c: 119:     dmx_task.config = ((void*)0);
+[e = . _dmx_task 2 -> -> -> 0 `i `*v `*S1523 ]
+"120
+[; ;controller.c: 120:     dmx_task.task = CONTROL_DMX;
+[e = . _dmx_task 5 -> &U _CONTROL_DMX `*F11446 ]
+"121
+[; ;controller.c: 121:     dmx_task.name = DMX_TASK;
+[e = . _dmx_task 4 . `E11217 4 ]
+"122
+[; ;controller.c: 122:     dmx_task.parent = &dmx;
+[e = . _dmx_task 3 &U _dmx ]
+"125
+[; ;controller.c: 125:     beatStrobe.nextItem = &beatFade;
+[e = . _beatStrobe 0 &U _beatFade ]
+"126
+[; ;controller.c: 126:     beatStrobe.prevItem = &beatMixed;
+[e = . _beatStrobe 1 &U _beatMixed ]
+"127
+[; ;controller.c: 127:     beatStrobe.config = &beatStrobeTask;
+[e = . _beatStrobe 2 &U _beatStrobeTask ]
+"128
+[; ;controller.c: 128:     beatStrobe.task = previousTask;
+[e = . _beatStrobe 5 _previousTask ]
+"129
+[; ;controller.c: 129:     beatStrobe.name = B_STROBE;
+[e = . _beatStrobe 4 . `E11217 5 ]
+"130
+[; ;controller.c: 130:     beatStrobe.parent = &beat;
+[e = . _beatStrobe 3 &U _beat ]
+"132
+[; ;controller.c: 132:     beatFade.nextItem = &beatCont;
+[e = . _beatFade 0 &U _beatCont ]
+"133
+[; ;controller.c: 133:     beatFade.prevItem = &beatStrobe;
+[e = . _beatFade 1 &U _beatStrobe ]
+"134
+[; ;controller.c: 134:     beatFade.config = &beatFadeTask;
+[e = . _beatFade 2 &U _beatFadeTask ]
+"135
+[; ;controller.c: 135:     beatFade.task = previousTask;
+[e = . _beatFade 5 _previousTask ]
+"136
+[; ;controller.c: 136:     beatFade.name = B_FADE;
+[e = . _beatFade 4 . `E11217 6 ]
+"137
+[; ;controller.c: 137:     beatFade.parent = &beat;
+[e = . _beatFade 3 &U _beat ]
+"139
+[; ;controller.c: 139:     beatCont.nextItem = &beatMixed;
+[e = . _beatCont 0 &U _beatMixed ]
+"140
+[; ;controller.c: 140:     beatCont.prevItem = &beatFade;
+[e = . _beatCont 1 &U _beatFade ]
+"141
+[; ;controller.c: 141:     beatCont.config = &beatContTask;
+[e = . _beatCont 2 &U _beatContTask ]
+"142
+[; ;controller.c: 142:     beatCont.task = previousTask;
+[e = . _beatCont 5 _previousTask ]
+"143
+[; ;controller.c: 143:     beatCont.name = B_CONT;
+[e = . _beatCont 4 . `E11217 7 ]
+"144
+[; ;controller.c: 144:     beatCont.parent = &beat;
+[e = . _beatCont 3 &U _beat ]
+"146
+[; ;controller.c: 146:     beatMixed.nextItem = &beatStrobe;
+[e = . _beatMixed 0 &U _beatStrobe ]
+"147
+[; ;controller.c: 147:     beatMixed.prevItem = &beatCont;
+[e = . _beatMixed 1 &U _beatCont ]
+"148
+[; ;controller.c: 148:     beatMixed.config = &beatMixedTask;
+[e = . _beatMixed 2 &U _beatMixedTask ]
+"149
+[; ;controller.c: 149:     beatMixed.task = previousTask;
+[e = . _beatMixed 5 _previousTask ]
+"150
+[; ;controller.c: 150:     beatMixed.name = B_MIXED;
+[e = . _beatMixed 4 . `E11217 8 ]
+"151
+[; ;controller.c: 151:     beatMixed.parent = &beat;
+[e = . _beatMixed 3 &U _beat ]
+"155
+[; ;controller.c: 155:     animationType.nextItem = ((void*)0);
+[e = . _animationType 0 -> -> -> 0 `i `*v `*S1523 ]
+"156
+[; ;controller.c: 156:     animationType.prevItem = ((void*)0);
+[e = . _animationType 1 -> -> -> 0 `i `*v `*S1523 ]
+"157
+[; ;controller.c: 157:     animationType.config = &animationBrightnessCtrl;
+[e = . _animationType 2 &U _animationBrightnessCtrl ]
+"158
+[; ;controller.c: 158:     animationType.task = CONTROL_ANIMATION;
+[e = . _animationType 5 -> &U _CONTROL_ANIMATION `*F11458 ]
+"159
+[; ;controller.c: 159:     animationType.name = A_SELECTION;
+[e = . _animationType 4 . `E11217 18 ]
+"160
+[; ;controller.c: 160:     animationType.parent = &animation;
+[e = . _animationType 3 &U _animation ]
+"162
+[; ;controller.c: 162:     animationBrightnessCtrl.nextItem = ((void*)0);
+[e = . _animationBrightnessCtrl 0 -> -> -> 0 `i `*v `*S1523 ]
+"163
+[; ;controller.c: 163:     animationBrightnessCtrl.prevItem = ((void*)0);
+[e = . _animationBrightnessCtrl 1 -> -> -> 0 `i `*v `*S1523 ]
+"164
+[; ;controller.c: 164:     animationBrightnessCtrl.config = &animationSpeedCtrl;
+[e = . _animationBrightnessCtrl 2 &U _animationSpeedCtrl ]
+"165
+[; ;controller.c: 165:     animationBrightnessCtrl.task = CONTROL_ANIMATION;
+[e = . _animationBrightnessCtrl 5 -> &U _CONTROL_ANIMATION `*F11462 ]
+"166
+[; ;controller.c: 166:     animationBrightnessCtrl.name = A_BRIGHTNESS;
+[e = . _animationBrightnessCtrl 4 . `E11217 17 ]
+"167
+[; ;controller.c: 167:     animationBrightnessCtrl.parent = &animation;
+[e = . _animationBrightnessCtrl 3 &U _animation ]
+"169
+[; ;controller.c: 169:     animationSpeedCtrl.nextItem = ((void*)0);
+[e = . _animationSpeedCtrl 0 -> -> -> 0 `i `*v `*S1523 ]
+"170
+[; ;controller.c: 170:     animationSpeedCtrl.prevItem = ((void*)0);
+[e = . _animationSpeedCtrl 1 -> -> -> 0 `i `*v `*S1523 ]
+"171
+[; ;controller.c: 171:     animationSpeedCtrl.config = &animationType;
+[e = . _animationSpeedCtrl 2 &U _animationType ]
+"172
+[; ;controller.c: 172:     animationSpeedCtrl.task = CONTROL_ANIMATION;
+[e = . _animationSpeedCtrl 5 -> &U _CONTROL_ANIMATION `*F11466 ]
+"173
+[; ;controller.c: 173:     animationSpeedCtrl.name = A_SPEED;
+[e = . _animationSpeedCtrl 4 . `E11217 19 ]
+"174
+[; ;controller.c: 174:     animationSpeedCtrl.parent = &animation;
+[e = . _animationSpeedCtrl 3 &U _animation ]
+"177
+[; ;controller.c: 177:     manualRed.nextItem = ((void*)0);
+[e = . _manualRed 0 -> -> -> 0 `i `*v `*S1523 ]
+"178
+[; ;controller.c: 178:     manualRed.prevItem = ((void*)0);
+[e = . _manualRed 1 -> -> -> 0 `i `*v `*S1523 ]
+"179
+[; ;controller.c: 179:     manualRed.config = &manualGreen;
+[e = . _manualRed 2 &U _manualGreen ]
+"180
+[; ;controller.c: 180:     manualRed.task = CONTROL_MANUAL;
+[e = . _manualRed 5 -> &U _CONTROL_MANUAL `*F11470 ]
+"181
+[; ;controller.c: 181:     manualRed.name = MANUAL_RED;
+[e = . _manualRed 4 . `E11217 13 ]
+"182
+[; ;controller.c: 182:     manualRed.parent = &manual;
+[e = . _manualRed 3 &U _manual ]
+"184
+[; ;controller.c: 184:     manualGreen.nextItem = ((void*)0);
+[e = . _manualGreen 0 -> -> -> 0 `i `*v `*S1523 ]
+"185
+[; ;controller.c: 185:     manualGreen.prevItem = ((void*)0);
+[e = . _manualGreen 1 -> -> -> 0 `i `*v `*S1523 ]
+"186
+[; ;controller.c: 186:     manualGreen.config = &manualBlue;
+[e = . _manualGreen 2 &U _manualBlue ]
+"187
+[; ;controller.c: 187:     manualGreen.task = CONTROL_MANUAL;
+[e = . _manualGreen 5 -> &U _CONTROL_MANUAL `*F11474 ]
+"188
+[; ;controller.c: 188:     manualGreen.name = MANUAL_GREEN;
+[e = . _manualGreen 4 . `E11217 14 ]
+"189
+[; ;controller.c: 189:     manualGreen.parent = &manual;
+[e = . _manualGreen 3 &U _manual ]
+"191
+[; ;controller.c: 191:     manualBlue.nextItem = ((void*)0);
+[e = . _manualBlue 0 -> -> -> 0 `i `*v `*S1523 ]
+"192
+[; ;controller.c: 192:     manualBlue.prevItem = ((void*)0);
+[e = . _manualBlue 1 -> -> -> 0 `i `*v `*S1523 ]
+"193
+[; ;controller.c: 193:     manualBlue.config = &manualWhite;
+[e = . _manualBlue 2 &U _manualWhite ]
+"194
+[; ;controller.c: 194:     manualBlue.task = CONTROL_MANUAL;
+[e = . _manualBlue 5 -> &U _CONTROL_MANUAL `*F11478 ]
+"195
+[; ;controller.c: 195:     manualBlue.name = MANUAL_BLUE;
+[e = . _manualBlue 4 . `E11217 15 ]
+"196
+[; ;controller.c: 196:     manualBlue.parent = &manual;
+[e = . _manualBlue 3 &U _manual ]
+"198
+[; ;controller.c: 198:     manualWhite.nextItem = ((void*)0);
+[e = . _manualWhite 0 -> -> -> 0 `i `*v `*S1523 ]
+"199
+[; ;controller.c: 199:     manualWhite.prevItem = ((void*)0);
+[e = . _manualWhite 1 -> -> -> 0 `i `*v `*S1523 ]
+"200
+[; ;controller.c: 200:     manualWhite.config = &manualRed;
+[e = . _manualWhite 2 &U _manualRed ]
+"201
+[; ;controller.c: 201:     manualWhite.task = CONTROL_MANUAL;
+[e = . _manualWhite 5 -> &U _CONTROL_MANUAL `*F11482 ]
+"202
+[; ;controller.c: 202:     manualWhite.name = MANUAL_WHITE;
+[e = . _manualWhite 4 . `E11217 16 ]
+"203
+[; ;controller.c: 203:     manualWhite.parent = &manual;
+[e = . _manualWhite 3 &U _manual ]
+"206
+[; ;controller.c: 206:     beatStrobeTask.nextItem = ((void*)0);
+[e = . _beatStrobeTask 0 -> -> -> 0 `i `*v `*S1523 ]
+"207
+[; ;controller.c: 207:     beatStrobeTask.prevItem = ((void*)0);
+[e = . _beatStrobeTask 1 -> -> -> 0 `i `*v `*S1523 ]
+"208
+[; ;controller.c: 208:     beatStrobeTask.config = ((void*)0);
+[e = . _beatStrobeTask 2 -> -> -> 0 `i `*v `*S1523 ]
+"209
+[; ;controller.c: 209:     beatStrobeTask.task = CONTROL_BEAT;
+[e = . _beatStrobeTask 5 -> &U _CONTROL_BEAT `*F11486 ]
+"210
+[; ;controller.c: 210:     beatStrobeTask.name = B_STROBE_TASK;
+[e = . _beatStrobeTask 4 . `E11217 9 ]
+"211
+[; ;controller.c: 211:     beatStrobeTask.parent = &beat;
+[e = . _beatStrobeTask 3 &U _beat ]
+"213
+[; ;controller.c: 213:     beatFadeTask.nextItem = ((void*)0);
+[e = . _beatFadeTask 0 -> -> -> 0 `i `*v `*S1523 ]
+"214
+[; ;controller.c: 214:     beatFadeTask.prevItem = ((void*)0);
+[e = . _beatFadeTask 1 -> -> -> 0 `i `*v `*S1523 ]
+"215
+[; ;controller.c: 215:     beatFadeTask.config = ((void*)0);
+[e = . _beatFadeTask 2 -> -> -> 0 `i `*v `*S1523 ]
+"216
+[; ;controller.c: 216:     beatFadeTask.task = CONTROL_BEAT;
+[e = . _beatFadeTask 5 -> &U _CONTROL_BEAT `*F11490 ]
+"217
+[; ;controller.c: 217:     beatFadeTask.name = B_FADE_TASK;
+[e = . _beatFadeTask 4 . `E11217 10 ]
+"218
+[; ;controller.c: 218:     beatFadeTask.parent = &beat;
+[e = . _beatFadeTask 3 &U _beat ]
+"220
+[; ;controller.c: 220:     beatContTask.nextItem = ((void*)0);
+[e = . _beatContTask 0 -> -> -> 0 `i `*v `*S1523 ]
+"221
+[; ;controller.c: 221:     beatContTask.prevItem = ((void*)0);
+[e = . _beatContTask 1 -> -> -> 0 `i `*v `*S1523 ]
+"222
+[; ;controller.c: 222:     beatContTask.config = ((void*)0);
+[e = . _beatContTask 2 -> -> -> 0 `i `*v `*S1523 ]
+"223
+[; ;controller.c: 223:     beatContTask.task = CONTROL_BEAT;
+[e = . _beatContTask 5 -> &U _CONTROL_BEAT `*F11494 ]
+"224
+[; ;controller.c: 224:     beatContTask.name = B_CONT_TASK;
+[e = . _beatContTask 4 . `E11217 11 ]
+"225
+[; ;controller.c: 225:     beatContTask.parent = &beat;
+[e = . _beatContTask 3 &U _beat ]
+"227
+[; ;controller.c: 227:     beatMixedTask.nextItem = ((void*)0);
+[e = . _beatMixedTask 0 -> -> -> 0 `i `*v `*S1523 ]
+"228
+[; ;controller.c: 228:     beatMixedTask.prevItem = ((void*)0);
+[e = . _beatMixedTask 1 -> -> -> 0 `i `*v `*S1523 ]
+"229
+[; ;controller.c: 229:     beatMixedTask.config = ((void*)0);
+[e = . _beatMixedTask 2 -> -> -> 0 `i `*v `*S1523 ]
+"230
+[; ;controller.c: 230:     beatMixedTask.task = CONTROL_BEAT;
+[e = . _beatMixedTask 5 -> &U _CONTROL_BEAT `*F11498 ]
+"231
+[; ;controller.c: 231:     beatMixedTask.name = B_MIXED_TASK;
+[e = . _beatMixedTask 4 . `E11217 12 ]
+"232
+[; ;controller.c: 232:     beatMixedTask.parent = &beat;
+[e = . _beatMixedTask 3 &U _beat ]
+"234
+[; ;controller.c: 234: }
+[e :UE 1524 ]
+}
+"236
+[; ;controller.c: 236: void CONTROLLER_task(){
 [v _CONTROLLER_task `(v ~T0 @X0 1 ef ]
 {
 [e :U _CONTROLLER_task ]
 [f ]
-"31
-[; ;controller.c: 31:     _Bool isActive = 1;
-[v _isActive `a ~T0 @X0 1 a ]
-[e = _isActive -> -> 1 `i `a ]
-"32
-[; ;controller.c: 32:     upState = BUTTONS_isClicked(up);
-[e = _upState ( _BUTTONS_isClicked (1 _up ]
-"33
-[; ;controller.c: 33:     downState = BUTTONS_isClicked(down);
-[e = _downState ( _BUTTONS_isClicked (1 _down ]
-"34
-[; ;controller.c: 34:     menuState = BUTTONS_isClicked(menu);
-[e = _menuState ( _BUTTONS_isClicked (1 _menu ]
-"35
-[; ;controller.c: 35:     enterState = BUTTONS_isClicked(enter);
-[e = _enterState ( _BUTTONS_isClicked (1 _enter ]
-"37
-[; ;controller.c: 37:     if (startup == 1 && CLOCK_getTime() - startTime < 5000) {
-[e $ ! && == -> _startup `i -> 1 `i < - -> ( _CLOCK_getTime ..  `ui -> _startTime `ui -> -> 5000 `i `ui 1516  ]
+"238
+[; ;controller.c: 238:     if(startup == 1){
+[e $ ! == -> _startup `i -> 1 `i 1526  ]
 {
-"38
-[; ;controller.c: 38:         menuSelection();
-[e ( _menuSelection ..  ]
-"39
-[; ;controller.c: 39:         if (upState || downState || menuState) {
-[e $ ! || || != -> _upState `i -> 0 `i != -> _downState `i -> 0 `i != -> _menuState `i -> 0 `i 1517  ]
-{
-"40
-[; ;controller.c: 40:             menuPressed = 1;
-[e = _menuPressed -> -> 1 `i `a ]
-"41
-[; ;controller.c: 41:         }
-}
-[e :U 1517 ]
-"43
-[; ;controller.c: 43:         return;
-[e $UE 1515  ]
-"45
-[; ;controller.c: 45:     } else {
-}
-[e $U 1518  ]
-[e :U 1516 ]
-{
-"46
-[; ;controller.c: 46:         if (menuPressed == 0 && startup == 1)
-[e $ ! && == -> _menuPressed `i -> 0 `i == -> _startup `i -> 1 `i 1519  ]
-"47
-[; ;controller.c: 47:             currentSelection = MODE_DMX;
-[e = _currentSelection . `E10869 2 ]
-[e :U 1519 ]
-"48
-[; ;controller.c: 48:         startup = 0;
+"239
+[; ;controller.c: 239:         currentMenu = &dmx;
+[e = _currentMenu &U _dmx ]
+"240
+[; ;controller.c: 240:         startup = 0;
 [e = _startup -> -> 0 `i `a ]
-"49
-[; ;controller.c: 49:     }
+"241
+[; ;controller.c: 241:     }
 }
-[e :U 1518 ]
-"51
-[; ;controller.c: 51:     if ((menuState || menuPressed) && !enterPressed) {
-[e $ ! && || != -> _menuState `i -> 0 `i != -> _menuPressed `i -> 0 `i ! != -> _enterPressed `i -> 0 `i 1520  ]
-{
-"52
-[; ;controller.c: 52:         menuPressed = 1;
-[e = _menuPressed -> -> 1 `i `a ]
-"53
-[; ;controller.c: 53:         menuSelection();
-[e ( _menuSelection ..  ]
-"54
-[; ;controller.c: 54:     } else if (currentSelection == MODE_DMX) {
-}
-[e $U 1521  ]
-[e :U 1520 ]
-[e $ ! == -> _currentSelection `ui -> . `E10869 2 `ui 1522  ]
-{
-"55
-[; ;controller.c: 55:         isActive = CONTROL_DMX();
-[e = _isActive ( _CONTROL_DMX ..  ]
-"56
-[; ;controller.c: 56:     } else if (currentSelection == MODE_ANIMATION) {
-}
-[e $U 1523  ]
-[e :U 1522 ]
-[e $ ! == -> _currentSelection `ui -> . `E10869 0 `ui 1524  ]
-{
-"57
-[; ;controller.c: 57:         isActive = CONTROL_ANIMATION();
-[e = _isActive ( _CONTROL_ANIMATION ..  ]
-"58
-[; ;controller.c: 58:     } else if (currentSelection == MODE_BEAT_STROBE || currentSelection == MODE_BEAT_FADE || currentSelection == MODE_BEAT_CONTINUOUS || currentSelection == MODE_BEAT_MIXED) {
-}
-[e $U 1525  ]
-[e :U 1524 ]
-[e $ ! || || || == -> _currentSelection `ui -> . `E10869 1 `ui == -> _currentSelection `ui -> . `E10869 4 `ui == -> _currentSelection `ui -> . `E10869 5 `ui == -> _currentSelection `ui -> . `E10869 6 `ui 1526  ]
-{
-"59
-[; ;controller.c: 59:         isActive = CONTROL_BEAT();
-[e = _isActive ( _CONTROL_BEAT ..  ]
-"60
-[; ;controller.c: 60:     } else if(currentSelection == MODE_MANUAL && !enterPressed){
-}
-[e $U 1527  ]
 [e :U 1526 ]
-[e $ ! && == -> _currentSelection `ui -> . `E10869 3 `ui ! != -> _enterPressed `i -> 0 `i 1528  ]
+"243
+[; ;controller.c: 243:     upState = BUTTONS_isClicked(up);
+[e = _upState ( _BUTTONS_isClicked (1 _up ]
+"244
+[; ;controller.c: 244:     downState = BUTTONS_isClicked(down);
+[e = _downState ( _BUTTONS_isClicked (1 _down ]
+"245
+[; ;controller.c: 245:     menuState = BUTTONS_isClicked(menu);
+[e = _menuState ( _BUTTONS_isClicked (1 _menu ]
+"246
+[; ;controller.c: 246:     enterState = BUTTONS_isClicked(enter);
+[e = _enterState ( _BUTTONS_isClicked (1 _enter ]
+"248
+[; ;controller.c: 248:     if(menuState){
+[e $ ! != -> _menuState `i -> 0 `i 1527  ]
 {
-"61
-[; ;controller.c: 61:         isActive = CONTROL_MANUAL(colorModeSelected);
-[e = _isActive ( _CONTROL_MANUAL (1 _colorModeSelected ]
-"62
-[; ;controller.c: 62:     } else {
+"249
+[; ;controller.c: 249:         currentMenu = currentMenu->parent;
+[e = _currentMenu . *U _currentMenu 3 ]
+"250
+[; ;controller.c: 250:     } else if(upState && currentMenu->nextItem != ((void*)0)){
 }
-[e $U 1529  ]
-[e :U 1528 ]
-{
-"63
-[; ;controller.c: 63:         isActive = 0;
-[e = _isActive -> -> 0 `i `a ]
-"64
-[; ;controller.c: 64:     }
-}
-[e :U 1529 ]
+[e $U 1528  ]
 [e :U 1527 ]
-[e :U 1525 ]
-[e :U 1523 ]
-[e :U 1521 ]
-"66
-[; ;controller.c: 66:     if (isActive) {
-[e $ ! != -> _isActive `i -> 0 `i 1530  ]
+[e $ ! && != -> _upState `i -> 0 `i != . *U _currentMenu 0 -> -> -> 0 `i `*v `*S1523 1529  ]
 {
-"67
-[; ;controller.c: 67:         lastActiveTime = CLOCK_getTime();
-[e = _lastActiveTime ( _CLOCK_getTime ..  ]
-"68
-[; ;controller.c: 68:     }
+"251
+[; ;controller.c: 251:         currentMenu = currentMenu->nextItem;
+[e = _currentMenu . *U _currentMenu 0 ]
+"252
+[; ;controller.c: 252:     } else if(downState && currentMenu->prevItem != ((void*)0)){
 }
-[e :U 1530 ]
-"70
-[; ;controller.c: 70:     if (CLOCK_getTime() - lastActiveTime >= 5000) {
-[e $ ! >= - -> ( _CLOCK_getTime ..  `ui -> _lastActiveTime `ui -> -> 5000 `i `ui 1531  ]
+[e $U 1530  ]
+[e :U 1529 ]
+[e $ ! && != -> _downState `i -> 0 `i != . *U _currentMenu 1 -> -> -> 0 `i `*v `*S1523 1531  ]
 {
-"71
-[; ;controller.c: 71:         TM1650_enable(0);
-[e ( _TM1650_enable (1 -> -> 0 `i `a ]
-"72
-[; ;controller.c: 72:         lastActiveTime = CLOCK_getTime() - (5000 + 1);
-[e = _lastActiveTime -> - -> ( _CLOCK_getTime ..  `ui -> + -> 5000 `i -> 1 `i `ui `us ]
-"73
-[; ;controller.c: 73:     } else {
+"253
+[; ;controller.c: 253:         currentMenu = currentMenu->prevItem;
+[e = _currentMenu . *U _currentMenu 1 ]
+"254
+[; ;controller.c: 254:     } else if(enterState && currentMenu->config != ((void*)0)){
 }
 [e $U 1532  ]
 [e :U 1531 ]
+[e $ ! && != -> _enterState `i -> 0 `i != . *U _currentMenu 2 -> -> -> 0 `i `*v `*S1523 1533  ]
 {
-"74
-[; ;controller.c: 74:         TM1650_enable(1);
-[e ( _TM1650_enable (1 -> -> 1 `i `a ]
-"75
-[; ;controller.c: 75:     }
+"255
+[; ;controller.c: 255:         currentMenu = currentMenu->config;
+[e = _currentMenu . *U _currentMenu 2 ]
+"256
+[; ;controller.c: 256:         previousTask = currentMenu->task;
+[e = _previousTask . *U _currentMenu 5 ]
+"257
+[; ;controller.c: 257:     }
 }
+[e :U 1533 ]
 [e :U 1532 ]
-"77
-[; ;controller.c: 77:     if (currentSelection == MODE_DMX && !menuPressed) {
-[e $ ! && == -> _currentSelection `ui -> . `E10869 2 `ui ! != -> _menuPressed `i -> 0 `i 1533  ]
+[e :U 1530 ]
+[e :U 1528 ]
+"259
+[; ;controller.c: 259:     switch(currentMenu->name){
+[e $U 1535  ]
 {
-"78
-[; ;controller.c: 78:         TM1650_fastPrintNum(address);
-[e ( _TM1650_fastPrintNum (1 _address ]
-"79
-[; ;controller.c: 79:         enterPressed = 0;
-[e = _enterPressed -> -> 0 `i `a ]
-"80
-[; ;controller.c: 80:     } else if(beatHold == 1 && !menuPressed){
+"260
+[; ;controller.c: 260:         case DMX:
+[e :U 1536 ]
+"261
+[; ;controller.c: 261:             printf("PC  \r");
+[e ( _printf :s 1C ]
+"262
+[; ;controller.c: 262:             break;
+[e $U 1534  ]
+"264
+[; ;controller.c: 264:         case BEAT:
+[e :U 1537 ]
+"265
+[; ;controller.c: 265:             printf("BEAT\r");
+[e ( _printf :s 2C ]
+"266
+[; ;controller.c: 266:             break;
+[e $U 1534  ]
+"268
+[; ;controller.c: 268:         case ANIMATION:
+[e :U 1538 ]
+"269
+[; ;controller.c: 269:             printf("ANI \r");
+[e ( _printf :s 3C ]
+"270
+[; ;controller.c: 270:             break;
+[e $U 1534  ]
+"272
+[; ;controller.c: 272:         case MANUAL:
+[e :U 1539 ]
+"273
+[; ;controller.c: 273:             printf("LED \r");
+[e ( _printf :s 4C ]
+"274
+[; ;controller.c: 274:             break;
+[e $U 1534  ]
+"276
+[; ;controller.c: 276:         case B_STROBE:
+[e :U 1540 ]
+"277
+[; ;controller.c: 277:             printf("B   \r");
+[e ( _printf :s 5C ]
+"278
+[; ;controller.c: 278:             break;
+[e $U 1534  ]
+"280
+[; ;controller.c: 280:         case B_FADE:
+[e :U 1541 ]
+"281
+[; ;controller.c: 281:             printf("FADE\r");
+[e ( _printf :s 6C ]
+"282
+[; ;controller.c: 282:             break;
+[e $U 1534  ]
+"284
+[; ;controller.c: 284:         case B_CONT:
+[e :U 1542 ]
+"285
+[; ;controller.c: 285:             printf("C   \r");
+[e ( _printf :s 7C ]
+"286
+[; ;controller.c: 286:             break;
+[e $U 1534  ]
+"288
+[; ;controller.c: 288:         case B_MIXED:
+[e :U 1543 ]
+"289
+[; ;controller.c: 289:             printf("ALL \r");
+[e ( _printf :s 8C ]
+"290
+[; ;controller.c: 290:             break;
+[e $U 1534  ]
+"292
+[; ;controller.c: 292:         default:
+[e :U 1544 ]
+"293
+[; ;controller.c: 293:             if(currentMenu->task != ((void*)0))
+[e $ ! != . *U _currentMenu 5 -> -> -> 0 `i `*v `*F11505 1545  ]
+"294
+[; ;controller.c: 294:             currentMenu->task();
+[e ( *U . *U _currentMenu 5 ..  ]
+[e :U 1545 ]
+"295
+[; ;controller.c: 295:             break;
+[e $U 1534  ]
+"296
+[; ;controller.c: 296:     }
 }
 [e $U 1534  ]
-[e :U 1533 ]
-[e $ ! && == -> _beatHold `i -> 1 `i ! != -> _menuPressed `i -> 0 `i 1535  ]
-{
-"81
-[; ;controller.c: 81:         printf("HOLD\r");
-[e ( _printf :s 1C ]
-"82
-[; ;controller.c: 82:         lastActiveTime = CLOCK_getTime();
-[e = _lastActiveTime ( _CLOCK_getTime ..  ]
-"83
-[; ;controller.c: 83:         enterPressed = 0;
-[e = _enterPressed -> -> 0 `i `a ]
-"84
-[; ;controller.c: 84:     } else if (currentSelection == MODE_ANIMATION && !menuPressed && !beatHold) {
-}
-[e $U 1536  ]
 [e :U 1535 ]
-[e $ ! && && == -> _currentSelection `ui -> . `E10869 0 `ui ! != -> _menuPressed `i -> 0 `i ! != -> _beatHold `i -> 0 `i 1537  ]
-{
-"85
-[; ;controller.c: 85:         if (animationBrightnessControl) {
-[e $ ! != -> _animationBrightnessControl `i -> 0 `i 1538  ]
-{
-"86
-[; ;controller.c: 86:             printf("BR");
-[e ( _printf :s 2C ]
-"87
-[; ;controller.c: 87:             TM1650_fastPrintNum_2digit(animationBrightness);
-[e ( _TM1650_fastPrintNum_2digit (1 _animationBrightness ]
-"88
-[; ;controller.c: 88:             printf("\r");
-[e ( _printf :s 3C ]
-"89
-[; ;controller.c: 89:         } else {
-}
-[e $U 1539  ]
-[e :U 1538 ]
-{
-"90
-[; ;controller.c: 90:             printf("AN");
-[e ( _printf :s 4C ]
-"91
-[; ;controller.c: 91:             TM1650_fastPrintNum_2digit(animationModeSelected);
-[e ( _TM1650_fastPrintNum_2digit (1 _animationModeSelected ]
-"92
-[; ;controller.c: 92:             printf("\r");
-[e ( _printf :s 5C ]
-"93
-[; ;controller.c: 93:         }
-}
-[e :U 1539 ]
-"94
-[; ;controller.c: 94:         enterPressed = 0;
-[e = _enterPressed -> -> 0 `i `a ]
-"95
-[; ;controller.c: 95:     } else if (currentSelection == MODE_BEAT_STROBE && !menuPressed&& !beatHold) {
-}
-[e $U 1540  ]
-[e :U 1537 ]
-[e $ ! && && == -> _currentSelection `ui -> . `E10869 1 `ui ! != -> _menuPressed `i -> 0 `i ! != -> _beatHold `i -> 0 `i 1541  ]
-{
-"96
-[; ;controller.c: 96:         printf("B-");
-[e ( _printf :s 6C ]
-"97
-[; ;controller.c: 97:         TM1650_fastPrintNum_2digit((uint8_t)beatBrightness);
-[e ( _TM1650_fastPrintNum_2digit (1 _beatBrightness ]
-"98
-[; ;controller.c: 98:         printf("\r");
-[e ( _printf :s 7C ]
-"99
-[; ;controller.c: 99:         enterPressed = 0;
-[e = _enterPressed -> -> 0 `i `a ]
-"100
-[; ;controller.c: 100:     } else if (currentSelection == MODE_BEAT_FADE && !menuPressed && !beatHold) {
-}
-[e $U 1542  ]
-[e :U 1541 ]
-[e $ ! && && == -> _currentSelection `ui -> . `E10869 4 `ui ! != -> _menuPressed `i -> 0 `i ! != -> _beatHold `i -> 0 `i 1543  ]
-{
-"101
-[; ;controller.c: 101:         printf("F-");
-[e ( _printf :s 8C ]
-"102
-[; ;controller.c: 102:         TM1650_fastPrintNum_2digit((uint8_t)beatBrightness);
-[e ( _TM1650_fastPrintNum_2digit (1 _beatBrightness ]
-"103
-[; ;controller.c: 103:         printf("\r");
-[e ( _printf :s 9C ]
-"104
-[; ;controller.c: 104:         enterPressed = 0;
-[e = _enterPressed -> -> 0 `i `a ]
-"105
-[; ;controller.c: 105:     } else if (currentSelection == MODE_BEAT_CONTINUOUS && !menuPressed && !beatHold) {
-}
-[e $U 1544  ]
-[e :U 1543 ]
-[e $ ! && && == -> _currentSelection `ui -> . `E10869 5 `ui ! != -> _menuPressed `i -> 0 `i ! != -> _beatHold `i -> 0 `i 1545  ]
-{
-"106
-[; ;controller.c: 106:         printf("C-");
-[e ( _printf :s 10C ]
-"107
-[; ;controller.c: 107:         TM1650_fastPrintNum_2digit((uint8_t)beatBrightness);
-[e ( _TM1650_fastPrintNum_2digit (1 _beatBrightness ]
-"108
-[; ;controller.c: 108:         printf("\r");
-[e ( _printf :s 11C ]
-"109
-[; ;controller.c: 109:         enterPressed = 0;
-[e = _enterPressed -> -> 0 `i `a ]
-"110
-[; ;controller.c: 110:     } else if (currentSelection == MODE_BEAT_MIXED && !menuPressed && !beatHold) {
-}
-[e $U 1546  ]
-[e :U 1545 ]
-[e $ ! && && == -> _currentSelection `ui -> . `E10869 6 `ui ! != -> _menuPressed `i -> 0 `i ! != -> _beatHold `i -> 0 `i 1547  ]
-{
-"111
-[; ;controller.c: 111:         printf("A-");
-[e ( _printf :s 12C ]
-"112
-[; ;controller.c: 112:         TM1650_fastPrintNum_2digit((uint8_t)beatBrightness);
-[e ( _TM1650_fastPrintNum_2digit (1 _beatBrightness ]
-"113
-[; ;controller.c: 113:         printf("\r");
-[e ( _printf :s 13C ]
-"114
-[; ;controller.c: 114:         enterPressed = 0;
-[e = _enterPressed -> -> 0 `i `a ]
-"115
-[; ;controller.c: 115:     } else if (currentSelection == MODE_MANUAL && !menuPressed){
-}
-[e $U 1548  ]
-[e :U 1547 ]
-[e $ ! && == -> _currentSelection `ui -> . `E10869 3 `ui ! != -> _menuPressed `i -> 0 `i 1549  ]
-{
-"116
-[; ;controller.c: 116:         switch(colorModeSelected){
-[e $U 1551  ]
-{
-"117
-[; ;controller.c: 117:             case CMODE_RED:
-[e :U 1552 ]
-"118
-[; ;controller.c: 118:                 printf("r");
-[e ( _printf :s 14C ]
-"119
-[; ;controller.c: 119:                 TM1650_fastPrintNum_3digit(getManualColor(CMODE_RED));
-[e ( _TM1650_fastPrintNum_3digit (1 -> ( _getManualColor (1 . `E10878 0 `us ]
-"120
-[; ;controller.c: 120:                 printf("\r");
-[e ( _printf :s 15C ]
-"121
-[; ;controller.c: 121:                 break;
-[e $U 1550  ]
-"123
-[; ;controller.c: 123:             case CMODE_GREEN:
-[e :U 1553 ]
-"124
-[; ;controller.c: 124:                 printf("G");
-[e ( _printf :s 16C ]
-"125
-[; ;controller.c: 125:                 TM1650_fastPrintNum_3digit(getManualColor(CMODE_GREEN));
-[e ( _TM1650_fastPrintNum_3digit (1 -> ( _getManualColor (1 . `E10878 1 `us ]
-"126
-[; ;controller.c: 126:                 printf("\r");
-[e ( _printf :s 17C ]
-"127
-[; ;controller.c: 127:                 break;
-[e $U 1550  ]
-"129
-[; ;controller.c: 129:             case CMODE_BLUE:
-[e :U 1554 ]
-"130
-[; ;controller.c: 130:                 printf("B");
-[e ( _printf :s 18C ]
-"131
-[; ;controller.c: 131:                 TM1650_fastPrintNum_3digit(getManualColor(CMODE_BLUE));
-[e ( _TM1650_fastPrintNum_3digit (1 -> ( _getManualColor (1 . `E10878 2 `us ]
-"132
-[; ;controller.c: 132:                 printf("\r");
-[e ( _printf :s 19C ]
-"133
-[; ;controller.c: 133:                 break;
-[e $U 1550  ]
-"135
-[; ;controller.c: 135:             case CMODE_WHITE:
-[e :U 1555 ]
-"136
-[; ;controller.c: 136:                 printf("H");
-[e ( _printf :s 20C ]
-"137
-[; ;controller.c: 137:                 TM1650_fastPrintNum_3digit(getManualColor(CMODE_WHITE));
-[e ( _TM1650_fastPrintNum_3digit (1 -> ( _getManualColor (1 . `E10878 3 `us ]
-"138
-[; ;controller.c: 138:                 printf("\r");
-[e ( _printf :s 21C ]
-"139
-[; ;controller.c: 139:                 break;
-[e $U 1550  ]
-"140
-[; ;controller.c: 140:         }
-}
-[e $U 1550  ]
-[e :U 1551 ]
-[e [\ -> _colorModeSelected `ui , $ -> . `E10878 0 `ui 1552
- , $ -> . `E10878 1 `ui 1553
- , $ -> . `E10878 2 `ui 1554
- , $ -> . `E10878 3 `ui 1555
- 1550 ]
-[e :U 1550 ]
-"141
-[; ;controller.c: 141:         enterPressed = 0;
-[e = _enterPressed -> -> 0 `i `a ]
-"142
-[; ;controller.c: 142:     }
-}
-[e :U 1549 ]
-[e :U 1548 ]
-[e :U 1546 ]
-[e :U 1544 ]
-[e :U 1542 ]
-[e :U 1540 ]
-[e :U 1536 ]
+[e [\ -> . *U _currentMenu 4 `ui , $ -> . `E11217 0 `ui 1536
+ , $ -> . `E11217 1 `ui 1537
+ , $ -> . `E11217 2 `ui 1538
+ , $ -> . `E11217 3 `ui 1539
+ , $ -> . `E11217 5 `ui 1540
+ , $ -> . `E11217 6 `ui 1541
+ , $ -> . `E11217 7 `ui 1542
+ , $ -> . `E11217 8 `ui 1543
+ 1544 ]
 [e :U 1534 ]
-"144
-[; ;controller.c: 144: }
-[e :UE 1515 ]
+"298
+[; ;controller.c: 298: }
+[e :UE 1525 ]
 }
-"146
-[; ;controller.c: 146: void menuSelection(){
-[v _menuSelection `(v ~T0 @X0 1 ef ]
-{
-[e :U _menuSelection ]
-[f ]
-"148
-[; ;controller.c: 148:     if(menuSelected == MODE_BEAT_FADE || menuSelected == MODE_BEAT_CONTINUOUS || menuSelected == MODE_BEAT_MIXED)
-[e $ ! || || == -> _menuSelected `ui -> . `E10869 4 `ui == -> _menuSelected `ui -> . `E10869 5 `ui == -> _menuSelected `ui -> . `E10869 6 `ui 1557  ]
-"149
-[; ;controller.c: 149:         menuSelected = MODE_BEAT_STROBE;
-[e = _menuSelected . `E10869 1 ]
-[e :U 1557 ]
-"151
-[; ;controller.c: 151:     if(upState){
-[e $ ! != -> _upState `i -> 0 `i 1558  ]
-{
-"152
-[; ;controller.c: 152:         if(menuSelected < 3){
-[e $ ! < -> _menuSelected `ui -> -> 3 `i `ui 1559  ]
-{
-"153
-[; ;controller.c: 153:             menuSelected++;
-[e ++ _menuSelected -> -> 1 `i `E10869 ]
-"154
-[; ;controller.c: 154:         } else {
-}
-[e $U 1560  ]
-[e :U 1559 ]
-{
-"155
-[; ;controller.c: 155:             menuSelected = 3;
-[e = _menuSelected -> -> 3 `i `E10869 ]
-"156
-[; ;controller.c: 156:         }
-}
-[e :U 1560 ]
-"157
-[; ;controller.c: 157:     } else if(downState){
-}
-[e $U 1561  ]
-[e :U 1558 ]
-[e $ ! != -> _downState `i -> 0 `i 1562  ]
-{
-"158
-[; ;controller.c: 158:         if(menuSelected > 0){
-[e $ ! > -> _menuSelected `ui -> -> 0 `i `ui 1563  ]
-{
-"159
-[; ;controller.c: 159:             menuSelected--;
-[e -- _menuSelected -> -> 1 `i `E10869 ]
-"160
-[; ;controller.c: 160:         } else {
-}
-[e $U 1564  ]
-[e :U 1563 ]
-{
-"161
-[; ;controller.c: 161:             menuSelected = 0;
-[e = _menuSelected -> -> 0 `i `E10869 ]
-"162
-[; ;controller.c: 162:         }
-}
-[e :U 1564 ]
-"163
-[; ;controller.c: 163:     }
-}
-[e :U 1562 ]
-[e :U 1561 ]
-"165
-[; ;controller.c: 165:     if (enterState) {
-[e $ ! != -> _enterState `i -> 0 `i 1565  ]
-{
-"166
-[; ;controller.c: 166:         currentSelection = menuSelected;
-[e = _currentSelection _menuSelected ]
-"167
-[; ;controller.c: 167:         menuPressed = 0;
-[e = _menuPressed -> -> 0 `i `a ]
-"168
-[; ;controller.c: 168:         enterPressed = 1;
-[e = _enterPressed -> -> 1 `i `a ]
-"169
-[; ;controller.c: 169:         return;
-[e $UE 1556  ]
-"170
-[; ;controller.c: 170:     }
-}
-[e :U 1565 ]
-"172
-[; ;controller.c: 172:     switch(menuSelected){
-[e $U 1567  ]
-{
-"173
-[; ;controller.c: 173:         case MODE_ANIMATION:
-[e :U 1568 ]
-"174
-[; ;controller.c: 174:             printf("ANI \r");
-[e ( _printf :s 22C ]
-"175
-[; ;controller.c: 175:             break;
-[e $U 1566  ]
-"177
-[; ;controller.c: 177:         case MODE_BEAT_STROBE:
-[e :U 1569 ]
-"178
-[; ;controller.c: 178:             printf("BEAT\r");
-[e ( _printf :s 23C ]
-"179
-[; ;controller.c: 179:             break;
-[e $U 1566  ]
-"181
-[; ;controller.c: 181:         case MODE_BEAT_FADE:
-[e :U 1570 ]
-"182
-[; ;controller.c: 182:             printf("BEAT\r");
-[e ( _printf :s 24C ]
-"183
-[; ;controller.c: 183:             break;
-[e $U 1566  ]
-"185
-[; ;controller.c: 185:         case MODE_DMX:
-[e :U 1571 ]
-"186
-[; ;controller.c: 186:             printf("PC  \r");
-[e ( _printf :s 25C ]
-"187
-[; ;controller.c: 187:             break;
-[e $U 1566  ]
-"189
-[; ;controller.c: 189:         case MODE_MANUAL:
-[e :U 1572 ]
-"190
-[; ;controller.c: 190:             printf("LED \r");
-[e ( _printf :s 26C ]
-"191
-[; ;controller.c: 191:             break;
-[e $U 1566  ]
-"192
-[; ;controller.c: 192:     }
-}
-[e $U 1566  ]
-[e :U 1567 ]
-[e [\ -> _menuSelected `ui , $ -> . `E10869 0 `ui 1568
- , $ -> . `E10869 1 `ui 1569
- , $ -> . `E10869 4 `ui 1570
- , $ -> . `E10869 2 `ui 1571
- , $ -> . `E10869 3 `ui 1572
- 1566 ]
-[e :U 1566 ]
-"193
-[; ;controller.c: 193: }
-[e :UE 1556 ]
-}
-"195
-[; ;controller.c: 195: mode_t getMode(){
-[v _getMode `(E10869 ~T0 @X0 1 ef ]
+"301
+[; ;controller.c: 301: mode_t getMode(){
+[v _getMode `(E11239 ~T0 @X0 1 ef ]
 {
 [e :U _getMode ]
 [f ]
-"196
-[; ;controller.c: 196:     return currentSelection;
+"302
+[; ;controller.c: 302:     return currentSelection;
 [e ) _currentSelection ]
-[e $UE 1573  ]
-"197
-[; ;controller.c: 197: }
-[e :UE 1573 ]
+[e $UE 1546  ]
+"303
+[; ;controller.c: 303: }
+[e :UE 1546 ]
 }
-"199
-[; ;controller.c: 199: _Bool static CONTROL_DMX(){
-[v _CONTROL_DMX `(a ~T0 @X0 1 sf ]
+"305
+[; ;controller.c: 305: void static CONTROL_DMX(){
+[v _CONTROL_DMX `(v ~T0 @X0 1 sf ]
 {
 [e :U _CONTROL_DMX ]
 [f ]
-"201
-[; ;controller.c: 201:     if(BUTTONS_isHeld(up) && (CLOCK_getTime() - lastIncTime > incInterval)){
-[e $ ! && != -> ( _BUTTONS_isHeld (1 _up `i -> 0 `i > - -> ( _CLOCK_getTime ..  `ui -> _lastIncTime `ui -> _incInterval `ui 1575  ]
+"307
+[; ;controller.c: 307:     LED_task_DMX();
+[e ( _LED_task_DMX ..  ]
+"309
+[; ;controller.c: 309:     if(BUTTONS_isHeld(up) && (CLOCK_getTime() - lastIncTime > incInterval)){
+[e $ ! && != -> ( _BUTTONS_isHeld (1 _up `i -> 0 `i > - -> ( _CLOCK_getTime ..  `ui -> _lastIncTime `ui -> _incInterval `ui 1548  ]
 {
-"202
-[; ;controller.c: 202:         address_inc();
+"310
+[; ;controller.c: 310:         address_inc();
 [e ( _address_inc ..  ]
-"203
-[; ;controller.c: 203:         lastIncTime = CLOCK_getTime();
+"311
+[; ;controller.c: 311:         lastIncTime = CLOCK_getTime();
 [e = _lastIncTime ( _CLOCK_getTime ..  ]
-"204
-[; ;controller.c: 204:         if(incInterval > 20){
-[e $ ! > _incInterval -> 20 `i 1576  ]
+"312
+[; ;controller.c: 312:         if(incInterval > 20){
+[e $ ! > _incInterval -> 20 `i 1549  ]
 {
-"205
-[; ;controller.c: 205:             incInterval-=1;
+"313
+[; ;controller.c: 313:             incInterval-=1;
 [e =- _incInterval -> 1 `i ]
-"206
-[; ;controller.c: 206:         }
+"314
+[; ;controller.c: 314:         }
 }
-[e :U 1576 ]
-"207
-[; ;controller.c: 207:         return 1;
-[e ) -> -> 1 `i `a ]
-[e $UE 1574  ]
-"208
-[; ;controller.c: 208:     } else if(BUTTONS_isHeld(down) && (CLOCK_getTime() - lastIncTime > incInterval)){
+[e :U 1549 ]
+"315
+[; ;controller.c: 315:     } else if(BUTTONS_isHeld(down) && (CLOCK_getTime() - lastIncTime > incInterval)){
 }
-[e $U 1577  ]
-[e :U 1575 ]
-[e $ ! && != -> ( _BUTTONS_isHeld (1 _down `i -> 0 `i > - -> ( _CLOCK_getTime ..  `ui -> _lastIncTime `ui -> _incInterval `ui 1578  ]
+[e $U 1550  ]
+[e :U 1548 ]
+[e $ ! && != -> ( _BUTTONS_isHeld (1 _down `i -> 0 `i > - -> ( _CLOCK_getTime ..  `ui -> _lastIncTime `ui -> _incInterval `ui 1551  ]
 {
-"209
-[; ;controller.c: 209:         address_dec();
+"316
+[; ;controller.c: 316:         address_dec();
 [e ( _address_dec ..  ]
-"210
-[; ;controller.c: 210:         lastIncTime = CLOCK_getTime();
+"317
+[; ;controller.c: 317:         lastIncTime = CLOCK_getTime();
 [e = _lastIncTime ( _CLOCK_getTime ..  ]
-"211
-[; ;controller.c: 211:         if(incInterval > 20){
-[e $ ! > _incInterval -> 20 `i 1579  ]
+"318
+[; ;controller.c: 318:         if(incInterval > 20){
+[e $ ! > _incInterval -> 20 `i 1552  ]
 {
-"212
-[; ;controller.c: 212:             incInterval-=1;
+"319
+[; ;controller.c: 319:             incInterval-=1;
 [e =- _incInterval -> 1 `i ]
-"213
-[; ;controller.c: 213:         }
+"320
+[; ;controller.c: 320:         }
 }
-[e :U 1579 ]
-"214
-[; ;controller.c: 214:         return 1;
-[e ) -> -> 1 `i `a ]
-[e $UE 1574  ]
-"215
-[; ;controller.c: 215:     } else if(BUTTONS_isHeld(enter)){
+[e :U 1552 ]
+"321
+[; ;controller.c: 321:     } else if(BUTTONS_isHeld(enter)){
 }
-[e $U 1580  ]
-[e :U 1578 ]
-[e $ ! != -> ( _BUTTONS_isHeld (1 _enter `i -> 0 `i 1581  ]
+[e $U 1553  ]
+[e :U 1551 ]
+[e $ ! != -> ( _BUTTONS_isHeld (1 _enter `i -> 0 `i 1554  ]
 {
-"216
-[; ;controller.c: 216:         address = 1;
+"322
+[; ;controller.c: 322:         address = 1;
 [e = _address -> -> 1 `i `us ]
-"217
-[; ;controller.c: 217:         return 1;
-[e ) -> -> 1 `i `a ]
-[e $UE 1574  ]
-"218
-[; ;controller.c: 218:     } else if (upState) {
+"323
+[; ;controller.c: 323:     } else if (upState) {
 }
-[e $U 1582  ]
-[e :U 1581 ]
-[e $ ! != -> _upState `i -> 0 `i 1583  ]
+[e $U 1555  ]
+[e :U 1554 ]
+[e $ ! != -> _upState `i -> 0 `i 1556  ]
 {
-"219
-[; ;controller.c: 219:         address_inc();
+"324
+[; ;controller.c: 324:         address_inc();
 [e ( _address_inc ..  ]
-"220
-[; ;controller.c: 220:         return 1;
-[e ) -> -> 1 `i `a ]
-[e $UE 1574  ]
-"221
-[; ;controller.c: 221:         lastActiveTime = CLOCK_getTime();
+"325
+[; ;controller.c: 325:         lastActiveTime = CLOCK_getTime();
 [e = _lastActiveTime ( _CLOCK_getTime ..  ]
-"222
-[; ;controller.c: 222:     } else if (downState) {
+"326
+[; ;controller.c: 326:     } else if (downState) {
 }
-[e $U 1584  ]
-[e :U 1583 ]
-[e $ ! != -> _downState `i -> 0 `i 1585  ]
+[e $U 1557  ]
+[e :U 1556 ]
+[e $ ! != -> _downState `i -> 0 `i 1558  ]
 {
-"223
-[; ;controller.c: 223:         address_dec();
+"327
+[; ;controller.c: 327:         address_dec();
 [e ( _address_dec ..  ]
-"224
-[; ;controller.c: 224:         return 1;
-[e ) -> -> 1 `i `a ]
-[e $UE 1574  ]
-"225
-[; ;controller.c: 225:     } else if(enterState){
+"328
+[; ;controller.c: 328:     } else if((!upState || !downState) && !(BUTTONS_isHeld(down) || BUTTONS_isHeld(up))){
 }
-[e $U 1586  ]
-[e :U 1585 ]
-[e $ ! != -> _enterState `i -> 0 `i 1587  ]
+[e $U 1559  ]
+[e :U 1558 ]
+[e $ ! && || ! != -> _upState `i -> 0 `i ! != -> _downState `i -> 0 `i ! || != -> ( _BUTTONS_isHeld (1 _down `i -> 0 `i != -> ( _BUTTONS_isHeld (1 _up `i -> 0 `i 1560  ]
 {
-"226
-[; ;controller.c: 226:         return 1;
-[e ) -> -> 1 `i `a ]
-[e $UE 1574  ]
-"227
-[; ;controller.c: 227:     } else if((!upState || !downState) && !(BUTTONS_isHeld(down) || BUTTONS_isHeld(up))){
-}
-[e $U 1588  ]
-[e :U 1587 ]
-[e $ ! && || ! != -> _upState `i -> 0 `i ! != -> _downState `i -> 0 `i ! || != -> ( _BUTTONS_isHeld (1 _down `i -> 0 `i != -> ( _BUTTONS_isHeld (1 _up `i -> 0 `i 1589  ]
-{
-"228
-[; ;controller.c: 228:         incInterval = 100;
+"329
+[; ;controller.c: 329:         incInterval = 100;
 [e = _incInterval -> 100 `i ]
-"229
-[; ;controller.c: 229:     } else {
+"330
+[; ;controller.c: 330:     }
 }
-[e $U 1590  ]
-[e :U 1589 ]
-{
-"230
-[; ;controller.c: 230:         return 0;
-[e ) -> -> 0 `i `a ]
-[e $UE 1574  ]
-"231
-[; ;controller.c: 231:     }
+[e :U 1560 ]
+[e :U 1559 ]
+[e :U 1557 ]
+[e :U 1555 ]
+[e :U 1553 ]
+[e :U 1550 ]
+"333
+[; ;controller.c: 333: }
+[e :UE 1547 ]
 }
-[e :U 1590 ]
-[e :U 1588 ]
-[e :U 1586 ]
-[e :U 1584 ]
-[e :U 1582 ]
-[e :U 1580 ]
-[e :U 1577 ]
-"233
-[; ;controller.c: 233:     return 0;
-[e ) -> -> 0 `i `a ]
-[e $UE 1574  ]
-"235
-[; ;controller.c: 235: }
-[e :UE 1574 ]
-}
-"237
-[; ;controller.c: 237: _Bool static CONTROL_BEAT(){
-[v _CONTROL_BEAT `(a ~T0 @X0 1 sf ]
+"335
+[; ;controller.c: 335: void static CONTROL_BEAT(){
+[v _CONTROL_BEAT `(v ~T0 @X0 1 sf ]
 {
 [e :U _CONTROL_BEAT ]
 [f ]
-"239
-[; ;controller.c: 239:     if(BUTTONS_isHeld(enter) && !enterPressed){
-[e $ ! && != -> ( _BUTTONS_isHeld (1 _enter `i -> 0 `i ! != -> _enterPressed `i -> 0 `i 1592  ]
+"337
+[; ;controller.c: 337:     switch(currentMenu->name){
+[e $U 1563  ]
 {
-"240
-[; ;controller.c: 240:         beatHold = !beatHold;
-[e = _beatHold -> -> ! != -> _beatHold `i -> 0 `i `i `a ]
-"241
-[; ;controller.c: 241:         enterPressed = 1;
-[e = _enterPressed -> -> 1 `i `a ]
-"242
-[; ;controller.c: 242:         return 1;
-[e ) -> -> 1 `i `a ]
-[e $UE 1591  ]
-"243
-[; ;controller.c: 243:     }
+"339
+[; ;controller.c: 339:         case B_STROBE_TASK:
+[e :U 1564 ]
+"340
+[; ;controller.c: 340:             printf("B-\r");
+[e ( _printf :s 9C ]
+"341
+[; ;controller.c: 341:             LED_task_BEAT_STROBE();
+[e ( _LED_task_BEAT_STROBE ..  ]
+"342
+[; ;controller.c: 342:             break;
+[e $U 1562  ]
+"344
+[; ;controller.c: 344:         case B_FADE_TASK:
+[e :U 1565 ]
+"345
+[; ;controller.c: 345:             printf("F-\r");
+[e ( _printf :s 10C ]
+"346
+[; ;controller.c: 346:             LED_task_BEAT_FADE();
+[e ( _LED_task_BEAT_FADE ..  ]
+"347
+[; ;controller.c: 347:             break;
+[e $U 1562  ]
+"349
+[; ;controller.c: 349:         case B_CONT_TASK:
+[e :U 1566 ]
+"350
+[; ;controller.c: 350:             printf("C-\r");
+[e ( _printf :s 11C ]
+"351
+[; ;controller.c: 351:             LED_task_BEAT_CONTINUOUS();
+[e ( _LED_task_BEAT_CONTINUOUS ..  ]
+"352
+[; ;controller.c: 352:             break;
+[e $U 1562  ]
+"354
+[; ;controller.c: 354:         case B_MIXED_TASK:
+[e :U 1567 ]
+"355
+[; ;controller.c: 355:             printf("A-\r");
+[e ( _printf :s 12C ]
+"356
+[; ;controller.c: 356:             LED_task_BEAT_MIXED();
+[e ( _LED_task_BEAT_MIXED ..  ]
+"357
+[; ;controller.c: 357:             break;
+[e $U 1562  ]
+"359
+[; ;controller.c: 359:     }
 }
-[e :U 1592 ]
-"247
-[; ;controller.c: 247:     if (upState) {
-[e $ ! != -> _upState `i -> 0 `i 1593  ]
+[e $U 1562  ]
+[e :U 1563 ]
+[e [\ -> . *U _currentMenu 4 `ui , $ -> . `E11217 9 `ui 1564
+ , $ -> . `E11217 10 `ui 1565
+ , $ -> . `E11217 11 `ui 1566
+ , $ -> . `E11217 12 `ui 1567
+ 1562 ]
+[e :U 1562 ]
+"361
+[; ;controller.c: 361:     TM1650_fastPrintNum_2digit(beatBrightness);
+[e ( _TM1650_fastPrintNum_2digit (1 _beatBrightness ]
+"363
+[; ;controller.c: 363:     if (upState) {
+[e $ ! != -> _upState `i -> 0 `i 1568  ]
 {
-"248
-[; ;controller.c: 248:         if(beatBrightness < 9){
-[e $ ! < -> _beatBrightness `i -> 9 `i 1594  ]
+"364
+[; ;controller.c: 364:         if(beatBrightness < 9){
+[e $ ! < -> _beatBrightness `i -> 9 `i 1569  ]
 {
-"249
-[; ;controller.c: 249:             beatBrightness++;
+"365
+[; ;controller.c: 365:             beatBrightness++;
 [e ++ _beatBrightness -> -> 1 `i `uc ]
-"250
-[; ;controller.c: 250:         } else {
+"366
+[; ;controller.c: 366:         } else {
 }
-[e $U 1595  ]
-[e :U 1594 ]
+[e $U 1570  ]
+[e :U 1569 ]
 {
-"251
-[; ;controller.c: 251:             beatBrightness = 9;
+"367
+[; ;controller.c: 367:             beatBrightness = 9;
 [e = _beatBrightness -> -> 9 `i `uc ]
-"252
-[; ;controller.c: 252:         }
+"368
+[; ;controller.c: 368:         }
 }
-[e :U 1595 ]
-"253
-[; ;controller.c: 253:         return 1;
-[e ) -> -> 1 `i `a ]
-[e $UE 1591  ]
-"254
-[; ;controller.c: 254:     } else if (downState) {
+[e :U 1570 ]
+"369
+[; ;controller.c: 369:     } else if (downState) {
 }
-[e $U 1596  ]
-[e :U 1593 ]
-[e $ ! != -> _downState `i -> 0 `i 1597  ]
+[e $U 1571  ]
+[e :U 1568 ]
+[e $ ! != -> _downState `i -> 0 `i 1572  ]
 {
-"255
-[; ;controller.c: 255:         if(beatBrightness > 0){
-[e $ ! > -> _beatBrightness `i -> 0 `i 1598  ]
+"370
+[; ;controller.c: 370:         if(beatBrightness > 0){
+[e $ ! > -> _beatBrightness `i -> 0 `i 1573  ]
 {
-"256
-[; ;controller.c: 256:             beatBrightness--;
+"371
+[; ;controller.c: 371:             beatBrightness--;
 [e -- _beatBrightness -> -> 1 `i `uc ]
-"257
-[; ;controller.c: 257:         } else {
+"372
+[; ;controller.c: 372:         } else {
 }
-[e $U 1599  ]
-[e :U 1598 ]
+[e $U 1574  ]
+[e :U 1573 ]
 {
-"258
-[; ;controller.c: 258:             beatBrightness = 0;
+"373
+[; ;controller.c: 373:             beatBrightness = 0;
 [e = _beatBrightness -> -> 0 `i `uc ]
-"259
-[; ;controller.c: 259:         }
+"374
+[; ;controller.c: 374:         }
 }
-[e :U 1599 ]
-"260
-[; ;controller.c: 260:         return 1;
-[e ) -> -> 1 `i `a ]
-[e $UE 1591  ]
-"261
-[; ;controller.c: 261:     }
+[e :U 1574 ]
+"375
+[; ;controller.c: 375:     }
 }
-[e :U 1597 ]
-[e :U 1596 ]
-"263
-[; ;controller.c: 263:     if(enterState && currentSelection == MODE_BEAT_FADE){
-[e $ ! && != -> _enterState `i -> 0 `i == -> _currentSelection `ui -> . `E10869 4 `ui 1600  ]
-{
-"264
-[; ;controller.c: 264:         currentSelection = MODE_BEAT_CONTINUOUS;
-[e = _currentSelection . `E10869 5 ]
-"266
-[; ;controller.c: 266:     } else if(enterState && currentSelection == MODE_BEAT_STROBE){
+[e :U 1572 ]
+[e :U 1571 ]
+"386
+[; ;controller.c: 386: }
+[e :UE 1561 ]
 }
-[e $U 1601  ]
-[e :U 1600 ]
-[e $ ! && != -> _enterState `i -> 0 `i == -> _currentSelection `ui -> . `E10869 1 `ui 1602  ]
-{
-"267
-[; ;controller.c: 267:         currentSelection = MODE_BEAT_FADE;
-[e = _currentSelection . `E10869 4 ]
-"268
-[; ;controller.c: 268:     } else if(enterState && currentSelection == MODE_BEAT_CONTINUOUS){
-}
-[e $U 1603  ]
-[e :U 1602 ]
-[e $ ! && != -> _enterState `i -> 0 `i == -> _currentSelection `ui -> . `E10869 5 `ui 1604  ]
-{
-"269
-[; ;controller.c: 269:         currentSelection = MODE_BEAT_MIXED;
-[e = _currentSelection . `E10869 6 ]
-"270
-[; ;controller.c: 270:     } else if(enterState && currentSelection == MODE_BEAT_MIXED){
-}
-[e $U 1605  ]
-[e :U 1604 ]
-[e $ ! && != -> _enterState `i -> 0 `i == -> _currentSelection `ui -> . `E10869 6 `ui 1606  ]
-{
-"271
-[; ;controller.c: 271:         currentSelection = MODE_BEAT_STROBE;
-[e = _currentSelection . `E10869 1 ]
-"272
-[; ;controller.c: 272:     }
-}
-[e :U 1606 ]
-[e :U 1605 ]
-[e :U 1603 ]
-[e :U 1601 ]
-"274
-[; ;controller.c: 274: }
-[e :UE 1591 ]
-}
-"276
-[; ;controller.c: 276: _Bool getIsHold(){
+"388
+[; ;controller.c: 388: _Bool getIsHold(){
 [v _getIsHold `(a ~T0 @X0 1 ef ]
 {
 [e :U _getIsHold ]
 [f ]
-"277
-[; ;controller.c: 277:     return 0;
-[e ) -> -> 0 `i `a ]
-[e $UE 1607  ]
-"278
-[; ;controller.c: 278: }
-[e :UE 1607 ]
+"389
+[; ;controller.c: 389:     return beatHold;
+[e ) _beatHold ]
+[e $UE 1575  ]
+"390
+[; ;controller.c: 390: }
+[e :UE 1575 ]
 }
-"280
-[; ;controller.c: 280: _Bool static CONTROL_MANUAL(colormode_t input){
-[v _CONTROL_MANUAL `(a ~T0 @X0 1 sf1`E10878 ]
+"392
+[; ;controller.c: 392: void static CONTROL_MANUAL(){
+[v _CONTROL_MANUAL `(v ~T0 @X0 1 sf ]
 {
 [e :U _CONTROL_MANUAL ]
-[v _input `E10878 ~T0 @X0 1 r1 ]
 [f ]
-"282
-[; ;controller.c: 282:      if(BUTTONS_isHeld(up) && (CLOCK_getTime() - lastIncTime > incInterval)){
-[e $ ! && != -> ( _BUTTONS_isHeld (1 _up `i -> 0 `i > - -> ( _CLOCK_getTime ..  `ui -> _lastIncTime `ui -> _incInterval `ui 1609  ]
+"394
+[; ;controller.c: 394:        LED_task_MANUAL();
+[e ( _LED_task_MANUAL ..  ]
+"396
+[; ;controller.c: 396:        switch(currentMenu->name){
+[e $U 1578  ]
 {
-"283
-[; ;controller.c: 283:         colorInc(input);
-[e ( _colorInc (1 _input ]
-"284
-[; ;controller.c: 284:         lastIncTime = CLOCK_getTime();
+"398
+[; ;controller.c: 398:         case MANUAL_RED:
+[e :U 1579 ]
+"399
+[; ;controller.c: 399:             printf("r\r");
+[e ( _printf :s 13C ]
+"400
+[; ;controller.c: 400:             TM1650_fastPrintNum_3digit(manualColor.red);
+[e ( _TM1650_fastPrintNum_3digit (1 -> . _manualColor 1 `us ]
+"401
+[; ;controller.c: 401:             break;
+[e $U 1577  ]
+"403
+[; ;controller.c: 403:         case MANUAL_GREEN:
+[e :U 1580 ]
+"404
+[; ;controller.c: 404:             printf("g\r");
+[e ( _printf :s 14C ]
+"405
+[; ;controller.c: 405:             TM1650_fastPrintNum_3digit(manualColor.green);
+[e ( _TM1650_fastPrintNum_3digit (1 -> . _manualColor 2 `us ]
+"406
+[; ;controller.c: 406:             break;
+[e $U 1577  ]
+"408
+[; ;controller.c: 408:         case MANUAL_BLUE:
+[e :U 1581 ]
+"409
+[; ;controller.c: 409:             printf("b\r");
+[e ( _printf :s 15C ]
+"410
+[; ;controller.c: 410:             TM1650_fastPrintNum_3digit(manualColor.blue);
+[e ( _TM1650_fastPrintNum_3digit (1 -> . _manualColor 3 `us ]
+"411
+[; ;controller.c: 411:             break;
+[e $U 1577  ]
+"413
+[; ;controller.c: 413:         case MANUAL_WHITE:
+[e :U 1582 ]
+"414
+[; ;controller.c: 414:             printf("h\r");
+[e ( _printf :s 16C ]
+"415
+[; ;controller.c: 415:             TM1650_fastPrintNum_3digit(manualColor.white);
+[e ( _TM1650_fastPrintNum_3digit (1 -> . _manualColor 0 `us ]
+"416
+[; ;controller.c: 416:             break;
+[e $U 1577  ]
+"418
+[; ;controller.c: 418:     }
+}
+[e $U 1577  ]
+[e :U 1578 ]
+[e [\ -> . *U _currentMenu 4 `ui , $ -> . `E11217 13 `ui 1579
+ , $ -> . `E11217 14 `ui 1580
+ , $ -> . `E11217 15 `ui 1581
+ , $ -> . `E11217 16 `ui 1582
+ 1577 ]
+[e :U 1577 ]
+"420
+[; ;controller.c: 420:      if(BUTTONS_isHeld(up) && (CLOCK_getTime() - lastIncTime > incInterval)){
+[e $ ! && != -> ( _BUTTONS_isHeld (1 _up `i -> 0 `i > - -> ( _CLOCK_getTime ..  `ui -> _lastIncTime `ui -> _incInterval `ui 1583  ]
+{
+"421
+[; ;controller.c: 421:         colorInc();
+[e ( _colorInc ..  ]
+"422
+[; ;controller.c: 422:         lastIncTime = CLOCK_getTime();
 [e = _lastIncTime ( _CLOCK_getTime ..  ]
-"285
-[; ;controller.c: 285:         if(incInterval > 10){
-[e $ ! > _incInterval -> 10 `i 1610  ]
+"423
+[; ;controller.c: 423:         if(incInterval > 10){
+[e $ ! > _incInterval -> 10 `i 1584  ]
 {
-"286
-[; ;controller.c: 286:             incInterval-=1;
+"424
+[; ;controller.c: 424:             incInterval-=1;
 [e =- _incInterval -> 1 `i ]
-"287
-[; ;controller.c: 287:         }
+"425
+[; ;controller.c: 425:         }
 }
-[e :U 1610 ]
-"288
-[; ;controller.c: 288:         return 1;
-[e ) -> -> 1 `i `a ]
-[e $UE 1608  ]
-"289
-[; ;controller.c: 289:     } else if(BUTTONS_isHeld(down) && (CLOCK_getTime() - lastIncTime > incInterval)){
+[e :U 1584 ]
+"426
+[; ;controller.c: 426:     } else if(BUTTONS_isHeld(down) && (CLOCK_getTime() - lastIncTime > incInterval)){
 }
-[e $U 1611  ]
-[e :U 1609 ]
-[e $ ! && != -> ( _BUTTONS_isHeld (1 _down `i -> 0 `i > - -> ( _CLOCK_getTime ..  `ui -> _lastIncTime `ui -> _incInterval `ui 1612  ]
+[e $U 1585  ]
+[e :U 1583 ]
+[e $ ! && != -> ( _BUTTONS_isHeld (1 _down `i -> 0 `i > - -> ( _CLOCK_getTime ..  `ui -> _lastIncTime `ui -> _incInterval `ui 1586  ]
 {
-"290
-[; ;controller.c: 290:         colorDec(input);
-[e ( _colorDec (1 _input ]
-"291
-[; ;controller.c: 291:         lastIncTime = CLOCK_getTime();
+"427
+[; ;controller.c: 427:         colorDec();
+[e ( _colorDec ..  ]
+"428
+[; ;controller.c: 428:         lastIncTime = CLOCK_getTime();
 [e = _lastIncTime ( _CLOCK_getTime ..  ]
-"292
-[; ;controller.c: 292:         if(incInterval > 10){
-[e $ ! > _incInterval -> 10 `i 1613  ]
+"429
+[; ;controller.c: 429:         if(incInterval > 10){
+[e $ ! > _incInterval -> 10 `i 1587  ]
 {
-"293
-[; ;controller.c: 293:             incInterval-=1;
+"430
+[; ;controller.c: 430:             incInterval-=1;
 [e =- _incInterval -> 1 `i ]
-"294
-[; ;controller.c: 294:         }
+"431
+[; ;controller.c: 431:         }
 }
-[e :U 1613 ]
-"295
-[; ;controller.c: 295:         return 1;
-[e ) -> -> 1 `i `a ]
-[e $UE 1608  ]
-"296
-[; ;controller.c: 296:     } else if (upState) {
+[e :U 1587 ]
+"432
+[; ;controller.c: 432:     } else if (upState) {
 }
-[e $U 1614  ]
-[e :U 1612 ]
-[e $ ! != -> _upState `i -> 0 `i 1615  ]
+[e $U 1588  ]
+[e :U 1586 ]
+[e $ ! != -> _upState `i -> 0 `i 1589  ]
 {
-"297
-[; ;controller.c: 297:         colorInc(input);
-[e ( _colorInc (1 _input ]
-"298
-[; ;controller.c: 298:         return 1;
-[e ) -> -> 1 `i `a ]
-[e $UE 1608  ]
-"299
-[; ;controller.c: 299:         lastActiveTime = CLOCK_getTime();
-[e = _lastActiveTime ( _CLOCK_getTime ..  ]
-"300
-[; ;controller.c: 300:     } else if (downState) {
+"433
+[; ;controller.c: 433:         colorInc();
+[e ( _colorInc ..  ]
+"434
+[; ;controller.c: 434:     } else if (downState) {
 }
-[e $U 1616  ]
-[e :U 1615 ]
-[e $ ! != -> _downState `i -> 0 `i 1617  ]
+[e $U 1590  ]
+[e :U 1589 ]
+[e $ ! != -> _downState `i -> 0 `i 1591  ]
 {
-"301
-[; ;controller.c: 301:         colorDec(input);
-[e ( _colorDec (1 _input ]
-"302
-[; ;controller.c: 302:         return 1;
-[e ) -> -> 1 `i `a ]
-[e $UE 1608  ]
-"303
-[; ;controller.c: 303:     } else if(enterState){
+"435
+[; ;controller.c: 435:         colorDec();
+[e ( _colorDec ..  ]
+"436
+[; ;controller.c: 436:     } else if((!upState || !downState) && !(BUTTONS_isHeld(down) || BUTTONS_isHeld(up))){
 }
-[e $U 1618  ]
-[e :U 1617 ]
-[e $ ! != -> _enterState `i -> 0 `i 1619  ]
+[e $U 1592  ]
+[e :U 1591 ]
+[e $ ! && || ! != -> _upState `i -> 0 `i ! != -> _downState `i -> 0 `i ! || != -> ( _BUTTONS_isHeld (1 _down `i -> 0 `i != -> ( _BUTTONS_isHeld (1 _up `i -> 0 `i 1593  ]
 {
-"304
-[; ;controller.c: 304:         switch(input){
-[e $U 1621  ]
-{
-"305
-[; ;controller.c: 305:             case CMODE_RED:
-[e :U 1622 ]
-"306
-[; ;controller.c: 306:                 colorModeSelected = CMODE_GREEN;
-[e = _colorModeSelected . `E10878 1 ]
-"307
-[; ;controller.c: 307:                 break;
-[e $U 1620  ]
-"309
-[; ;controller.c: 309:             case CMODE_GREEN:
-[e :U 1623 ]
-"310
-[; ;controller.c: 310:                 colorModeSelected = CMODE_BLUE;
-[e = _colorModeSelected . `E10878 2 ]
-"311
-[; ;controller.c: 311:                 break;
-[e $U 1620  ]
-"313
-[; ;controller.c: 313:             case CMODE_BLUE:
-[e :U 1624 ]
-"314
-[; ;controller.c: 314:                 colorModeSelected = CMODE_WHITE;
-[e = _colorModeSelected . `E10878 3 ]
-"315
-[; ;controller.c: 315:                 break;
-[e $U 1620  ]
-"317
-[; ;controller.c: 317:             case CMODE_WHITE:
-[e :U 1625 ]
-"318
-[; ;controller.c: 318:                 colorModeSelected = CMODE_RED;
-[e = _colorModeSelected . `E10878 0 ]
-"319
-[; ;controller.c: 319:                 break;
-[e $U 1620  ]
-"320
-[; ;controller.c: 320:         }
-}
-[e $U 1620  ]
-[e :U 1621 ]
-[e [\ -> _input `ui , $ -> . `E10878 0 `ui 1622
- , $ -> . `E10878 1 `ui 1623
- , $ -> . `E10878 2 `ui 1624
- , $ -> . `E10878 3 `ui 1625
- 1620 ]
-[e :U 1620 ]
-"321
-[; ;controller.c: 321:         return 1;
-[e ) -> -> 1 `i `a ]
-[e $UE 1608  ]
-"322
-[; ;controller.c: 322:     } else if((!upState || !downState) && !(BUTTONS_isHeld(down) || BUTTONS_isHeld(up))){
-}
-[e $U 1626  ]
-[e :U 1619 ]
-[e $ ! && || ! != -> _upState `i -> 0 `i ! != -> _downState `i -> 0 `i ! || != -> ( _BUTTONS_isHeld (1 _down `i -> 0 `i != -> ( _BUTTONS_isHeld (1 _up `i -> 0 `i 1627  ]
-{
-"323
-[; ;controller.c: 323:         incInterval = 100;
+"437
+[; ;controller.c: 437:         incInterval = 100;
 [e = _incInterval -> 100 `i ]
-"324
-[; ;controller.c: 324:     } else {
+"438
+[; ;controller.c: 438:     }
 }
-[e $U 1628  ]
-[e :U 1627 ]
-{
-"325
-[; ;controller.c: 325:         return 0;
-[e ) -> -> 0 `i `a ]
-[e $UE 1608  ]
-"326
-[; ;controller.c: 326:     }
+[e :U 1593 ]
+[e :U 1592 ]
+[e :U 1590 ]
+[e :U 1588 ]
+[e :U 1585 ]
+"442
+[; ;controller.c: 442: }
+[e :UE 1576 ]
 }
-[e :U 1628 ]
-[e :U 1626 ]
-[e :U 1618 ]
-[e :U 1616 ]
-[e :U 1614 ]
-[e :U 1611 ]
-"328
-[; ;controller.c: 328:     return 0;
-[e ) -> -> 0 `i `a ]
-[e $UE 1608  ]
-"330
-[; ;controller.c: 330: }
-[e :UE 1608 ]
-}
-"332
-[; ;controller.c: 332: _Bool static CONTROL_ANIMATION(){
-[v _CONTROL_ANIMATION `(a ~T0 @X0 1 sf ]
+"444
+[; ;controller.c: 444: void static CONTROL_ANIMATION(){
+[v _CONTROL_ANIMATION `(v ~T0 @X0 1 sf ]
 {
 [e :U _CONTROL_ANIMATION ]
 [f ]
-"334
-[; ;controller.c: 334:     if(enterState){
-[e $ ! != -> _enterState `i -> 0 `i 1630  ]
+"446
+[; ;controller.c: 446:     if (upState && currentMenu->name == A_SELECTION) {
+[e $ ! && != -> _upState `i -> 0 `i == -> . *U _currentMenu 4 `ui -> . `E11217 18 `ui 1595  ]
 {
-"335
-[; ;controller.c: 335:         !animationBrightnessControl;
-[e ! != -> _animationBrightnessControl `i -> 0 `i ]
-"336
-[; ;controller.c: 336:         return 1;
-[e ) -> -> 1 `i `a ]
-[e $UE 1629  ]
-"337
-[; ;controller.c: 337:     }
-}
-[e :U 1630 ]
-"339
-[; ;controller.c: 339:     if (upState && !animationBrightnessControl) {
-[e $ ! && != -> _upState `i -> 0 `i ! != -> _animationBrightnessControl `i -> 0 `i 1631  ]
+"447
+[; ;controller.c: 447:         if (animationModeSelected < 10) {
+[e $ ! < -> _animationModeSelected `i -> 10 `i 1596  ]
 {
-"340
-[; ;controller.c: 340:         if (animationModeSelected < 10) {
-[e $ ! < -> _animationModeSelected `i -> 10 `i 1632  ]
-{
-"341
-[; ;controller.c: 341:             animationModeSelected++;
+"448
+[; ;controller.c: 448:             animationModeSelected++;
 [e ++ _animationModeSelected -> -> 1 `i `uc ]
-"342
-[; ;controller.c: 342:         } else {
+"449
+[; ;controller.c: 449:         } else {
 }
-[e $U 1633  ]
-[e :U 1632 ]
+[e $U 1597  ]
+[e :U 1596 ]
 {
-"343
-[; ;controller.c: 343:             animationModeSelected = 10;
+"450
+[; ;controller.c: 450:             animationModeSelected = 10;
 [e = _animationModeSelected -> -> 10 `i `uc ]
-"344
-[; ;controller.c: 344:         }
+"451
+[; ;controller.c: 451:         }
 }
-[e :U 1633 ]
-"345
-[; ;controller.c: 345:         return 1;
-[e ) -> -> 1 `i `a ]
-[e $UE 1629  ]
-"346
-[; ;controller.c: 346:     } else if (downState && !animationBrightnessControl) {
+[e :U 1597 ]
+"452
+[; ;controller.c: 452:     } else if (downState && currentMenu->name == A_SELECTION) {
 }
-[e $U 1634  ]
-[e :U 1631 ]
-[e $ ! && != -> _downState `i -> 0 `i ! != -> _animationBrightnessControl `i -> 0 `i 1635  ]
+[e $U 1598  ]
+[e :U 1595 ]
+[e $ ! && != -> _downState `i -> 0 `i == -> . *U _currentMenu 4 `ui -> . `E11217 18 `ui 1599  ]
 {
-"347
-[; ;controller.c: 347:         if (animationModeSelected > 1) {
-[e $ ! > -> _animationModeSelected `i -> 1 `i 1636  ]
+"453
+[; ;controller.c: 453:         if (animationModeSelected > 1) {
+[e $ ! > -> _animationModeSelected `i -> 1 `i 1600  ]
 {
-"348
-[; ;controller.c: 348:             animationModeSelected--;
+"454
+[; ;controller.c: 454:             animationModeSelected--;
 [e -- _animationModeSelected -> -> 1 `i `uc ]
-"349
-[; ;controller.c: 349:         } else {
+"455
+[; ;controller.c: 455:         } else {
 }
-[e $U 1637  ]
-[e :U 1636 ]
+[e $U 1601  ]
+[e :U 1600 ]
 {
-"350
-[; ;controller.c: 350:             animationModeSelected = 1;
+"456
+[; ;controller.c: 456:             animationModeSelected = 1;
 [e = _animationModeSelected -> -> 1 `i `uc ]
-"351
-[; ;controller.c: 351:         }
+"457
+[; ;controller.c: 457:         }
 }
-[e :U 1637 ]
-"352
-[; ;controller.c: 352:         return 1;
-[e ) -> -> 1 `i `a ]
-[e $UE 1629  ]
-"353
-[; ;controller.c: 353:     } else if (upState && animationBrightnessControl) {
+[e :U 1601 ]
+"458
+[; ;controller.c: 458:     } else if (upState && currentMenu->name == A_BRIGHTNESS) {
 }
-[e $U 1638  ]
-[e :U 1635 ]
-[e $ ! && != -> _upState `i -> 0 `i != -> _animationBrightnessControl `i -> 0 `i 1639  ]
+[e $U 1602  ]
+[e :U 1599 ]
+[e $ ! && != -> _upState `i -> 0 `i == -> . *U _currentMenu 4 `ui -> . `E11217 17 `ui 1603  ]
 {
-"354
-[; ;controller.c: 354:         if (animationBrightness < 10) {
-[e $ ! < -> _animationBrightness `i -> 10 `i 1640  ]
+"459
+[; ;controller.c: 459:         if (animationBrightness < 10) {
+[e $ ! < -> _animationBrightness `i -> 10 `i 1604  ]
 {
-"355
-[; ;controller.c: 355:             animationBrightness++;
+"460
+[; ;controller.c: 460:             animationBrightness++;
 [e ++ _animationBrightness -> -> 1 `i `uc ]
-"356
-[; ;controller.c: 356:         } else {
+"461
+[; ;controller.c: 461:         } else {
 }
-[e $U 1641  ]
-[e :U 1640 ]
+[e $U 1605  ]
+[e :U 1604 ]
 {
-"357
-[; ;controller.c: 357:             animationBrightness = 10;
+"462
+[; ;controller.c: 462:             animationBrightness = 10;
 [e = _animationBrightness -> -> 10 `i `uc ]
-"358
-[; ;controller.c: 358:         }
+"463
+[; ;controller.c: 463:         }
 }
-[e :U 1641 ]
-"359
-[; ;controller.c: 359:         return 1;
-[e ) -> -> 1 `i `a ]
-[e $UE 1629  ]
-"360
-[; ;controller.c: 360:     } else if (downState && animationBrightnessControl) {
+[e :U 1605 ]
+"464
+[; ;controller.c: 464:     } else if (downState && currentMenu->name == A_BRIGHTNESS) {
 }
-[e $U 1642  ]
-[e :U 1639 ]
-[e $ ! && != -> _downState `i -> 0 `i != -> _animationBrightnessControl `i -> 0 `i 1643  ]
+[e $U 1606  ]
+[e :U 1603 ]
+[e $ ! && != -> _downState `i -> 0 `i == -> . *U _currentMenu 4 `ui -> . `E11217 17 `ui 1607  ]
 {
-"361
-[; ;controller.c: 361:         if (animationBrightness > 0) {
-[e $ ! > -> _animationBrightness `i -> 0 `i 1644  ]
+"465
+[; ;controller.c: 465:         if (animationBrightness > 0) {
+[e $ ! > -> _animationBrightness `i -> 0 `i 1608  ]
 {
-"362
-[; ;controller.c: 362:             animationBrightness--;
+"466
+[; ;controller.c: 466:             animationBrightness--;
 [e -- _animationBrightness -> -> 1 `i `uc ]
-"363
-[; ;controller.c: 363:         } else {
+"467
+[; ;controller.c: 467:         } else {
 }
-[e $U 1645  ]
-[e :U 1644 ]
+[e $U 1609  ]
+[e :U 1608 ]
 {
-"364
-[; ;controller.c: 364:             animationBrightness = 0;
+"468
+[; ;controller.c: 468:             animationBrightness = 0;
 [e = _animationBrightness -> -> 0 `i `uc ]
-"365
-[; ;controller.c: 365:         }
+"469
+[; ;controller.c: 469:         }
 }
-[e :U 1645 ]
-"366
-[; ;controller.c: 366:         return 1;
-[e ) -> -> 1 `i `a ]
-[e $UE 1629  ]
-"367
-[; ;controller.c: 367:     }
+[e :U 1609 ]
+"470
+[; ;controller.c: 470:     }else if (upState && currentMenu->name == A_SPEED) {
 }
-[e :U 1643 ]
-[e :U 1642 ]
-[e :U 1638 ]
-[e :U 1634 ]
-"369
-[; ;controller.c: 369: }
-[e :UE 1629 ]
+[e $U 1610  ]
+[e :U 1607 ]
+[e $ ! && != -> _upState `i -> 0 `i == -> . *U _currentMenu 4 `ui -> . `E11217 19 `ui 1611  ]
+{
+"471
+[; ;controller.c: 471:         if (animationSpeed < 10) {
+[e $ ! < -> _animationSpeed `i -> 10 `i 1612  ]
+{
+"472
+[; ;controller.c: 472:             animationSpeed++;
+[e ++ _animationSpeed -> -> 1 `i `uc ]
+"473
+[; ;controller.c: 473:         } else {
 }
-[a 14C 114 0 ]
-[a 2C 66 82 0 ]
-[a 4C 65 78 0 ]
-[a 20C 72 0 ]
-[a 16C 71 0 ]
-[a 18C 66 0 ]
-[a 8C 70 45 0 ]
-[a 10C 67 45 0 ]
-[a 6C 66 45 0 ]
-[a 12C 65 45 0 ]
-[a 23C 66 69 65 84 13 0 ]
-[a 24C 66 69 65 84 13 0 ]
-[a 1C 72 79 76 68 13 0 ]
-[a 22C 65 78 73 32 13 0 ]
-[a 26C 76 69 68 32 13 0 ]
-[a 25C 80 67 32 32 13 0 ]
-[a 3C 13 0 ]
-[a 5C 13 0 ]
-[a 7C 13 0 ]
-[a 9C 13 0 ]
-[a 11C 13 0 ]
-[a 13C 13 0 ]
-[a 15C 13 0 ]
-[a 17C 13 0 ]
-[a 19C 13 0 ]
-[a 21C 13 0 ]
+[e $U 1613  ]
+[e :U 1612 ]
+{
+"474
+[; ;controller.c: 474:             animationSpeed = 10;
+[e = _animationSpeed -> -> 10 `i `uc ]
+"475
+[; ;controller.c: 475:         }
+}
+[e :U 1613 ]
+"476
+[; ;controller.c: 476:     }else if (downState && currentMenu->name == A_SPEED) {
+}
+[e $U 1614  ]
+[e :U 1611 ]
+[e $ ! && != -> _downState `i -> 0 `i == -> . *U _currentMenu 4 `ui -> . `E11217 19 `ui 1615  ]
+{
+"477
+[; ;controller.c: 477:         if (animationSpeed > 0) {
+[e $ ! > -> _animationSpeed `i -> 0 `i 1616  ]
+{
+"478
+[; ;controller.c: 478:             animationSpeed--;
+[e -- _animationSpeed -> -> 1 `i `uc ]
+"479
+[; ;controller.c: 479:         } else {
+}
+[e $U 1617  ]
+[e :U 1616 ]
+{
+"480
+[; ;controller.c: 480:             animationSpeed = 0;
+[e = _animationSpeed -> -> 0 `i `uc ]
+"481
+[; ;controller.c: 481:         }
+}
+[e :U 1617 ]
+"482
+[; ;controller.c: 482:     }
+}
+[e :U 1615 ]
+[e :U 1614 ]
+[e :U 1610 ]
+[e :U 1606 ]
+[e :U 1602 ]
+[e :U 1598 ]
+"484
+[; ;controller.c: 484:     if(currentMenu->name == A_SELECTION){
+[e $ ! == -> . *U _currentMenu 4 `ui -> . `E11217 18 `ui 1618  ]
+{
+"485
+[; ;controller.c: 485:         printf("An\r");
+[e ( _printf :s 17C ]
+"486
+[; ;controller.c: 486:         TM1650_fastPrintNum_2digit(animationModeSelected);
+[e ( _TM1650_fastPrintNum_2digit (1 _animationModeSelected ]
+"487
+[; ;controller.c: 487:     } else if(currentMenu->name == A_BRIGHTNESS){
+}
+[e $U 1619  ]
+[e :U 1618 ]
+[e $ ! == -> . *U _currentMenu 4 `ui -> . `E11217 17 `ui 1620  ]
+{
+"488
+[; ;controller.c: 488:         printf("Br\r");
+[e ( _printf :s 18C ]
+"489
+[; ;controller.c: 489:         TM1650_fastPrintNum_2digit(animationBrightness);
+[e ( _TM1650_fastPrintNum_2digit (1 _animationBrightness ]
+"490
+[; ;controller.c: 490:     } else if(currentMenu->name == A_SPEED){
+}
+[e $U 1621  ]
+[e :U 1620 ]
+[e $ ! == -> . *U _currentMenu 4 `ui -> . `E11217 19 `ui 1622  ]
+{
+"491
+[; ;controller.c: 491:         printf("SP\r");
+[e ( _printf :s 19C ]
+"492
+[; ;controller.c: 492:         TM1650_fastPrintNum_2digit(animationSpeed);
+[e ( _TM1650_fastPrintNum_2digit (1 _animationSpeed ]
+"493
+[; ;controller.c: 493:     }
+}
+[e :U 1622 ]
+[e :U 1621 ]
+[e :U 1619 ]
+"495
+[; ;controller.c: 495:     LED_task_ANIMATION(animationModeSelected, animationBrightness, animationSpeed);
+[e ( _LED_task_ANIMATION (3 , , _animationModeSelected _animationBrightness _animationSpeed ]
+"497
+[; ;controller.c: 497: }
+[e :UE 1594 ]
+}
+"499
+[; ;controller.c: 499: menu_t getCurrentMenu(){
+[v _getCurrentMenu `(E11217 ~T0 @X0 1 ef ]
+{
+[e :U _getCurrentMenu ]
+[f ]
+"500
+[; ;controller.c: 500:     return currentMenu->name;
+[e ) . *U _currentMenu 4 ]
+[e $UE 1623  ]
+"501
+[; ;controller.c: 501: }
+[e :UE 1623 ]
+}
+[p f _printf 8388608 ]
+[a 18C 66 114 13 0 ]
+[a 13C 114 13 0 ]
+[a 17C 65 110 13 0 ]
+[a 16C 104 13 0 ]
+[a 14C 103 13 0 ]
+[a 15C 98 13 0 ]
+[a 2C 66 69 65 84 13 0 ]
+[a 19C 83 80 13 0 ]
+[a 6C 70 65 68 69 13 0 ]
+[a 10C 70 45 13 0 ]
+[a 11C 67 45 13 0 ]
+[a 9C 66 45 13 0 ]
+[a 12C 65 45 13 0 ]
+[a 8C 65 76 76 32 13 0 ]
+[a 3C 65 78 73 32 13 0 ]
+[a 4C 76 69 68 32 13 0 ]
+[a 1C 80 67 32 32 13 0 ]
+[a 7C 67 32 32 32 13 0 ]
+[a 5C 66 32 32 32 13 0 ]

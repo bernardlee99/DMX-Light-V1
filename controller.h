@@ -14,6 +14,31 @@
 #define INTERVAL_CONST 1
 #define TURN_OFF_TIME 5000
 
+void CONTROLLER_init();
+
+typedef enum {
+    DMX,
+    BEAT,
+    ANIMATION,
+    MANUAL,
+    DMX_TASK,
+    B_STROBE,
+    B_FADE,
+    B_CONT,
+    B_MIXED,
+    B_STROBE_TASK,
+    B_FADE_TASK,
+    B_CONT_TASK,
+    B_MIXED_TASK,
+    MANUAL_RED,
+    MANUAL_GREEN,
+    MANUAL_BLUE,
+    MANUAL_WHITE,
+    A_BRIGHTNESS,
+    A_SELECTION,
+    A_SPEED
+}menu_t;
+
 typedef enum {
     MODE_ANIMATION = 2,
     MODE_BEAT_STROBE = 1,
@@ -41,10 +66,12 @@ void menuSelection();
 mode_t getMode();
 bool getIsHold();
 
-bool static CONTROL_DMX();
-bool static CONTROL_BEAT();
-bool static CONTROL_MANUAL(colormode_t input);
-bool static CONTROL_ANIMATION();
+void static CONTROL_DMX();
+void static CONTROL_BEAT();
+void static CONTROL_MANUAL();
+void static CONTROL_ANIMATION();
+
+menu_t getCurrentMenu();
 
 extern bool startup;
 

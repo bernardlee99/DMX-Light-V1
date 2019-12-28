@@ -12,26 +12,28 @@
 #include "led.h"
 #include "mcc_generated_files/mcc.h"
 #include "dmx.h"
+#include "tm1650.h"
 
 time_t lastLedActiveTime = 0;
+time_t lastBeatLedChange = 0;
 int currentState = 0;
 uint8_t beatBrightness = 5;
 uint8_t animationBrightness = 5;
  int dmxArray[513];
  bool startup;
  
- color_t manual;
+ color_t manualColor;
+ 
+    void LED_setColor(color_t input){
 
-void LED_setColor(color_t input){
-    if(!startup){
         PWM1_LoadDutyValue( ( ((int)input.red)/255.0 ) * 127 );
         PWM2_LoadDutyValue( ( ((int)input.green)/255.0 ) * 127 );
         PWM3_LoadDutyValue( ( ((int)input.blue)/255.0 ) * 127 );
         PWM4_LoadDutyValue( ( ((int)input.white)/255.0 ) * 127 );
-    }
+
 }
 
-void static LED_task_DMX(){
+void LED_task_DMX(){
     
     color_t dmx;
 
@@ -45,58 +47,27 @@ void static LED_task_DMX(){
 }
 
 void LED_init(){
-    manual.red = 0;
-    manual.green = 0;
-    manual.blue = 0;
-    manual.white = 0;
+    manualColor.red = 0;
+    manualColor.green = 0;
+    manualColor.blue = 0;
+    manualColor.white = 0;
     TRISCbits.TRISC5 = 0;
+    animationHue.hue = 0;
+    animationHue.light = 0.50f;
+    animationHue.saturation = 0.76f;
 }
 
-void LED_task(){
-    
-    switch(getMode()) {
-        case MODE_DMX:
-            LED_task_DMX();
-            break;
+void LED_task_MANUAL(){
 
-        case MODE_BEAT_STROBE:
-            if(getIsHold()) LED_setColor(beatColorCreator(0,0,0,0));
-            else LED_task_BEAT_STROBE();
-            break;
-
-        case MODE_BEAT_FADE:
-            if(getIsHold()) LED_setColor(beatColorCreator(0,0,0,0));
-            else LED_task_BEAT_FADE();
-            break;
-
-        case MODE_BEAT_CONTINUOUS:
-            if(getIsHold()) LED_setColor(beatColorCreator(0,0,0,0));
-            else LED_task_BEAT_CONTINUOUS();
-            break;
-
-        case MODE_BEAT_MIXED:
-            if(getIsHold()) LED_setColor(beatColorCreator(0,0,0,0));
-            else LED_task_BEAT_MIXED();
-            break;
-
-        case MODE_ANIMATION:
-            if(getIsHold()) LED_setColor(beatColorCreator(0,0,0,0));
-            else LED_task_ANIMATION();
-            break;
-            
-        case MODE_MANUAL:
-            LED_setColor(manual);
-            break;
-    }
+    LED_setColor(manualColor);
     
 }
 
-void static LED_task_BEAT_STROBE(){
+void LED_task_BEAT_STROBE(){
     
     if(CLOCK_getTime() - lastLedActiveTime < 50){
         return;
     }
-    
     
     lastLedActiveTime = CLOCK_getTime();
     
@@ -170,6 +141,10 @@ color_t static colorCreator(uint8_t inRed, uint8_t inGreen, uint8_t inBlue, uint
     return tempColor;
 }
 
+void resetColor(){
+    beatColorCreator(0,0,0,0);
+}
+
 color_t static beatColorCreator(bool inRed, bool inGreen, bool inBlue, bool inWhite){
     color_t tempColor;
     
@@ -196,74 +171,112 @@ color_t static beatColorCreator(bool inRed, bool inGreen, bool inBlue, bool inWh
     return tempColor;
 }
 
-void static LED_task_BEAT_FADE(){
-    
-    
-    
-}
-
-void static LED_task_ANIMATION(){
-    
-}
-
-void static LED_task_BEAT_CONTINUOUS(){
-    
-}
-
-void static LED_task_BEAT_MIXED(){
-    
-}
-
-void colorInc(colormode_t input){
-    
-    switch(input){
+void LED_task_BEAT_FADE(){
         
-        case CMODE_RED:
-            if(!(manual.red > 254))
-            manual.red++;
+}
+
+void LED_task_ANIMATION(uint8_t mode, uint8_t brightness, uint8_t speed){
+    
+    uint8_t calculatedSpeed = 1810 - (speed * 180);
+        
+    if(CLOCK_getTime() - lastLedActiveTime < calculatedSpeed){
+        return;
+    }
+    
+    lastLedActiveTime = CLOCK_getTime();
+    
+    if(animationHue.hue <= 360){
+        animationHue.hue++;
+    } else {
+        animationHue.hue = 0;
+    }
+    
+    
+    animationHue.light = 0.10f * (double)brightness;
+    animationHue.saturation = 0.10f * (double)mode;
+    
+    color_t animationColor = HSLToRGB(animationHue);
+    LED_setColor(animationColor);       
+}
+
+void LED_task_BEAT_CONTINUOUS(){
+    
+    if(CLOCK_getTime() - lastLedActiveTime < 2000){
+        return;
+    }
+    
+    lastLedActiveTime = CLOCK_getTime();
+    bool beatState = BEAT_detected();
+       
+    animationHue.hue++;
+    animationColor = HSLToRGB(animationHue);
+    
+    if(beatState && (CLOCK_getTime() - lastBeatLedChange < 10)){
+        animationColor.white = 255;
+        lastBeatLedChange = CLOCK_getTime();
+    } else if(CLOCK_getTime() - lastBeatLedChange < 10) {
+        animationColor.white = 0;
+        lastBeatLedChange = CLOCK_getTime();
+    }
+    
+    LED_setColor(animationColor); 
+     
+}
+
+void LED_task_BEAT_MIXED(){
+    
+}
+
+void colorInc(){
+    
+    switch(getCurrentMenu()){
+        
+        case MANUAL_RED:
+            if(!(manualColor.red > 254))
+            manualColor.red++;
             break;
             
-        case CMODE_GREEN:
-            if(!(manual.green > 254))
-            manual.green++;
+        case MANUAL_GREEN:
+            if(!(manualColor.green > 254))
+            manualColor.green++;
             break;
             
-        case CMODE_BLUE:
-            if(!(manual.blue > 254))
-            manual.blue++;
+        case MANUAL_BLUE:
+            if(!(manualColor.blue > 254))
+            manualColor.blue++;
             break;
             
-        case CMODE_WHITE:
-            if(!(manual.white > 254))
-            manual.white++;
+        case MANUAL_WHITE:
+            if(!(manualColor.white > 254))
+            manualColor.white++;
             break;
               
     }
     
 }
 
-void colorDec(colormode_t input){
+void colorDec(){
     
-    switch(input){
+    switch(getCurrentMenu()){
         
-        case CMODE_RED:
-            if(!(manual.red < 1))
-            manual.red--;
+        case MANUAL_RED:
+            if(!(manualColor.red < 1))
+            manualColor.red--;
             break;
             
-        case CMODE_GREEN:
-            if(!(manual.green < 1))
-            manual.green--;
+        case MANUAL_GREEN:
+            if(!(manualColor.green < 1))
+            manualColor.green--;
             break;
             
-        case CMODE_BLUE:
-            if(!(manual.blue < 1))
-            manual.blue--;
+        case MANUAL_BLUE:
+            if(!(manualColor.blue < 1))
+            manualColor.blue--;
             break;
             
-        case CMODE_WHITE:
-            if(!(manual.white < 1))
-            manual.white--;
+        case MANUAL_WHITE:
+            if(!(manualColor.white < 1))
+            manualColor.white--;
             break;
               
     }
@@ -275,21 +288,65 @@ uint8_t getManualColor(colormode_t input){
        switch(input){
         
         case CMODE_RED:
-            return manual.red;
+            return manualColor.red;
             break;
             
         case CMODE_GREEN:
-            return manual.green;
+            return manualColor.green;
             break;
             
         case CMODE_BLUE:
-            return manual.blue;
+            return manualColor.blue;
             break;
             
         case CMODE_WHITE:
-            return manual.white;
+            return manualColor.white;
             break;
               
     }
     
+}
+
+float HueToRGB(float v1, float v2, float vH)
+{
+	if (vH < 0)
+		vH += 1;
+
+	if (vH > 1)
+		vH -= 1;
+
+	if ((6 * vH) < 1)
+		return (v1 + (v2 - v1) * 6 * vH);
+
+	if ((2 * vH) < 1)
+		return v2;
+
+	if ((3 * vH) < 2)
+		return (v1 + (v2 - v1) * ((2.0f / 3) - vH) * 6);
+
+	return v1;
+}
+
+color_t HSLToRGB(hsl_t hsl) {
+	
+    color_t rgb;
+
+	if (hsl.saturation == 0)
+	{
+		rgb.red = rgb.green = rgb.blue = (unsigned char)(hsl.light * 255);
+	}
+	else
+	{
+		float v1, v2;
+		float hue = (float)hsl.hue / 360;
+
+		v2 = (hsl.light < 0.5) ? (hsl.light * (1 + hsl.saturation)) : ((hsl.light + hsl.saturation) - (hsl.light * hsl.saturation));
+		v1 = 2 * hsl.light - v2;
+
+		rgb.red = (unsigned char)(255 * HueToRGB(v1, v2, hue + (1.0f / 3)));
+		rgb.green = (unsigned char)(255 * HueToRGB(v1, v2, hue));
+		rgb.blue = (unsigned char)(255 * HueToRGB(v1, v2, hue - (1.0f / 3)));
+	}
+
+	return rgb;
 }

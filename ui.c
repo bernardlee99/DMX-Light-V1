@@ -7,43 +7,48 @@
 
 #include "ui.h"
 
-uint8_t menuSelected = 3;
-uint8_t currentSelection = 3;
+typedef void (*fn_t)(void);
 
-void menuSelection(){
-    
-    if(upState){
-        if(menuSelected < 3){
-            menuSelected++;
-        } else {
-            menuSelected = 2;
-        }
-    } else if(downState){
-        if(menuSelected > 1){
-            menuSelected--;
-        } else {
-            menuSelected = 0;
-        }
-    }
+typedef struct {
+    menuItem_t* nextItem;
+    menuItem_t* prevItem;
+    char name[4];
+    fn_t config;
+} menuItem_t;
 
-    if (enterState) {
-        currentSelection = menuSelected;
-        menuPressed = false;
-        enterPressed = true;
-        return;
-    }
+void UI_init();
+
+void UI_init() {
+
+    //Level 1 UI
+    menuItem_t dmx;
+    menuItem_t beat;
+    menuItem_t animation;
+    menuItem_t manual;
     
-    switch(menuSelected){
-        case 1:
-            printf("ANI \r");
-            break;
-            
-        case 2:
-            printf("BEAT\r");
-            break;
-            
-        case 3:
-            printf("PC  \r");
-            break;
-    }
+    dmx.nextItem = &beat;
+    dmx.prevItem = &manual;
+    dmx.config = NULL;
+    dmx.name = "PC  ";
+
+    dmx.nextItem = &beat;
+    beat.nextItem = &animation;
+    animation.nextItem = &manual;
+
+    dmx.config = dmxAddressPrint;
+
+    beat.config = beatConfig;
+
+
+
+    beatStrobe.nextItem = &beatFade;
+
+    // animation configs
+    menuItem_t animationType;
+
+    // manualConfigs;
+    menuItem_t manualRed;
+
+    dmx.nextItem = &beatStrobe;
+    beat
 }
