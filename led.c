@@ -15,6 +15,7 @@
 #include "tm1650.h"
 
 time_t lastLedActiveTime = 0;
+time_t lastBeatLedChange = 0;
 int currentState = 0;
 uint8_t beatBrightness = 5;
 uint8_t animationBrightness = 5;
@@ -23,7 +24,7 @@ uint8_t animationBrightness = 5;
  
  color_t manualColor;
  
-void LED_setColor(color_t input){
+    void LED_setColor(color_t input){
 
         PWM1_LoadDutyValue( ( ((int)input.red)/255.0 ) * 127 );
         PWM2_LoadDutyValue( ( ((int)input.green)/255.0 ) * 127 );
@@ -51,6 +52,9 @@ void LED_init(){
     manualColor.blue = 0;
     manualColor.white = 0;
     TRISCbits.TRISC5 = 0;
+    animationHue.hue = 0;
+    animationHue.light = 0.50f;
+    animationHue.saturation = 0.76f;
 }
 
 void LED_task_MANUAL(){
@@ -171,12 +175,52 @@ void LED_task_BEAT_FADE(){
         
 }
 
-void LED_task_ANIMATION(){
+void LED_task_ANIMATION(uint8_t mode, uint8_t brightness, uint8_t speed){
     
+    uint8_t calculatedSpeed = 1810 - (speed * 180);
+        
+    if(CLOCK_getTime() - lastLedActiveTime < calculatedSpeed){
+        return;
+    }
+    
+    lastLedActiveTime = CLOCK_getTime();
+    
+    if(animationHue.hue <= 360){
+        animationHue.hue++;
+    } else {
+        animationHue.hue = 0;
+    }
+    
+    
+    animationHue.light = 0.10f * (double)brightness;
+    animationHue.saturation = 0.10f * (double)mode;
+    
+    color_t animationColor = HSLToRGB(animationHue);
+    LED_setColor(animationColor);       
 }
 
 void LED_task_BEAT_CONTINUOUS(){
     
+    if(CLOCK_getTime() - lastLedActiveTime < 2000){
+        return;
+    }
+    
+    lastLedActiveTime = CLOCK_getTime();
+    bool beatState = BEAT_detected();
+       
+    animationHue.hue++;
+    animationColor = HSLToRGB(animationHue);
+    
+    if(beatState && (CLOCK_getTime() - lastBeatLedChange < 10)){
+        animationColor.white = 255;
+        lastBeatLedChange = CLOCK_getTime();
+    } else if(CLOCK_getTime() - lastBeatLedChange < 10) {
+        animationColor.white = 0;
+        lastBeatLedChange = CLOCK_getTime();
+    }
+    
+    LED_setColor(animationColor); 
+     
 }
 
 void LED_task_BEAT_MIXED(){
@@ -261,4 +305,48 @@ uint8_t getManualColor(colormode_t input){
               
     }
     
+}
+
+float HueToRGB(float v1, float v2, float vH)
+{
+	if (vH < 0)
+		vH += 1;
+
+	if (vH > 1)
+		vH -= 1;
+
+	if ((6 * vH) < 1)
+		return (v1 + (v2 - v1) * 6 * vH);
+
+	if ((2 * vH) < 1)
+		return v2;
+
+	if ((3 * vH) < 2)
+		return (v1 + (v2 - v1) * ((2.0f / 3) - vH) * 6);
+
+	return v1;
+}
+
+color_t HSLToRGB(hsl_t hsl) {
+	
+    color_t rgb;
+
+	if (hsl.saturation == 0)
+	{
+		rgb.red = rgb.green = rgb.blue = (unsigned char)(hsl.light * 255);
+	}
+	else
+	{
+		float v1, v2;
+		float hue = (float)hsl.hue / 360;
+
+		v2 = (hsl.light < 0.5) ? (hsl.light * (1 + hsl.saturation)) : ((hsl.light + hsl.saturation) - (hsl.light * hsl.saturation));
+		v1 = 2 * hsl.light - v2;
+
+		rgb.red = (unsigned char)(255 * HueToRGB(v1, v2, hue + (1.0f / 3)));
+		rgb.green = (unsigned char)(255 * HueToRGB(v1, v2, hue));
+		rgb.blue = (unsigned char)(255 * HueToRGB(v1, v2, hue - (1.0f / 3)));
+	}
+
+	return rgb;
 }

@@ -43,6 +43,7 @@ menuItem_t beatMixedTask;
 //Animation-Config
 menuItem_t animationType;
 menuItem_t animationBrightnessCtrl;
+menuItem_t animationSpeedCtrl;
 
 //Manual Config
 menuItem_t manualRed;
@@ -72,9 +73,10 @@ bool beatHold = false;
 
 colormode_t colorModeSelected = CMODE_RED;
 
-uint8_t animationModeSelected = 1;
+uint8_t animationModeSelected = 5;
 bool animationBrightnessControl = false;
 uint8_t animationBrightness;
+uint8_t animationSpeed = 5;
 
 color_t manualColor;
     
@@ -159,11 +161,17 @@ void CONTROLLER_init() {
 
     animationBrightnessCtrl.nextItem = NULL;
     animationBrightnessCtrl.prevItem = NULL;
-    animationBrightnessCtrl.config = &animationType;
+    animationBrightnessCtrl.config = &animationSpeedCtrl;
     animationBrightnessCtrl.task = CONTROL_ANIMATION;
     animationBrightnessCtrl.name = A_BRIGHTNESS;
     animationBrightnessCtrl.parent = &animation;
-
+    
+    animationSpeedCtrl.nextItem = NULL;
+    animationSpeedCtrl.prevItem = NULL;
+    animationSpeedCtrl.config = &animationType;
+    animationSpeedCtrl.task = CONTROL_ANIMATION;
+    animationSpeedCtrl.name = A_SPEED;
+    animationSpeedCtrl.parent = &animation;
 
     //Manual
     manualRed.nextItem = NULL;
@@ -340,7 +348,7 @@ void static CONTROL_BEAT(){
             
         case B_CONT_TASK:
             printf("C-\r");
-            LED_task_BEAT_FADE();
+            LED_task_BEAT_CONTINUOUS();
             break;
             
         case B_MIXED_TASK:
@@ -435,8 +443,6 @@ void static CONTROL_MANUAL(){
 
 void static CONTROL_ANIMATION(){
     
-    LED_task_ANIMATION();
-    
     if (upState && currentMenu->name == A_SELECTION) {
         if (animationModeSelected < 10) {
             animationModeSelected++;
@@ -461,17 +467,32 @@ void static CONTROL_ANIMATION(){
         } else {
             animationBrightness = 0;
         }
+    }else if (upState && currentMenu->name == A_SPEED) {
+        if (animationSpeed < 10) {
+            animationSpeed++;
+        } else {
+            animationSpeed = 10;
+        }
+    }else if (downState && currentMenu->name == A_SPEED) {
+        if (animationSpeed > 0) {
+            animationSpeed--;
+        } else {
+            animationSpeed = 0;
+        }
     }
     
     if(currentMenu->name == A_SELECTION){
         printf("An\r");
         TM1650_fastPrintNum_2digit(animationModeSelected);
-    } else{
+    } else if(currentMenu->name == A_BRIGHTNESS){
         printf("Br\r");
         TM1650_fastPrintNum_2digit(animationBrightness);
+    } else if(currentMenu->name == A_SPEED){
+        printf("SP\r");
+        TM1650_fastPrintNum_2digit(animationSpeed);
     }
     
-    LED_task_ANIMATION();
+    LED_task_ANIMATION(animationModeSelected, animationBrightness, animationSpeed);
     
 }
 

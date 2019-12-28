@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
-  <executable name="dist/default/production/lab_10.production.hex">
+  <executable name="dist/default/production\DMX-Light-V1.production.hex">
     <memory name="program">
       <units>words</units>
       <length>16384</length>
-      <used>7576</used>
-      <free>8808</free>
+      <used>11303</used>
+      <free>5081</free>
     </memory>
     <memory name="data">
       <units>bytes</units>
       <length>2048</length>
-      <used>1507</used>
-      <free>541</free>
+      <used>1635</used>
+      <free>413</free>
     </memory>
   </executable>
 </project>

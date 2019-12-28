@@ -35,7 +35,8 @@ typedef enum {
     MANUAL_BLUE,
     MANUAL_WHITE,
     A_BRIGHTNESS,
-    A_SELECTION
+    A_SELECTION,
+    A_SPEED
 }menu_t;
 
 typedef enum {
